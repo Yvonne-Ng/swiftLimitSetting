@@ -1,0 +1,34 @@
+For full instructions about running and setting up code see note in doc folder of Bayesian package.
+
+Trunk location in SVN:
+
+------ TAGS --------
+
+Bayesian-00-00-01 ICHEP 2016 tag
+
+------ Order of running -----------
+
+SearchPhase.cxx
+setLimitsOneMassPoint.cxx
+LimitSettingPhase.cxx 
+doGaussianLimits.cxx   
+
+----- Making changes -----
+
+each time changes are made (to source or header files)
+
+  save file
+  rc compile
+
+----- Making TAGS -----
+
+Remember to:
+
+* Change scripts/setup-StatisticalAnalysis.sh to download TAG not TRUNK (Change back to TRUNK after making TAG and svn commit)
+* Change doc/Bayesian.tex to point to setup-StatisticalAnalysis.sh script in TAG not the one in TRUNK (Change back to TRUNK after making TAG and svn commit)
+* Add TAG and description to TAGS section above in this README file
+
+e.g. tag making command:
+
+svn cp svn+ssh://svn.cern.ch/reps/atlasphys-exo/Physics/Exotic/JDM/DiJetISR/Run2/Code/StatisticalAnalysis/Bayesian/trunk/ svn+ssh://svn.cern.ch/reps/atlasphys-exo/Physics/Exotic/JDM/DiJetISR/Run2/Code/StatisticalAnalysis/Bayesian/tags/Bayesian-00-00-07/  -m "Stable Tag without splits setup for Period A4 data"
+

@@ -1,0 +1,70 @@
+atlas_subdir( Bayesian )
+message(!!!!!!!!!!!!!!!!!!)
+atlas_depends_on_subdirs( PUBLIC Asg_BAT )
+message(!!!!!!!!!!!!!!!!!!!!!!!!!!!!)
+
+
+find_package( ROOT COMPONENTS Hist Roofit Tree Minuit2
+    MathMore MathCore)
+message (!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!)
+
+set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} /afs/cern.ch/work/y/ywng/workspace/r21StatisticalAna/source/Asg_BAT/cmake
+message(!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!)
+find_package( Asg_BAT REQUIRED )
+    )
+message(!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!)
+# package 
+
+
+#atlas_add_root_dictionary( Asg_BAT ROOT_HEADERS Root/LinkDef.h
+#EXTERNAL_PACKAGES ROOT )
+
+message(CMAKE_MODULE_PATH = ${CMAKE_MODULE_PATH} )
+message(ROOT_INCLUDE_DIR = ${ROOT_INCLUDE_DIR})
+message(BAT_INCLUDE_DIRS = ${BAT_INCLUDE_DIRS})
+message(BAT_LIBRARIES = ${BAT_LIBRARIES})
+message(CRAP CRAP CRAP)
+atlas_add_library( BayesianLib Bayesian/*.h Root/*.cxx 
+    PUBLIC_HEADERS BayesianLib
+    SHARED
+    INCLUDE_DIRS ${ROOT_INCLUDE_DIR} ${Asg_BAT_Dir}
+    LINK_LIBRARIES ${ROOT_LIBRARIES}
+    ${BAT_LIBRARIES}   
+    )
+
+include_directories(
+    /afs/cern.ch/work/y/ywng/workspace/r21StatisticalAna/build/Asg_BAT/build/lib
+    )
+include_directories(
+    /cvmfs/atlas.cern.ch/repo/sw/software/21.0/sw/lcg/releases/LCG_87/ROOT/6.08.02/x86_64-slc6-gcc49-opt/lib/
+    )
+#PRIVATE_INCLUDE_DIRS ${ROOT_INCLUDE_DIRS}
+#LINK_LIBRARIES BaseLibrary
+#PRIVATE_LINK_LIBRARIES ${ROOT_LIBRARIES}
+#UtilityLibrary )
+#Not sure what the Asg_BAT_LiBRARY is called
+#Making Everything private until it complains
+
+atlas_add_executable( SearchPhase util/SearchPhase.cxx
+    INCLUDE_DIRS ${ROOT_INCLUDE_DIRS} ${Asg_BAT_Dir}
+    LINK_LIBRARIES BayesianLib ${ROOT_LIBRARIES}
+    ${Asg_BAT_LIBRARY} )
+
+#atlas_add_executable( LimitSettingPhase
+#    util/LimitSettingPhase.cxx 
+#    INCLUDE_DIRS ${ROOT_INCLUDE_DIRS} ${Asg_BAT_Dir}
+#    LINK_LIBRARIES BayesianLib ${ROOT_LIBRARIES} ${Asg_BAT_LIBRARIES} )
+#should I include packages? 
+
+ 
+atlas_install_python_modules(
+    ./plotting/PythonModules/*.py ./inputs/accDictionary/*py
+    )
+#making a configuration file
+install( TARGETS BayesianLib SearchPhase
+       EXPORT BayesianConfig
+       RUNTIME DESTINATION bin
+       LIBRARY DESTINATION lib )
+#create a configuration file
+install( EXPORT BayesianConfig
+         DESTINATION cmake)

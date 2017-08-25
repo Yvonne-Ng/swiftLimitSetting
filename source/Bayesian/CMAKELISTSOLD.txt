@@ -1,0 +1,35 @@
+atlas_subdir( Bayesian )
+atlas_depends_on_subdirs( PUBLIC Asg_BAT )
+
+find_package( ROOT COMPONENTS HIST ROOFIT TREE MINUIT2 MATHMORE)
+find_package( Asg_BAT )
+
+# package 
+
+atlas_add_library( BayesianLib Bayesian/*.h Root/*.cxx 
+    PUBLIC_HEADERS BayesianLib
+    SHARED
+    INCLUDE_DIRS ${ROOT_INCLUDE_DIR} ${Asg_BAT_Dir}
+    LINK_LIBRARIES ${ROOT_LIBRARIES}
+    ${Asg_BAT_LIBRARIES}   
+    )
+
+#PRIVATE_INCLUDE_DIRS ${ROOT_INCLUDE_DIRS}
+#LINK_LIBRARIES BaseLibrary
+#PRIVATE_LINK_LIBRARIES ${ROOT_LIBRARIES}
+#UtilityLibrary )
+#Not sure what the Asg_BAT_LiBRARY is called
+#Making Everything private until it complains
+
+
+atlas_add_executable( LimitSettingPhase
+    util/LimitSettingPhase.cxx 
+    INCLUDE_DIRS ${ROOT_INCLUDE_DIRS} ${Asg_BAT_Dir}
+    LINK_LIBRARIES BayesianLib ${ROOT_LIBRARIES} ${Asg_BAT_LIBRARIES} )
+#should I include packages? 
+
+atlas_install_python_modules(
+    ./plotting/PythonModules/*.py ./inputs/accDictionary/*py
+    )
+
+
