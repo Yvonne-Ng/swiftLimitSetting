@@ -693,7 +693,7 @@ std::vector<std::pair<double,double> > MjjBATModel::ProcessExpectation(int proce
 
    //if (templateVar!=0 && shapevars.size()==0) {
 //Temporary work around
-   if (templateVar!=0 && shapevars.size()==0 && GetSystematicIndex(templateVar->GetParentSystematic())!=-1) {
+   if (templateVar!=0 && shapevars.size()==0 ) {
         ////////////////////look over here this is the
         //line///
   
@@ -778,7 +778,7 @@ std::vector<std::pair<double,double> > MjjBATModel::ProcessExpectation(int proce
    // loop over all bins and get adjustments
    int count=0;
    for (int bin = 0; bin<nbins; bin++) {
-
+     cout<<"bin#: "<<bin<<endl;
      if (GetProcess(processindex)->GetTrimProcess() && (bin < lowbin || bin > highbin)) {
        expectation.push_back(std::make_pair(0.0,0.0));
        count++; 
@@ -789,9 +789,10 @@ std::vector<std::pair<double,double> > MjjBATModel::ProcessExpectation(int proce
        // loop over all scale-changing systematic variations
        //cout<<"check5"<<endl;
        for (unsigned int j=0; j<scalevars.size(); ++j) {
-         cout<<"check 5.1"<<endl;
+         cout<<"#j: "<<j<<endl;
+         //cout<<"check 5.1"<<endl;
          MjjBATScaleChangingSyst * thisscalevar = scalevars.at(j);
-         cout<<"check 5.2"<<endl;
+         //cout<<"check 5.2"<<endl;
          MjjBATSystematic * parentsyst = fSystematicContainer.at(GetSystematicIndex(thisscalevar->GetParentSystematic()));
 
          if (!(parentsyst->GetFlagSystematicActive()))
