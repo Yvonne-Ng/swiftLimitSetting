@@ -754,7 +754,6 @@ int main (int argc,char **argv)
 	// Make a histogram of errors summed in quadrature for use in finding a p-value with systematics.
 	TH1D basicBkgFrom4ParamFit = backgroundFromFunc.GetHistogram();
     TH1D ErrHist(basicBkgFrom4ParamFit);
-    doPValWithSysts=false;
 	if (doPValWithSysts) {
 
 		std::cout << "Starting calculation with uncertainties!" << std::endl;
@@ -1018,7 +1017,8 @@ int main (int argc,char **argv)
 	bumpHunterStatLowHighRefined.Write("bumpHunterPLowHighRefined");
 
         // Write bump hunter with statistics results if applicable
-	if (doPValWithSysts) {
+	doPValWithSysts=false;
+    if (doPValWithSysts) {
 		tomographyWithStats.Write("TomographyPlotWithStats");
 		TVectorD thesePVals(3);
 		BHWithStatsPseudoStatsOfFit.statisticsFromPseudoexperimentsHist.SetName("bumpHunterStatsWSyst");
