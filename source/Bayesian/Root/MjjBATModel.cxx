@@ -2,6 +2,7 @@
 
 #include "Bayesian/MjjBATModel.h"
 
+using namespace std;
 // ---------------------------------------------------------
 MjjBATModel::MjjBATModel()
  : BCModel("Multi-template Fitter")
@@ -601,15 +602,32 @@ vector<double> MjjBATModel::Expectation(const std::vector<double> & parameters)
 {
 
    int nbins = fData->GetNbinsX()+2;
+   cout<<"nbins from Expectations"<<nbins<<endl;
    vector<vector<std::pair<double,double> > > expectation;
 
    // loop over all processes
+   cout<<"just before the starting of loop"<<endl;
+   cout<<"size of fNProcesses"<<fNProcesses<<endl;
+   cout<<"size of parameters"<<parameters.size()<<endl;
+   cout<<"Printing parameters"<<endl;
+   for (int j=0; j<parameters.size();j++){
+     cout<<"parameter #"<<j<<" : "<<parameters.at(j)<<endl;
+   }
+
+
    for (int i = 0; i < fNProcesses; ++i) {
+     cout<<"Starting of loop"<<endl;
+     cout<<i<<endl;
+     cout<<"in between"<<endl;
+     //for ( auto j in parameters){
+     //     cout<<j<<endl;
+     //}
+     cout<<"expectation for i="<<i<<" :"<<this->ProcessExpectation(i,parameters).at(i).first<<" , "<<this->ProcessExpectation(i,parameters).at(i).second<<endl;
 
      expectation.push_back(this->ProcessExpectation(i,parameters));
 
    }
-
+   cout<<"after the loop"<<endl;
    // check if expectation is positive
    double weight, binexpectation;
    vector<double> result;
@@ -640,11 +658,14 @@ std::vector<std::pair<double,double> > MjjBATModel::ProcessExpectation(int proce
 
 //std::cout<<"HERE"<<std::endl;
    // loop over all scale-changing systematic variations
+   cout<<"check1"<<endl;
+
+   cout<<"tempscalaevars size: "<<tempscalevars.size()<<endl;
    for (unsigned int j=0; j<tempscalevars.size(); ++j) {
-
      MjjBATTemplateSyst * thisshapevar = tempscalevars.at(j);
+     cout<<"check1.1"<<endl;
      MjjBATSystematic * parentsyst = fSystematicContainer.at(GetSystematicIndex(thisshapevar->GetParentSystematic()));
-
+     cout<<"check 1.2"<<endl;
      if (!(parentsyst->GetFlagSystematicActive()))
         continue;
 
@@ -666,11 +687,26 @@ std::vector<std::pair<double,double> > MjjBATModel::ProcessExpectation(int proce
    MjjBATTemplateSyst * templateVar = GetProcess(processindex)->GetTemplateSyst();
 
    // do template-changing systematic if one exists
-   if (templateVar!=0 && shapevars.size()==0) {
+   cout<<"check2"<<endl;
+   cout<<"template Var"<<templateVar<<endl;
+   cout<<"shapevars size"<<shapevars.size()<<endl;
 
+   //if (templateVar!=0 && shapevars.size()==0) {
+//Temporary work around
+   if (templateVar!=0 && shapevars.size()==0 && GetSystematicIndex(templateVar->GetParentSystematic())!=-1) {
+        ////////////////////look over here this is the
+        //line///
+  
+     
+       cout<<"templateVar->GetParentSystematics(): "<<templateVar->GetParentSystematic()<<endl;
+       cout<<"GetSystematicIndex(templateVar->GetParentSystematic(): "<<GetSystematicIndex(templateVar->GetParentSystematic())<<endl;
+       
        MjjBATSystematic * parentsyst = fSystematicContainer.at(GetSystematicIndex(templateVar->GetParentSystematic()));
+       
+       
+       cout<<"check2.1"<<endl;
        if ((parentsyst->GetFlagSystematicActive())) {
-
+         cout<<"Is parent syst Systematic Flag Active?"<<parentsyst->GetFlagSystematicActive()<<endl;
          // get parameter index
          int parindex = parentsyst->GetParamIndex();
 
@@ -678,8 +714,9 @@ std::vector<std::pair<double,double> > MjjBATModel::ProcessExpectation(int proce
   
 // Lydia       
 //std::cout<<"HERE2"<<std::endl;
-
+      cout<<"check3"<<endl;
          for (int bin = 0; bin<nbins; bin++) {
+           cout<<"check 3.1"<<endl;
            double shift = templateVar->GetBinAdjustment(bin, parameters.at(parindex));
            fProcessExpectation[bin] = (fProcessExpectation[bin] + norm*shift);
          }
@@ -688,9 +725,12 @@ std::vector<std::pair<double,double> > MjjBATModel::ProcessExpectation(int proce
 //std::cout<<"HERE3"<<std::endl;
 
    // loop over all shape-changing systematic variations
+   cout<<"check4"<<endl;
    for (unsigned int j=0; j<shapevars.size(); ++j) {
-
+   cout<<"check4.1"<<endl;
      MjjBATShapeChangingSyst * thisshapevar = shapevars.at(j);
+    cout<<"check4.2"<<endl;
+     
      MjjBATSystematic * parentsyst = fSystematicContainer.at(GetSystematicIndex(thisshapevar->GetParentSystematic()));
 
      if (!(parentsyst->GetFlagSystematicActive()))
@@ -698,7 +738,7 @@ std::vector<std::pair<double,double> > MjjBATModel::ProcessExpectation(int proce
 
      // get parameter index
      int parindex = parentsyst->GetParamIndex();
-
+    cout<<"check4.3"<<endl;
      fProcessExpectation*=thisshapevar->GetMatrix(parameters.at(parindex));
 //     std::cout << "Multiplied by matrix, vector is: " << std::endl;
 //     fProcessExpectation.Print();
@@ -736,17 +776,22 @@ std::vector<std::pair<double,double> > MjjBATModel::ProcessExpectation(int proce
    } // end of if statement
 
    // loop over all bins and get adjustments
+   int count=0;
    for (int bin = 0; bin<nbins; bin++) {
 
      if (GetProcess(processindex)->GetTrimProcess() && (bin < lowbin || bin > highbin)) {
        expectation.push_back(std::make_pair(0.0,0.0));
+       count++; 
      } else {
 
        double adjusted = fProcessExpectation[bin];
 
        // loop over all scale-changing systematic variations
+       //cout<<"check5"<<endl;
        for (unsigned int j=0; j<scalevars.size(); ++j) {
+         cout<<"check 5.1"<<endl;
          MjjBATScaleChangingSyst * thisscalevar = scalevars.at(j);
+         cout<<"check 5.2"<<endl;
          MjjBATSystematic * parentsyst = fSystematicContainer.at(GetSystematicIndex(thisscalevar->GetParentSystematic()));
 
          if (!(parentsyst->GetFlagSystematicActive()))
@@ -779,12 +824,14 @@ std::vector<std::pair<double,double> > MjjBATModel::ProcessExpectation(int proce
           var = GetProcess(processindex)->GetVariationHistogram()->GetBinContent(bin);
        }
        expectation.push_back(std::make_pair(adjusted,var));
+       count++;
      }
    }
 
    // If we have anything out farther than we have decided to compare so far, extend range now
    if (highbin > fLastBin) fLastBin = highbin;
 
+     cout<<"# of times expectation is pushed back in process expectation: "<<count<<endl;
    return expectation;
 
 }
