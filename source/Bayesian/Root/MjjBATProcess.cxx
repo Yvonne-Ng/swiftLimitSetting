@@ -3,7 +3,7 @@
 #include "Bayesian/MjjBATProcess.h"
 
 // ---------------------------------------------------------
-MjjBATProcess::MjjBATProcess(const char * name, bool doNormalisationUnc, bool doStatUnc)
+MjjBATProcess::MjjBATProcess(std::string name, bool doNormalisationUnc, bool doStatUnc)
  : fNominal(0)
  , fVariation(0)
  , fFunction(0)
@@ -11,7 +11,7 @@ MjjBATProcess::MjjBATProcess(const char * name, bool doNormalisationUnc, bool do
 {
    fName = name;
    fLuminosity = 1;
-   templateVariation = 0;
+   templateVariation = NULL;
    fTrimPercentage = 0.95;
    fTrimProcess = false;
    fUseStatUnc = doStatUnc;
@@ -148,7 +148,7 @@ void MjjBATProcess::SetTemplateFromFunction(MjjFitFunction * functionTemplate, T
 }
 
 // ---------------------------------------------------------
-int MjjBATProcess::SetSystematicShapeVariation(const char * systematic, MjjBATShapeChangingSyst * systvar) {
+int MjjBATProcess::SetSystematicShapeVariation(std::string systematic, MjjBATShapeChangingSyst * systvar) {
 
   // Guard against having both template and matrices
   if (templateVariation!=0) {
@@ -157,12 +157,13 @@ int MjjBATProcess::SetSystematicShapeVariation(const char * systematic, MjjBATSh
   }
 
   systematics.push_back(systematic);
+  std::cout << "\nAdding a shapeVariation!\n" << std::endl;
   shapeVariations.push_back(systvar);
   return 0;
 }
 
 // ---------------------------------------------------------
-void MjjBATProcess::SetSystematicScaleVariation(const char * systematic, MjjBATScaleChangingSyst * systvar) {
+void MjjBATProcess::SetSystematicScaleVariation(std::string systematic, MjjBATScaleChangingSyst * systvar) {
 
   systematics.push_back(systematic);
   scaleVariations.push_back(systvar);
@@ -170,19 +171,30 @@ void MjjBATProcess::SetSystematicScaleVariation(const char * systematic, MjjBATS
 }
 
 // ---------------------------------------------------------
-int MjjBATProcess::SetSystematicTemplateVariation(const char * systematic, MjjBATTemplateSyst * systvar) {
+int MjjBATProcess::SetSystematicTemplateVariation(std::string systematic, MjjBATTemplateSyst * systvar) {
 
   bool isScale = systvar->GetIsScale();
+  std::cout << "isScale is " << isScale << std::endl;
 
   if (!isScale) {
+    std::cout << "Replacing templateVariation" <<std::endl;
 
     // Guard against having both template and matrices
     if (shapeVariations.size()>0) {
       std::cout << "You already set a ShapeChangingVariation! You cannot use both." << std::endl;
       exit (EXIT_FAILURE);
     }
+    
+    // Guard against accidentally overwriting your one template uncertainty
+    if (templateVariation) {
+      std::cout << "You already set a template uncertainty! You cannot use another one." << std::endl;
+      exit (EXIT_FAILURE);
+    }
+    
     templateVariation = systvar;
+    std::cout << "templateVariation now has parent " << templateVariation->GetParentSystematic() << std::endl;
   } else {
+    std::cout << "Adding to templateScaleVariations " << std::endl;
     templateScaleVariations.push_back(systvar);
   }
 

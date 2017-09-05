@@ -3,7 +3,7 @@
 #include "Bayesian/MjjBATTemplateSyst.h"
 
 // ---------------------------------------------------------
-MjjBATTemplateSyst::MjjBATTemplateSyst(bool isScale) 
+MjjBATTemplateSyst::MjjBATTemplateSyst(bool isScale)
 {
 
   fIsScale = isScale;

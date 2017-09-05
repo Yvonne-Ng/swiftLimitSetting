@@ -7,7 +7,7 @@ usedpmtag = False
 listplatforms = False
 frontiertimeout = <unset>
 iccversion = <release>
-autorestore = True
+autorestore = False
 gcc43default = False
 icccompiler = x86_64/<version>:x86_64/xe20<version>
 ignoreplatform = False
@@ -45,7 +45,7 @@ versiondirectory = False
 exactmatch = False
 cmtbcast = False
 gcc40default = False
-shellfile = /tmp/asetup_WOj79m.sh
+shellfile = /tmp/asetup_zncZO5.sh
 asioprio = False
 default32releases = slc5,slc4
 release = <none>
@@ -371,19 +371,19 @@ source /cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase/swConfig/asetup/asetupEpilog
 
 
 [unassigned]
-unassigned = AnalysisBase,21.2.0
+unassigned = 21.2.3,AnalysisBase
 
 [summary]
 PEDANTIC = <unset>
 GroupArea = <unset>
 SITEROOT = /cvmfs/atlas.cern.ch/repo/sw/software/21.2
 AtlasPatchVersion = <unset>
-SVNUSR = svn+ssh://svn.cern.ch/reps/atlas-ywng
+SVNUSR = svn+ssh://svn.cern.ch/reps/atlas-kpachal
 NO_ALL_GROUPS = <unset>
 CMTCONFIG = x86_64-slc6-gcc62-opt
 AtlasBuildBranch = 21.2
 ATLAS_DB_AREA = /cvmfs/atlas.cern.ch/repo/sw/database
-PATH = /cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase/x86_64/Cmake/3.8.1/Linux-x86_64/bin:${PATH}
+PATH = /cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase/x86_64/Cmake/testing/Linux-x86_64/bin:${PATH}
 PATH = <remove>contrib/gcc sw/lcg/releases/gcc/ gcc-alt- AtlasSite/gcc-links
 PATH = /cvmfs/atlas.cern.ch/repo/sw/software/21.2/sw/lcg/releases/gcc/6.2.0/x86_64-slc6/bin:${PATH}
 LD_LIBRARY_PATH = <remove>contrib/gcc sw/lcg/releases/gcc/ gcc-alt- AtlasSite/gcc-links
@@ -403,10 +403,10 @@ BINARY_TAG = x86_64-slc6-gcc49-opt
 ATLAS_RELEASE_BASE = /cvmfs/atlas.cern.ch/repo/sw/software/21.2
 CMTPROJECTPATH = <unset>
 DBRELEASE_OVERRIDE = current
-MANPATH = /usr/kerberos/man:/usr/local/share/man:/usr/share/man/overrides:/usr/share/man/en:/usr/share/man
+MANPATH = /cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase/x86_64/xrootd/4.2.3-x86_64-slc6/v4.2.3/man:/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase/x86_64/root/6.04.14-x86_64-slc6-gcc49-opt/man:/usr/kerberos/man:/usr/local/share/man:/usr/share/man/overrides:/usr/share/man/en:/usr/share/man
 MANPATH = <remove>contrib/gcc sw/lcg/releases/gcc/ gcc-alt- AtlasSite/gcc-links
 MANPATH = /cvmfs/atlas.cern.ch/repo/sw/software/21.2/sw/lcg/releases/gcc/6.2.0/x86_64-slc6/man:${MANPATH}
-AtlasArea = /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.0
+AtlasArea = /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.3
 CMTSTRUCTURINGSTYLE = <unset>
 CVSROOT = <unset>
 CMTEXTRATAGS = <unset>
@@ -418,17 +418,17 @@ CMTSITE = <unset>
 LC_ALL = C
 CVSIGNORE = <unset>
 SVNROOT = svn+ssh://svn.cern.ch/reps/atlasoff
-AtlasVersion = 21.2.0
+AtlasVersion = 21.2.3
 CMTHOME = <unset>
 SVNPHYS = svn+ssh://svn.cern.ch/reps/atlasphys
 VERBOSE = 
 WORKAREA = <unset>
 CMTCVSOFFSET = <unset>
-TestArea = /afs/cern.ch/work/y/ywng/workspace/r21StatisticalAna/source
+TestArea = /afs/cern.ch/work/k/kpachal/DijetISR/Resolved2017/LimitSetting/r21StatisticalAnalysis/source
 AtlasPatch = <unset>
 CMTROOT = <unset>
 SVNINST = svn+ssh://svn.cern.ch/reps/atlasinst
 SVNOFF = svn+ssh://svn.cern.ch/reps/atlasoff
-AtlasSetupVersion = AtlasSetup-00-07-74
+AtlasSetupVersion = AtlasSetup-00-07-75
 SVNGRP = svn+ssh://svn.cern.ch/reps/atlasgrp
 

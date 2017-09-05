@@ -60,7 +60,7 @@ class MjjBATTemplateSyst : public MjjBATSystematicVariation {
 
       /**
        * The default constructor. */
-      MjjBATTemplateSyst(bool isScale);
+      MjjBATTemplateSyst(bool isScale = true);
 
       /** 
        * The default destructor. */

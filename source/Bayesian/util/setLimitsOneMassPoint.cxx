@@ -371,7 +371,7 @@ int main(int argc,char **argv)
 				break;
 			case 6 :
 				std::cout << "Creating 5-parameter function, floating sqrt(s)." << std::endl;
-				*functionsAndCodes.at(index).second = new FiveParamSqrtsFitFunction(minXForFit,maxXForFit,Ecm);
+				*functionsAndCodes.at(index).second = new FiveParamSqrtsFitFunction(minXForFit,maxXForFit);
 				break;
 			case 7 :
 				std::cout << "Creating 5-parameter function, log(x)^2 term." << std::endl;
@@ -512,7 +512,7 @@ int main(int argc,char **argv)
         	// Get histogram with errors equal to RMS of distance between functions
         	// across PEs in each bin. This is the uncertainty that will be used for calculating
         	// the search phase p-value using systematics.
-        	bkgWithFuncChoiceErr = theSilentFitter.FitAndGetBkgWithFitDiffErr(*theMjjFitFunction,*theAlternateFunction,theHistogram,100,true);
+        	bkgWithFuncChoiceErr = theSilentFitter.FitAndGetBkgWithFitDiffErr(*theMjjFitFunction,*theAlternateFunction,theHistogram,nFitsInBkgError,true);
 
         	// Create histogram of format which will be used as alternate function
         	// to define function choice uncertainty when directionality matters:
@@ -702,26 +702,12 @@ int main(int argc,char **argv)
 
 	std::cout << "Adding shape changing uncertainties " << std::endl;
 
-	// Lydia to work with JES of -3, 0 +3 Outdated
-	/*double jesSigmas [nJES];
-	double step = (2*1.)/(nJES-1); // Fencepost problems
-	// Nominal is first
-	jesSigmas[0] = 0.;
-	// Below and above nominal
-	for (int i=0; i<int(nJES/2.); i++) {
-		jesSigmas[i+1] = step*i-1.;
-		std::cout<<"JESSIG "<< i+1 <<": "<<jesSigmas[i+1]<<std::endl;
-		jesSigmas[nJES-i-1] = 1.-step*i;
-		std::cout<<"JESSIG "<< nJES-i-1 <<": "<<jesSigmas[nJES-i-1]<<std::endl;
-	}*/
-
 	// Step through input JES shifted histograms
 	// step size uses nSigmas to calculate step manually, if fails then use manual approach, rather than nSigmas
 	// Example of manual approach shown commented out above
-	double jesSigmas [nJES];
+	vector<double> jesSigmas(nJES,0.0);
 	double step = (2*nSigmas)/(nJES-1); // Fencepost problems
-	// Nominal is first
-	jesSigmas[0] = 0.;
+	// Nominal is first, and is zero, so leave that fixed.
 	// Below and above nominal
 	for (int i=0; i<int(nJES/2.); i++) {
 		jesSigmas[i+1] = step*i-nSigmas;
@@ -729,6 +715,8 @@ int main(int argc,char **argv)
 		jesSigmas[nJES-i-1] = nSigmas-step*i;
 		std::cout<<"JESSIG "<< nJES-i-1 <<": "<<jesSigmas[nJES-i-1]<<std::endl;
 	}
+
+    std::cout << "Made it to here!" << std::endl;
 
 	vector<vector<TH2D> > storeAll2DHistograms;
 	// vector<TH1D> storeAll1DHistograms; // Lydia
@@ -778,10 +766,12 @@ int main(int argc,char **argv)
 
 		} else if (useTemplates ) {
 			for (int component=0; component<nComp; component++) { // Lydia
+            
 				vector<std::pair<double,TH1D*> > signalJESVariations; signalJESVariations.clear();
 				std::vector<TH1D> storeHistograms;// Lydia
 		                //std::cout<<"TEMPLATES"<<std::endl;
                                 //std::cout<<nominalJES.c_str()<<std::endl;
+
 				TH1D nominal(*(TH1D*)insignalfile->Get(nominalJES.c_str()));
 
 				string nomname = nominalJES + "_nom";
@@ -791,7 +781,7 @@ int main(int argc,char **argv)
 
 				for (int i=1; i<nJES; i++) {
 					string histname = JESVariationNames.at(component).at(i-1);
-					std::cout<<"HISTNAME "<<histname<<std::endl;
+//					std::cout<<"HISTNAME "<<histname<<std::endl;
 					TH1D thisVariation(*(TH1D*)insignalfile->Get(histname.c_str()));
 					thisVariation.SetName(histname.c_str());
 					// storeAll1DHistograms.push_back(thisVariation); //Lydia
@@ -810,7 +800,8 @@ int main(int argc,char **argv)
 					std::cout << "Creating systematic " << name << std::endl;
 					m->AddSystematic(name.c_str(),-nSigmas,nSigmas);
 					m->SetPriorGauss(name.c_str(),0.,1.);
-					MjjBATTemplateSyst * thisTemplateSyst = new MjjBATTemplateSyst(false);
+//					MjjBATTemplateSyst * thisTemplateSyst = new MjjBATTemplateSyst(false);
+					MjjBATTemplateSyst * thisTemplateSyst = new MjjBATTemplateSyst(true);
 					thisTemplateSyst->SetSpectra(signalJESVariations);
 					m->SetSystematicVariation("SIGNAL",name.c_str(),thisTemplateSyst);
 				}
@@ -819,6 +810,20 @@ int main(int argc,char **argv)
 		}
 	}
 
+    std::cout << "Testing before running anything-- uncertainties just created." << std::endl;
+    vector<MjjBATTemplateSyst*> tempscalevars = m->GetProcess(1)->GetTempScaleChangingSysts();
+    for (unsigned int j=0; j<tempscalevars.size(); ++j) {
+
+     MjjBATTemplateSyst * thisshapevar = tempscalevars.at(j);
+     
+     std::cout << "Looking at scale variation number " << j << ": " << thisshapevar << std::endl;
+
+     std::cout << "thisshapeVar is " << thisshapevar << std::endl;
+     std::cout << "parent syst is " << thisshapevar->GetParentSystematic() << std::endl;
+//     std::cout << "fSystematicContainer is " << fSystematicContainer.size() << std::endl;
+    }
+  
+  
 	///////////////////////////////////////////////////////////////////////////
 	// Create scale changing nuisance parameters
 
@@ -883,6 +888,19 @@ int main(int argc,char **argv)
 	for (unsigned int i=0; i<m->GetNParameters(); i++) {
 		std::cout << "Parameter " << i << " is " << m->GetParameter(i)->GetName() << std::endl;
 	}
+
+    std::cout << "Testing just before marginalisation." << std::endl;
+    vector<MjjBATTemplateSyst*> tempscalevars2 = m->GetProcess(1)->GetTempScaleChangingSysts();
+    for (unsigned int j=0; j<tempscalevars2.size(); ++j) {
+
+     MjjBATTemplateSyst * thisshapevar = tempscalevars2.at(j);
+     
+     std::cout << "Looking at scale variation number " << j << ": " << thisshapevar << std::endl;
+
+     std::cout << "thisshapeVar is " << thisshapevar << std::endl;
+     std::cout << "parent syst is " << thisshapevar->GetParentSystematic() << std::endl;
+//     std::cout << "fSystematicContainer is " << fSystematicContainer.size() << std::endl;
+    }
 
 	std::cout << "Beginning calculation." << std::endl;
 	TStopwatch marginalisationTime;

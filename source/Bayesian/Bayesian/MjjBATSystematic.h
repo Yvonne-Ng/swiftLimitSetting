@@ -31,7 +31,7 @@ class MjjBATSystematic
       /**
        * The default constructor. 
        * @param name The name of the source of systematic uncertainty. */
-      MjjBATSystematic(const char * name);
+      MjjBATSystematic(std::string name);
 
       /** 
        * The default destructor. */
