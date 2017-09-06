@@ -3,7 +3,7 @@
 setupATLAS
 #asetup AtlasDerivation,21.0.19.1,here
 #asetup AnalysisBaseExternals-21.2.0,here
-asetup AnalysisBase,21.2.0,here
+asetup AnalysisBase,21.2.3,here
 
 export PYTHONPATH=/afs/cern.ch/work/y/ywng/workspace/DijetISR-Resolved/r21StatisticalAna/install/InstallArea/x86_64-slc6-gcc62-opt/src/Bayesian/plotting/PythonModules:${PYTHONPATH}
 
