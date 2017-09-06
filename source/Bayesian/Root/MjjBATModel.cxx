@@ -484,7 +484,9 @@ int MjjBATModel::SetSystematicVariation(const char * processname,  const char * 
 
    // get systematic index
    int systematicindex = GetSystematicIndex(systematicname);
-
+   cout<<"!!!"<<endl;
+   cout<<"SetParentSystematic, systematicname: "<<systematicname<<endl;
+   cout<<"GetSystematicIndex(systematicname): "<<GetSystematicIndex(systematicname)<<endl;
    // check if systematic exists
    if (systematicindex < 0) {
       BCLog::OutWarning("MjjBATModel::SetSystematicVariation() : Systematic does not exist.");
@@ -494,6 +496,8 @@ int MjjBATModel::SetSystematicVariation(const char * processname,  const char * 
    // get process
    MjjBATProcess * process = GetProcess(processindex);
 
+   cout<<"!!!"<<endl;
+   cout<<"SetParentSystematic"<<endl;
    systVariation->SetParentSystematic(systematicname);
 
    MjjBATShapeChangingSyst * thisshapevar = dynamic_cast<MjjBATShapeChangingSyst*> (systVariation);
