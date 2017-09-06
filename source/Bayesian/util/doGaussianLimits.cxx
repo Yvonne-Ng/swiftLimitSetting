@@ -446,7 +446,7 @@ int main(int argc,char **argv)
         break;
       case 6 :
         std::cout << "Creating 5-parameter function, floating sqrt(s)." << std::endl;
-        *functionsAndCodes.at(index).second = new FiveParamSqrtsFitFunction(minXForFit,maxXForFit,Ecm);
+        *functionsAndCodes.at(index).second = new FiveParamSqrtsFitFunction(minXForFit,maxXForFit);
         break;
       case 7 :
         std::cout << "Creating 5-parameter function, log(x)^2 term." << std::endl;

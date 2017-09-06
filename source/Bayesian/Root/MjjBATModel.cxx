@@ -2,7 +2,6 @@
 
 #include "Bayesian/MjjBATModel.h"
 
-using namespace std;
 // ---------------------------------------------------------
 MjjBATModel::MjjBATModel()
  : BCModel("Multi-template Fitter")
@@ -20,8 +19,8 @@ MjjBATModel::MjjBATModel()
 }
 
 // ---------------------------------------------------------
-MjjBATModel::MjjBATModel(const char * name)
- : BCModel(name)
+MjjBATModel::MjjBATModel(std::string name)
+ : BCModel(name.c_str())
  , fNProcesses(0)
  , fNSystematics(0)
  , fData(0)
@@ -43,7 +42,7 @@ MjjBATModel::~MjjBATModel()
 }
 
 // ---------------------------------------------------------
-int MjjBATModel::GetProcessIndex(const char * name)
+int MjjBATModel::GetProcessIndex(std::string name)
 {
    // loop over all processs and compare names
    for (int i = 0; i < fNProcesses; ++i) {
@@ -60,7 +59,7 @@ int MjjBATModel::GetProcessIndex(const char * name)
 }
 
 // ---------------------------------------------------------
-int MjjBATModel::GetSystematicIndex(const char * name)
+int MjjBATModel::GetSystematicIndex(std::string name)
 {
    // loop over all systematics and compare names
    for (int i = 0; i < fNSystematics; ++i) {
@@ -98,7 +97,7 @@ bool MjjBATModel::DoBinsMatchStored(const TArrayD * firstBins) {
 }
 
 // ---------------------------------------------------------
-int MjjBATModel::SetTemplate(const char * processname, TH1D centralhist)
+int MjjBATModel::SetTemplate(std::string processname, TH1D centralhist)
 {
 
    // get process index
@@ -113,7 +112,7 @@ int MjjBATModel::SetTemplate(const char * processname, TH1D centralhist)
   
    // check if process expects a variation histogram
    if (process->GetDoNormalisationUnc()) {
-        std::cout << "MjjBATModel::SetTempalte(): This process requires a variation histogram!" << std::endl;
+        std::cout << "MjjBATModel::SetTemplate(): This process requires a variation histogram!" << std::endl;
         exit(EXIT_FAILURE);
    }
   
@@ -146,7 +145,7 @@ int MjjBATModel::SetTemplate(const char * processname, TH1D centralhist)
 }
 
 // ---------------------------------------------------------
-int MjjBATModel::SetTemplate(const char * processname, TH1D centralhist, TH1D variationhist)
+int MjjBATModel::SetTemplate(std::string processname, TH1D centralhist, TH1D variationhist)
 {
 
    // get process index
@@ -193,7 +192,7 @@ int MjjBATModel::SetTemplate(const char * processname, TH1D centralhist, TH1D va
 }
 
 // ---------------------------------------------------------
-int MjjBATModel::SetTemplate(const char * processname, MjjFitFunction & function, TH1D templatehist, vector<double> central, vector<double> error, double luminosity)
+int MjjBATModel::SetTemplate(std::string processname, MjjFitFunction & function, TH1D templatehist, vector<double> central, vector<double> error, double luminosity)
 {
 
    // get process index
@@ -342,7 +341,7 @@ int MjjBATModel::SetData(MjjHistogram mjjhist, int firstBinToUse, int lastBinToU
 }
 
 // ---------------------------------------------------------
-int MjjBATModel::AddProcess(const char * name, vector<double> min, vector<double> max)
+int MjjBATModel::AddProcess(std::string name, vector<double> min, vector<double> max)
 {
    // check if process exists
    for (int i = 0; i < fNProcesses; ++i) {
@@ -392,7 +391,7 @@ int MjjBATModel::AddProcess(const char * name, vector<double> min, vector<double
 }
 
 // ---------------------------------------------------------
-int MjjBATModel::AddProcess(const char * name, bool doNormUnc, bool doStatUnc, double nmin, double nmax)
+int MjjBATModel::AddProcess(std::string name, bool doNormUnc, bool doStatUnc, double nmin, double nmax)
 {
 
      // check if process exists
@@ -439,7 +438,7 @@ int MjjBATModel::AddProcess(const char * name, bool doNormUnc, bool doStatUnc, d
 }
 
 // ---------------------------------------------------------
-int MjjBATModel::AddSystematic(const char * name, double min, double max)
+int MjjBATModel::AddSystematic(std::string name, double min, double max)
 {
    // check if systematic exists
    for (int i = 0; i < fNSystematics; ++i) {
@@ -470,7 +469,7 @@ int MjjBATModel::AddSystematic(const char * name, double min, double max)
 }
 
 // ---------------------------------------------------------
-int MjjBATModel::SetSystematicVariation(const char * processname,  const char * systematicname, MjjBATSystematicVariation * systVariation)
+int MjjBATModel::SetSystematicVariation(std::string processname,  std::string systematicname, MjjBATSystematicVariation * systVariation)
 {
 
    // get process index
@@ -536,7 +535,7 @@ int MjjBATModel::SetInterestingBins(int firstBin, int lastBin)
 }
 
 // ---------------------------------------------------------
-int MjjBATModel::PrintSummary(const char * filename)
+int MjjBATModel::PrintSummary(std::string filename)
 {
    // open file
    std::ofstream ofi(filename);
@@ -602,32 +601,15 @@ vector<double> MjjBATModel::Expectation(const std::vector<double> & parameters)
 {
 
    int nbins = fData->GetNbinsX()+2;
-   cout<<"nbins from Expectations"<<nbins<<endl;
    vector<vector<std::pair<double,double> > > expectation;
 
    // loop over all processes
-   cout<<"just before the starting of loop"<<endl;
-   cout<<"size of fNProcesses"<<fNProcesses<<endl;
-   cout<<"size of parameters"<<parameters.size()<<endl;
-   cout<<"Printing parameters"<<endl;
-   for (int j=0; j<parameters.size();j++){
-     cout<<"parameter #"<<j<<" : "<<parameters.at(j)<<endl;
-   }
-
-
    for (int i = 0; i < fNProcesses; ++i) {
-     cout<<"Starting of loop"<<endl;
-     cout<<i<<endl;
-     cout<<"in between"<<endl;
-     //for ( auto j in parameters){
-     //     cout<<j<<endl;
-     //}
-     cout<<"expectation for i="<<i<<" :"<<this->ProcessExpectation(i,parameters).at(i).first<<" , "<<this->ProcessExpectation(i,parameters).at(i).second<<endl;
 
      expectation.push_back(this->ProcessExpectation(i,parameters));
 
    }
-   cout<<"after the loop"<<endl;
+
    // check if expectation is positive
    double weight, binexpectation;
    vector<double> result;
@@ -645,6 +627,7 @@ vector<double> MjjBATModel::Expectation(const std::vector<double> & parameters)
 // ---------------------------------------------------------
 std::vector<std::pair<double,double> > MjjBATModel::ProcessExpectation(int processindex, const std::vector<double> & parameters)
 {
+
    int nbins = fData->GetNbinsX()+2;
    vector<std::pair<double,double> > expectation;
 
@@ -656,16 +639,13 @@ std::vector<std::pair<double,double> > MjjBATModel::ProcessExpectation(int proce
    // get template-based scale-changing systematic variations for process
    vector<MjjBATTemplateSyst*> tempscalevars = GetProcess(processindex)->GetTempScaleChangingSysts();
 
-//std::cout<<"HERE"<<std::endl;
    // loop over all scale-changing systematic variations
-   cout<<"check1"<<endl;
-
-   cout<<"tempscalaevars size: "<<tempscalevars.size()<<endl;
    for (unsigned int j=0; j<tempscalevars.size(); ++j) {
+
      MjjBATTemplateSyst * thisshapevar = tempscalevars.at(j);
-     cout<<"check1.1"<<endl;
+     
      MjjBATSystematic * parentsyst = fSystematicContainer.at(GetSystematicIndex(thisshapevar->GetParentSystematic()));
-     cout<<"check 1.2"<<endl;
+
      if (!(parentsyst->GetFlagSystematicActive()))
         continue;
 
@@ -679,7 +659,6 @@ std::vector<std::pair<double,double> > MjjBATModel::ProcessExpectation(int proce
      }
    }
 
-//std::cout<<"HERE1"<<std::endl;
    // get shape-changing systematic variations for process
    vector<MjjBATShapeChangingSyst*> shapevars = GetProcess(processindex)->GetShapeChangingSysts();
 
@@ -687,49 +666,28 @@ std::vector<std::pair<double,double> > MjjBATModel::ProcessExpectation(int proce
    MjjBATTemplateSyst * templateVar = GetProcess(processindex)->GetTemplateSyst();
 
    // do template-changing systematic if one exists
-   cout<<"check2"<<endl;
-   cout<<"template Var"<<templateVar<<endl;
-   cout<<"shapevars size"<<shapevars.size()<<endl;
+   if (templateVar!=0 && shapevars.size()==0) {
 
-   //if (templateVar!=0 && shapevars.size()==0) {
-//Temporary work around
-   if (templateVar!=0 && shapevars.size()==0 ) {
-        ////////////////////look over here this is the
-        //line///
-  
-     
-       cout<<"templateVar->GetParentSystematics(): "<<templateVar->GetParentSystematic()<<endl;
-       cout<<"GetSystematicIndex(templateVar->GetParentSystematic(): "<<GetSystematicIndex(templateVar->GetParentSystematic())<<endl;
-       
        MjjBATSystematic * parentsyst = fSystematicContainer.at(GetSystematicIndex(templateVar->GetParentSystematic()));
-       
-       
-       cout<<"check2.1"<<endl;
        if ((parentsyst->GetFlagSystematicActive())) {
-         cout<<"Is parent syst Systematic Flag Active?"<<parentsyst->GetFlagSystematicActive()<<endl;
+
          // get parameter index
          int parindex = parentsyst->GetParamIndex();
 
          double norm = GetProcess(processindex)->GetNEvents(parameters);
-  
-// Lydia       
-//std::cout<<"HERE2"<<std::endl;
-      cout<<"check3"<<endl;
+
          for (int bin = 0; bin<nbins; bin++) {
-           cout<<"check 3.1"<<endl;
            double shift = templateVar->GetBinAdjustment(bin, parameters.at(parindex));
            fProcessExpectation[bin] = (fProcessExpectation[bin] + norm*shift);
          }
       }
    }
-//std::cout<<"HERE3"<<std::endl;
 
    // loop over all shape-changing systematic variations
-   cout<<"check4"<<endl;
    for (unsigned int j=0; j<shapevars.size(); ++j) {
-   cout<<"check4.1"<<endl;
+
      MjjBATShapeChangingSyst * thisshapevar = shapevars.at(j);
-    cout<<"check4.2"<<endl;
+     
      
      MjjBATSystematic * parentsyst = fSystematicContainer.at(GetSystematicIndex(thisshapevar->GetParentSystematic()));
 
@@ -738,7 +696,7 @@ std::vector<std::pair<double,double> > MjjBATModel::ProcessExpectation(int proce
 
      // get parameter index
      int parindex = parentsyst->GetParamIndex();
-    cout<<"check4.3"<<endl;
+
      fProcessExpectation*=thisshapevar->GetMatrix(parameters.at(parindex));
 //     std::cout << "Multiplied by matrix, vector is: " << std::endl;
 //     fProcessExpectation.Print();
@@ -776,23 +734,18 @@ std::vector<std::pair<double,double> > MjjBATModel::ProcessExpectation(int proce
    } // end of if statement
 
    // loop over all bins and get adjustments
-   int count=0;
    for (int bin = 0; bin<nbins; bin++) {
-     cout<<"bin#: "<<bin<<endl;
+
      if (GetProcess(processindex)->GetTrimProcess() && (bin < lowbin || bin > highbin)) {
        expectation.push_back(std::make_pair(0.0,0.0));
-       count++; 
      } else {
 
        double adjusted = fProcessExpectation[bin];
 
        // loop over all scale-changing systematic variations
-       //cout<<"check5"<<endl;
        for (unsigned int j=0; j<scalevars.size(); ++j) {
-         cout<<"#j: "<<j<<endl;
-         //cout<<"check 5.1"<<endl;
          MjjBATScaleChangingSyst * thisscalevar = scalevars.at(j);
-         //cout<<"check 5.2"<<endl;
+         
          MjjBATSystematic * parentsyst = fSystematicContainer.at(GetSystematicIndex(thisscalevar->GetParentSystematic()));
 
          if (!(parentsyst->GetFlagSystematicActive()))
@@ -825,20 +778,18 @@ std::vector<std::pair<double,double> > MjjBATModel::ProcessExpectation(int proce
           var = GetProcess(processindex)->GetVariationHistogram()->GetBinContent(bin);
        }
        expectation.push_back(std::make_pair(adjusted,var));
-       count++;
      }
    }
 
    // If we have anything out farther than we have decided to compare so far, extend range now
    if (highbin > fLastBin) fLastBin = highbin;
 
-     cout<<"# of times expectation is pushed back in process expectation: "<<count<<endl;
    return expectation;
 
 }
 
 // ---------------------------------------------------------
-int MjjBATModel::PrintStack(const std::vector<double> & parameters, const char * filename, const char * options)
+int MjjBATModel::PrintStack(const std::vector<double> & parameters, std::string filename, std::string options)
 {
 	// todo:
 	// - remove x-error on data points
@@ -1030,7 +981,7 @@ int MjjBATModel::PrintStack(const std::vector<double> & parameters, const char *
    gPad->RedrawAxis();
 
    // print
-   c1->Print(filename);
+   c1->Print(filename.c_str());
 
    // free memory
    for (unsigned int i = 0; i < histcontainer.size(); ++i) {
@@ -1287,7 +1238,7 @@ void MjjBATModel::MCMCUserIterationInterface()
 }
 
 // ---------------------------------------------------------
-void MjjBATModel::PrintTemplates(const char * filename)
+void MjjBATModel::PrintTemplates(std::string filename)
 {
    // create new canvas
    TCanvas * c1 = new TCanvas();
@@ -1346,7 +1297,7 @@ void MjjBATModel::PrintTemplates(const char * filename)
 }
 
 // ---------------------------------------------------------
-void MjjBATModel::PrintHistUncertaintyBandExpectation(const char* filename)
+void MjjBATModel::PrintHistUncertaintyBandExpectation(std::string filename)
 {
    // create new canvas
    TCanvas * c1 = new TCanvas();
@@ -1357,7 +1308,7 @@ void MjjBATModel::PrintHistUncertaintyBandExpectation(const char* filename)
    c1->Draw();
 
    // print
-   c1->Print(filename);
+   c1->Print(filename.c_str());
 
    // free memory
    delete c1;
@@ -1429,7 +1380,7 @@ TH1D* MjjBATModel::CalculateUncertaintyBandPoisson(double minimum, double maximu
 }
 
 // ---------------------------------------------------------
-void MjjBATModel::PrintHistCumulativeUncertaintyBandPoisson(const char* filename)
+void MjjBATModel::PrintHistCumulativeUncertaintyBandPoisson(std::string filename)
 {
    // create new canvas
    TCanvas * c1 = new TCanvas();
@@ -1460,14 +1411,14 @@ void MjjBATModel::PrintHistCumulativeUncertaintyBandPoisson(const char* filename
    c1->Draw();
 
    // print
-   c1->Print(filename);
+   c1->Print(filename.c_str());
 
    // free memory
    delete c1;
 }
 
 // ---------------------------------------------------------
-void MjjBATModel::PrintHistUncertaintyBandPoisson(const char* filename)
+void MjjBATModel::PrintHistUncertaintyBandPoisson(std::string filename)
 {
    // create new canvas
    TCanvas * c1 = new TCanvas();
@@ -1481,7 +1432,7 @@ void MjjBATModel::PrintHistUncertaintyBandPoisson(const char* filename)
    c1->Draw();
 
    // print
-   c1->Print(filename);
+   c1->Print(filename.c_str());
 
    // free memory
    delete c1;

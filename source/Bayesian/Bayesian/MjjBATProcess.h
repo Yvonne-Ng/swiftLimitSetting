@@ -45,7 +45,7 @@ class MjjBATProcess
        * be considered in the process. If so, they will be calculated from
        * the uncertainty on the input nominal histogram, so make sure the
        * errors are appropriate! */
-      MjjBATProcess(const char * name, bool doNormalisationUnc = true, bool doStatUnc = false);
+      MjjBATProcess(std::string name, bool doNormalisationUnc = true, bool doStatUnc = false);
 
       /**
        * The default destructor. */
@@ -160,7 +160,7 @@ class MjjBATProcess
       /** 
        * Set the name of the process.
        * @param name The name of the process. */
-      void SetName(const char * name)
+      void SetName(std::string name)
          { fName = name; };
 
       /**
@@ -177,7 +177,7 @@ class MjjBATProcess
       /**
        * Store name of parameter that was created for this process. 
        * @param name The name of the parameter. */
-      void AddProcessParameterName(const char * name)
+      void AddProcessParameterName(std::string name)
          { fParamNames.push_back(name); };
 
       /**
@@ -202,20 +202,20 @@ class MjjBATProcess
        * Set a shape-changing systematic variation for the given systematic and this process.
        * @param systematic Name of the corresponding systematic
        * @param systvar The shape-changing systematic variation */
-      int SetSystematicShapeVariation(const char * systematic, MjjBATShapeChangingSyst * systvar);
+      int SetSystematicShapeVariation(std::string systematic, MjjBATShapeChangingSyst * systvar);
 
       /**
        * Set a scale-changing systematic variation for the given systematic and this process.
        * @param systematic Name of the corresponding systematic
        * @param systvar The scale-changing systematic variation */
-      void SetSystematicScaleVariation(const char * systematic, MjjBATScaleChangingSyst * systvar);
+      void SetSystematicScaleVariation(std::string systematic, MjjBATScaleChangingSyst * systvar);
 
       /**
        * Set a template-based shape-changing systematic variation 
        * for the given systematic and this process.
        * @param systematic Name of the corresponding systematic
        * @param systvar The template-based systematic variation */
-      int SetSystematicTemplateVariation(const char * systematic, MjjBATTemplateSyst * systvar);
+      int SetSystematicTemplateVariation(std::string systematic, MjjBATTemplateSyst * systvar);
 
       /**
        * If activated without specifying amount via SetTrimPercentage, uses default 0.95
@@ -278,7 +278,7 @@ class MjjBATProcess
 
       /**
        * A vector of names of systematics which affect this process. */
-      vector<const char*> systematics;
+      vector<std::string> systematics;
 
       /**
        * A vector of shape-changing systematic variations on this process. */
@@ -295,6 +295,10 @@ class MjjBATProcess
       /**
        * A single systematic variation based on templates. */
       MjjBATTemplateSyst * templateVariation;
+
+      /**
+       * Modern variant: allow multiple systematic variations based on templates. */
+//      vector<MjjBATTemplateSyst*> templateVariations;
 
       /**
        * Indices of parameters in model which correspond to this process. */

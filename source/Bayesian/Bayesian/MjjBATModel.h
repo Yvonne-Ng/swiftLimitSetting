@@ -68,7 +68,7 @@ class MjjBATModel : public BCModel
       /**
        * A constructor.
        * @param name The name of the model */
-      MjjBATModel(const char * name);
+      MjjBATModel(std::string name);
 
       /**
        * The default destructor. */
@@ -91,12 +91,12 @@ class MjjBATModel : public BCModel
       /**
        * @param name The name of the process.
        * @return The process index. */
-      int GetProcessIndex(const char * name);
+      int GetProcessIndex(std::string name);
 
       /**
        * @param name The name of the systematic.
        * @return The systematic uncertainty index. */
-      int GetSystematicIndex(const char * name);
+      int GetSystematicIndex(std::string name);
 
       /**
        * @param index The parameter index (mtf counting) .
@@ -168,7 +168,7 @@ class MjjBATModel : public BCModel
        * @param processname The name of the process.
        * @param centralhist The central (nominal) hist for this process.
        * @return An error code. */
-      int SetTemplate(const char * processname, TH1D centralhist);
+      int SetTemplate(std::string processname, TH1D centralhist);
 
       /**
        * Set the template for a specific process using a central and a variation histogram.
@@ -176,7 +176,7 @@ class MjjBATModel : public BCModel
        * @param centralhist The central (nominal) hist for this process.
        * @param variationhist The histogram of the difference between nominal and nominal+1sigma
        * @return An error code. */
-      int SetTemplate(const char * processname, TH1D centralhist, TH1D variationhist);
+      int SetTemplate(std::string processname, TH1D centralhist, TH1D variationhist);
 
       /**
        * Set the template for a specific process using a template histogram and a function.
@@ -189,7 +189,7 @@ class MjjBATModel : public BCModel
        * @param error The error on each parameter in the function, which will set their ranges
        * @param luminosity The luminosity to use.
        * @return An error code. */
-      int SetTemplate(const char * processname, MjjFitFunction & function, TH1D templatehist, vector<double> central, vector<double> error, double luminosity);
+      int SetTemplate(std::string processname, MjjFitFunction & function, TH1D templatehist, vector<double> central, vector<double> error, double luminosity);
 
       /**
        * Set the impact of a source of systematic uncertainty for a
@@ -200,7 +200,7 @@ class MjjBATModel : public BCModel
        * @param systVariation An MjjBATSystematicVariation object that defines the
        * effect of the systematic on this process 
        * @return An error code. */			
-      int SetSystematicVariation(const char * processname,  const char * systematicname, MjjBATSystematicVariation * systVariation);
+      int SetSystematicVariation(std::string processname,  std::string systematicname, MjjBATSystematicVariation * systVariation);
   
       /**
        * Specify a range of bins smaller than the overall range to consider in the likelihood
@@ -229,7 +229,7 @@ class MjjBATModel : public BCModel
        * @param min Vector of minimum sigmas for each parameter associated with process
        * @param max Vector of maximum sigmas for each parameter associated with process
        * @return An error code. */			
-     int AddProcess(const char * process, vector<double> min, vector<double> max);
+     int AddProcess(std::string process, vector<double> min, vector<double> max);
 
       /**
        * Create a process and add the associated BAT parameter(s). Use this
@@ -244,7 +244,7 @@ class MjjBATModel : public BCModel
        * @param nmin Minimum number of sigmas in variation template or each function parameter uncertainty
        * @param nmax Maximum number of sigmas in variation template or each function parameter uncertainty
        * @return An error code. */
-     int AddProcess(const char * name, bool doNormUnc=true, bool doStatUnc=false, double nmin = -3., double nmax = 3.);
+     int AddProcess(std::string name, bool doNormUnc=true, bool doStatUnc=false, double nmin = -3., double nmax = 3.);
 
       /**
        * Add a source of systematic uncertainty and the associated BAT (nuisance) parameter.
@@ -252,7 +252,7 @@ class MjjBATModel : public BCModel
        * @param min The lower limit on the BAT parameter values, typically -5 sigma if Gaussian constraint is used.
        * @param max The upper limit on the BAT parameter values, typically +5 sigma if Gaussian constraint is used.
        * @return An error code. */			
-      int AddSystematic(const char * name, double min = -3., double max = 3.);
+      int AddSystematic(std::string name, double min = -3., double max = 3.);
 
       /**
        * Return the expected number of events across all bins using the given parameters.
@@ -301,7 +301,7 @@ class MjjBATModel : public BCModel
        * Print a summary of the fit into an ASCII file.
        * @param filename The name of the file.
        * @return An error code */			
-      int PrintSummary(const char * filename = "summary.txt");
+      int PrintSummary(std::string filename = "summary.txt");
 
       /**
        * Print the stack of templates together with the data.
@@ -319,27 +319,27 @@ class MjjBATModel : public BCModel
        * @param filename The output filename. By default, "stack.eps."
        * @param options The plotting options. By default, "e1b0stack."
        * @return An error code. */			
-      int PrintStack(const std::vector<double> & parameters, const char * filename = "stack.eps", const char * options = "e1b0stack");
+      int PrintStack(const std::vector<double> & parameters, std::string filename = "stack.eps", std::string options = "e1b0stack");
 
       /**
        * Print the templates in this channel.
        * @param filename The name of the file. */
-      void PrintTemplates(const char * filename);
+      void PrintTemplates(std::string filename);
 
       /** 
        * Print histogram for uncertainty band calculation.
        * @param filename The name of the file. */
-      void PrintHistUncertaintyBandExpectation(const char* filename);
+      void PrintHistUncertaintyBandExpectation(std::string filename);
 
       /** 
        * Print histogram for uncertainty band calculation.
        * @param filename The name of the file. */
-      void PrintHistUncertaintyBandPoisson(const char* filename);
+      void PrintHistUncertaintyBandPoisson(std::string filename);
 
       /**
        * Print cumulative histogram for uncertainty band calculation.
        * @param filename The name of the file. */
-      void PrintHistCumulativeUncertaintyBandPoisson(const char* filename);
+      void PrintHistCumulativeUncertaintyBandPoisson(std::string filename);
 
       /**
        * Set the y-ranges for printing. 

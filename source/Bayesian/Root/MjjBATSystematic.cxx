@@ -3,7 +3,7 @@
 #include "Bayesian/MjjBATSystematic.h"
 
 // ---------------------------------------------------------
-MjjBATSystematic::MjjBATSystematic(const char * name)
+MjjBATSystematic::MjjBATSystematic(std::string name)
  : fFlagSystematicActive(true)
 {
    fSystematicName = name;
