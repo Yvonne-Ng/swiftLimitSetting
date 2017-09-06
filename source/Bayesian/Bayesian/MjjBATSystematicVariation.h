@@ -45,7 +45,7 @@ class MjjBATSystematicVariation
 
       /**
        * Get the name of the systematic which corresponds to this variation. */
-      const char * GetParentSystematic() 
+      std::string GetParentSystematic()
           { return fSystematicName; };
 
       /**
@@ -59,7 +59,7 @@ class MjjBATSystematicVariation
 
       /** 
        * Record which systematic corresponds to this variation. */
-      void SetParentSystematic(const char * name) 
+      void SetParentSystematic(std::string name)
           { fSystematicName = name; };
 
       /** @} */
@@ -69,7 +69,7 @@ class MjjBATSystematicVariation
       /**
        * The name of the corresponding source of systematic
        * uncertainty. */
-      const char * fSystematicName;
+      std::string fSystematicName;
 
    protected:
 

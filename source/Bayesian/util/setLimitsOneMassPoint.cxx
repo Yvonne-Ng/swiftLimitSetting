@@ -371,7 +371,7 @@ int main(int argc,char **argv)
 				break;
 			case 6 :
 				std::cout << "Creating 5-parameter function, floating sqrt(s)." << std::endl;
-				*functionsAndCodes.at(index).second = new FiveParamSqrtsFitFunction(minXForFit,maxXForFit,Ecm);
+				*functionsAndCodes.at(index).second = new FiveParamSqrtsFitFunction(minXForFit,maxXForFit);
 				break;
 			case 7 :
 				std::cout << "Creating 5-parameter function, log(x)^2 term." << std::endl;
@@ -410,8 +410,7 @@ int main(int argc,char **argv)
 	int keephighbin=1;
 	double smallestInterval= thisSigHisto->GetBinLowEdge(thisSigHisto->GetNbinsX()) + 
 		thisSigHisto->GetBinWidth(thisSigHisto->GetNbinsX()) - thisSigHisto->GetBinLowEdge(0) + 1e12;
-	//double rememberThisPercentage=0;
-	for (int bin1=1; bin1<=thisSigHisto->GetNbinsX()+1; bin1++) { 
+	for (int bin1=1; bin1<=thisSigHisto->GetNbinsX()+1; bin1++) {
 		for (int bin2=bin1; bin2<=thisSigHisto->GetNbinsX()+1; bin2++) {
 			thisPercentage = thisSigHisto->Integral(bin1,bin2)/thisSigHisto->Integral();
 			thisInterval = thisSigHisto->GetBinLowEdge(bin2) + thisSigHisto->GetBinWidth(bin2) - thisSigHisto->GetBinLowEdge(bin1);
@@ -420,7 +419,6 @@ int main(int argc,char **argv)
 					keeplowbin=bin1;
 					keephighbin=bin2;
 					smallestInterval=thisInterval;
-					//rememberThisPercentage=thisPercentage;
 				}
 				break;
 			}
@@ -472,32 +470,9 @@ int main(int argc,char **argv)
 		bkgVariation.SetBinError(i,0.);
 	}
 
-
-        // Old method: Use difference between nominal and alternate in this data.
-        // Set up fit function choice templates for background
-/*	MjjHistogram bkgFromAlternate;
-	TH1D variedfit;
-	vector<std::pair<double,TH1D*> > fitvariedtemplates;
-
-	if (doFitFunctionChoiceError) {
-		bkgFromAlternate = theSilentFitter.FitAndGetBkgWithDataErr(*theAlternateFunction,theHistogram,100);
-		//		bkgFromAlternate = theSilentFitter.FitAndGetBkgWithMCErr(*theAlternateFunction,theHistogram);
-		for (int i=0; i<theAlternateFunction->GetNParams(); i++) {
-			std::cout << "par, error: " << theAlternateFunction->GetFitFunction()->GetParameter(i) 
-				<< " " << theAlternateFunction->GetFitFunction()->GetParError(i) << std::endl;
-			fittedPars.push_back(theAlternateFunction->GetFitFunction()->GetParameter(i));
-			errorPars.push_back(theAlternateFunction->GetFitFunction()->GetParError(i));
-		}
-		variedfit = bkgFromAlternate.GetHistogram();
-		variedfit.SetName("fitplusonesigmachoice");
-		fitvariedtemplates.push_back(std::make_pair(0,&bkgTemplate));
-		fitvariedtemplates.push_back(std::make_pair(1,&variedfit));
-	}
-*/
-
         // New method: Use average difference between the two functions across a range of pseudoexperiments
         // where the pseudoexperiments are thrown from data.
- 	std::vector<TH1D> extraHistograms;
+ 	    std::vector<TH1D> extraHistograms;
         MjjHistogram bkgFromAlternate;
         MjjHistogram bkgWithFuncChoiceErr;
         TH1D fitChoicePlus1Sig(bkgTemplate);
@@ -512,7 +487,7 @@ int main(int argc,char **argv)
         	// Get histogram with errors equal to RMS of distance between functions
         	// across PEs in each bin. This is the uncertainty that will be used for calculating
         	// the search phase p-value using systematics.
-        	bkgWithFuncChoiceErr = theSilentFitter.FitAndGetBkgWithFitDiffErr(*theMjjFitFunction,*theAlternateFunction,theHistogram,100,true);
+        	bkgWithFuncChoiceErr = theSilentFitter.FitAndGetBkgWithFitDiffErr(*theMjjFitFunction,*theAlternateFunction,theHistogram,nFitsInBkgError,true);
 
         	// Create histogram of format which will be used as alternate function
         	// to define function choice uncertainty when directionality matters:
@@ -702,26 +677,12 @@ int main(int argc,char **argv)
 
 	std::cout << "Adding shape changing uncertainties " << std::endl;
 
-	// Lydia to work with JES of -3, 0 +3 Outdated
-	/*double jesSigmas [nJES];
-	double step = (2*1.)/(nJES-1); // Fencepost problems
-	// Nominal is first
-	jesSigmas[0] = 0.;
-	// Below and above nominal
-	for (int i=0; i<int(nJES/2.); i++) {
-		jesSigmas[i+1] = step*i-1.;
-		std::cout<<"JESSIG "<< i+1 <<": "<<jesSigmas[i+1]<<std::endl;
-		jesSigmas[nJES-i-1] = 1.-step*i;
-		std::cout<<"JESSIG "<< nJES-i-1 <<": "<<jesSigmas[nJES-i-1]<<std::endl;
-	}*/
-
 	// Step through input JES shifted histograms
 	// step size uses nSigmas to calculate step manually, if fails then use manual approach, rather than nSigmas
 	// Example of manual approach shown commented out above
-	double jesSigmas [nJES];
+	vector<double> jesSigmas(nJES,0.0);
 	double step = (2*nSigmas)/(nJES-1); // Fencepost problems
-	// Nominal is first
-	jesSigmas[0] = 0.;
+	// Nominal is first, and is zero, so leave that fixed.
 	// Below and above nominal
 	for (int i=0; i<int(nJES/2.); i++) {
 		jesSigmas[i+1] = step*i-nSigmas;
@@ -730,8 +691,9 @@ int main(int argc,char **argv)
 		std::cout<<"JESSIG "<< nJES-i-1 <<": "<<jesSigmas[nJES-i-1]<<std::endl;
 	}
 
+    std::cout << "Made it to here!" << std::endl;
+
 	vector<vector<TH2D> > storeAll2DHistograms;
-	// vector<TH1D> storeAll1DHistograms; // Lydia
 	vector<vector<TH1D> > storeAll1DHistograms;// Lydia
 
 	if (doJES) {
@@ -778,15 +740,14 @@ int main(int argc,char **argv)
 
 		} else if (useTemplates ) {
 			for (int component=0; component<nComp; component++) { // Lydia
+            
 				vector<std::pair<double,TH1D*> > signalJESVariations; signalJESVariations.clear();
 				std::vector<TH1D> storeHistograms;// Lydia
-		                //std::cout<<"TEMPLATES"<<std::endl;
-                                //std::cout<<nominalJES.c_str()<<std::endl;
+
 				TH1D nominal(*(TH1D*)insignalfile->Get(nominalJES.c_str()));
 
 				string nomname = nominalJES + "_nom";
 				nominal.SetName(nomname.c_str());
-				// storeAll1DHistograms.push_back(nominal); // Lydia
 				storeHistograms.push_back(nominal); // Lydia
 
 				for (int i=1; i<nJES; i++) {
@@ -794,14 +755,12 @@ int main(int argc,char **argv)
 					std::cout<<"HISTNAME "<<histname<<std::endl;
 					TH1D thisVariation(*(TH1D*)insignalfile->Get(histname.c_str()));
 					thisVariation.SetName(histname.c_str());
-					// storeAll1DHistograms.push_back(thisVariation); //Lydia
 					storeHistograms.push_back(thisVariation); //Lydia
 				}
 
 				storeAll1DHistograms.push_back(storeHistograms); // Lydia
 
 				for (int i=0; i<nJES; i++) {
-					// signalJESVariations.push_back(std::make_pair(jesSigmas[i],&storeAll1DHistograms.at(i))); // Lydia
 					signalJESVariations.push_back(std::make_pair(jesSigmas[i],&storeAll1DHistograms.at(component).at(i)));
 				}
 
@@ -810,7 +769,9 @@ int main(int argc,char **argv)
 					std::cout << "Creating systematic " << name << std::endl;
 					m->AddSystematic(name.c_str(),-nSigmas,nSigmas);
 					m->SetPriorGauss(name.c_str(),0.,1.);
-					MjjBATTemplateSyst * thisTemplateSyst = new MjjBATTemplateSyst(false);
+//					MjjBATTemplateSyst * thisTemplateSyst = new MjjBATTemplateSyst(false);
+                    // Kate: the line above does not do the right thing.
+					MjjBATTemplateSyst * thisTemplateSyst = new MjjBATTemplateSyst(true);
 					thisTemplateSyst->SetSpectra(signalJESVariations);
 					m->SetSystematicVariation("SIGNAL",name.c_str(),thisTemplateSyst);
 				}
@@ -818,7 +779,7 @@ int main(int argc,char **argv)
 			} // End of loop over JES components Lydia
 		}
 	}
-
+  
 	///////////////////////////////////////////////////////////////////////////
 	// Create scale changing nuisance parameters
 
@@ -883,6 +844,19 @@ int main(int argc,char **argv)
 	for (unsigned int i=0; i<m->GetNParameters(); i++) {
 		std::cout << "Parameter " << i << " is " << m->GetParameter(i)->GetName() << std::endl;
 	}
+
+    std::cout << "Testing just before marginalisation." << std::endl;
+    vector<MjjBATTemplateSyst*> tempscalevars2 = m->GetProcess(1)->GetTempScaleChangingSysts();
+    for (unsigned int j=0; j<tempscalevars2.size(); ++j) {
+
+     MjjBATTemplateSyst * thisshapevar = tempscalevars2.at(j);
+     
+     std::cout << "Looking at scale variation number " << j << ": " << thisshapevar << std::endl;
+
+     std::cout << "thisshapeVar is " << thisshapevar << std::endl;
+     std::cout << "parent syst is " << thisshapevar->GetParentSystematic() << std::endl;
+//     std::cout << "fSystematicContainer is " << fSystematicContainer.size() << std::endl;
+    }
 
 	std::cout << "Beginning calculation." << std::endl;
 	TStopwatch marginalisationTime;
@@ -1045,6 +1019,7 @@ int main(int argc,char **argv)
 			TH1D thissig(nominalSignal);
 			string name = "sigsample";
 			parameters.clear();
+            // TODO KATE: CLEAN THIS UP!
 			parameters.push_back(0.0); //background
 			if (doFitFunctionChoiceError) parameters.push_back(0.0); // function choice
 			parameters.push_back(1.0); //signal
@@ -1086,6 +1061,7 @@ int main(int argc,char **argv)
 			string name = Form("bkg_fiterr%d",bkgindex);
 			thissig.SetName(name.c_str());
 			parameters.clear();
+            // TODO KATE: CLEAN THIS UP!
 			parameters.push_back(bkgslices[bkgindex]); //background
 			if (doFitFunctionChoiceError) parameters.push_back(0.0); // function choice
 			parameters.push_back(0.0); //signal

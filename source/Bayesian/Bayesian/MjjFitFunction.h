@@ -285,7 +285,7 @@ class FiveParamSqrtsFitFunction : public MjjFitFunction {
     
 public:
 
-    FiveParamSqrtsFitFunction(double & mjjLow, double & mjjHigh, double Ecm=13000.) {
+    FiveParamSqrtsFitFunction(double & mjjLow, double & mjjHigh) {
         fNParameters = 5;
         fFitParameters.clear();
         for (int i=0; i<fNParameters; i++) {
