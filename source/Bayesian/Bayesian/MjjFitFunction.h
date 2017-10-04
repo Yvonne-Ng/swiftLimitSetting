@@ -122,7 +122,7 @@
 #include "Bayesian/MjjHistogram.h"
 #include "Bayesian/MjjFitFunctionBase.h"
 
-
+using namespace std;
 //////////////////////////////////////////////////////////
 // 3 parameter dijet Function (2015 version)
 
@@ -211,8 +211,8 @@ class FourParamTF1 : public MjjTF1Wrapper {
     }
 
     // Following the convention in https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/CONFNOTES/ATLAS-CONF-2012-088/
-    double f = par[0] * pow(1-x , par[1]) * 1./pow(x, par[2] + par[3] * log(x));
-
+    double f = par[0] * pow(1-x , par[1]) * 1./pow(x, par[2] + par[3] * log(x));    
+    cout<<"m[0]: "<<m[0]<<"f: "<<f<<endl;
     return f;
   }
 

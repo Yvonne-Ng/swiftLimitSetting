@@ -310,7 +310,7 @@ if dosetLimitsOneMassPoint:
               subprocess.call("ls -l {0}".format(Step2_ScriptArchive), shell=True)
  
               fbatchout.close()
-              command = "bsub -q 1nd %s/Step2_BatchScript_Template_%s%s_%sfb_%i.sh"%(Step2_ScriptArchive,outName,Mass,Lumi,split)
+              command = "sbatch -c 2 -p atlas_slow -t 1440 %s/Step2_BatchScript_Template_%s%s_%sfb_%i.sh"%(Step2_ScriptArchive,outName,Mass,Lumi,split)
               print command
               subprocess.call(command, shell=True)
 

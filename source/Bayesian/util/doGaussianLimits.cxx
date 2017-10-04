@@ -373,7 +373,7 @@ int main(int argc,char **argv)
     mresf->Close();
     delete mresf;
   } else if (useFunc) {
-    TF1 myfunc("resolutionFunc","[0] + [1]*x + [2]*x*x + [3]*x*x*x + [4]*x*x*x*x + [5]*x*x*x*x*x + [6]*x*x*x*x*x*x;",770,8000);
+    TF1 myfunc("resolutionFunc","[0] + [1]*x + [2]*x*x + [3]*x*x*x + [4]*x*x*x*x + [5]*x*x*x*x*x + [6]*x*x*x*x*x*x",770,8000);
     for (int par = 0; par < 7; par++) {
       myfunc.SetParameter(par,respars.at(par));
     }
