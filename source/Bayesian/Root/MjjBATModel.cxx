@@ -2,6 +2,7 @@
 
 #include "Bayesian/MjjBATModel.h"
 
+using namespace std;
 // ---------------------------------------------------------
 MjjBATModel::MjjBATModel()
  : BCModel("Multi-template Fitter")
@@ -483,7 +484,7 @@ int MjjBATModel::SetSystematicVariation(std::string processname,  std::string sy
 
    // get systematic index
    int systematicindex = GetSystematicIndex(systematicname);
-   cout<<"!!!"<<endl;
+//cout<<"!!!"<<endl;
    cout<<"SetParentSystematic, systematicname: "<<systematicname<<endl;
    cout<<"GetSystematicIndex(systematicname): "<<GetSystematicIndex(systematicname)<<endl;
    // check if systematic exists
@@ -495,7 +496,7 @@ int MjjBATModel::SetSystematicVariation(std::string processname,  std::string sy
    // get process
    MjjBATProcess * process = GetProcess(processindex);
 
-   cout<<"!!!"<<endl;
+ //  cout<<"!!!"<<endl;
    cout<<"SetParentSystematic"<<endl;
    systVariation->SetParentSystematic(systematicname);
 
