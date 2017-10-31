@@ -35,14 +35,15 @@ Signals = {}
 #---------------------------
 # Files and directories
 
-dosetLimitsOneMassPoint = True # Set to True to run setLimitOneMassPoint.cxx 
+dosetLimitsOneMassPoint =True # Set to True to run setLimitOneMassPoint.cxx 
 
-doLimitSettingPhase = False # ONLY set to True when Step 1 setLimitsOneMassPoint has finished running on the batch (or locally)!!!
+doLimitSettingPhase = False# # ONLY set to True when Step 1 setLimitsOneMassPoint has finished running on the batch (or locally)!!!
                             # Set to True to run LimitSettingPhase.cxx
 doPlotting = False # ONLY set to True when Step 3 LimitSettingPhase.cxx has/is being run!!!
                    # Set to True to run plotLimitSetting_gjj.py
 
-SearchPhaseresults = "%s/Bayesian/results/Step1_SearchPhase/dijetgamma_data_hist_20160727_15p45fb_4Par_169_1493/Step1_SearchPhase_Zprime_mjj_var_DataLike_LLLfb.root"%headdir
+#SearchPhaseresults = "%s/Bayesian/results/Step1_SearchPhase/dijetgamma2017MC/Step1_SearchPhase_Zprime_mjj_var_DataLike_LLLfb.root"%headdir
+SearchPhaseresults = "%s/Bayesian/results/Step1_SearchPhase/RedoMCwithCutNoScaledijetgamma_g85_2j65/Step1_SearchPhase_Zprime_mjj_var.root"%headdir
                    # Can replace lumi in name with LLL and will be filled by Lumis value (must do this if running on multiple lumis)
 
 ##---------------------------
@@ -64,7 +65,9 @@ Lumis = ["15p45"] # Luminosities to scale limits to in fb e.g. "10" or 0p1, shou
 # Run controls 
  
 # For Step 2 running setLimitsOneMassPoint.cxx  
-setLimitsOneMassPointconfig = "./configurations/Step2_setLimitsOneMassPoint_gjj_MMM.config"   
+#setLimitsOneMassPointconfig = "./configurations/Step2_setLimitsOneMassPoint_gjj_MMM.config"   
+setLimitsOneMassPointconfig = "./configurations/Step2_setLimitsOneMassPoint_gjj_MMM2017.config"   
+
 useBatch = True # Set to True to run setLimitsOneMassPoint.cxx on the batch, or set to False to run locally. runs code in batchdir 
 atOx = False # Set to True to use Oxford batch rather than lxbatch for running!
 
@@ -83,9 +86,9 @@ plotextension = "dijetgamma_data_hist_20160727_15p45fb_4Par_169_1493"  # folder 
 
 # ZPrime   
 
-Coupling = "gSM0p10" 
-Signals["ZPrimemR"]=["250","350","550"]
-outName = "ZPrime0p10"
+#Coupling = "gSM0p10" 
+#Signals["ZPrimemR"]=["250","350","550"]
+#outName = "ZPrime0p10"
 
 #Coupling = "gSM0p20" 
 #Signals["ZPrimemR"]=["250","350","450","550","750"] 
@@ -98,9 +101,48 @@ outName = "ZPrime0p10"
 #Coupling = "gSM0p40" 
 #Signals["ZPrimemR"]=["750"] 
 #outName = "ZPrime0p40"
+#2017 Yvonne Edit
 
+Coupling="gSM0p3"
+Ph="100"
+Signals["ZPrimemR"]=["1500", "450", "950", "250", "500", "300","350","550", "400", "750"  ]
+outName = "Ph100_Zprime0p3"
+
+Coupling="gSM0p4"
+Ph="100"
+Signals["ZPrimemR"]=["1500", "750"  ]
+outName = "Ph100_Zprime0p4"
+
+Coupling="gSM0p2"
+Ph="100"
+Signals["ZPrimemR"]=["250", "550", "350", "750", "450"  ]
+outName = "Ph100_Zprime0p2"
+
+Coupling="gSM0p1"
+Ph="100"
+Signals["ZPrimemR"]=["250", "550", "350", "450"]
+outName = "Ph100_Zprime0p1"
+
+Coupling="gSM0p2"
+Ph="50"
+Signals["ZPrimemR"]=["1500", "550", "250","750", "350", "950", "450"  ]
+outName = "Ph100_Zprime0p2"
+##Coupling="gSM0p3"
+##Ph="50
+#Signals["ZPrimemR"]=["1500", "550", "500", "750", "250", "950", "350", "300", "450", "400"]
+#outName = ["Ph50_Zprime0p10"]
+#
+#Coupling="gSM0p3"
+#Ph="100
+#Signals["ZPrimemR"]=["1500", "550", "500", "750", "250", "950", "350", "300", "450", "400"]
+#outName = ["Ph100_Zprime0p10"]
+#
+#can change later
 LimitSettingPhaseconfig = "./configurations/Step3_LimitSettingPhase_gjj_MMM_%s.config"%Coupling # Path/file of LimitSettingPhase config
-signalFileName = "inputs/NoTails/Chopped_169_1493_hist_20160727/Chopped_MMM%d{0}.root".format(Coupling)
+#changed
+signalFileName = "inputs//KMCSignal/Chopped_Ph{0}_MMM%d_{1}.root".format(Ph,Coupling)
+                                                                                                         #
+#signalFileName = "inputs/KMCSignal/Chopped_MMM%d{0}.root".format(Coupling)
 
 #----------------------------------
 # ***** End of User specifies *****
@@ -157,9 +199,11 @@ if dosetLimitsOneMassPoint:
               if line.startswith("nominalSignalHist"):
                 if Model == "ZPrimemR":
                   #line = "nominalSignalHist {0}/mjj_MMM%dCCC_1fb_Nominal\n".format(HistDir)
-                  line = "nominalSignalHist mjj_MMM%dCCC_1fb_Nominal\n"
-                  line = line.replace("MMM",Model)
-                  line = line.replace("CCC",Coupling)
+                  #line = "nominalSignalHist mjj_MMM%dCCC_1fb_Nominal\n"
+                  #line = line.replace("MMM",Model)
+                  #line = line.replace("CCC",Coupling)
+                  
+                  line ="nominalSignalHist dijetgamma_g85_2j65/Zprime_mjj_var"
                 else:
                   line = "nominalSignalHist mjj_MMM%d_1fb_Nominal\n"
                   line = line.replace("MMM",Model)
@@ -310,7 +354,7 @@ if dosetLimitsOneMassPoint:
               subprocess.call("ls -l {0}".format(Step2_ScriptArchive), shell=True)
  
               fbatchout.close()
-              command = "sbatch -c 2 -p atlas_slow -t 1440 %s/Step2_BatchScript_Template_%s%s_%sfb_%i.sh"%(Step2_ScriptArchive,outName,Mass,Lumi,split)
+              command = "sbatch -c 2 -p atlas_all -t 300 %s/Step2_BatchScript_Template_%s%s_%sfb_%i.sh"%(Step2_ScriptArchive,outName,Mass,Lumi,split)
               print command
               subprocess.call(command, shell=True)
 

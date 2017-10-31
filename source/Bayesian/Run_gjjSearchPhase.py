@@ -31,17 +31,24 @@ UserfileHistDict = {}
 #---------------------------
 # Files and directories
 
-doSearch = True # Set to True to run SearchPhase.cxx
+doSearch = False# Set to True to run SearchPhase.cxx
 
-doPlotting = False # Set to True to run plotSearchPhase_gjj.py 
+doPlotting = True # Set to True to run plotSearchPhase_gjj.py 
 
-folderextension = "dijetgamma_data_hist_20160727_15p45fb_4Par_169_1493"
+#folderextension = "dijetgamma_data_hist_20160727_15p45fb_4Par_169_1493"
+#
+#inputFileDir = "./inputs/hist_20160727/OUT_dijetgamma_data/"
+#
+#UserfileHistDict[inputFileDir+"datalike.root"] = ["Zprime_mjj_var_DataLike_15p45fb"] # Dictionary given as example, key is inputFileDir+ file name 
+#
+#HistDir = "dijetgamma_g150_2j25_nomjj" 
+folderextension = "RedoMCwithCutNoScaledijetgamma_g85_2j65"
 
-inputFileDir = "./inputs/hist_20160727/OUT_dijetgamma_data/"
+inputFileDir = "./inputs/"
 
-UserfileHistDict[inputFileDir+"datalike.root"] = ["Zprime_mjj_var_DataLike_15p45fb"] # Dictionary given as example, key is inputFileDir+ file name 
+UserfileHistDict[inputFileDir+"MC.root"] = ["Zprime_mjj_var"] # Dictionary given as example, key is inputFileDir+ file name 
 
-HistDir = "dijetgamma_g150_2j25_nomjj" 
+HistDir = "dijetgamma_g85_2j65" 
 
 # Turn to true if doing Spurious Signal test!
 useScaled = False # Set to true if using scaled histograms instead of Datalike histograms
@@ -205,7 +212,9 @@ for File, HistList in fileHistDict.iteritems():
         lumi = lumi.strip("_")
         lumi = lumi.strip("fb") 
         lumi = float(lumi)*1000
-      if lumi == 0: raise SystemExit('\n***Zero lumi*** regex issue')
+    #Yvonne hard set of the luminosity
+      lumi = 36.09
+      #if lumi == 0: raise SystemExit('\n***Zero lumi*** regex issue')
       # open modified plotSearchPhase_gjj.py (fout) for writing
       fout = open('plotting/SearchPhase/plotSearchPhase_gjj_%s.py'%Hist, 'w')
 
