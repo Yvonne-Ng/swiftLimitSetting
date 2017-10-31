@@ -363,24 +363,31 @@ int main(int argc,char **argv)
   }
 
   // Get resolution tgraph if making Gaussians of resolution width
+  cout<<"check1"<<endl;
   TGraphAsymmErrors * resolutiongraph = 0;
+  cout<<"check2"<<endl;
   if (useFile) {
     TH1::AddDirectory(kFALSE);
     TFile * mresf = TFile::Open(resfilename.c_str());
     TCanvas * c3 = (TCanvas*) mresf->Get("C1");
+    cout<<"check3"<<endl;
 //    resolutiongraph = (TGraphAsymmErrors*) ((c3->GetListOfPrimitives())->At(0));
     resolutiongraph = (TGraphAsymmErrors*) (c3->GetPrimitive("Graph"));
     mresf->Close();
+    cout<<"check4"<<endl;
     delete mresf;
   } else if (useFunc) {
     TF1 myfunc("resolutionFunc","[0] + [1]*x + [2]*x*x + [3]*x*x*x + [4]*x*x*x*x + [5]*x*x*x*x*x + [6]*x*x*x*x*x*x",770,8000);
     for (int par = 0; par < 7; par++) {
       myfunc.SetParameter(par,respars.at(par));
     }
+    cout<<"check7"<<endl;
     resolutiongraph = new TGraphAsymmErrors();
+    cout<<"check 8"<<endl;
     for (int x = 771; x < 8000; x++) {
       resolutiongraph->SetPoint(x-771,double(x),myfunc.Eval(x));
     }
+    cout<<"check9"<<endl;
   }
 
   std::cout << "Made function." << std::endl;
