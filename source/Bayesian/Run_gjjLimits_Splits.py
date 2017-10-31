@@ -103,42 +103,37 @@ plotextension = "dijetgamma_data_hist_20160727_15p45fb_4Par_169_1493"  # folder 
 #outName = "ZPrime0p40"
 #2017 Yvonne Edit
 
-Coupling="gSM0p3"
-Ph="100"
-Signals["ZPrimemR"]=["1500", "450", "950", "250", "500", "300","350","550", "400", "750"  ]
-outName = "Ph100_Zprime0p3"
-
-Coupling="gSM0p4"
-Ph="100"
-Signals["ZPrimemR"]=["1500", "750"  ]
-outName = "Ph100_Zprime0p4"
-
-Coupling="gSM0p2"
-Ph="100"
-Signals["ZPrimemR"]=["250", "550", "350", "750", "450"  ]
-outName = "Ph100_Zprime0p2"
-
-Coupling="gSM0p1"
-Ph="100"
-Signals["ZPrimemR"]=["250", "550", "350", "450"]
-outName = "Ph100_Zprime0p1"
-
-Coupling="gSM0p2"
-Ph="50"
-Signals["ZPrimemR"]=["1500", "550", "250","750", "350", "950", "450"  ]
-outName = "Ph100_Zprime0p2"
-##Coupling="gSM0p3"
-##Ph="50
-#Signals["ZPrimemR"]=["1500", "550", "500", "750", "250", "950", "350", "300", "450", "400"]
-#outName = ["Ph50_Zprime0p10"]
-#
 #Coupling="gSM0p3"
-#Ph="100
-#Signals["ZPrimemR"]=["1500", "550", "500", "750", "250", "950", "350", "300", "450", "400"]
-#outName = ["Ph100_Zprime0p10"]
+#Ph="100"
+#Signals["ZPrimemR"]=["1500", "450", "950", "250", "500", "300","350","550", "400", "750"  ]
+#outName = "Ph100_Zprime0p3"
 #
+#Coupling="gSM0p4"
+#Ph="100"
+#Signals["ZPrimemR"]=["1500", "750"  ]
+#outName = "Ph100_Zprime0p4"
+#
+#Coupling="gSM0p2"
+#Ph="100"
+#Signals["ZPrimemR"]=["250", "550", "350", "750", "450"  ]
+#outName = "Ph100_Zprime0p2"
+#
+#Coupling="gSM0p1"
+#Ph="100"
+#Signals["ZPrimemR"]=["250", "550", "350", "450"]
+#outName = "Ph100_Zprime0p1"
+#
+#Coupling="gSM0p2"
+#Ph="50"
+#Signals["ZPrimemR"]=["1500", "550", "250","750", "350", "950", "450"  ]
+#outName = "Ph100_Zprime0p2"
+#Coupling="gSM0p3"
+#Ph="100"
+#Signals["ZPrimemR"]=["1500" ]
+#outName = "test2Ph100_Zprime0p3"
+
 #can change later
-LimitSettingPhaseconfig = "./configurations/Step3_LimitSettingPhase_gjj_MMM_%s.config"%Coupling # Path/file of LimitSettingPhase config
+LimitSettingPhaseconfig = "./configurations/Step3_LimitSettingPhase_gjj_MMM_PhPPP_%s.config"%Coupling # Path/file of LimitSettingPhase config
 #changed
 signalFileName = "inputs//KMCSignal/Chopped_Ph{0}_MMM%d_{1}.root".format(Ph,Coupling)
                                                                                                          #
@@ -372,6 +367,7 @@ if doLimitSettingPhase or doPlotting:
         fout = open('%s/Step3_%s_%sfb.config'%(Step3_ConfigArchive,outName,Lumi), 'w')
 
         # read in config file as fin and replace relevant fields
+        LimitSettingPhaseconfig.replace("PPP",Ph)
         with open('%s'%LimitSettingPhaseconfig.replace("MMM",Model), 'r') as fin:
           for line in fin:
             if (line.startswith("inputFileForm") or line.startswith("outputFileName") or line.startswith("luminosity") or line.startswith("nSplits1")): 
