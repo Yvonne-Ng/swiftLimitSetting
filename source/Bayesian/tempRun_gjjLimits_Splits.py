@@ -35,16 +35,19 @@ Signals = {}
 #---------------------------
 # Files and directories
 
-dosetLimitsOneMassPoint =True # Set to True to run setLimitOneMassPoint.cxx 
+dosetLimitsOneMassPoint= True # Set to True to run setLimitOneMassPoint.cxx 
 
 doLimitSettingPhase = False# # ONLY set to True when Step 1 setLimitsOneMassPoint has finished running on the batch (or locally)!!!
                             # Set to True to run LimitSettingPhase.cxx
 doPlotting = False # ONLY set to True when Step 3 LimitSettingPhase.cxx has/is being run!!!
+
                    # Set to True to run plotLimitSetting_gjj.py
 
 #SearchPhaseresults = "%s/Bayesian/results/Step1_SearchPhase/dijetgamma2017MC/Step1_SearchPhase_Zprime_mjj_var_DataLike_LLLfb.root"%headdir
-SearchPhaseresults = "%s/Bayesian/results/Step1_SearchPhase/MC_noScale_dijetgamma_g85_2j65_4ParUA2/Step1_SearchPhase_Zprime_mjj_var.root"%headdir
+#SearchPhaseresults = "%s/Bayesian/results/Step1_SearchPhase/RedoMCwithCutNoScaledijetgamma_g85_2j65/Step1_SearchPhase_Zprime_mjj_var.root"%headdir
                    # Can replace lumi in name with LLL and will be filled by Lumis value (must do this if running on multiple lumis)
+SearchPhaseresults = "%s/Bayesian/results/Step1_SearchPhase/MC_noScale_dijetgamma_g150_2j25t_4ParUA2/Step1_SearchPhase_Zprime_mjj_var.root"%headdir
+#SearchPhaseresults = "%s/Bayesian/results/Step1_SearchPhase/MC_noScale_dijetgamma_g85_2j65_4ParUA2/Step1_SearchPhase_Zprime_mjj_var.root"%headdir
 
 ##---------------------------
 # Analysis quantities
@@ -53,33 +56,33 @@ lumiUnc = 0.029 # Size of luminosity uncertainty FIXME VALUE ONLY HERE FOR REFER
 
 Ecm = 13000.0 # Centre of mass energy in GeV
 
-doPDFAccErr = True # Set to True to use PDF Acceptance Error 
+doPDFAccErr = False # Set to True to use PDF Acceptance Error 
 PDFErrSize = 0.01
 
-doISRAccErr = True # Set to True to use Photon Acceptance Error 
+doISRAccErr = False # Set to True to use Photon Acceptance Error 
 ISRErrSize = 0.03 
 
 Lumis = ["15p45"] # Luminosities to scale limits to in fb e.g. "10" or 0p1, should have corresponding search phase ran for this lumi 
 
 ##---------------------------
 # Run controls 
- 
-# For Step 2 running setLimitsOneMassPoint.cxx  
+ # For Step 2 running setLimitsOneMassPoint.cxx  
 #setLimitsOneMassPointconfig = "./configurations/Step2_setLimitsOneMassPoint_gjj_MMM.config"   
 setLimitsOneMassPointconfig = "./configurations/Step2_setLimitsOneMassPoint_gjj_MMM2017.config"   
 
-useBatch = True # Set to True to run setLimitsOneMassPoint.cxx on the batch, or set to False to run locally. runs code in batchdir 
+useBatch = False # Set to True to run setLimitsOneMassPoint.cxx on the batch, or set to False to run locally. runs code in batchdir 
 atOx = False # Set to True to use Oxford batch rather than lxbatch for running!
 
 # Splits - parallelise running of limits for pseudo-experiments for uncertainty bands by running more batch jobs to speed it up!
-nPETotal = 0 #Total number of pseudo-experiments to run for expected limit bands
+nPETotal = 1 #Total number of pseudo-experiments to run for expected limit bands
 nSplits = 1 # Number of divisions to split PEs into
 nPEForExpected = nPETotal/nSplits # Calculating how many PEs per division (split) performing
 
 #---------------------------
 # Signal information
 
-plotextension ="MC_noScale_dijetgamma_g85_2j65_4ParUA2"  # folder name to store all plots, results, configs and outputs consistently
+plotextension = "MC_noScale_dijetgamma_g150_2j25t_4ParUA2_new"  # folder name to store all plots, results, configs and outputs consistently
+#plotextension = "MC_noScale_dijetgamma_g85_2j65_4ParUA2_new"  # folder name to store all plots, results, configs and outputs consistently
                                                                            # MUST keep name same when doing step 2 and 3
 
 # Uncomment only 1 at a time depending which model and coupling you're running on
@@ -103,11 +106,11 @@ plotextension ="MC_noScale_dijetgamma_g85_2j65_4ParUA2"  # folder name to store 
 #outName = "ZPrime0p40"
 #2017 Yvonne Edit
 
-Coupling="gSM0p3"
-Ph="100"
-Signals["ZPrimemR"]=["1500", "450", "950", "250", "500", "300","350","550", "400", "750"  ]
-outName = "JDMPh100_Zprime0p3"
-
+#Coupling="gSM0p3"
+#Ph="100"
+#Signals["ZPrimemR"]=["1500", "450", "950", "250", "500", "300","350","550", "400", "750"  ]
+#outName = "JDMPh100_Zprime0p3"
+#   
 #Coupling="gSM0p4"
 #Ph="100"
 #Signals["ZPrimemR"]=["1500", "750"  ]
@@ -127,6 +130,7 @@ outName = "JDMPh100_Zprime0p3"
 #Ph="50"
 #Signals["ZPrimemR"]=["1500", "550", "250","750", "350", "950", "450"  ]
 #outName = "JDMPh50_Zprime0p2"
+#Test file
 
 #Coupling="gSM0p3"
 #Ph="100"
@@ -199,7 +203,7 @@ if dosetLimitsOneMassPoint:
                   #line = line.replace("MMM",Model)
                   #line = line.replace("CCC",Coupling)
                   
-                  line ="nominalSignalHist dijetgamma_g85_2j65/Zprime_mjj_var"
+                  line ="nominalSignalHist dijetgamma_g150_2j25/Zprime_mjj_var"
                 else:
                   line = "nominalSignalHist mjj_MMM%d_1fb_Nominal\n"
                   line = line.replace("MMM",Model)
@@ -373,7 +377,11 @@ if doLimitSettingPhase or doPlotting:
           for line in fin:
             if (line.startswith("inputFileForm") or line.startswith("outputFileName") or line.startswith("luminosity") or line.startswith("nSplits1")): 
               if line.startswith("inputFileForm"): # Used %%d in line below as %d is special character in python so need extra % to allow %d
-                line = "inputFileForm ./results/Step2_setLimitsOneMassPoint/%s/Step2_setLimitsOneMassPoint_%s%%d_%sfb_%%d.root\n"%(plotextension,outName,Lumi) 
+                #line = "inputFileForm ./results/Step2_setLimitsOneMassPoint/%s/Step2_setLimitsOneMassPoint_%s%%d_%sfb_%%d.root\n"%(plotextension,outName,Lumi) 
+                #line = "inputFileForm ./results/Step2_setLimitsOneMassPoint/%s/Step2_setLimitsOneMassPoint_%s%s_%sfb_%i.root\n"%(statspath,plotextension,outName,Mass,Lumi,split)
+                line = "inputFileForm ./results/Step2_setLimitsOneMassPoint/dijetgamma_data_hist_20160727_15p45fb_4Par_169_1493/Step2_setLimitsOneMassPoint_test2Ph100_Zprime0p31500_15p45fb_0.root\n"
+          #EDIT outfile = "%s/results/Step2_setLimitsOneMassPoint/%s/Step2_setLimitsOneMassPoint_%s%s_%sfb_%i.root\n"%(statspath,plotextension,outName,Mass,Lumi,split)
+             #EDIT   Step2_setLimitsOneMassPoint_test2Ph100_Zprime0p31500_15p45fb_0.root
                 fout.write(line)
               if line.startswith("outputFileName"): 
                 line = "outputFileName ./results/Step3_LimitSettingPhase/%s/Step3_LimitSettingPhase_%s_%sfb.root\n"%(plotextension,outName,Lumi)
@@ -425,7 +433,9 @@ if doLimitSettingPhase or doPlotting:
                 line = "folderextension = './plotting/LimitSettingPhase/plots/%s/%s/'\n"%(plotextension,Lumi)
                 fout.write(line)
               if line.startswith("limitFileNameTemplate"): 
-                line = "limitFileNameTemplate = './results/Step3_LimitSettingPhase/%s/Step3_LimitSettingPhase_{0}_%sfb.root'\n"%(plotextension,Lumi)
+                #line = "limitFileNameTemplate = './results/Step3_LimitSettingPhase/%s/Step3_LimitSettingPhase_{0}_%sfb.root'\n"%(plotextension,Lumi)
+                line = "limitFileNameTemplate = './results/Step3_LimitSettingPhase/dijetgamma_data_hist_20160727_15p45fb_4Par_169_1493/Step3_LimitSettingPhase_test2Ph100_Zprime0p3_15p45fb.root'\n"
+                #/dijetgamma_data_hist_20160727_15p45fb_4Par_169_1493/Step3_LimitSettingPhase_test2Ph100_Zprime0p3_15p45fb.root
                 fout.write(line)
               if line.startswith("individualLimitFiles"): 
                 #line = "individualLimitFiles = './results/Step2_setLimitsOneMassPoint/%s/Step2_setLimitsOneMassPoint_{0}{1}_%sfb.root'\n"%(plotextension,Lumi)
