@@ -26,7 +26,7 @@ cd Fitting
 and proceed to setting up the environment with which you will work.
 
 ## CVMFS
-Set up the AnalysisBase release
+Set up the AnalysisBase release ([setup_cvmfs.sh script](setup_cvmfs.sh))
 ```
 setupATLAS
 asetup AnalysisBase,21.2.3,here
