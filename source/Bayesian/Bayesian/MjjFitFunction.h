@@ -6,20 +6,20 @@
  * \brief The class for user-defined functions build on MjjFitFunctionBase
  * \author Katherine Pachal
  * \date 2013
- * 
+ *
  * This header allows the user to specify their own function class
  * for use in the package. All functions must consist of an MjjTF1Wrapper
- * with the mathematical form of the function and an MjjFitFunction 
+ * with the mathematical form of the function and an MjjFitFunction
  * which uses it to create a TF1. Many standard dijet functions are
- * already implemented here, so a user can simply imitate these 
+ * already implemented here, so a user can simply imitate these
  * examples to add any new functions they wish.
 
  * ThreeParam2015FitFunction :
     f = par[0] * (1-x)^par[1] * x^par[2]
-    
+
  * FourParamFitFunction :
     f = par[0] * (1-x)^par[1] * x^( - par[2] - par[3] * log(x))
-    
+
  * FiveParamSqrtsFitFunction :
     f = par[0] * (1-x)^par[1] * x^( - par[2] - par[3] * log(x))  but x includes a free param
 
@@ -32,7 +32,7 @@
  * CDFFitFunction :
  * Yes, have cross checked the location of ECM scaling against http://arxiv.org/pdf/1110.5302v1.pdf
     f = (par[0]/(x^par[1])) * (1-x/ECM)^par[2]
-    
+
  * CDF1997FitFunction :
  * Yes, have cross checked the location of ECM scaling against http://arxiv.org/pdf/1110.5302v1.pdf
     f = (par[0]/(x^par[1])) * (1 - x/ECM - par[3] * (x/ECM)^2)^par[2]
@@ -41,7 +41,7 @@
     f = (par[0]/(x^par[1])) * log(par[2]/x) * log(par[3]/x^2) where x is just mass
 
  * TeV Gravity Analysis:
- 
+
  * ThreeParamFitFunction :
     f = (1-x)^par[0] * x^( - par[1] - par[2]*log(x))
 
@@ -61,28 +61,28 @@
 
  * MultijetFitFunction2 :
     f = par[0] * (1-x)^par[1] * e^(par[2]*x^2)
-    
+
  * MultijetFitFunction3 :
     f = par[0] * (1-x)^par[1] * x^(par[2]* x)
 
  * MultijetFitFunction4 :
     f = par[0] * (1-x)^par[1] * x^(par[2]*log(x))
-    
+
  * MultijetFitFunction5 :
     f = par[0] * (1-x)^par[1] * (1+x)^(par[2]*x)
 
  * MultijetFitFunction6 :
     f = par[0] * (1-x)^par[1] * (1+x)^(par[2]*log(x))
-    
+
  * MultijetFitFunction7 :
     f = (par[0]/x) * (1-x)^(par[1] - par[2]*log(x))
- 
+
  * MultijetFitFunction8 :
     f = (par[0]/x^2) * (1-x)^(par[1] - par[2]*log(x))
-    
+
  * MultijetFitFunction9 :
     f = par[0] * (1 - x^(1/3))^par[1] * x^( - par[2])
-    
+
  * MultijetFitFunction10 :
     f = par[0] * (1 - x^(1/3))^par[1] * x^(par[2] * log(x))
 
@@ -211,8 +211,8 @@ class FourParamTF1 : public MjjTF1Wrapper {
     }
 
     // Following the convention in https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/CONFNOTES/ATLAS-CONF-2012-088/
-    double f = par[0] * pow(1-x , par[1]) * 1./pow(x, par[2] + par[3] * log(x));    
-    cout<<"m[0]: "<<m[0]<<"f: "<<f<<endl;
+    double f = par[0] * pow(1-x , par[1]) * 1./pow(x, par[2] + par[3] * log(x));
+    //cout<<"m[0]: "<<m[0]<<"f: "<<f<<endl; // SAM - I don't know why this was in here but it really slowed things down
     return f;
   }
 
@@ -220,10 +220,10 @@ class FourParamTF1 : public MjjTF1Wrapper {
 
 // ---------------------------------------------------------
 class FourParamFitFunction : public MjjFitFunction {
-  
+
 public:
-  
-    FourParamFitFunction(double & mjjLow, double & mjjHigh, double Ecm=13000.) {
+
+  FourParamFitFunction(double & mjjLow, double & mjjHigh, double Ecm=13000.) {
     fNParameters = 4;
     fFitParameters.clear();
     for (int i=0; i<fNParameters; i++) {
@@ -241,8 +241,8 @@ public:
 
   ~FourParamFitFunction() {
   }
-   
-};  
+
+};
 
 
 //////////////////////////////////////////////////////////
@@ -250,9 +250,9 @@ public:
 
 // ---------------------------------------------------------
 class FiveParamSqrtsTF1 : public MjjTF1Wrapper {
-    
+
 public:
-    
+
     FiveParamSqrtsTF1() {
         fCenterOfMassEnergy = 13000; // Caution this is hardcoded to 13000 GeV
         fUseWindowExclusion = false;
@@ -260,29 +260,29 @@ public:
         fExcludeFromFitHigh = 0;
     }
     ~FiveParamSqrtsTF1() {}
-    
+
     double operator()(double *m, double *par) const {
-        
+
         double x = m[0] / (par[4] > 0. ? par[4] : 1e-15);
-        
+
         if (fUseWindowExclusion) {
             if (m[0] >= fExcludeFromFitLow && m[0] <= fExcludeFromFitHigh) {
                 TF1::RejectPoint(1);
                 return 0.;
             }
         }
-        
+
         // Following the convention in https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/CONFNOTES/ATLAS-CONF-2012-088/
         double f = par[0] * pow(1-x , par[1]) * 1./pow(x, par[2] + par[3] * log(x));
-        
+
         return f;
     }
-    
+
 };
 
 // ---------------------------------------------------------
 class FiveParamSqrtsFitFunction : public MjjFitFunction {
-    
+
 public:
 
     FiveParamSqrtsFitFunction(double & mjjLow, double & mjjHigh) {
@@ -300,20 +300,20 @@ public:
         fPersonalisedFunction = fFiveParam;
         fFitFunction = new TF1("TheFiveParamSqrtsFitFunction", fFiveParam, fMjjLow, fMjjHigh, fNParameters, "FiveParamSqrtsFitFunction");
     }
-    
+
     ~FiveParamSqrtsFitFunction() {
     }
-    
-};  
+
+};
 
 //////////////////////////////////////////////////////////
 // Five parameter dijet (ln^2 x term)
 
 // ---------------------------------------------------------
 class FiveParamLog2TF1 : public MjjTF1Wrapper {
-    
+
 public:
-    
+
     FiveParamLog2TF1(double Ecm) {
         fCenterOfMassEnergy = Ecm;
         fUseWindowExclusion = false;
@@ -321,30 +321,30 @@ public:
         fExcludeFromFitHigh = 0;
     }
     ~FiveParamLog2TF1() {}
-    
+
     double operator()(double *m, double *par) const {
-        
+
         double x = m[0] / fCenterOfMassEnergy;
-        
+
         if (fUseWindowExclusion) {
             if (m[0] >= fExcludeFromFitLow && m[0] <= fExcludeFromFitHigh) {
                 TF1::RejectPoint(1);
                 return 0.;
             }
         }
-        
+
         // Following the convention in https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/CONFNOTES/ATLAS-CONF-2012-088/
         double logx = log(x);
         double f = par[0] * pow(1-x , par[1]) * 1./pow(x, par[2] + par[3] * logx + (par[4] * logx * logx));
-        
+
         return f;
     }
-    
+
 };
 
 // ---------------------------------------------------------
 class FiveParamLog2FitFunction : public MjjFitFunction {
-    
+
 public:
     FiveParamLog2FitFunction(double & mjjLow, double & mjjHigh, double Ecm=13000.) {
         fNParameters = 5;
@@ -361,10 +361,10 @@ public:
         fPersonalisedFunction = fFiveParam;
         fFitFunction = new TF1("TheFiveParamLog2FitFunction", fFiveParam, fMjjLow, fMjjHigh, fNParameters, "FiveParamLog2FitFunction");
     }
-    
+
     ~FiveParamLog2FitFunction() {
     }
-    
+
 };
 
 //////////////////////////////////////////////////////////
@@ -616,9 +616,9 @@ class DecorrelatedTF1 : public MjjTF1Wrapper {
   public:
 
   typedef enum { THREE_PARAMETER=3, FOUR_PARAMETER=4, SIX_PARAMETER=6 } Variant;
-    
+
   const Variant fVariant;
-    
+
   DecorrelatedTF1(double Ecm,
                   Variant variant=SIX_PARAMETER)
     : fVariant(variant)
@@ -664,7 +664,7 @@ class DecorrelatedTF1 : public MjjTF1Wrapper {
       double f = par[0] * pow(((1-x/par[3])/(1-1000./par[3])),par[1]) * pow((x/1000.),par[2]);
       return f;
     }
-      
+
   }
 
 };
