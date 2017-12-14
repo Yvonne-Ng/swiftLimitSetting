@@ -24,6 +24,10 @@
 
 int main (int argc,char **argv)
 {
+  std::cout << std::endl;
+  std::cout << "=============================" <<std::endl;
+  std::cout << "Running SearchPhase.cxx" <<std::endl;
+  std::cout << "=============================" <<std::endl;
 
 	////////////////////////////////////////////////////////////
 	// Initialisation: Read from config file
@@ -127,7 +131,7 @@ int main (int argc,char **argv)
 				ip+=1;
 			}
 
-			//Add this flag to run on Scaled MC rather than Data-like MC or Data 
+			//Add this flag to run on Scaled MC rather than Data-like MC or Data
 			else if (string(argv[ip])=="--useScaled") {
 				f_useScaled = true;
 				ip+=1;
@@ -192,7 +196,7 @@ int main (int argc,char **argv)
 	if( dataMjjHistoName.Length() == 0){
 		dataMjjHistoName = settings->GetValue("dataHist","");
 	}
-	std::cout<<" Hist Name: "<<dataMjjHistoName<<std::endl;
+	std::cout<<"Hist Name: "<<dataMjjHistoName<<std::endl;
 	TH1D* basicInputHisto = new TH1D();
 	if (inputHistDir.Length() == 0) {
 		basicInputHisto = (TH1D*) infile->Get(dataMjjHistoName);
@@ -223,8 +227,10 @@ int main (int argc,char **argv)
 	bool doPEOnData = settings->GetValue("doPEOnData",false);
 
 	// Parameters for fit
-	std::cout << "Setting the "<< nPars << " parameters to "; // Lydia
-	vector<double> paramDefaults;
+  std::cout << "=================================" << std::endl;
+	std::cout << "Setting the "<< nPars << " parameters to " << std::endl; // Lydia
+  std::cout << "=================================" << std::endl;
+  vector<double> paramDefaults;
 	vector<bool> areParamsFixed;
 	for (int par = 1; par<nPars+1; par++) {
 		string title = Form("parameter%i",par);
@@ -233,7 +239,7 @@ int main (int argc,char **argv)
 		title = Form("fixParameter%i",par);
 		bool isFixed = settings->GetValue(title.c_str(),false);
 		areParamsFixed.push_back(isFixed);
-		std::cout << "   (" << par-1 << ") :" << param;
+		std::cout << "   (" << par-1 << ") :" << param << std::endl;
 	}
 	std::cout << std::endl;
 
@@ -245,15 +251,17 @@ int main (int argc,char **argv)
 	if (doAlternate) {
 		alternateFuncNumber = settings->GetValue("alternateFunctionCode",4);
 		altNPars = settings->GetValue("alternateNParameters",4);
+    std::cout << "=================================" << std::endl;
+    std::cout << "Setting the alternative "<< altNPars << " parameters to " << std::endl; // Lydia
+    std::cout << "=================================" << std::endl;
 		for (int par = 1; par < altNPars+1; par++) {
 			string title = Form("altparameter%i",par);
 			double param = settings->GetValue(title.c_str(),1.0);
 			altParDefaults.push_back(param);
-			std::cout<<"altparam "<<param<<std::endl; // Lydia
 			title = Form("fixAltParameter%i",par);
 			bool isFixed = settings->GetValue(title.c_str(),false);
 			altAreParsFixed.push_back(isFixed);
-			std::cout << "Setting alternative function param "<< par << " to "<< param << std::endl;
+			std::cout << "   (" << par-1 << ") :" << param << std::endl;
 		}
 	}
 
@@ -265,7 +273,7 @@ int main (int argc,char **argv)
 	double initialBHRangeLow;
 	double initialBHRangeHigh;
 
-	//refined BH values, after window exclusion  
+	//refined BH values, after window exclusion
 	double refinedBHPValue = -1;
 	double refinedBHPValueErr = -1;
 	double refinedBHValue = -1;
@@ -279,8 +287,8 @@ int main (int argc,char **argv)
 	////////////////////////////////////////////////////////////
 	// Beginning search phase
 
-
-	std::cout << "minX, maxX: " << minX << " " << maxX << std::endl;
+  std::cout << "Input fitting bounds are : " << std::endl;
+	std::cout << "minX - maxX : " << minX << " - " << maxX << std::endl;
 
 	// Lydia changed this part so picks start and end bins that are fully spanned by range minX-maxX
 	// e.g. user picks minX maxX of 2000-3000 only bins fully within this range are fitted
@@ -288,12 +296,19 @@ int main (int argc,char **argv)
 
 	int firstBin, lastBin;
 	int firstBinBH, lastBinBH;
-	if (minX < theHistogram.GetHistogram().GetBinLowEdge(theHistogram.GetFirstBinWithData()) || minX < 0) firstBin = theHistogram.GetFirstBinWithData();
-	else firstBin = theHistogram.GetHistogram().FindBin(minX)+1;
 
+  // setting firstBin
+	if (minX < theHistogram.GetHistogram().GetBinLowEdge(theHistogram.GetFirstBinWithData()) || minX < 0)
+	  firstBin = theHistogram.GetFirstBinWithData();
+	else
+	  firstBin = theHistogram.GetHistogram().FindBin(minX)+1;
 
-	if (maxX > theHistogram.GetHistogram().GetBinLowEdge(theHistogram.GetLastBinWithData()+1) || maxX < 0) lastBin = theHistogram.GetLastBinWithData();
-	else lastBin = theHistogram.GetHistogram().FindBin(maxX)-1;
+  // setting lastBin
+	if (maxX > theHistogram.GetHistogram().GetBinLowEdge(theHistogram.GetLastBinWithData()+1) || maxX < 0)
+	  lastBin = theHistogram.GetLastBinWithData();
+	else
+	  lastBin = theHistogram.GetHistogram().FindBin(maxX)-1;
+
 	double minXForFit = theHistogram.GetHistogram().GetBinLowEdge(firstBin);
 	double maxXForFit = theHistogram.GetHistogram().GetBinLowEdge(lastBin+1);
 
@@ -321,317 +336,329 @@ int main (int argc,char **argv)
 		int thisFuncCode = functionsAndCodes.at(index).first;
 		std::cout << functionsAndCodes.at(index).second << std::endl;
 		switch (thisFuncCode) {
-			case 1 :
-				std::cout << "Creating UA2 fit function." << std::endl;
-				*functionsAndCodes.at(index).second = new UA2FitFunction(minXForFit,maxXForFit,Ecm);
-				break;
-			case 2 :
-				std::cout << "Creating CDF (1995) fit function." << std::endl;
-				*functionsAndCodes.at(index).second = new CDFFitFunction(minXForFit,maxXForFit,Ecm);
-				break;
-			case 3 :
-				std::cout << "Creating CDF (1997) fit function." << std::endl;
-				*functionsAndCodes.at(index).second = new CDF1997FitFunction(minXForFit,maxXForFit,Ecm);
-				break;
-			case 4 :
-				std::cout << "Creating standard dijet function." << std::endl;
-				*functionsAndCodes.at(index).second = new FourParamFitFunction(minXForFit,maxXForFit,Ecm);
-				break;
-			case 5 :
-				std::cout << "Creating TeV Gravity function." << std::endl;
-				*functionsAndCodes.at(index).second = new ThreeParamFitFunction(minXForFit,maxXForFit,Ecm);
-				break;
-			case 6 :
-				std::cout << "Creating 5-parameter function, floating sqrt(s)." << std::endl;
-				*functionsAndCodes.at(index).second = new FiveParamSqrtsFitFunction(minXForFit,maxXForFit);
-				break;
-			case 7 :
-				std::cout << "Creating 5-parameter function, log(x)^2 term." << std::endl;
-				*functionsAndCodes.at(index).second = new FiveParamLog2FitFunction(minXForFit,maxXForFit,Ecm);
-				break;
-			case 8 :
-				std::cout << "Creating 6-parameter function." << std::endl;
-				*functionsAndCodes.at(index).second = new SixParamFitFunction(minXForFit,maxXForFit,Ecm);
+      case 1 :
+        std::cout << "Creating UA2 fit function." << std::endl;
+        *functionsAndCodes.at(index).second = new UA2FitFunction(minXForFit,maxXForFit,Ecm);
+        break;
+      case 2 :
+        std::cout << "Creating CDF (1995) fit function." << std::endl;
+        *functionsAndCodes.at(index).second = new CDFFitFunction(minXForFit,maxXForFit,Ecm);
+        break;
+      case 3 :
+        std::cout << "Creating CDF (1997) fit function." << std::endl;
+        *functionsAndCodes.at(index).second = new CDF1997FitFunction(minXForFit,maxXForFit,Ecm);
+        break;
+      case 4 :
+        std::cout << "Creating standard dijet function." << std::endl;
+        *functionsAndCodes.at(index).second = new FourParamFitFunction(minXForFit,maxXForFit,Ecm);
+        break;
+      case 5 :
+        std::cout << "Creating TeV Gravity function." << std::endl;
+        *functionsAndCodes.at(index).second = new ThreeParamFitFunction(minXForFit,maxXForFit,Ecm);
+        break;
+      case 6 :
+        std::cout << "Creating 5-parameter function, floating sqrt(s)." << std::endl;
+        *functionsAndCodes.at(index).second = new FiveParamSqrtsFitFunction(minXForFit,maxXForFit);
+        break;
+      case 7 :
+        std::cout << "Creating 5-parameter function, log(x)^2 term." << std::endl;
+        *functionsAndCodes.at(index).second = new FiveParamLog2FitFunction(minXForFit,maxXForFit,Ecm);
+        break;
+      case 8 :
+        std::cout << "Creating 6-parameter function." << std::endl;
+        *functionsAndCodes.at(index).second = new SixParamFitFunction(minXForFit,maxXForFit,Ecm);
                                 break;
-			case 9 :
-				std::cout << "Creating 3-parameter function for Run II search." << std::endl;
-				*functionsAndCodes.at(index).second = new ThreeParam2015FitFunction(minXForFit,maxXForFit,Ecm);
+      case 9 :
+        std::cout << "Creating 3-parameter function for Run II search." << std::endl;
+        *functionsAndCodes.at(index).second = new ThreeParam2015FitFunction(minXForFit,maxXForFit,Ecm);
                                 break;
-            case 10 :
-                std::cout << "Creating second Multijet function." << std::endl;
- 				*functionsAndCodes.at(index).second = new MultijetFitFunction2(minXForFit,maxXForFit,Ecm);
-                break;
-            case 11 :
-                std::cout << "Creating third Multijet function." << std::endl;
- 				*functionsAndCodes.at(index).second = new MultijetFitFunction3(minXForFit,maxXForFit,Ecm);
-                break;
-            case 12 :
-                std::cout << "Creating fourth Multijet function." << std::endl;
- 				*functionsAndCodes.at(index).second = new MultijetFitFunction4(minXForFit,maxXForFit,Ecm);
-                break;
-            case 13 :
-                std::cout << "Creating fifth Multijet function." << std::endl;
- 				*functionsAndCodes.at(index).second = new MultijetFitFunction5(minXForFit,maxXForFit,Ecm);
-                break;
-            case 14 :
-                std::cout << "Creating sixth Multijet function." << std::endl;
- 				*functionsAndCodes.at(index).second = new MultijetFitFunction6(minXForFit,maxXForFit,Ecm);
-                break;
-            case 15 :
-                std::cout << "Creating seventh Multijet function." << std::endl;
- 				*functionsAndCodes.at(index).second = new MultijetFitFunction7(minXForFit,maxXForFit,Ecm);
-                break;
-            case 16 :
-                std::cout << "Creating eigth Multijet function." << std::endl;
- 				*functionsAndCodes.at(index).second = new MultijetFitFunction8(minXForFit,maxXForFit,Ecm);
-                break;
-            case 17 :
-                std::cout << "Creating ninth Multijet function." << std::endl;
- 				*functionsAndCodes.at(index).second = new MultijetFitFunction9(minXForFit,maxXForFit,Ecm);
-                break;
-            case 18 :
-                std::cout << "Creating tenth Multijet function." << std::endl;
- 				*functionsAndCodes.at(index).second = new MultijetFitFunction10(minXForFit,maxXForFit,Ecm);
-                break;
-            case 19 :
-                std::cout << "Creating gamma gamma with no exponent, 2 par." << std::endl;
-                *functionsAndCodes.at(index).second = new TwoParGammaGamma(minXForFit,maxXForFit,Ecm);
-                break;
-            case 20 :
-                std::cout << "Creating gamma gamma with no exponent, 4 par." << std::endl;
-                *functionsAndCodes.at(index).second = new FourParGammaGamma(minXForFit,maxXForFit,Ecm);
-                break;
-            case 21 :
-                std::cout << "Creating gamma gamma with 1/3 exponent, 2 par." << std::endl;
-                *functionsAndCodes.at(index).second = new TwoParGammaGammaWithThird(minXForFit,maxXForFit,Ecm);
-                break;
-            case 22 :
-                std::cout << "Creating gamma gamma with 1/3 exponent, 3 par." << std::endl;
-                *functionsAndCodes.at(index).second = new ThreeParGammaGammaWithThird(minXForFit,maxXForFit,Ecm);
-                break;
-            case 23 :
-                std::cout << "Creating gamma gamma with 1/3 exponent, 4 par." << std::endl;
-                *functionsAndCodes.at(index).second = new FourParGammaGammaWithThird(minXForFit,maxXForFit,Ecm);
-                break;
+      case 10 :
+        std::cout << "Creating second Multijet function." << std::endl;
+        *functionsAndCodes.at(index).second = new MultijetFitFunction2(minXForFit,maxXForFit,Ecm);
+        break;
+      case 11 :
+        std::cout << "Creating third Multijet function." << std::endl;
+        *functionsAndCodes.at(index).second = new MultijetFitFunction3(minXForFit,maxXForFit,Ecm);
+        break;
+      case 12 :
+        std::cout << "Creating fourth Multijet function." << std::endl;
+        *functionsAndCodes.at(index).second = new MultijetFitFunction4(minXForFit,maxXForFit,Ecm);
+        break;
+      case 13 :
+        std::cout << "Creating fifth Multijet function." << std::endl;
+        *functionsAndCodes.at(index).second = new MultijetFitFunction5(minXForFit,maxXForFit,Ecm);
+        break;
+      case 14 :
+        std::cout << "Creating sixth Multijet function." << std::endl;
+        *functionsAndCodes.at(index).second = new MultijetFitFunction6(minXForFit,maxXForFit,Ecm);
+        break;
+      case 15 :
+        std::cout << "Creating seventh Multijet function." << std::endl;
+        *functionsAndCodes.at(index).second = new MultijetFitFunction7(minXForFit,maxXForFit,Ecm);
+        break;
+      case 16 :
+        std::cout << "Creating eigth Multijet function." << std::endl;
+        *functionsAndCodes.at(index).second = new MultijetFitFunction8(minXForFit,maxXForFit,Ecm);
+        break;
+      case 17 :
+        std::cout << "Creating ninth Multijet function." << std::endl;
+        *functionsAndCodes.at(index).second = new MultijetFitFunction9(minXForFit,maxXForFit,Ecm);
+        break;
+      case 18 :
+        std::cout << "Creating tenth Multijet function." << std::endl;
+        *functionsAndCodes.at(index).second = new MultijetFitFunction10(minXForFit,maxXForFit,Ecm);
+        break;
+      case 19 :
+        std::cout << "Creating gamma gamma with no exponent, 2 par." << std::endl;
+        *functionsAndCodes.at(index).second = new TwoParGammaGamma(minXForFit,maxXForFit,Ecm);
+        break;
+      case 20 :
+        std::cout << "Creating gamma gamma with no exponent, 4 par." << std::endl;
+        *functionsAndCodes.at(index).second = new FourParGammaGamma(minXForFit,maxXForFit,Ecm);
+        break;
+      case 21 :
+        std::cout << "Creating gamma gamma with 1/3 exponent, 2 par." << std::endl;
+        *functionsAndCodes.at(index).second = new TwoParGammaGammaWithThird(minXForFit,maxXForFit,Ecm);
+        break;
+      case 22 :
+        std::cout << "Creating gamma gamma with 1/3 exponent, 3 par." << std::endl;
+        *functionsAndCodes.at(index).second = new ThreeParGammaGammaWithThird(minXForFit,maxXForFit,Ecm);
+        break;
+      case 23 :
+        std::cout << "Creating gamma gamma with 1/3 exponent, 4 par." << std::endl;
+        *functionsAndCodes.at(index).second = new FourParGammaGammaWithThird(minXForFit,maxXForFit,Ecm);
+        break;
+      default :
+        std::cout << std::endl;
+        std::cout << "ERROR ===================================" << std::endl;
+        std::cout << "That is not an allowed functional form   " << std::endl;
+        std::cout << "=========================================" << std::endl;
+        std::cout << std::endl;
+    }
+  }
 
- 		}
-		std::cout << functionsAndCodes.at(index).second << std::endl;
+  std::cout<<"paramDefaultsLength : "<< paramDefaults.size()<<std::endl;
 
-	}
+  theMjjFitFunction->SetParameterDefaults(paramDefaults);
+  theMjjFitFunction->RestoreParameterDefaults();
+  for (int par = 0; par<nPars; par++){
+    theMjjFitFunction->GetParameter(par)->SetFixParameter(areParamsFixed.at(par));
+  }
 
-	std::cout<<"paramDefaultsLength"<< paramDefaults.size()<<std::endl; // Lydia
-	theMjjFitFunction->SetParameterDefaults(paramDefaults);
-	theMjjFitFunction->RestoreParameterDefaults();
-	for (int par = 0; par<nPars; par++)
-		theMjjFitFunction->GetParameter(par)->SetFixParameter(areParamsFixed.at(par));
+  if (doAlternate) {
+    theAlternateFunction->SetParameterDefaults(altParDefaults);
+    theAlternateFunction->RestoreParameterDefaults();
+    for (int par = 0; par<nPars; par++){
+      theAlternateFunction->GetParameter(par)->SetFixParameter(altAreParsFixed.at(par));
+    }
+  }
 
-	if (doAlternate) {
-		theAlternateFunction->SetParameterDefaults(altParDefaults);
-		theAlternateFunction->RestoreParameterDefaults();
-		for (int par = 0; par<nPars; par++)
-			theAlternateFunction->GetParameter(par)->SetFixParameter(altAreParsFixed.at(par));
-	}
+  MjjFitter theFitter;
 
-	MjjFitter theFitter;
+  // Perform fit and retrieve background histogram
+  // MjjHistogram backgroundFromFunc = theFitter.FitAndGetBkgWithDataErr(*theMjjFitFunction,theHistogram,100);
+  // Lydia changed -- Kate has added a line after this step with full pseudoexperiments and thus accepts the change.
+  MjjHistogram backgroundFromFunc = theFitter.FitAndGetBkgWithNoErr(*theMjjFitFunction,theHistogram);
 
-	// Perform fit and retrieve background histogram
-	// MjjHistogram backgroundFromFunc = theFitter.FitAndGetBkgWithDataErr(*theMjjFitFunction,theHistogram,100);
-	// Lydia changed -- Kate has added a line after this step with full pseudoexperiments and thus accepts the change.
-	MjjHistogram backgroundFromFunc = theFitter.FitAndGetBkgWithNoErr(*theMjjFitFunction,theHistogram);
+  // Save result of fit to use later
+  vector<double> fittedParameters = theMjjFitFunction->GetCurrentParameterValues();
 
-	// Save result of fit to use later
-	vector<double> fittedParameters = theMjjFitFunction->GetCurrentParameterValues();
+  // What were fitted params?
+  std::cout << "=================================" << std::endl;
+  std::cout << "After fit, parameters are  " << std::endl;
+  std::cout << "=================================" << std::endl;
+  for (unsigned int i=0; i<fittedParameters.size(); i++) {
+    std::cout << "   (" << i << "):" << fittedParameters.at(i) << std::endl;
+  }
+  std::cout << std::endl;
 
-	// What were fitted params?
-	std::cout << "After fit, parameters are  ";
-	for (unsigned int i=0; i<fittedParameters.size(); i++) {
-		std::cout << "   (" << i << "):" << fittedParameters.at(i);
-	}
-	std::cout << std::endl;
+  // Create bump hunter and set up specs.
+  MjjBumpHunter theBumpHunter;
+  theBumpHunter.SetMinBumpWidth(2);
+  theBumpHunter.SetUseSidebands(false);
 
-	// Create bump hunter and set up specs.
-	MjjBumpHunter theBumpHunter;
-	theBumpHunter.SetMinBumpWidth(2);
-	theBumpHunter.SetUseSidebands(false);
+  // Make pseudoexperimenter.
+  MjjPseudoExperimenter thePseudinator;
 
-	// Make pseudoexperimenter.
-	MjjPseudoExperimenter thePseudinator;
+  // Make statistical tests.
+  MjjChi2Test theChi2Test;
+  MjjLogLikelihoodTest theLikelihoodTest;
 
-	// Make statistical tests.
-	MjjChi2Test theChi2Test;
-	MjjLogLikelihoodTest theLikelihoodTest;
+  // Obtain estimate of BumpHunter p-value to see whether any window needs to be removed.
+  MjjStatisticsBundle initialStats = thePseudinator.GetPseudoExperimentStatsOnHistogram
+    (backgroundFromFunc,theHistogram,&theBumpHunter,firstBinBH,lastBinBH,nPseudoExp); // LYDIA FIXME FIXME FIXME 100);//1E4);
 
-	// Obtain estimate of BumpHunter p-value to see whether any window needs to be removed.
-	MjjStatisticsBundle initialStats = thePseudinator.GetPseudoExperimentStatsOnHistogram
-		(backgroundFromFunc,theHistogram,&theBumpHunter,firstBinBH,lastBinBH,nPseudoExp); // LYDIA FIXME FIXME FIXME 100);//1E4);
+  std::pair<double,double> initialBHpval = GetFrequentistPValAndError
+    (initialStats.statisticsFromPseudoexperiments,initialStats.originalStatistic);
+  double initialpval = initialBHpval.first;
+  std::cout << "BumpHunter p-value from first run : " << initialpval << std::endl;
 
-	std::pair<double,double> initialBHpval = GetFrequentistPValAndError
-		(initialStats.statisticsFromPseudoexperiments,initialStats.originalStatistic);
-	double initialpval = initialBHpval.first;
-	std::cout << "initialpval is " << initialpval << std::endl;
+  //------------------------------------------
+  //save initial BH p-value
+  initialBHPValue    = initialBHpval.first;
+  initialBHPValueErr = initialBHpval.second;
+  initialBHRangeLow  = initialStats.originalFurtherInformation.at(0);
+  initialBHRangeHigh = initialStats.originalFurtherInformation.at(1);
+  initialBHValue     = initialStats.originalStatistic;
+  //------------------------------------------
 
-	//------------------------------------------
-	//save initial BH p-value
-	initialBHPValue = initialBHpval.first;
-	initialBHPValueErr = initialBHpval.second;
-	initialBHRangeLow = initialStats.originalFurtherInformation.at(0);
-	initialBHRangeHigh = initialStats.originalFurtherInformation.at(1);
-	initialBHValue = initialStats.originalStatistic;
-	//------------------------------------------
+  // IF THE P-VALUE IS TOO LOW:
+  // Exclude window corresponding to bump and re-fit to get unbiased bkg estimate.
+  bool excludeWindow = (initialpval < thresholdPVal_FindSignal);
+  if(excludeWindow == true)
+    std::cout << "Using an Exclusion Window" << std::endl;
+  else
+    std::cout << "Not excluding any window" << std::endl;
 
-	// IF THE P-VALUE IS TOO LOW:
-	// Exclude window corresponding to bump and re-fit to get unbiased bkg estimate.
-	bool excludeWindow = (initialpval < thresholdPVal_FindSignal);
-	(excludeWindow == true) ? printf("Using an Exclusion Window\n") : printf("Not excluding any window\n");
+  double lowEdgeOfWindow  = initialStats.originalFurtherInformation.at(0);
+  double highEdgeOfWindow = initialStats.originalFurtherInformation.at(1);
+  int firstBinInWindow = basicInputHisto->FindBin(lowEdgeOfWindow+1);
+  int lastBinInWindow  = basicInputHisto->FindBin(highEdgeOfWindow-1);
 
-	double lowEdgeOfWindow = initialStats.originalFurtherInformation.at(0);
-	double highEdgeOfWindow = initialStats.originalFurtherInformation.at(1);
-	int firstBinInWindow = basicInputHisto->FindBin(lowEdgeOfWindow+1);
-	int lastBinInWindow = basicInputHisto->FindBin(highEdgeOfWindow-1);
-	while (initialpval < thresholdPVal_RemoveSignal && permitWindow) {
+  while (initialpval < thresholdPVal_RemoveSignal && permitWindow) {
 
-		bumpFound = true;
+    bumpFound = true;
 
-		// We don't permit windows at the end of the fit.
-		// If this is happening it means real excess is in middle somewhere
-		// and is pulling fit up so much that ends get really biased.
-		// But removing bins at the end of the fit is sort of meaningless.
-		//if (firstBinInWindow == firstBin || lastBinInWindow == lastBin) 
+    // We don't permit windows at the end of the fit.
+    // If this is happening it means real excess is in middle somewhere
+    // and is pulling fit up so much that ends get really biased.
+    // But removing bins at the end of the fit is sort of meaningless.
+    //if (firstBinInWindow == firstBin || lastBinInWindow == lastBin)
 
-		// Lydia Updated so only doesn't permit windows at the beginning of the fit, so now bumps are allowed at the end of the spectrum
-		if (firstBinInWindow == firstBin) {
-			TGraphErrors thisBHTomography = theBumpHunter.GetBumpHunterTomography();
-			thisBHTomography.Sort(&TGraph::CompareY);
-			double x; double y;
-			thisBHTomography.GetPoint(0,x,y);
-			double mosterr = thisBHTomography.GetErrorX(0);
-			std::cout << "Wanted window between " << x - mosterr << " and " << x+mosterr << std::endl;
-			thisBHTomography.GetPoint(1,x,y);
-			double seconderr = thisBHTomography.GetErrorX(1);
-			firstBinInWindow = basicInputHisto->FindBin(x - seconderr + 1.0);
-			lastBinInWindow = basicInputHisto->FindBin(x + seconderr - 1.0);
-		}
+    // Lydia Updated so only doesn't permit windows at the beginning of the fit, so now bumps are allowed at the end of the spectrum
+    if (firstBinInWindow == firstBin) {
+      TGraphErrors thisBHTomography = theBumpHunter.GetBumpHunterTomography();
+      thisBHTomography.Sort(&TGraph::CompareY);
+      double x; double y;
+      thisBHTomography.GetPoint(0,x,y);
+      double mosterr = thisBHTomography.GetErrorX(0);
+      std::cout << "Wanted window between " << x - mosterr << " and " << x+mosterr << std::endl;
+      thisBHTomography.GetPoint(1,x,y);
+      double seconderr = thisBHTomography.GetErrorX(1);
+      firstBinInWindow = basicInputHisto->FindBin(x - seconderr + 1.0);
+      lastBinInWindow = basicInputHisto->FindBin(x + seconderr - 1.0);
+    }
 
-		std::cout << "First bin and last bin to exclude are " << firstBinInWindow << " " << lastBinInWindow << std::endl;
-		printf( "Window width / max allowed width (half-spectrum) is %i / %i \n", (lastBinInWindow - firstBinInWindow+1), (lastBin - firstBin+1)/2 );
+    std::cout << "First bin and last bin to exclude are " << firstBinInWindow << " " << lastBinInWindow << std::endl;
+    std::cout << "Window width / max allowed width (half-spectrum) is " << (lastBinInWindow - firstBinInWindow+1) << " / " << (lastBin - firstBin+1)/2 << std::endl;
 
-		// Stop making the window bigger if it is larger than half the spectrum
-		// or it is too close to either endpoint -- this background estimation is as good
-		// as it's going to get.
-		if (((lastBinInWindow - firstBinInWindow+1) > (lastBin - firstBin+1)/2.0) ||
-				(firstBinInWindow - firstBin < 2) || (lastBin - lastBinInWindow < 2)) break;
+    // Stop making the window bigger if it is larger than half the spectrum
+    // or it is too close to either endpoint -- this background estimation is as good
+    // as it's going to get.
+    if (((lastBinInWindow - firstBinInWindow+1) > (lastBin - firstBin+1)/2.0) ||
+        (firstBinInWindow - firstBin < 2) || (lastBin - lastBinInWindow < 2)) break;
 
-		lowEdgeOfWindow = basicInputHisto->GetBinLowEdge(firstBinInWindow);
-		highEdgeOfWindow = basicInputHisto->GetBinLowEdge(lastBinInWindow) + basicInputHisto->GetBinWidth(lastBinInWindow);
+    lowEdgeOfWindow = basicInputHisto->GetBinLowEdge(firstBinInWindow);
+    highEdgeOfWindow = basicInputHisto->GetBinLowEdge(lastBinInWindow) + basicInputHisto->GetBinWidth(lastBinInWindow);
 
-		std::cout << "Trying to refit." << std::endl;
-		theMjjFitFunction->SetExclusionWindowFromRange(lowEdgeOfWindow,highEdgeOfWindow);
-		theMjjFitFunction->SetDoWindowExclusion(true);
+    std::cout << "Trying to refit." << std::endl;
+    theMjjFitFunction->SetExclusionWindowFromRange(lowEdgeOfWindow,highEdgeOfWindow);
+    theMjjFitFunction->SetDoWindowExclusion(true);
 
-		// backgroundFromFunc = theFitter.FitAndGetBkgWithDataErr(*theMjjFitFunction,theHistogram,100);
-		// Lydia changed -- Kate has added a line after this step with full pseudoexperiments and thus accepts the change.
-		backgroundFromFunc = theFitter.FitAndGetBkgWithNoErr(*theMjjFitFunction,theHistogram);
+    // backgroundFromFunc = theFitter.FitAndGetBkgWithDataErr(*theMjjFitFunction,theHistogram,100);
+    // Lydia changed -- Kate has added a line after this step with full pseudoexperiments and thus accepts the change.
+    backgroundFromFunc = theFitter.FitAndGetBkgWithNoErr(*theMjjFitFunction,theHistogram);
 
-		// Obtain estimate of BumpHunter p-value in region outside window to see if we need
-		// to keep going.
-		theBumpHunter.SetWindowToExclude(firstBinInWindow,lastBinInWindow);
+    // Obtain estimate of BumpHunter p-value in region outside window to see if we need
+    // to keep going.
+    theBumpHunter.SetWindowToExclude(firstBinInWindow,lastBinInWindow);
 
-		MjjStatisticsBundle theseStats = thePseudinator.GetPseudoExperimentStatsOnHistogram
-			(backgroundFromFunc,theHistogram,&theBumpHunter,firstBinBH,lastBinBH,nPseudoExp);//100 pseudoexperiments originally
+    MjjStatisticsBundle theseStats = thePseudinator.GetPseudoExperimentStatsOnHistogram
+      (backgroundFromFunc,theHistogram,&theBumpHunter,firstBinBH,lastBinBH,nPseudoExp);//100 pseudoexperiments originally
 
-		initialBHpval = GetFrequentistPValAndError
-			(theseStats.statisticsFromPseudoexperiments,theseStats.originalStatistic);
-		initialpval = initialBHpval.first;
-		std::cout << "pval of remaining spectrum is " << initialpval << std::endl;
+    initialBHpval = GetFrequentistPValAndError
+      (theseStats.statisticsFromPseudoexperiments,theseStats.originalStatistic);
+    initialpval = initialBHpval.first;
+    std::cout << "pval of remaining spectrum is " << initialpval << std::endl;
 
-		double biggestRemainingBumpLowEdge = theseStats.originalFurtherInformation.at(0);
-		double biggestRemainingBumpHighEdge = theseStats.originalFurtherInformation.at(1);
+    double biggestRemainingBumpLowEdge = theseStats.originalFurtherInformation.at(0);
+    double biggestRemainingBumpHighEdge = theseStats.originalFurtherInformation.at(1);
 
-		// Make new first bin, last bin in window /if/ pval is still low
-		// otherwise save final window size with these variables
-		if (initialpval < thresholdPVal_RemoveSignal) {
-			if (basicInputHisto->FindBin(biggestRemainingBumpLowEdge+1)
-					== lastBinInWindow+1) {
-				lastBinInWindow = lastBinInWindow+1;
-			} else if (basicInputHisto->FindBin(biggestRemainingBumpHighEdge-1)
-					== firstBinInWindow-1) {
-				firstBinInWindow = firstBinInWindow-1;
-			} else {
-				lastBinInWindow = lastBinInWindow+1;
-				firstBinInWindow = firstBinInWindow-1;
-			}
-		} // End of control of window region
-
-
-	} // End of background recalculation
-
-	// Now outside the loop, add 1 extra bin to low edge of exclusion window and re-fit 
-	// Only add one to lower end of window if previously excluded a window AND if lower end of window isn't too close to starting point
-	//  -- this background estimation is as good as it's going to get.
-	if ((excludeWindow == true) and (firstBinInWindow - firstBin >= 2)){ // - 1 off if >= 2  equivalent to break if < 2 seen in code above
-		std::cout<<" Adding 1 extra bin to exclusion window at low mass end"<<std::endl;
-
-		firstBinInWindow --; // -1 off low mass end of window
-		lowEdgeOfWindow = basicInputHisto->GetBinLowEdge(firstBinInWindow);
-		highEdgeOfWindow = basicInputHisto->GetBinLowEdge(lastBinInWindow) + basicInputHisto->GetBinWidth(lastBinInWindow);
-
-		std::cout << "First bin and last bin to exclude are " << firstBinInWindow << " " << lastBinInWindow << std::endl;
-		printf( "Window width / max allowed width (half-spectrum) is %i / %i \n", (lastBinInWindow - firstBinInWindow+1), (lastBin - firstBin+1)/2 );
-
-		std::cout << "Trying to refit." << std::endl;
-		theMjjFitFunction->SetExclusionWindowFromRange(lowEdgeOfWindow,highEdgeOfWindow);
-		theMjjFitFunction->SetDoWindowExclusion(true);
-
-		// backgroundFromFunc = theFitter.FitAndGetBkgWithDataErr(*theMjjFitFunction,theHistogram,100);
-		// Lydia changed -- Kate has added a line after this step with full pseudoexperiments and thus accepts the change.
-		backgroundFromFunc = theFitter.FitAndGetBkgWithNoErr(*theMjjFitFunction,theHistogram);
-
-		// Obtain estimate of BumpHunter p-value in region outside window to see if we need
-		// to keep going.
-		theBumpHunter.SetWindowToExclude(firstBinInWindow,lastBinInWindow);
-
-		MjjStatisticsBundle theseStats = thePseudinator.GetPseudoExperimentStatsOnHistogram
-			(backgroundFromFunc,theHistogram,&theBumpHunter,firstBinBH,lastBinBH,nPseudoExp);//100 pseudoexperiments originally
-
-		initialBHpval = GetFrequentistPValAndError
-			(theseStats.statisticsFromPseudoexperiments,theseStats.originalStatistic);
-		initialpval = initialBHpval.first;
-		std::cout << "pval of remaining spectrum is " << initialpval << std::endl;
-
-		//------------------------------------------
-		//save refined BH p-value once the signal window is removed from the fit range
-		refinedBHPValue = initialBHpval.first;
-		refinedBHPValueErr = initialBHpval.second;
-		refinedBHRangeLow = theseStats.originalFurtherInformation.at(0);
-		refinedBHRangeHigh = theseStats.originalFurtherInformation.at(1);
-		refinedBHValue = theseStats.originalStatistic;
-		//------------------------------------------
-	}
+    // Make new first bin, last bin in window /if/ pval is still low
+    // otherwise save final window size with these variables
+    if (initialpval < thresholdPVal_RemoveSignal) {
+      if (basicInputHisto->FindBin(biggestRemainingBumpLowEdge+1)
+          == lastBinInWindow+1) {
+        lastBinInWindow = lastBinInWindow+1;
+      } else if (basicInputHisto->FindBin(biggestRemainingBumpHighEdge-1)
+          == firstBinInWindow-1) {
+        firstBinInWindow = firstBinInWindow-1;
+      } else {
+        lastBinInWindow = lastBinInWindow+1;
+        firstBinInWindow = firstBinInWindow-1;
+      }
+    } // End of control of window region
 
 
-	// Fit is now ok: repeat with all pseudoexperiments to get background error estimate.
-	if( f_noDataErr == false )
-		backgroundFromFunc = theFitter.FitAndGetBkgWithDataErr(*theMjjFitFunction,theHistogram,100);
+  } // End of background recalculation
 
-	// Get final fit information.
-	fittedParameters.clear();
-	fittedParameters = theMjjFitFunction->GetCurrentParameterValues();
+  // Now outside the loop, add 1 extra bin to low edge of exclusion window and re-fit
+  // Only add one to lower end of window if previously excluded a window AND if lower end of window isn't too close to starting point
+  //  -- this background estimation is as good as it's going to get.
+  if ((excludeWindow == true) and (firstBinInWindow - firstBin >= 2)){ // - 1 off if >= 2  equivalent to break if < 2 seen in code above
+    std::cout<<" Adding 1 extra bin to exclusion window at low mass end"<<std::endl;
 
-	// What were fitted params?
-	std::cout << "After fit, parameters are ";
-	for (unsigned int i=0; i<fittedParameters.size(); i++) {
-		std::cout << "   (" << i << "):" << fittedParameters.at(i);
-	}
-	std::cout << std::endl;
+    firstBinInWindow --; // -1 off low mass end of window
+    lowEdgeOfWindow = basicInputHisto->GetBinLowEdge(firstBinInWindow);
+    highEdgeOfWindow = basicInputHisto->GetBinLowEdge(lastBinInWindow) + basicInputHisto->GetBinWidth(lastBinInWindow);
 
-	// Un-set any exclusions and bump hunt the spectrum
-	theBumpHunter.SetUseWindowExclusion(false);
-	double bumpHunterStat = theBumpHunter.DoTest(theHistogram,backgroundFromFunc,firstBinBH,lastBinBH);
-	vector<double> bumpEdges = theBumpHunter.GetFurtherInformation();
-	double lowEdgeOfBump = bumpEdges.at(0);
-	double highEdgeOfBump = bumpEdges.at(1);
-	std::cout << "BumpHunter results: stat = " << bumpHunterStat << std::endl;
-	std::cout << "Low edge, high edge of bump: " << lowEdgeOfBump << " " << highEdgeOfBump << std::endl;
+    std::cout << "First bin and last bin to exclude are " << firstBinInWindow << " " << lastBinInWindow << std::endl;
+    std::cout << "Window width / max allowed width (half-spectrum) is " << (lastBinInWindow - firstBinInWindow+1) << " / " << (lastBin - firstBin+1)/2 << std::endl;
+
+    std::cout << "Trying to refit." << std::endl;
+    theMjjFitFunction->SetExclusionWindowFromRange(lowEdgeOfWindow,highEdgeOfWindow);
+    theMjjFitFunction->SetDoWindowExclusion(true);
+
+    // backgroundFromFunc = theFitter.FitAndGetBkgWithDataErr(*theMjjFitFunction,theHistogram,100);
+    // Lydia changed -- Kate has added a line after this step with full pseudoexperiments and thus accepts the change.
+    backgroundFromFunc = theFitter.FitAndGetBkgWithNoErr(*theMjjFitFunction,theHistogram);
+
+    // Obtain estimate of BumpHunter p-value in region outside window to see if we need
+    // to keep going.
+    theBumpHunter.SetWindowToExclude(firstBinInWindow,lastBinInWindow);
+
+    MjjStatisticsBundle theseStats = thePseudinator.GetPseudoExperimentStatsOnHistogram
+      (backgroundFromFunc,theHistogram,&theBumpHunter,firstBinBH,lastBinBH,nPseudoExp);//100 pseudoexperiments originally
+
+    initialBHpval = GetFrequentistPValAndError
+      (theseStats.statisticsFromPseudoexperiments,theseStats.originalStatistic);
+    initialpval = initialBHpval.first;
+    std::cout << "pval of remaining spectrum is " << initialpval << std::endl;
+
+    //------------------------------------------
+    //save refined BH p-value once the signal window is removed from the fit range
+    refinedBHPValue = initialBHpval.first;
+    refinedBHPValueErr = initialBHpval.second;
+    refinedBHRangeLow = theseStats.originalFurtherInformation.at(0);
+    refinedBHRangeHigh = theseStats.originalFurtherInformation.at(1);
+    refinedBHValue = theseStats.originalStatistic;
+    //------------------------------------------
+  }
+
+
+  // Fit is now ok: repeat with all pseudoexperiments to get background error estimate.
+  if( f_noDataErr == false )
+    backgroundFromFunc = theFitter.FitAndGetBkgWithDataErr(*theMjjFitFunction,theHistogram,100);
+
+  // Get final fit information.
+  fittedParameters.clear();
+  fittedParameters = theMjjFitFunction->GetCurrentParameterValues();
+
+  // What were fitted params?
+  std::cout << "After fit, parameters are ";
+  for (unsigned int i=0; i<fittedParameters.size(); i++) {
+    std::cout << "   (" << i << "):" << fittedParameters.at(i);
+  }
+  std::cout << std::endl;
+
+  // Un-set any exclusions and bump hunt the spectrum
+  theBumpHunter.SetUseWindowExclusion(false);
+  double bumpHunterStat = theBumpHunter.DoTest(theHistogram,backgroundFromFunc,firstBinBH,lastBinBH);
+  vector<double> bumpEdges = theBumpHunter.GetFurtherInformation();
+  double lowEdgeOfBump = bumpEdges.at(0);
+  double highEdgeOfBump = bumpEdges.at(1);
+  std::cout << "BumpHunter results: stat = " << bumpHunterStat << std::endl;
+  std::cout << "Low edge, high edge of bump: " << lowEdgeOfBump << " " << highEdgeOfBump << std::endl;
 
 	// Added for checking deficits
 	MjjBumpHunter theDeficitHunter;
@@ -772,18 +799,18 @@ int main (int argc,char **argv)
 		std::cout << "Found bump stat " << newbumpHunterStat << std::endl;
 
 	}
-  
+
 	// Make histos for residual, diff, significance of diff of fit to data
 	MjjSignificanceTests theTestMaker;
 	TH1D residualHist = theTestMaker.GetResidual(theHistogram, backgroundFromFunc, firstBin, lastBin);
 	TH1D relativeDiffHist = theTestMaker.GetRelativeDifference(theHistogram,backgroundFromFunc, firstBin, lastBin);
 	TH1D sigOfDiffHist = theTestMaker.GetSignificanceOfDifference(theHistogram,backgroundFromFunc, firstBin, lastBin);
-  
+
     TH1D residualHistWithSyst;
     if (doPValWithSysts) {
       residualHistWithSyst = theTestMaker.GetResidual(theHistogram,backgroundFromFunc,firstBin,lastBin,&ErrHist);
     }
-  
+
 	// Make stat histos
 	vector<MjjStatisticalTest*> theStatsTests;
 	theStatsTests.push_back(&theLikelihoodTest);
@@ -1028,7 +1055,7 @@ int main (int argc,char **argv)
 		thesePVals[2] = bumpHunterPValAndErr.second;
 		thesePVals.Write("bumpHunterPValErrWithStats");
 	}
- 
+
 	// Write additional histograms saved by optional tests
 	for (unsigned int i=0; i<extraHistograms.size(); i++)
 		extraHistograms.at(i).Write();
@@ -1042,10 +1069,10 @@ int main (int argc,char **argv)
 			binerrs.at(bin).Write();
 		}
 	}
-  
+
     // Write results of residual distribution analysis
     for (unsigned int i=0; i<residuals.size(); i++) {
-    
+
       TString name = residuals.at(i).first;
       TH1D distHist = distributionHists.at(i);
       distHist.SetName(name+"_distributionHist");
@@ -1056,7 +1083,7 @@ int main (int argc,char **argv)
       meansAndWidths[2] = resultHistMeans.at(i);
       meansAndWidths[3] = resultHistRMS.at(i);
       meansAndWidths.Write(name+"_gausMeanWidthHistMeanWidth");
-      
+
       std::cout << "doing fittedhists" << std::endl;
       fittedHists.at(i).Write(name+"_fittedHist");
       std::cout << "done" << std::endl;

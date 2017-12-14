@@ -23,7 +23,16 @@ logsdir = headdir # Log Files Sent Here
 batchdir = logsdir+"/StatisticalAnalysis" #headdir # Folder to be copyied to batch, by default headdir unless otherwise specified 
 UserfileHistDict = {}
 
-# *****************
+print "\n================================================"
+print "System Paths"
+print "(will be used to set up output directories locally)"
+print "================================================"
+print "statspath  : ",statspath
+print "headdir    : ",headdir  
+print "logsdir    : ",logsdir  
+print "batchdir   : ",batchdir 
+
+
 #---------------------------
 # ***** User specifies *****
 #---------------------------
@@ -31,37 +40,57 @@ UserfileHistDict = {}
 #---------------------------
 # Files and directories
 
-doSearch = False# Set to True to run SearchPhase.cxx
+# Set to True to run SearchPhase.cxx
+doSearch = True
 
-doPlotting = True # Set to True to run plotSearchPhase_gjj.py 
+# Set to True to run plotSearchPhase_gjj.py 
+doPlotting = False 
 
-#folderextension = "dijetgamma_data_hist_20160727_15p45fb_4Par_169_1493"
-#
-#inputFileDir = "./inputs/hist_20160727/OUT_dijetgamma_data/"
-#
-#UserfileHistDict[inputFileDir+"datalike.root"] = ["Zprime_mjj_var_DataLike_15p45fb"] # Dictionary given as example, key is inputFileDir+ file name 
-#
-#HistDir = "dijetgamma_g150_2j25_nomjj" 
+# Where the results will end up - for archives and checking
 folderextension = "RedoMCwithCutNoScaledijetgamma_g85_2j65"
 
-inputFileDir = "./inputs/"
+# Location of input root files that contain the histograms for fitting
+inputFileDir = "../../../inputs/hist_20160801/OUT_dijetgamma_mc/datalike-noNeff/"
 
-UserfileHistDict[inputFileDir+"MC.root"] = ["Zprime_mjj_var"] # Dictionary given as example, key is inputFileDir+ file name 
+# Within the "inputFileDir" this is the name of the root file along with the spectra that you want to fit
+UserfileHistDict[inputFileDir+"hist2.root"] = ["Zprime_mjj_var_Scaled_20p00fb"] 
 
-HistDir = "dijetgamma_g85_2j65" 
+# The TDirectory within the TFile where the histogram in the previous dictionary exists
+HistDir = "dijetgamma_g130_2j25"
 
 # Turn to true if doing Spurious Signal test!
-useScaled = False # Set to true if using scaled histograms instead of Datalike histograms
+# Set to true if using scaled histograms instead of Datalike histograms
+useScaled = True
 
-#---------------------------
 # Analysis quantities 
 Ecm = 13000.0 # Centre of mass energy in GeV
 
-##---------------------------
-# Run controls  
+# initial default config file - will be overwritten by user inputs if specified
 config = "./configurations/Step1_SearchPhaseNoSyst_gjj_4Par.config" # Path and name of config file
-useBatch = False # Set to True to run SearchPhase.cxx on the batch, or set to False to run locally. runs code in batchdir
-atOx = False # Set to True to use Oxford batch rather than lxbatch for running!
+
+# Set to True to run SearchPhase.cxx on the batch, or set to False to run locally 
+# runs code in batchdir - (SAM) which type of batch system? lxbatch?
+useBatch = False 
+
+# Set to True to specifically use the Oxford batch system
+atOx = False 
+
+print "\n================================================"
+print "User inputs"
+print "(You should have changed these)"
+print "================================================"
+print "doSearch          : ",doSearch
+print "doPlotting        : ",doPlotting
+print "folderextension   : ",folderextension
+print "inputFileDir      : ",inputFileDir
+print "UserfileHistDict  : ",UserfileHistDict
+print "HistDir           : ",HistDir
+print "useScaled         : ",useScaled
+print "Ecm               : ",Ecm
+print "config            : ",config
+print "useBatch          : ",useBatch
+print "atOx              : ",atOx
+
 
 #----------------------------------
 # ***** End of User specifies *****
@@ -76,66 +105,101 @@ if not inputFileDir.endswith("/"):
   raise SystemExit("Error: inputFileDir specified by user in Run_SearchPhase.py must end with /")
 
 # Make directories to store outputs if they don't exist already!
-directories = ["%s/LogFiles/%s/Step1_SearchPhase/CodeOutput"%(logsdir,folderextension),"%s/LogFiles/%s/Step1_SearchPhase/ConfigArchive"%(logsdir,folderextension),"./results/Step1_SearchPhase/%s"%folderextension,"%s/LogFiles/%s/Step1_SearchPhase/ScriptArchive"%(logsdir,folderextension)]
+print "\n================================================"
+print "Creating run directories"
+print "================================================"
+directories = []
+directories.append("%s/LogFiles/%s/Step1_SearchPhase/CodeOutput"%(logsdir,folderextension))
+directories.append("%s/LogFiles/%s/Step1_SearchPhase/ConfigArchive"%(logsdir,folderextension))
+directories.append("./results/Step1_SearchPhase/%s"%folderextension)
+directories.append("%s/LogFiles/%s/Step1_SearchPhase/ScriptArchive"%(logsdir,folderextension))
 
 for directory in directories:
   if not os.path.exists(directory):
+    print "Directory (creating): ",directory
     os.makedirs(directory)
+  else:
+    print "Directory (exists):   ",directory
 
+# only for batch running
 Step1_ScriptArchive = "%s/LogFiles/%s/Step1_SearchPhase/ScriptArchive"%(logsdir,folderextension)
 
 fileHistDict = {}
-
 fileHistDict = UserfileHistDict    
 
+print "\n================================================"
 print "fileHistDict"
+print "================================================"
 print fileHistDict    
 
 #-------------------------------------
-# Performing Step 1: Search Phase for files histogram combinations in fileHistDict using SearchPhase.cxx
+# Performing Step 1: Search Phase for files histogram combinations in fileHistDict using 
+# Bayesian/util/SearchPhase.cxx
+# changes to SearchPhase require recompilation and installation
 #-------------------------------------
 
 for File, HistList in fileHistDict.iteritems():
+  print "\n================================================"
+  print "Running new hist"
+  print "================================================"
+  print "FilePath : ",File
+  print "HistList : ",HistList
   for Hist in HistList:
+
     if doSearch:
-      # open modified config file (fout) for writing
-      fout = open("%s/LogFiles/%s/Step1_SearchPhase/ConfigArchive/Step1_%s.config"%(logsdir,folderextension,Hist), 'w')
+    
+      print "\n================================================"
+      print "Creating new config file"
+      print "(This is what will be fed to fitting/BumpHunter)"
+      print "================================================"
+      print "ConfigIn  : ",config
+      name_fout = "%s/LogFiles/%s/Step1_SearchPhase/ConfigArchive/Step1_%s.config"%(logsdir,folderextension,Hist)
+      print "ConfigOut : ",name_fout
+      fout = open(name_fout, 'w')
 
       # read in config file as fin and replace relevant fields with user input specified at top of this file
       with open('%s'%config, 'r') as fin:
         for line in fin:
-          if (line.startswith("inputFileName") or line.startswith("dataHist") or line.startswith("outputFileName") or line.startswith("Ecm")): 
-            if line.startswith("inputFileName"):
-              line = "inputFileName %s\n"%File  
-              fout.write(line)
-            if line.startswith("dataHist"): 
-              line = "dataHist %s/%s\n"%(HistDir,Hist)
-              fout.write(line)
-  
-            if line.startswith("outputFileName"):
-              line = "outputFileName %s/results/Step1_SearchPhase/%s/Step1_SearchPhase_%s.root\n"%(statspath,folderextension,Hist)
-              fout.write(line)
-
-            if line.startswith("Ecm"):
-              line = "Ecm %d"%Ecm
-              fout.write(line)
+          if line.startswith("inputFileName"):
+            line = "inputFileName %s\n"%File  
+            fout.write(line)
+            print "Replaced (inputFileName) : ",line.strip()
+          elif line.startswith("dataHist"): 
+            line = "dataHist %s/%s\n"%(HistDir,Hist)
+            fout.write(line)
+            print "Replaced (dataHist) : ",line.strip()
+          elif line.startswith("outputFileName"):
+            line = "outputFileName %s/results/Step1_SearchPhase/%s/Step1_SearchPhase_%s.root\n"%(statspath,folderextension,Hist)
+            fout.write(line)
+            print "Replaced (outputFileName) : ",line.strip()
+          elif line.startswith("Ecm"):
+            line = "Ecm %d"%Ecm
+            fout.write(line)
+            print "Replaced (Ecm) : ",line.strip()
           else:
             fout.write(line)  
             
       fin.close()
       fout.close()
+      
      
       # Perform search phase locally (use tee to direct output to screen and to log file)
-      if (useScaled):
-        #command = "SearchPhase --noDE --useScaled --config %s/LogFiles/%s/Step1_SearchPhase/ConfigArchive/Step1_%s.config |& tee %s/LogFiles/%s/Step1_SearchPhase/CodeOutput/Step1_%s.txt"%(logsdir,folderextension,Hist,logsdir,folderextension,Hist) # noDE option means no DataErr, uses only MCErr
-        command="SearchPhase --useScaled --config %s/LogFiles/%s/Step1_SearchPhase/ConfigArchive/Step1_%s.config |& tee %s/LogFiles/%s/Step1_SearchPhase/CodeOutput/Step1_%s.txt"%(logsdir,folderextension,Hist,logsdir,folderextension,Hist) # noDE option means no DataErr, uses only MCErr
-      else:
-        #command = "SearchPhase --noDE --config %s/LogFiles/%s/Step1_SearchPhase/ConfigArchive/Step1_%s.config |& tee %s/LogFiles/%s/Step1_SearchPhase/CodeOutput/Step1_%s.txt"%(logsdir,folderextension,Hist,logsdir,folderextension,Hist) # noDE option means no DataErr, uses only MCErr
-        command ="SearchPhase --config %s/LogFiles/%s/Step1_SearchPhase/ConfigArchive/Step1_%s.config |& tee %s/LogFiles/%s/Step1_SearchPhase/CodeOutput/Step1_%s.txt"%(logsdir,folderextension,Hist,logsdir,folderextension,Hist) # noDE option means no DataErr, uses only MCErr
-      print command
+      print "\n================================================"
+      print "Preparing to run SearchPhase command"
+      print "================================================"
+
+      command="SearchPhase --useScaled --config %s/LogFiles/%s/Step1_SearchPhase/ConfigArchive/Step1_%s.config |& tee %s/LogFiles/%s/Step1_SearchPhase/CodeOutput/Step1_%s.txt"%(logsdir,folderextension,Hist,logsdir,folderextension,Hist) # noDE option means no DataErr, uses only MCErr
+      if not useScaled:
+        command = command.replace("--useScaled","")
+
+      print "Command : ",command
       # Perform setLimitsOneMassPoint locally
+      print "Using Batch? : ",useBatch
+      
       if not useBatch:  
         subprocess.call(command, shell=True)
+  
+      break
   
       # Use batch i.e. perform setLimitsOneMassPoint on the batch   
       if useBatch:

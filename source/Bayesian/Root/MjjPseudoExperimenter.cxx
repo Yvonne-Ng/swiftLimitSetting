@@ -3,13 +3,13 @@
 #include "Bayesian/MjjPseudoExperimenter.h"
 
 // ---------------------------------------------------------
-MjjPseudoExperimenter::MjjPseudoExperimenter() 
+MjjPseudoExperimenter::MjjPseudoExperimenter()
 {
   fFitSuccessRate = 0;
 }
 
 // ---------------------------------------------------------
-MjjPseudoExperimenter::~MjjPseudoExperimenter() 
+MjjPseudoExperimenter::~MjjPseudoExperimenter()
 {
 
 }
@@ -48,7 +48,7 @@ vector<MjjStatisticsBundle> MjjPseudoExperimenter::GetPseudoExperimentStatsOnHis
   vector<vector<vector<double> > > StatisticFurtherInformation;
   StatisticFurtherInformation.clear();
 
-  for (unsigned int i=0; i<theStatTests.size(); i++) {  
+  for (unsigned int i=0; i<theStatTests.size(); i++) {
 
     // Get basic statistic between templateHist, observedHist
     double thisOriginalStat = theStatTests.at(i)->DoTest(observedHist, templateHist, firstBinToUse, lastBinToUse);
@@ -79,7 +79,9 @@ vector<MjjStatisticsBundle> MjjPseudoExperimenter::GetPseudoExperimentStatsOnHis
 
   for (int pseudoexperiment = 1; pseudoexperiment < nPseudoExperiments+1; pseudoexperiment++) {
 
-    std::cout << "on PE " << pseudoexperiment << std::endl;
+    if(pseudoexperiment==1 || pseudoexperiment%50==0){
+      std::cout << "on PE " << pseudoexperiment << std::endl;
+    }
 
     // Independently fluctuate each bin and store new value in h_pseudo
     templateHist.PoissonFluctuateBinByBin(&h_pseudo);
@@ -108,7 +110,7 @@ vector<MjjStatisticsBundle> MjjPseudoExperimenter::GetPseudoExperimentStatsOnHis
       continue;
     }
 
-    // Do this in a separate loop because first needed to check that 
+    // Do this in a separate loop because first needed to check that
     // no returned statistic is invalid
     for (unsigned int i=0; i<theStatTests.size(); i++) {
       StatisticTestResults.at(i).push_back(localVectorOfStatistics.at(i));
@@ -157,7 +159,7 @@ MjjStatisticsBundle MjjPseudoExperimenter::GetPseudoExperimentStatsOnFunction(Mj
   MjjStatisticsBundle theStatsBundle = theVectorOfStatsBundles.at(0);
 
   return theStatsBundle;
-  
+
 }
 
 // ---------------------------------------------------------
@@ -282,11 +284,11 @@ vector<MjjStatisticsBundle> MjjPseudoExperimenter::GetPseudoExperimentStatsOnFun
       parameterVectors.at(i).push_back(fittedParameters.at(i));
     }
 
-    // Do this in a separate loop because first needed to check that 
+    // Do this in a separate loop because first needed to check that
     // no returned statistic is invalid
     for (unsigned int i=0; i<theStatTests.size(); i++) {
-      StatisticTestResults.at(i).push_back(localVectorOfStatistics.at(i)); 
-      StatisticFurtherInformation.at(i).push_back(localVectorOfFurtherInformation.at(i)); 
+      StatisticTestResults.at(i).push_back(localVectorOfStatistics.at(i));
+      StatisticFurtherInformation.at(i).push_back(localVectorOfFurtherInformation.at(i));
     }
 
   }
@@ -318,9 +320,9 @@ vector<MjjStatisticsBundle> MjjPseudoExperimenter::GetPseudoExperimentStatsOnFun
     result.furtherInformationFromPseudoexperiments = StatisticFurtherInformation.at(i);
     resultVector.push_back(result);
   }
-  
+
   fFitSuccessRate = (double) successes/(double) total;
-  
+
 
   return resultVector;
 

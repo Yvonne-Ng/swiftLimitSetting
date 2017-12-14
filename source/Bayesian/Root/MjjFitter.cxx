@@ -3,14 +3,14 @@
 #include "Bayesian/MjjFitter.h"
 
 // ---------------------------------------------------------
-MjjFitter::MjjFitter() 
+MjjFitter::MjjFitter()
 {
 
   // create minimizer and function based on LikeMin
   // Minimizer uses specified minimization type
   // kCombined is combined Migrad + Simplex minimization
   // From mnusersguide.pdf: Migrad is generally supposed to be best. Thus combined should be okay.
-  fMinuitMinimizer = new ROOT::Minuit2::Minuit2Minimizer(ROOT::Minuit2::kCombined); 
+  fMinuitMinimizer = new ROOT::Minuit2::Minuit2Minimizer(ROOT::Minuit2::kCombined);
 
   // Use non-chatty default print level.
   fPrintLevel = -1;
@@ -27,31 +27,31 @@ MjjFitter::MjjFitter()
   // Indicates fitter can take longer to ensure best fit
   fMinuitMinimizer->SetStrategy(2);
 
-  // See user manual. Value depends on type of minimization used. 
-  // Chi^2, negative log likelihood have diff values. 
-  // This is for -log(Likelihood). Sets FCN::up in Minuit. 
-  fMinuitMinimizer->SetErrorDef(0.5); 
+  // See user manual. Value depends on type of minimization used.
+  // Chi^2, negative log likelihood have diff values.
+  // This is for -log(Likelihood). Sets FCN::up in Minuit.
+  fMinuitMinimizer->SetErrorDef(0.5);
 
   // Parameter step size
   fStepSize = 0.0001;
 
   // Adjust printout levels for errors
   // to suppress massages like Info in <Minuit2>:[...]
-  gErrorIgnoreLevel=kWarning; //1001; 
+  gErrorIgnoreLevel=kWarning; //1001;
 
   // By default, do not use signal.
   fFitWithSignal = false;
   fSignalParameterIndex = -1;
-  
+
   // Initialize retry value
   fRetry = 0;
 
 }
 
 // ---------------------------------------------------------
-MjjFitter::~MjjFitter() 
+MjjFitter::~MjjFitter()
 {
-  
+
 }
 
 // ---------------------------------------------------------
@@ -59,7 +59,7 @@ double MjjFitter::LikeMin(const double *params)
 {
 
   for (int i=0; i<fFitFunction->GetNpar(); i++) {
-    
+
     fFitFunction->SetParameter(i,params[i]);
   }
 
@@ -67,10 +67,10 @@ double MjjFitter::LikeMin(const double *params)
   if (fFitWithSignal) nSignal = params[fSignalParameterIndex];
 
   double logL = 0;
-  double data, weight, fitEquivalentOfNEvents; 
+  double data, weight, fitEquivalentOfNEvents;
 //  std::cout << "Using bins " << "[" << fStartBin << ", " << fStopBin << "]"<< std::endl;
   for (int bin = fStartBin; bin < fStopBin+1; bin++) {
-    
+
     data = fEffectiveHistogramToFit.GetBinContent(bin);
     weight = fWeightsHistogram.GetBinContent(bin);
     fitEquivalentOfNEvents = fFitFunction->Integral(fBasicHistogramToFit.GetBinLowEdge(bin),fBasicHistogramToFit.GetBinLowEdge(bin+1));
@@ -85,7 +85,7 @@ double MjjFitter::LikeMin(const double *params)
          (fBasicHistogramToFit.GetBinLowEdge(bin) >= boundaries.first &&
           fBasicHistogramToFit.GetBinLowEdge(bin) <= boundaries.second) ) continue;
     }
-    
+
     double sigEquivalentOfNEvents = 0;
     if (fFitWithSignal) sigEquivalentOfNEvents = fSignalTemplate->GetBinContent(bin)*nSignal;
 
@@ -93,8 +93,8 @@ double MjjFitter::LikeMin(const double *params)
 
     logL += -SimpleLogPoisson( data , (fitEquivalentOfNEvents + sigEquivalentOfNEvents)/weight);
 
-//    std::cout << "In bin " << bin << " adding L(" << data << ", " << (fitEquivalentOfNEvents +  sigEquivalentOfNEvents/weight) << ") = " << -SimpleLogPoisson(data , (fitEquivalentOfNEvents + sigEquivalentOfNEvents)/weight)<< std::endl;   
- 
+//    std::cout << "In bin " << bin << " adding L(" << data << ", " << (fitEquivalentOfNEvents +  sigEquivalentOfNEvents/weight) << ") = " << -SimpleLogPoisson(data , (fitEquivalentOfNEvents + sigEquivalentOfNEvents)/weight)<< std::endl;
+
   }
 
 //  std::cout << "With sig parameter " << params[4] << " log l is " << logL << std::endl;
@@ -104,7 +104,7 @@ double MjjFitter::LikeMin(const double *params)
 }
 
 // ---------------------------------------------------------
-double MjjFitter::SimpleLogPoisson(double x, double par) 
+double MjjFitter::SimpleLogPoisson(double x, double par)
 {
 
   // Replacement for call to log(TMath::PoissonI(x,par))
@@ -126,7 +126,7 @@ double MjjFitter::SimpleLogPoisson(double x, double par)
 }
 
 // ---------------------------------------------------------
-void MjjFitter::SetSignalTemplate(TH1D * sigTemplate) 
+void MjjFitter::SetSignalTemplate(TH1D * sigTemplate)
 {
 
   // Create new TH1D with unique name
@@ -177,16 +177,16 @@ bool MjjFitter::MinuitMLFit ()
     if (isParamFixed) {
       fMinuitMinimizer->SetFixedVariable(iLoop,Form("a%d",iLoop),initialParamVals[iLoop]);
     } else if (hasLimits.first==true && hasLimits.second==true) {
-      fMinuitMinimizer->SetLimitedVariable(iLoop,Form("a%d",iLoop), 
+      fMinuitMinimizer->SetLimitedVariable(iLoop,Form("a%d",iLoop),
               initialParamVals[iLoop]+adjustment, fStepSize, minLimit, maxLimit);
     } else if (hasLimits.first==true && hasLimits.second==false) {
-      fMinuitMinimizer->SetLowerLimitedVariable(iLoop,Form("a%d",iLoop), 
+      fMinuitMinimizer->SetLowerLimitedVariable(iLoop,Form("a%d",iLoop),
               initialParamVals[iLoop]+adjustment, fStepSize, minLimit);
     } else if (hasLimits.first==false && hasLimits.second==true) {
-      fMinuitMinimizer->SetUpperLimitedVariable(iLoop,Form("a%d",iLoop), 
+      fMinuitMinimizer->SetUpperLimitedVariable(iLoop,Form("a%d",iLoop),
               initialParamVals[iLoop]+adjustment, fStepSize, maxLimit);
     } else {
-      fMinuitMinimizer->SetVariable(iLoop,Form("a%d",iLoop), 
+      fMinuitMinimizer->SetVariable(iLoop,Form("a%d",iLoop),
               initialParamVals[iLoop]+adjustment, fStepSize);
     }
   }
@@ -200,7 +200,7 @@ bool MjjFitter::MinuitMLFit ()
   }
 
   // This is just a wrapper for the function we defined in LikeMin, letting it be used by Minuit
-  ROOT::Math::Functor functor = ROOT::Math::Functor(this, &MjjFitter::LikeMin, numberOfParameters); 
+  ROOT::Math::Functor functor = ROOT::Math::Functor(this, &MjjFitter::LikeMin, numberOfParameters);
   fMinuitMinimizer->SetFunction(functor);
 
   // Perform minimization.
@@ -211,7 +211,7 @@ bool MjjFitter::MinuitMLFit ()
   bool didWork = false;
   if (fMinuitMinimizer->Status() < 2) didWork = true;
 
-//   ///DEBUG: 
+//   ///DEBUG:
 //  fPrintLevel=1;
   if (fPrintLevel != -1) {
     cout << "Printing Minuit results: " << endl;
@@ -226,7 +226,7 @@ bool MjjFitter::MinuitMLFit ()
 }
 
 // ---------------------------------------------------------
-bool MjjFitter::Fit(MjjHistogram & mjjHistogram, MjjFitFunction & mjjFitFunction) 
+bool MjjFitter::Fit(MjjHistogram & mjjHistogram, MjjFitFunction & mjjFitFunction)
 {
 
   fMjjFitFunction = mjjFitFunction;
@@ -246,18 +246,20 @@ bool MjjFitter::Fit(MjjHistogram & mjjHistogram, MjjFitFunction & mjjFitFunction
   double minXForFit = mjjFitFunction.GetMinXVal();
   double maxXForFit = mjjFitFunction.GetMaxXVal();
 
-  std::cout << "Actual fit range is " << minXForFit << " - " << maxXForFit << std::endl;
+  std::cout << "Actual fitting bounds are : " << std::endl;
+	std::cout << "minXForFit - maxXForFit: " << minXForFit << " - " << maxXForFit << std::endl;
 
   // Get start and stop bin values
   fStartBin = fBasicHistogramToFit.FindBin(minXForFit+1);
-  if (fBasicHistogramToFit.FindBin(maxXForFit-1) > fBasicHistogramToFit.GetXaxis()->GetNbins()) 
+  if (fBasicHistogramToFit.FindBin(maxXForFit-1) > fBasicHistogramToFit.GetXaxis()->GetNbins())
        fStopBin = fBasicHistogramToFit.GetXaxis()->GetNbins();
   else fStopBin = fBasicHistogramToFit.FindBin(maxXForFit-1);
 
   mjjFitFunction.RestoreParameterDefaults();
 
   // Preliminary ROOT fit to get parameters near expected values
-  for (int i=0; i<5; i++)  normalizedHistogramToFit.Fit(fFitFunction,"R0q");
+  for (int i=0; i<5; i++)  normalizedHistogramToFit.Fit(fFitFunction,"RQ0");
+
   double * ROOTFitParams = fFitFunction->GetParameters();
 
   // ML fit using Minuit minimizer
@@ -280,12 +282,13 @@ bool MjjFitter::Fit(MjjHistogram & mjjHistogram, MjjFitFunction & mjjFitFunction
 }
 
 // ---------------------------------------------------------
-MjjHistogram MjjFitter::FitAndGetBkgWithNoErr(MjjFitFunction & fitFunction, MjjHistogram & histToFit) 
+MjjHistogram MjjFitter::FitAndGetBkgWithNoErr(MjjFitFunction & fitFunction, MjjHistogram & histToFit)
 {
 
   fitFunction.RestoreParameterDefaults();
+
   Fit(histToFit,fitFunction);
-  
+
   TH1D backgroundFromFunc((TH1D) histToFit.GetHistogram());
   TString bkgname(Form("%s_internal_bkg",backgroundFromFunc.GetName()));
   backgroundFromFunc.SetName(bkgname);
@@ -293,7 +296,7 @@ MjjHistogram MjjFitter::FitAndGetBkgWithNoErr(MjjFitFunction & fitFunction, MjjH
   TString weightname(Form("%s_internal_weights",weights.GetName()));
   weights.SetName(weightname);
 
-  fitFunction.MakeHistFromFunction(&backgroundFromFunc); 
+  fitFunction.MakeHistFromFunction(&backgroundFromFunc);
   MjjHistogram backgroundNoErr(&backgroundFromFunc);
   backgroundNoErr.SetEffectiveFromBasicAndWeights(&weights);
 
@@ -315,7 +318,7 @@ MjjHistogram MjjFitter::FitAndGetBkgWithMCErr(MjjFitFunction & fitFunction, MjjH
   TString weightname(Form("%s_internal_weights",weights.GetName()));
   weights.SetName(weightname);
 
-  fitFunction.MakeHistFromFunction(&backgroundFromFunc); 
+  fitFunction.MakeHistFromFunction(&backgroundFromFunc);
   for (int i=1; i<=backgroundFromFunc.GetNbinsX(); i++) {
     double thisBinErr = sqrt(backgroundFromFunc.GetBinContent(i));
     backgroundFromFunc.SetBinError(i,thisBinErr);
@@ -330,7 +333,7 @@ MjjHistogram MjjFitter::FitAndGetBkgWithMCErr(MjjFitFunction & fitFunction, MjjH
 }
 
 // ---------------------------------------------------------
-MjjHistogram MjjFitter::FitAndGetBkgWithDataErr(MjjFitFunction & fitFunction, MjjHistogram & histToFit, int nFluctuations) 
+MjjHistogram MjjFitter::FitAndGetBkgWithDataErr(MjjFitFunction & fitFunction, MjjHistogram & histToFit, int nFluctuations)
 {
   //int successes = nFluctuations+1;
   //int total = nFluctuations+1;
@@ -339,7 +342,7 @@ MjjHistogram MjjFitter::FitAndGetBkgWithDataErr(MjjFitFunction & fitFunction, Mj
 
   TH1D background((TH1D) histToFit.GetHistogram());
   TString bkgname(Form("%s_internal_bkg",background.GetName()));
-  background.SetName(bkgname); 
+  background.SetName(bkgname);
   TH1D weights((TH1D) histToFit.GetWeightsHistogram());
   TString weightname(Form("%s_internal_weights",weights.GetName()));
   weights.SetName(weightname);
@@ -351,7 +354,7 @@ MjjHistogram MjjFitter::FitAndGetBkgWithDataErr(MjjFitFunction & fitFunction, Mj
 
   if (!didImportantFitWork) background.Fatal("MjjFitter::FitAndGetBkgWithDataErr","Main fit failed!");
 
-  fitFunction.MakeHistFromFunction(&background); 
+  fitFunction.MakeHistFromFunction(&background);
 
   // Use MjjHistogram to get proper fluctuations.
   MjjHistogram bkgTemplate(&background);
@@ -360,7 +363,7 @@ MjjHistogram MjjFitter::FitAndGetBkgWithDataErr(MjjFitFunction & fitFunction, Mj
   // Beginning of calculation of error bars on background.
   ///////////////////////////////////////////////////////////////////////////////
 
-  // This construction seems complicated but it's a good way to rearrange data 
+  // This construction seems complicated but it's a good way to rearrange data
   // from ordering by fluctuation to ordering by bin
   fStoreBinContentVectors.clear();
   for (int i=1; i<=background.GetNbinsX(); i++) {
@@ -377,16 +380,16 @@ MjjHistogram MjjFitter::FitAndGetBkgWithDataErr(MjjFitFunction & fitFunction, Mj
 
   fluctData.Clear();
 
-  for (int i = 0; i<nFluctuations; i++) {
+  for (int ifluc = 0; ifluc<nFluctuations; ifluc++) {
 
     bkgTemplate.PoissonFluctuateBinByBin(&fluctData);
     MjjHistogram fluctDataHist(&fluctData);
     MjjHistogram fluctBkgHist = FitAndGetBkgWithNoErr(fitFunction,fluctDataHist);
-    
+
     TH1D fluctBkg((TH1D)fluctBkgHist.GetHistogram());
     TString fluctbkgname(Form("%s_internal_pseudobkg",fluctBkg.GetName()));
     fluctBkg.SetName(fluctbkgname);
-    std::cout<<"PE #: "<<i<<std::endl;
+    std::cout<<"PE #: "<<ifluc<<std::endl;
     // If fit fails don't count this.
     if (fLatestFitStatus==false) {
       nFluctuations++;
@@ -399,7 +402,7 @@ MjjHistogram MjjFitter::FitAndGetBkgWithDataErr(MjjFitFunction & fitFunction, Mj
 		    successes--;
 		    continue;
 	    }
-    } 
+    }
     // Lydia
     std::cout<<"In FitAndGetBkgWithDataErr"<<std::endl;
     //
@@ -430,7 +433,7 @@ MjjHistogram MjjFitter::FitAndGetBkgWithDataErr(MjjFitFunction & fitFunction, Mj
 
       int size = fStoreBinContentVectors.at(i-1).size();
 
-      for (int j=0; j<size; ++j){ 
+      for (int j=0; j<size; ++j){
         //std::cout<<fStoreBinContentVectors.at(i-1).at(j)<<std::endl;
         h1.Fill(fStoreBinContentVectors.at(i-1).at(j));
       }
@@ -441,7 +444,7 @@ MjjHistogram MjjFitter::FitAndGetBkgWithDataErr(MjjFitFunction & fitFunction, Mj
     if (fStoreBinContentVectors.at(i-1).size() == 0) background.SetBinError(i,sqrt(background.GetBinContent(i)));
     else {
       RMSOfThisBin = GetRMS(fStoreBinContentVectors.at(i-1));
-       
+
       background.SetBinError(i,RMSOfThisBin);
     }
   //f.Close();
@@ -464,14 +467,14 @@ MjjHistogram MjjFitter::FitAndGetBkgWithDataErr(MjjFitFunction & fitFunction, Mj
 }
 
 // ---------------------------------------------------------
-MjjHistogram MjjFitter::FitAndGetBkgWithFitDiffErr(MjjFitFunction & nominal, MjjFitFunction & alternate, MjjHistogram & histToFit, int nFluctuations, bool throwFromData) 
+MjjHistogram MjjFitter::FitAndGetBkgWithFitDiffErr(MjjFitFunction & nominal, MjjFitFunction & alternate, MjjHistogram & histToFit, int nFluctuations, bool throwFromData)
 {
   int successes = nFluctuations+1;
   int total = nFluctuations+1;
 
   TH1D background((TH1D) histToFit.GetHistogram());
   TString bkgname(Form("%s_internal_bkg",background.GetName()));
-  background.SetName(bkgname); 
+  background.SetName(bkgname);
   TH1D weights((TH1D) histToFit.GetWeightsHistogram());
   TString weightname(Form("%s_internal_weights",weights.GetName()));
   weights.SetName(weightname);
@@ -483,7 +486,7 @@ MjjHistogram MjjFitter::FitAndGetBkgWithFitDiffErr(MjjFitFunction & nominal, Mjj
 
   if (!didImportantFitWork) background.Fatal("MjjFitter::FitAndGetBkgWithDiffErr","Main fit failed!");
 
-  nominal.MakeHistFromFunction(&background); 
+  nominal.MakeHistFromFunction(&background);
 
   // Use MjjHistogram to get proper fluctuations.
   MjjHistogram bkgTemplate(&background);
@@ -492,7 +495,7 @@ MjjHistogram MjjFitter::FitAndGetBkgWithFitDiffErr(MjjFitFunction & nominal, Mjj
   // Beginning of calculation of error bars on background.
   ///////////////////////////////////////////////////////////////////////////////
 
-  // This construction seems complicated but it's a good way to rearrange data 
+  // This construction seems complicated but it's a good way to rearrange data
   // from ordering by fluctuation to ordering by bin
   fStoreBinContentVectors.clear();
   for (int i=1; i<=background.GetNbinsX(); i++) {
@@ -531,10 +534,10 @@ MjjHistogram MjjFitter::FitAndGetBkgWithFitDiffErr(MjjFitFunction & nominal, Mjj
 		    successes--;
 		    continue;
 	    }
-    } 
+    }
 
     // Store difference between two fits in vector<double> corresponding to this bin
-    for (int j=1; j<=fluctBkgHistNom.GetHistogram().GetNbinsX(); j++) 
+    for (int j=1; j<=fluctBkgHistNom.GetHistogram().GetNbinsX(); j++)
       fStoreBinContentVectors.at(j-1).push_back(fluctBkgHistNom.GetHistogram().GetBinContent(j) - fluctBkgHistVar.GetHistogram().GetBinContent(j));
 
 
@@ -566,7 +569,7 @@ MjjHistogram MjjFitter::FitAndGetBkgWithFitDiffErr(MjjFitFunction & nominal, Mjj
 }
 
 // ---------------------------------------------------------
-MjjHistogram MjjFitter::FitAndGetBkgWithConfidenceBand(MjjFitFunction & fitFunction, MjjHistogram & histToFit) 
+MjjHistogram MjjFitter::FitAndGetBkgWithConfidenceBand(MjjFitFunction & fitFunction, MjjHistogram & histToFit)
 {
 
   fitFunction.RestoreParameterDefaults();
@@ -595,7 +598,7 @@ MjjHistogram MjjFitter::FitAndGetBkgWithConfidenceBand(MjjFitFunction & fitFunct
 }
 
 // ---------------------------------------------------------
-void MjjFitter::StoreLatestFitMatrices(int dimensionOfMatrix) 
+void MjjFitter::StoreLatestFitMatrices(int dimensionOfMatrix)
 {
 
   fLatestCovarianceMatrix.clear();
@@ -619,7 +622,7 @@ void MjjFitter::StoreLatestFitMatrices(int dimensionOfMatrix)
 }
 
 // ---------------------------------------------------------
-TH1D * MjjFitter::GetConfidenceBand(TH1D * data, TF1 * fittedFunction,  double * covarianceMatrix, double xmin, double xmax, double CL) 
+TH1D * MjjFitter::GetConfidenceBand(TH1D * data, TF1 * fittedFunction,  double * covarianceMatrix, double xmin, double xmax, double CL)
 {
 
   int npar = fittedFunction->GetNpar();
