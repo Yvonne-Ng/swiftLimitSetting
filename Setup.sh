@@ -17,6 +17,10 @@ export PYTHONPATH=./install/InstallArea/x86_64-slc6-gcc62-opt/src/Bayesian/plott
 #localSetupSFT /cvmfs/sft.cern.ch/lcg/releases/LCG_88/pyanalysis/2.0/x86_64-slc6-gcc62-opt/
 #localSetupSFT pyanalys#is 
 #/cvmfs/atlas.cern.ch/r#epo/sw/software/21.2/sw/lcg/releases/pyanalysis/2.0-32412
-cd install/InstallArea/x86_64-slc6-gcc62-opt
-source setup.sh
-cd ../../../
+
+if [ -f install/InstallArea/x86_64-slc6-gcc62-opt/setup.sh ]
+then
+    cd install/InstallArea/x86_64-slc6-gcc62-opt
+    source setup.sh
+    cd ../../../
+fi
