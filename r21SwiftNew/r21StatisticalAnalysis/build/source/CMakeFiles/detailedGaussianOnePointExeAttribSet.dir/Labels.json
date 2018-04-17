@@ -1,0 +1,19 @@
+
+{
+	"sources" : 
+	[
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/build/source/CMakeFiles/detailedGaussianOnePointExeAttribSet"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/build/source/CMakeFiles/detailedGaussianOnePointExeAttribSet.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : [ "Bayesian" ],
+		"name" : "detailedGaussianOnePointExeAttribSet"
+	}
+}

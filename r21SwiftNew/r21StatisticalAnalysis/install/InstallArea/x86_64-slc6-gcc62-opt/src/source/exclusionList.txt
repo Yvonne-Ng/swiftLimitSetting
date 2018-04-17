@@ -1,0 +1,12 @@
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/feb2018/trijet_HLT_j380_inclusive.root background_mjj_var 0.01
+24 28 0.93 0.9 0.69
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/feb2018/trijet_HLT_j380_inclusive.root background_mjj_var 0.01
+24 28 0.97 0.97 0.7
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/feb2018/trijet_HLT_j380_nbtag2.root background_mjj_var 0.01
+49 50 0 0 0
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/feb2018/trijet_HLT_j380_nbtag2.root background_mjj_var 0.01
+49 50 0 0 0
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/btagged/reweighted_hist-background_ABCD_trijet.root Zprime_mjj_var 0.01
+19 20 0.95 0.82 0.92
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/btagged/reweighted_hist-background_ABCD_trijet.root Zprime_mjj_var 0.01
+19 20 1 0.89 0.92

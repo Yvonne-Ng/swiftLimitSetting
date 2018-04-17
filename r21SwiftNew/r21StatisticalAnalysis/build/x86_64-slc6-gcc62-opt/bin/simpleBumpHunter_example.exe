@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+echo "WARNING Please stop using simpleBumpHunter_example.exe, and use simpleBumpHunter_example instead"
+echo ""
+exec simpleBumpHunter_example "$@"

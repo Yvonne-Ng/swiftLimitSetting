@@ -1,0 +1,32 @@
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/feb2018/trijet_HLT_j380_inclusive.root background_mjj_var 0.01
+24 28 0.93 0.9 0.69
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/feb2018/trijet_HLT_j380_inclusive.root background_mjj_var 0.01
+24 28 0.97 0.97 0.7
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/feb2018/trijet_HLT_j380_nbtag2.root background_mjj_var 0.01
+49 50 0 0 0
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/feb2018/trijet_HLT_j380_nbtag2.root background_mjj_var 0.01
+49 50 0 0 0
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/btagged/reweighted_hist-background_ABCD_trijet.root Zprime_mjj_var 0.01
+19 20 0.95 0.82 0.92
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/btagged/reweighted_hist-background_ABCD_trijet.root Zprime_mjj_var 0.01
+19 20 1 0.89 0.92
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/btagged/trijet_HLT_j380_nbtag2.root background_mjj_var 0.01
+49 50 0 0 0
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/btagged/trijet_HLT_j380_nbtag2.root background_mjj_var 0.01
+37 38 0.92 0.91 0.6
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/btagged/trijet_HLT_j380_nbtag2.root background_mjj_var 0.01
+37 38 0.82 0.83 0.56
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/feb2018/trijet_HLT_j380_inclusive.root background_mjj_var 0.01
+24 28 0.959 0.952 0.657
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/feb2018/trijet_HLT_j380_inclusive.root background_mjj_var 0.01
+24 28 0.942 0.938 0.657
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/btagged/trijet_HLT_j380_nbtag2.root background_mjj_var 0.01
+37 38 0.904 0.892 0.585
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/SensitivityStudies/source/scripts/../results2/signalplusbackground/signalplusbackground.Gauss_width3.0p1.ifb.mjj_Gauss_sig__smooth.4.par.0.seed.default.root mjj_Gauss_sig_500_smoothinjectedToBkg 0.01
+46 47 0 0 0
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/SensitivityStudies/source/scripts/Fluctuated_SwiftFittrijet_HLT_j380_inclusive.root basicBkgFrom4ParamFit_fluctuated 0.01
+28 30 0.508 0.508 0.159
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/SensitivityStudies/source/scripts/../results2/signalplusbackground/signalplusbackground.Gauss_width3.0p1.ifb.mjj_Gauss_sig__smooth.4.par.0.seed.default.root mjj_Gauss_sig_500_smoothinjectedToBkg 0.01
+28 30 0.491 0.494 0.148
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/2018-4B-taggedNewWorkingPoint/trijet_mjj_nbtag2.root background_mjj_var 0.01
+42 43 0 0 0

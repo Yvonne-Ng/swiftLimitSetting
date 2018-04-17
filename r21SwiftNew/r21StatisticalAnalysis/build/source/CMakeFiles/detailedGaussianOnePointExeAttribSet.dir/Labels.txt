@@ -1,0 +1,5 @@
+# Target labels
+ Bayesian
+# Source files and their labels
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/build/source/CMakeFiles/detailedGaussianOnePointExeAttribSet
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/build/source/CMakeFiles/detailedGaussianOnePointExeAttribSet.rule

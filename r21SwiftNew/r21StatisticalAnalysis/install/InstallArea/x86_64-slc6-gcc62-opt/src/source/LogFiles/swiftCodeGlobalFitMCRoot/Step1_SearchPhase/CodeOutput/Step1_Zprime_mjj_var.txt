@@ -1,0 +1,504 @@
+test
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfold found in libUnfold.so  is already in libHist.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfoldBinning found in libUnfold.so  is already in libHist.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfoldDensity found in libUnfold.so  is already in libHist.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfoldSys found in libUnfold.so  is already in libHist.so 
+inputFileName: /lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/MC.root
+inputHistDir: 
+Doing pvalue with systematics? 0!
+nPseudoExpBH is 100
+nPseudoExpFit is 5
+ Hist Name: dijetgamma_g85_2j65/Zprime_mjj_var
+Using Scaled MC
+iBin:1Error: 195.9
+iBin:2Error: 191.253
+iBin:3Error: 195.498
+iBin:4Error: 205.814
+iBin:5Error: 196.885
+iBin:6Error: 193.79
+iBin:7Error: 188.395
+iBin:8Error: 182.379
+iBin:9Error: 168.398
+iBin:10Error: 162.686
+iBin:11Error: 149.367
+iBin:12Error: 138.611
+iBin:13Error: 131.438
+iBin:14Error: 121.778
+iBin:15Error: 115.074
+iBin:16Error: 110.067
+iBin:17Error: 105.41
+iBin:18Error: 89.2507
+iBin:19Error: 89.122
+iBin:20Error: 82.7348
+iBin:21Error: 72.91
+iBin:22Error: 69.4637
+iBin:23Error: 65.3269
+iBin:24Error: 58.8847
+iBin:25Error: 61.2554
+iBin:26Error: 54.0481
+iBin:27Error: 50.5889
+iBin:28Error: 48.5387
+iBin:29Error: 44.5158
+iBin:30Error: 39.6352
+iBin:31Error: 39.2228
+iBin:32Error: 38.2129
+iBin:33Error: 35.3804
+iBin:34Error: 32.5418
+iBin:35Error: 28.2554
+iBin:36Error: 33.0549
+iBin:37Error: 33.2439
+iBin:38Error: 24.7279
+iBin:39Error: 22.445
+iBin:40Error: 24.1429
+iBin:41Error: 19.1597
+iBin:42Error: 22.8838
+iBin:43Error: 21.2734
+iBin:44Error: 23.331
+iBin:45Error: 14.6255
+iBin:46Error: 14.2274
+iBin:47Error: 16.9353
+iBin:48Error: 12.4811
+iBin:49Error: 15.5873
+iBin:50Error: 12.7768
+iBin:51Error: 12.4843
+iBin:52Error: 11.8354
+iBin:53Error: 12.2179
+iBin:54Error: 9.04105
+iBin:55Error: 8.7345
+iBin:56Error: 9.70674
+iBin:57Error: 15.5443
+iBin:58Error: 6.04481
+iBin:59Error: 10.122
+iBin:60Error: 7.21837
+iBin:61Error: 8.42665
+iBin:62Error: 4.84085
+iBin:63Error: 6.47481
+iBin:64Error: 4.1369
+iBin:65Error: 9.31029
+iBin:66Error: 4.78155
+iBin:67Error: 3.93711
+iBin:68Error: 3.90426
+iBin:69Error: 5.45207
+iBin:70Error: 3.32757
+iBin:71Error: 2.99943
+iBin:72Error: 3.34818
+iBin:73Error: 2.52997
+iBin:74Error: 2.28372
+iBin:75Error: 2.10828
+iBin:76Error: 4.98736
+iBin:77Error: 1.6813
+iBin:78Error: 2.45846
+iBin:79Error: 2.50481
+iBin:80Error: 1.38674
+iBin:81Error: 2.0507
+iBin:82Error: 1.64924
+iBin:83Error: 1.90857
+iBin:84Error: 1.69246
+iBin:85Error: 0.662536
+iBin:86Error: 1.42084
+iBin:87Error: 1.24441
+iBin:88Error: 4.5966
+iBin:89Error: 0.893216
+iBin:90Error: 0.661053
+iBin:91Error: 0.575185
+iBin:92Error: 0.951863
+iBin:93Error: 0.733816
+iBin:94Error: 0.552244
+iBin:95Error: 0.928836
+iBin:96Error: 0.0665384
+iBin:97Error: 0.566466
+iBin:98Error: 0.812256
+iBin:99Error: 0.0394918
+iBin:100Error: 0.522965
+iBin:101Error: 0.666084
+iBin:102Error: 0.0809199
+iBin:103Error: 0.756921
+iBin:104Error: 0
+iBin:105Error: 0.0450176
+iBin:106Error: 0.561504
+iBin:107Error: 0.0429431
+iBin:108Error: 0.642032
+iBin:109Error: 0.00292884
+iBin:110Error: 0.00291465
+iBin:111Error: 0.00304275
+iBin:112Error: 0
+iBin:113Error: 0.0057873
+iBin:114Error: 0.00527857
+iBin:115Error: 0
+iBin:116Error: 0
+iBin:117Error: 0.00417048
+iBin:118Error: 0.00445691
+iBin:119Error: 0
+iBin:120Error: 0
+iBin:121Error: 0
+iBin:122Error: 0
+iBin:123Error: 0
+iBin:124Error: 0
+iBin:125Error: 0
+iBin:126Error: 0
+iBin:127Error: 0
+iBin:128Error: 0
+iBin:129Error: 0
+iBin:130Error: 0
+iBin:131Error: 0
+iBin:132Error: 0
+iBin:133Error: 0
+iBin:134Error: 0
+iBin:135Error: 0
+iBin:136Error: 0
+iBin:137Error: 0
+iBin:138Error: 0
+iBin:139Error: 0
+iBin:140Error: 0
+iBin:141Error: 0
+iBin:142Error: 0
+iBin:143Error: 0
+iBin:144Error: 0
+iBin:145Error: 0
+iBin:146Error: 0
+iBin:147Error: 0
+iBin:148Error: 0
+iBin:149Error: 0
+iBin:150Error: 0
+iBin:151Error: 0
+iBin:152Error: 0
+iBin:153Error: 0
+iBin:154Error: 0
+iBin:155Error: 0
+iBin:156Error: 0
+iBin:157Error: 0
+iBin:158Error: 0
+iBin:159Error: 0
+iBin:160Error: 0
+Setting the 4 parameters to    (0) :9.89e-09   (1) :-10.96   (2) :10.842   (3) :0.904079
+minX, maxX: 300 1500
+Actual fit range is 303 - 1493
+corresponding to including the bins 11, 55.
+Creating standard dijet function.
+paramDefaultsLength = 4
+doSwift is 0
+*theMjjfitFunction:0x3659490
+theHistogram: 0x7ffea5b929c0
+Collected info on SWIFT bins
+After fit, parameters are     (0):3.19247e-09   (1):-16.4802   (2):10.5876   (3):0.940602
+on PE 50
+on PE 100
+initialpval is 0
+Wish to use an Exclusion Window
+permitWindow is 0
+Yvonne
+error: 
+bin 1error: 195.9
+bin 2error: 191.253
+bin 3error: 195.498
+bin 4error: 205.814
+bin 5error: 196.885
+bin 6error: 193.79
+bin 7error: 188.395
+bin 8error: 182.379
+bin 9error: 168.398
+bin 10error: 162.686
+bin 11error: 149.367
+bin 12error: 138.611
+bin 13error: 131.438
+bin 14error: 121.778
+bin 15error: 115.074
+bin 16error: 110.067
+bin 17error: 105.41
+bin 18error: 89.2507
+bin 19error: 89.122
+bin 20error: 82.7348
+bin 21error: 72.91
+bin 22error: 69.4637
+bin 23error: 65.3269
+bin 24error: 58.8847
+bin 25error: 61.2554
+bin 26error: 54.0481
+bin 27error: 50.5889
+bin 28error: 48.5387
+bin 29error: 44.5158
+bin 30error: 39.6352
+bin 31error: 39.2228
+bin 32error: 38.2129
+bin 33error: 35.3804
+bin 34error: 32.5418
+bin 35error: 28.2554
+bin 36error: 33.0549
+bin 37error: 33.2439
+bin 38error: 24.7279
+bin 39error: 22.445
+bin 40error: 24.1429
+bin 41error: 19.1597
+bin 42error: 22.8838
+bin 43error: 21.2734
+bin 44error: 23.331
+bin 45error: 14.6255
+bin 46error: 14.2274
+bin 47error: 16.9353
+bin 48error: 12.4811
+bin 49error: 15.5873
+bin 50error: 12.7768
+bin 51error: 12.4843
+bin 52error: 11.8354
+bin 53error: 12.2179
+bin 54error: 9.04105
+bin 55error: 8.7345
+bin 56error: 9.70674
+bin 57error: 15.5443
+bin 58error: 6.04481
+bin 59error: 10.122
+bin 60error: 7.21837
+bin 61error: 8.42665
+bin 62error: 4.84085
+bin 63error: 6.47481
+bin 64error: 4.1369
+bin 65error: 9.31029
+bin 66error: 4.78155
+bin 67error: 3.93711
+bin 68error: 3.90426
+bin 69error: 5.45207
+bin 70error: 3.32757
+bin 71error: 2.99943
+bin 72error: 3.34818
+bin 73error: 2.52997
+bin 74error: 2.28372
+bin 75error: 2.10828
+bin 76error: 4.98736
+bin 77error: 1.6813
+bin 78error: 2.45846
+bin 79error: 2.50481
+bin 80error: 1.38674
+bin 81error: 2.0507
+bin 82error: 1.64924
+bin 83error: 1.90857
+bin 84error: 1.69246
+bin 85error: 0.662536
+bin 86error: 1.42084
+bin 87error: 1.24441
+bin 88error: 4.5966
+bin 89error: 0.893216
+bin 90error: 0.661053
+bin 91error: 0.575185
+bin 92error: 0.951863
+bin 93error: 0.733816
+bin 94error: 0.552244
+bin 95error: 0.928836
+bin 96error: 0.0665384
+bin 97error: 0.566466
+bin 98error: 0.812256
+bin 99error: 0.0394918
+bin 100error: 0.522965
+bin 101error: 0.666084
+bin 102error: 0.0809199
+bin 103error: 0.756921
+bin 104error: 0
+bin 105error: 0.0450176
+bin 106error: 0.561504
+bin 107error: 0.0429431
+bin 108error: 0.642032
+bin 109error: 0.00292884
+bin 110error: 0.00291465
+bin 111error: 0.00304275
+bin 112error: 0
+bin 113error: 0.0057873
+bin 114error: 0.00527857
+bin 115error: 0
+bin 116error: 0
+bin 117error: 0.00417048
+bin 118error: 0.00445691
+bin 119error: 0
+bin 120error: 0
+bin 121error: 0
+bin 122error: 0
+bin 123error: 0
+bin 124error: 0
+bin 125error: 0
+bin 126error: 0
+bin 127error: 0
+bin 128error: 0
+bin 129error: 0
+bin 130error: 0
+bin 131error: 0
+bin 132error: 0
+bin 133error: 0
+bin 134error: 0
+bin 135error: 0
+bin 136error: 0
+bin 137error: 0
+bin 138error: 0
+bin 139error: 0
+bin 140error: 0
+bin 141error: 0
+bin 142error: 0
+bin 143error: 0
+bin 144error: 0
+bin 145error: 0
+bin 146error: 0
+bin 147error: 0
+bin 148error: 0
+bin 149error: 0
+bin 150error: 0
+bin 151error: 0
+bin 152error: 0
+bin 153error: 0
+bin 154error: 0
+bin 155error: 0
+bin 156error: 0
+bin 157error: 0
+bin 158error: 0
+bin 159error: 0
+bin 160error: 0
+debug  303 1493
+debug 2
+
+Seed (bkg error) : 11
+PE #: 0
+In DataErr
+PE #: 1
+In DataErr
+PE #: 2
+In DataErr
+PE #: 3
+In DataErr
+PE #: 4
+In DataErr
+After fit, parameters are    (0):2.4039e-09   (1):-17.1569   (2):10.717   (3):0.956113
+BumpHunter results: stat = 99.0871
+Low edge, high edge of bump: 834 889
+DeficitHunter results: stat = inf
+Low edge, high edge of bump: 482 566
+Created +/- 1 sigma histograms
+YEdit: residualHist: 0x7ffea5b8b640
+on PE 50
+on PE 100
+Absolute values of logl, chi2, BH tests are: 683.672 944.24 99.0871
+NDF is 40
+chi2/ndf is 23.606
+Log likelihood for our fit was 683.672
+Pval of logL, chi2, and bumpHunter are: 0 0 0
+Pval of largest deficit was: 0
+YEdit: 0x7ffea5b8b640
+debug residuals 0
+YEdit: 0x7ffea5b9c2e0
+YEdit: bins:55
+YEdit: residualResults: bin11 content:-1.92782
+YEdit: residualResults: bin12 content:-0.274252
+YEdit: residualResults: bin13 content:-1.06599
+YEdit: residualResults: bin14 content:0.0567677
+YEdit: residualResults: bin15 content:-0.982219
+YEdit: residualResults: bin16 content:6.96109
+YEdit: residualResults: bin17 content:20
+YEdit: residualResults: bin18 content:-7.7243
+YEdit: residualResults: bin19 content:5.87147
+YEdit: residualResults: bin20 content:1.87846
+YEdit: residualResults: bin21 content:-5.45826
+YEdit: residualResults: bin22 content:-4.51192
+YEdit: residualResults: bin23 content:-2.11687
+YEdit: residualResults: bin24 content:-7.73754
+YEdit: residualResults: bin25 content:6.00336
+YEdit: residualResults: bin26 content:-2.31269
+YEdit: residualResults: bin27 content:-1.17758
+YEdit: residualResults: bin28 content:1.97973
+YEdit: residualResults: bin29 content:-1.23525
+YEdit: residualResults: bin30 content:-4.61497
+YEdit: residualResults: bin31 content:-1.23922
+YEdit: residualResults: bin32 content:2.24347
+YEdit: residualResults: bin33 content:0.295952
+YEdit: residualResults: bin34 content:-0.544546
+YEdit: residualResults: bin35 content:-5.74691
+YEdit: residualResults: bin36 content:7.74508
+YEdit: residualResults: bin37 content:20
+YEdit: residualResults: bin38 content:-2.17372
+YEdit: residualResults: bin39 content:-4.17265
+YEdit: residualResults: bin40 content:1.57032
+YEdit: residualResults: bin41 content:-5.20642
+YEdit: residualResults: bin42 content:4.28143
+YEdit: residualResults: bin43 content:3.68735
+YEdit: residualResults: bin44 content:20
+YEdit: residualResults: bin45 content:-5.76745
+YEdit: residualResults: bin46 content:-4.43602
+YEdit: residualResults: bin47 content:2.39795
+YEdit: residualResults: bin48 content:-4.43383
+YEdit: residualResults: bin49 content:2.99462
+YEdit: residualResults: bin50 content:-1.28086
+YEdit: residualResults: bin51 content:-0.28757
+YEdit: residualResults: bin52 content:-0.439711
+YEdit: residualResults: bin53 content:1.34935
+YEdit: residualResults: bin54 content:-3.49475
+ FCN=6.55896 FROM MIGRAD    STATUS=CONVERGED     120 CALLS         121 TOTAL
+                     EDM=3.19733e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.98036e+00   6.37147e-01   4.52909e-04  -3.49301e-04
+   2  Mean        -5.98181e+00   1.31809e+01   3.69383e-03   1.46223e-05
+   3  Sigma        1.03512e+01   1.04389e+01   2.27114e-04   3.67258e-04
+TH1.Print Name  = residual_histOfVals, Entries= 44, Total sum= 41
+ fSumw[0]=0, x=-10.25, error=0
+ fSumw[1]=0, x=-9.75, error=0
+ fSumw[2]=0, x=-9.25, error=0
+ fSumw[3]=0, x=-8.75, error=0
+ fSumw[4]=0, x=-8.25, error=0
+ fSumw[5]=2, x=-7.75, error=1.41421
+ fSumw[6]=0, x=-7.25, error=0
+ fSumw[7]=0, x=-6.75, error=0
+ fSumw[8]=0, x=-6.25, error=0
+ fSumw[9]=2, x=-5.75, error=1.41421
+ fSumw[10]=2, x=-5.25, error=1.41421
+ fSumw[11]=2, x=-4.75, error=1.41421
+ fSumw[12]=3, x=-4.25, error=1.73205
+ fSumw[13]=0, x=-3.75, error=0
+ fSumw[14]=1, x=-3.25, error=1
+ fSumw[15]=0, x=-2.75, error=0
+ fSumw[16]=3, x=-2.25, error=1.73205
+ fSumw[17]=1, x=-1.75, error=1
+ fSumw[18]=5, x=-1.25, error=2.23607
+ fSumw[19]=2, x=-0.75, error=1.41421
+ fSumw[20]=3, x=-0.25, error=1.73205
+ fSumw[21]=2, x=0.25, error=1.41421
+ fSumw[22]=0, x=0.75, error=0
+ fSumw[23]=1, x=1.25, error=1
+ fSumw[24]=3, x=1.75, error=1.73205
+ fSumw[25]=2, x=2.25, error=1.41421
+ fSumw[26]=1, x=2.75, error=1
+ fSumw[27]=0, x=3.25, error=0
+ fSumw[28]=1, x=3.75, error=1
+ fSumw[29]=1, x=4.25, error=1
+ fSumw[30]=0, x=4.75, error=0
+ fSumw[31]=0, x=5.25, error=0
+ fSumw[32]=1, x=5.75, error=1
+ fSumw[33]=1, x=6.25, error=1
+ fSumw[34]=1, x=6.75, error=1
+ fSumw[35]=0, x=7.25, error=0
+ fSumw[36]=1, x=7.75, error=1
+ fSumw[37]=0, x=8.25, error=0
+ fSumw[38]=0, x=8.75, error=0
+ fSumw[39]=0, x=9.25, error=0
+ fSumw[40]=0, x=9.75, error=0
+ fSumw[41]=3, x=10.25, error=1.73205
+YEdit: fittedGauss0x7ffea5b98140
+fittedHists: 0x7ffea5b86ef0
+From fit, mean and width are -5.98181 10.3512
+Calculating quantities from function itself, mean and RMS are -0.757242 3.82355
+
+******************************************
+*** initial values 
+*** BH p-value = 0 +/- 0
+*** BH value = 98.9753
+*** BH range = 834 - 889
+******************************************
+*** refined values (after window removal)
+*** BH p-value = -1 +/- -1
+*** BH value = -1
+*** BH range = -1 - -1
+******************************************
+*** final values 
+*** BH p-value = 0 +/- 0
+*** BH value = 99.0871
+*** BH range = 834 - 889
+******************************************
+
+Writing output file /lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/results/Step1_SearchPhase/swiftCodeGlobalFitMCRoot/Step1_SearchPhase_Zprime_mjj_var.root
+yEdit: 0x7ffea5b8c9f0
+doing fittedhists
+done
+Process ran in 3.61 seconds. 

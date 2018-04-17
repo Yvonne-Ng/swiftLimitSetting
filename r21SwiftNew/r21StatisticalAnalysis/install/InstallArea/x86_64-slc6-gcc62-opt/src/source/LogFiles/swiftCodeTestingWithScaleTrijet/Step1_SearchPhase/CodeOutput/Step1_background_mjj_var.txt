@@ -1,0 +1,41 @@
+test
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfold found in libUnfold.so  is already in libHist.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfoldBinning found in libUnfold.so  is already in libHist.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfoldDensity found in libUnfold.so  is already in libHist.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfoldSys found in libUnfold.so  is already in libHist.so 
+inputFileName: /lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/btagged/trijet_HLT_j380_inclusive.root
+inputHistDir: 
+Doing pvalue with systematics? 0!
+nPseudoExpBH is 100
+nPseudoExpFit is 5
+ Hist Name: /background_mjj_var
+Using Scaled MC
+
+ *** Break *** segmentation violation
+
+
+
+===========================================================
+There was a crash.
+This is the entire stack trace of all threads:
+===========================================================
+#0  0x00002b1ac5eb282e in waitpid () from /lib64/libc.so.6
+#1  0x00002b1ac5e44479 in do_system () from /lib64/libc.so.6
+#2  0x00002b1ac5054868 in TUnixSystem::StackTrace() () from /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.3/InstallArea/x86_64-slc6-gcc62-opt/lib/libCore.so
+#3  0x00002b1ac5056d7c in TUnixSystem::DispatchSignals(ESignals) () from /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBaseExternals/21.2.3/InstallArea/x86_64-slc6-gcc62-opt/lib/libCore.so
+#4  <signal handler called>
+#5  0x0000000000414ff3 in main ()
+===========================================================
+
+
+The lines below might hint at the cause of the crash.
+You may get help by asking at the ROOT forum http://root.cern.ch/forum.
+Only if you are really convinced it is a bug in ROOT then please submit a
+report at http://root.cern.ch/bugs. Please post the ENTIRE stack trace
+from above as an attachment in addition to anything else
+that might help us fixing this issue.
+===========================================================
+#5  0x0000000000414ff3 in main ()
+===========================================================
+
+

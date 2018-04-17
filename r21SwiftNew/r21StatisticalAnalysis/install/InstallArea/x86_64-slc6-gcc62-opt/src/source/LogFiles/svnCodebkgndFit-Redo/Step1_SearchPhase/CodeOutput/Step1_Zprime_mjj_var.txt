@@ -1,0 +1,230 @@
+'import site' failed; use -v for traceback
+Traceback (most recent call last):
+  File "<string>", line 32, in <module>
+ImportError: No module named os.path
+GNU gdb (GDB) Red Hat Enterprise Linux (7.2-92.el6)
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/install/InstallArea/x86_64-slc6-gcc62-opt/bin/SearchPhase...Reading symbols from /lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/install/InstallArea/x86_64-slc6-gcc62-opt/bin/SearchPhase.dbg...done.
+done.
+[?1034h(gdb) run
+Starting program: /lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/install/InstallArea/x86_64-slc6-gcc62-opt/bin/SearchPhase --useScaled --config /lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/LogFiles/svnCodebkgndFit-Redo/Step1_SearchPhase/ConfigArchive/Step1_Zprime_mjj_var.config
+warning: File "/cvmfs/atlas.cern.ch/repo/sw/software/21.2/sw/lcg/releases/gcc/6.2.0/x86_64-slc6/lib64/libstdc++.so.6.0.22-gdb.py" auto-loading has been declined by your `auto-load safe-path' set to "/usr/share/gdb/auto-load:/usr/lib/debug:/usr/bin/mono-gdb.py".
+To enable execution of this file add
+	add-auto-load-safe-path /cvmfs/atlas.cern.ch/repo/sw/software/21.2/sw/lcg/releases/gcc/6.2.0/x86_64-slc6/lib64/libstdc++.so.6.0.22-gdb.py
+line to your configuration file "/home/ywng/.gdbinit".
+To completely disable this security protection add
+	set auto-load safe-path /
+line to your configuration file "/home/ywng/.gdbinit".
+For more information about this security protection see the
+"Auto-loading safe path" section in the GDB manual.  E.g., run from the shell:
+	info "(gdb)Auto-loading safe path"
+[Thread debugging using libthread_db enabled]
+test
+Detaching after fork from child process 30856.
+Detaching after fork from child process 30858.
+Detaching after fork from child process 30860.
+Detaching after fork from child process 30871.
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfold found in libUnfold.so  is already in libHist.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfoldBinning found in libUnfold.so  is already in libHist.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfoldDensity found in libUnfold.so  is already in libHist.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfoldSys found in libUnfold.so  is already in libHist.so 
+inputFileName: /lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/MC.root
+inputHistDir: 
+Doing pvalue with systematics? 0!
+nPseudoExpBH is 100
+nPseudoExpFit is 5
+ Hist Name: dijetgamma_g85_2j65/Zprime_mjj_var
+Using Scaled MC
+Setting the 4 parameters to    (0) :1.06007e-05   (1) :2.48271   (2) :7.10357   (3) :0.582337
+minX, maxX: 300 1500
+Actual fit range is 303 - 1493
+corresponding to including the bins 11, 55.
+Creating standard dijet function.
+paramDefaultsLength = 4
+doSwift is 0
+Detaching after fork from child process 30881.
+Collected info on SWIFT bins
+After fit, parameters are     (0):2.40688e-09   (1):-17.1542   (2):10.7164   (3):0.956042
+on PE 50
+on PE 100
+initialpval is 0
+Wish to use an Exclusion Window
+permitWindow is 0
+debug  303 1493
+debug 2
+
+Seed (bkg error) : 11
+PE #: 0
+In DataErr
+PE #: 1
+In DataErr
+PE #: 2
+In DataErr
+PE #: 3
+In DataErr
+PE #: 4
+In DataErr
+After fit, parameters are    (0):2.40797e-09   (1):-17.153   (2):10.7162   (3):0.956019
+BumpHunter results: stat = 99.0846
+Low edge, high edge of bump: 834 889
+DeficitHunter results: stat = inf
+Low edge, high edge of bump: 482 566
+Created +/- 1 sigma histograms
+YEdit: residualHist: 0x7ffffffe4260
+on PE 50
+on PE 100
+Absolute values of logl, chi2, BH tests are: 683.672 944.16 99.0846
+NDF is 40
+chi2/ndf is 23.604
+Log likelihood for our fit was 683.672
+Pval of logL, chi2, and bumpHunter are: 0 0 0
+Pval of largest deficit was: 0
+YEdit: 0x7ffffffe4260
+debug residuals 0
+YEdit: 0x7fffffff4f00
+YEdit: bins:55
+YEdit: residualResults: bin11 content:-1.92833
+YEdit: residualResults: bin12 content:-0.274603
+YEdit: residualResults: bin13 content:-1.06623
+YEdit: residualResults: bin14 content:0.0566037
+YEdit: residualResults: bin15 content:-0.982338
+YEdit: residualResults: bin16 content:6.96099
+YEdit: residualResults: bin17 content:20
+YEdit: residualResults: bin18 content:-7.7243
+YEdit: residualResults: bin19 content:5.87137
+YEdit: residualResults: bin20 content:1.87835
+YEdit: residualResults: bin21 content:-5.45838
+YEdit: residualResults: bin22 content:-4.51205
+YEdit: residualResults: bin23 content:-2.11702
+YEdit: residualResults: bin24 content:-7.73754
+YEdit: residualResults: bin25 content:6.00318
+YEdit: residualResults: bin26 content:-2.31288
+YEdit: residualResults: bin27 content:-1.17777
+YEdit: residualResults: bin28 content:1.97954
+YEdit: residualResults: bin29 content:-1.23544
+YEdit: residualResults: bin30 content:-4.61516
+YEdit: residualResults: bin31 content:-1.23941
+YEdit: residualResults: bin32 content:2.24329
+YEdit: residualResults: bin33 content:0.295781
+YEdit: residualResults: bin34 content:-0.544702
+YEdit: residualResults: bin35 content:-5.74705
+YEdit: residualResults: bin36 content:7.74508
+YEdit: residualResults: bin37 content:20
+YEdit: residualResults: bin38 content:-2.17381
+YEdit: residualResults: bin39 content:-4.17272
+YEdit: residualResults: bin40 content:1.57027
+YEdit: residualResults: bin41 content:-5.20645
+YEdit: residualResults: bin42 content:4.28142
+YEdit: residualResults: bin43 content:3.68737
+YEdit: residualResults: bin44 content:20
+YEdit: residualResults: bin45 content:-5.76739
+YEdit: residualResults: bin46 content:-4.43594
+YEdit: residualResults: bin47 content:2.39806
+YEdit: residualResults: bin48 content:-4.43371
+YEdit: residualResults: bin49 content:2.99478
+YEdit: residualResults: bin50 content:-1.28068
+YEdit: residualResults: bin51 content:-0.287368
+YEdit: residualResults: bin52 content:-0.439485
+YEdit: residualResults: bin53 content:1.3496
+YEdit: residualResults: bin54 content:-3.49449
+ FCN=6.55896 FROM MIGRAD    STATUS=CONVERGED     120 CALLS         121 TOTAL
+                     EDM=3.19733e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.98036e+00   6.37147e-01   4.52909e-04  -3.49301e-04
+   2  Mean        -5.98181e+00   1.31809e+01   3.69383e-03   1.46223e-05
+   3  Sigma        1.03512e+01   1.04389e+01   2.27114e-04   3.67258e-04
+TH1.Print Name  = residual_histOfVals, Entries= 44, Total sum= 41
+ fSumw[0]=0, x=-10.25, error=0
+ fSumw[1]=0, x=-9.75, error=0
+ fSumw[2]=0, x=-9.25, error=0
+ fSumw[3]=0, x=-8.75, error=0
+ fSumw[4]=0, x=-8.25, error=0
+ fSumw[5]=2, x=-7.75, error=1.41421
+ fSumw[6]=0, x=-7.25, error=0
+ fSumw[7]=0, x=-6.75, error=0
+ fSumw[8]=0, x=-6.25, error=0
+ fSumw[9]=2, x=-5.75, error=1.41421
+ fSumw[10]=2, x=-5.25, error=1.41421
+ fSumw[11]=2, x=-4.75, error=1.41421
+ fSumw[12]=3, x=-4.25, error=1.73205
+ fSumw[13]=0, x=-3.75, error=0
+ fSumw[14]=1, x=-3.25, error=1
+ fSumw[15]=0, x=-2.75, error=0
+ fSumw[16]=3, x=-2.25, error=1.73205
+ fSumw[17]=1, x=-1.75, error=1
+ fSumw[18]=5, x=-1.25, error=2.23607
+ fSumw[19]=2, x=-0.75, error=1.41421
+ fSumw[20]=3, x=-0.25, error=1.73205
+ fSumw[21]=2, x=0.25, error=1.41421
+ fSumw[22]=0, x=0.75, error=0
+ fSumw[23]=1, x=1.25, error=1
+ fSumw[24]=3, x=1.75, error=1.73205
+ fSumw[25]=2, x=2.25, error=1.41421
+ fSumw[26]=1, x=2.75, error=1
+ fSumw[27]=0, x=3.25, error=0
+ fSumw[28]=1, x=3.75, error=1
+ fSumw[29]=1, x=4.25, error=1
+ fSumw[30]=0, x=4.75, error=0
+ fSumw[31]=0, x=5.25, error=0
+ fSumw[32]=1, x=5.75, error=1
+ fSumw[33]=1, x=6.25, error=1
+ fSumw[34]=1, x=6.75, error=1
+ fSumw[35]=0, x=7.25, error=0
+ fSumw[36]=1, x=7.75, error=1
+ fSumw[37]=0, x=8.25, error=0
+ fSumw[38]=0, x=8.75, error=0
+ fSumw[39]=0, x=9.25, error=0
+ fSumw[40]=0, x=9.75, error=0
+ fSumw[41]=3, x=10.25, error=1.73205
+YEdit: fittedGauss0x7fffffff0d60
+fittedHists: 0x7ffffffdfb10
+From fit, mean and width are -5.98181 10.3512
+Calculating quantities from function itself, mean and RMS are -0.757306 3.82355
+
+******************************************
+*** initial values 
+*** BH p-value = 0 +/- 0
+*** BH value = 99.0824
+*** BH range = 834 - 889
+******************************************
+*** refined values (after window removal)
+*** BH p-value = -1 +/- -1
+*** BH value = -1
+*** BH range = -1 - -1
+******************************************
+*** final values 
+*** BH p-value = 0 +/- 0
+*** BH value = 99.0846
+*** BH range = 834 - 889
+******************************************
+
+Writing output file /lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/results/Step1_SearchPhase/svnCodebkgndFit-Redo/Step1_SearchPhase_Zprime_mjj_var.root
+yEdit: 0x7ffffffe5610
+Missing separate debuginfo for /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.3/InstallArea/x86_64-slc6-gcc62-opt/lib/libGoodRunsListsLib.so
+Missing separate debuginfo for /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.3/InstallArea/x86_64-slc6-gcc62-opt/lib/libPathResolver.so
+Missing separate debuginfo for /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.3/InstallArea/x86_64-slc6-gcc62-opt/lib/libxAODEventInfo.so
+Missing separate debuginfo for /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.3/InstallArea/x86_64-slc6-gcc62-opt/lib/libAsgTools.so
+Missing separate debuginfo for /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.3/InstallArea/x86_64-slc6-gcc62-opt/lib/libxAODRootAccess.so
+Missing separate debuginfo for /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.3/InstallArea/x86_64-slc6-gcc62-opt/lib/libAthContainers.so
+Missing separate debuginfo for /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.3/InstallArea/x86_64-slc6-gcc62-opt/lib/libxAODCore.so
+Missing separate debuginfo for /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.3/InstallArea/x86_64-slc6-gcc62-opt/lib/libAthLinks.so
+Missing separate debuginfo for /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.3/InstallArea/x86_64-slc6-gcc62-opt/lib/libxAODRootAccessInterfaces.so
+Missing separate debuginfo for /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.3/InstallArea/x86_64-slc6-gcc62-opt/lib/libCxxUtils.so
+Missing separate debuginfo for /cvmfs/atlas.cern.ch/repo/sw/software/21.2/AnalysisBase/21.2.3/InstallArea/x86_64-slc6-gcc62-opt/lib/libxAODEventFormat.so
+doing fittedhists
+done
+Process ran in 6 seconds. 
+
+Program exited normally.
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.209.el6_9.2.x86_64 keyutils-libs-1.4-5.el6.x86_64 krb5-libs-1.10.3-65.el6.x86_64 libcom_err-1.41.12-23.el6.x86_64 libselinux-2.0.94-7.el6.x86_64 libxml2-2.7.6-21.el6_8.1.x86_64 ncurses-libs-5.7-4.20090207.el6.x86_64 nss-softokn-freebl-3.14.3-23.3.el6_8.x86_64 openssl-1.0.1e-57.el6.x86_64 zlib-1.2.3-29.el6.x86_64
+(gdb) ev  eix  xit
+Undefined command: "exit".  Try "help".
+(gdb) quit

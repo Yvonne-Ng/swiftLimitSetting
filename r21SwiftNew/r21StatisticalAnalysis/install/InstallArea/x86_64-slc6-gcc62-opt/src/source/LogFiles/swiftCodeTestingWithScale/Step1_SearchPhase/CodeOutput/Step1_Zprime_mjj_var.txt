@@ -1,0 +1,19 @@
+test
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfold found in libUnfold.so  is already in libHist.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfoldBinning found in libUnfold.so  is already in libHist.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfoldDensity found in libUnfold.so  is already in libHist.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfoldSys found in libUnfold.so  is already in libHist.so 
+inputFileName: /lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/MC.root
+inputHistDir: 
+Doing pvalue with systematics? 0!
+nPseudoExpBH is 100
+nPseudoExpFit is 5
+ Hist Name: dijetgamma_g85_2j65/Zprime_mjj_var
+Using Scaled MC
+Setting the 4 parameters to    (0) :9.89e-09   (1) :-10.96   (2) :10.842   (3) :0.904079
+minX, maxX: 300 1500
+Actual fit range is 303 - 1493
+corresponding to including the bins 11, 55.
+Creating standard dijet function.
+paramDefaultsLength = 4
+doSwift is 0

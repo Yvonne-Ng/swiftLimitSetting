@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+echo "WARNING Please stop using doSystOnSearchOutput.exe, and use doSystOnSearchOutput instead"
+echo ""
+exec doSystOnSearchOutput "$@"

@@ -1,0 +1,10 @@
+// Dear emacs, this is -*- c++ -*-
+// Copyright (C) 2002-2017 CERN for the benefit of the ATLAS collaboration
+//
+// Skeleton file for the entries header file for serialiser converters.
+//
+
+// Gaudi include(s):
+#include "GaudiKernel/DeclareFactoryEntries.h"
+
+// Declaration of the components:

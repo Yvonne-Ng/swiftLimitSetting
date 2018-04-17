@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+echo "WARNING Please stop using drawLimitBands.exe, and use drawLimitBands instead"
+echo ""
+exec drawLimitBands "$@"

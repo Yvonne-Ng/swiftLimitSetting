@@ -1,0 +1,5 @@
+# Target labels
+ Bayesian
+# Source files and their labels
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/build/source/CMakeFiles/simpleBumpHunter_exampleExeAttribSet
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/build/source/CMakeFiles/simpleBumpHunter_exampleExeAttribSet.rule

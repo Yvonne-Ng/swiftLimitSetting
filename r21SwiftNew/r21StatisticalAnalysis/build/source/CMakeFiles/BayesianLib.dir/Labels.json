@@ -1,0 +1,195 @@
+
+{
+	"sources" : 
+	[
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Bayesian/BonusFitFunctions.h"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Bayesian/FoldingFunctions.h"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Bayesian/MathFunctions.h"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Bayesian/MjjBATAnalysisFacility.h"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Bayesian/MjjBATBumpHunter.h"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Bayesian/MjjBATComparisonTool.h"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Bayesian/MjjBATModel.h"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Bayesian/MjjBATProcess.h"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Bayesian/MjjBATScaleChangingSyst.h"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Bayesian/MjjBATShapeChangingSyst.h"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Bayesian/MjjBATSystematic.h"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Bayesian/MjjBATSystematicVariation.h"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Bayesian/MjjBATTemplateSyst.h"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Bayesian/MjjBumpHunter.h"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Bayesian/MjjChi2Test.h"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Bayesian/MjjFitFunction.h"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Bayesian/MjjFitFunctionBase.h"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Bayesian/MjjFitParameter.h"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Bayesian/MjjFitter.h"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Bayesian/MjjHistogram.h"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Bayesian/MjjLogLikelihoodTest.h"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Bayesian/MjjPseudoExperimenter.h"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Bayesian/MjjSignificanceTests.h"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Bayesian/MjjStatisticalTest.h"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Bayesian/MjjStatisticsBundle.h"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Root/MathFunctions.cxx"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Root/MjjBATAnalysisFacility.cxx"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Root/MjjBATBumpHunter.cxx"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Root/MjjBATComparisonTool.cxx"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Root/MjjBATModel.cxx"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Root/MjjBATProcess.cxx"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Root/MjjBATScaleChangingSyst.cxx"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Root/MjjBATShapeChangingSyst.cxx"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Root/MjjBATSystematic.cxx"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Root/MjjBATSystematicVariation.cxx"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Root/MjjBATTemplateSyst.cxx"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Root/MjjBumpHunter.cxx"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Root/MjjChi2Test.cxx"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Root/MjjFitFunctionBase.cxx"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Root/MjjFitParameter.cxx"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Root/MjjFitter.cxx"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Root/MjjHistogram.cxx"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Root/MjjLogLikelihoodTest.cxx"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Root/MjjPseudoExperimenter.cxx"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Root/MjjSignificanceTests.cxx"
+		},
+		
+		{
+			"file" : "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/Root/MjjStatisticalTest.cxx"
+		}
+	],
+	"target" : 
+	{
+		"labels" : [ "Bayesian" ],
+		"name" : "BayesianLib"
+	}
+}

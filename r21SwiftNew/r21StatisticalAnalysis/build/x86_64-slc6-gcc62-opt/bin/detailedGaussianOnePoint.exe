@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+echo "WARNING Please stop using detailedGaussianOnePoint.exe, and use detailedGaussianOnePoint instead"
+echo ""
+exec detailedGaussianOnePoint "$@"

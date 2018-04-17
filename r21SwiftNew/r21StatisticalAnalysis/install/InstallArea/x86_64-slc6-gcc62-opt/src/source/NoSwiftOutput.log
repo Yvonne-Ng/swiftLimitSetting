@@ -1,0 +1,12 @@
+/bin/sh: SearchPhase: command not found
+/bin/sh: SearchPhase: command not found
+/bin/sh: SearchPhase: command not found
+/bin/sh: SearchPhase: command not found
+About to call SearchPhase --useScaled --config submitConfigs/DijetISRMC/Step1_SearchPhase_caseA_window13_noSwift.config --file /lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/MC.root --histName dijetgamma_g85_2j65/Zprime_mjj_var --noDE --outputfile results/data2017/DijetISRMC//SearchResultData_caseA_window13_noSwift.root 
+
+About to call SearchPhase --useScaled --config submitConfigs/DijetISRMC/Step1_SearchPhase_caseB_window13_noSwift.config --file /lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/MC.root --histName dijetgamma_g85_2j65/Zprime_mjj_var --noDE --outputfile results/data2017/DijetISRMC//SearchResultData_caseB_window13_noSwift.root 
+
+About to call SearchPhase --useScaled --config submitConfigs/DijetISRMC/Step1_SearchPhase_caseC_window13_noSwift.config --file /lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/MC.root --histName dijetgamma_g85_2j65/Zprime_mjj_var --noDE --outputfile results/data2017/DijetISRMC//SearchResultData_caseC_window13_noSwift.root 
+
+About to call SearchPhase --useScaled --config submitConfigs/DijetISRMC/Step1_SearchPhase_caseD_window13_noSwift.config --file /lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/MC.root --histName dijetgamma_g85_2j65/Zprime_mjj_var --noDE --outputfile results/data2017/DijetISRMC//SearchResultData_caseD_window13_noSwift.root 
+

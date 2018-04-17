@@ -1,0 +1,7 @@
+[release_metadata]
+release:${CMAKE_PROJECT_VERSION}
+nightly name:$ENV{NIGHTLY_NAME}
+project name:${CMAKE_PROJECT_NAME}
+nightly release:$ENV{PROJECT_RELNAME_COPY}
+date:${CMAKE_BUILD_DATE}
+compiler:$ENV{gcc_version}
