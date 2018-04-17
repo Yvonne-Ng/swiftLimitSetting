@@ -45,9 +45,10 @@ doPlotting = False # ONLY set to True when Step 3 LimitSettingPhase.cxx has/is b
 #SearchPhaseresults = "%s/Bayesian/results/Step1_SearchPhase/dijetgamma2017MC/Step1_SearchPhase_Zprime_mjj_var_DataLike_LLLfb.root"%headdir
 #SearchPhaseresults = "%s/Bayesian/results/Step1_SearchPhase/MC_noScale_dijetgamma_g85_2j65_4ParUA2/Step1_SearchPhase_Zprime_mjj_var.root"%headdir
 #SearchPhaseresults = "/lustre/SCRATCH/atlas/ywng/r21/r21Rebuild/r21StatisticalAnalysis/source/RunScipts/SearchPhaseConfig_test.root"
-SearchPhaseresults = "/lustre/SCRATCH/atlas/ywng/r21/r21-Old/source/Bayesian/results/Step1_SearchPhase/test/Step1_SearchPhase_Zprime_mjj_var.root"
+#SearchPhaseresults = "/lustre/SCRATCH/atlas/ywng/r21/r21-Old/source/Bayesian/results/Step1_SearchPhase/test/Step1_SearchPhase_Zprime_mjj_var.root"
+#SearchPhaseresults = "/lustre/SCRATCH/atlas/ywng/r21/r21-Old/source/Bayesian/results/Step1_SearchPhase/test/Step1_SearchPhase_Zprime_mjj_var.root"
+SearchPhaseresults = "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21-Old/source/Bayesian/results/Step1_SearchPhase/test_dijet_g150_2j25/Step1_SearchPhase_Zprime_mjj_var.root"
                    # Can replace lumi in name with LLL and will be filled by Lumis value (must do this if running on multiple lumis)
-
 ##---------------------------
 # Analysis quantities
 
@@ -81,7 +82,7 @@ nPEForExpected = nPETotal/nSplits # Calculating how many PEs per division (split
 #---------------------------
 # Signal information
 
-plotextension ="test"  # folder name to store all plots, results, configs and outputs consistently
+plotextension ="test_dijet_g150_2j25"  # folder name to store all plots, results, configs and outputs consistently
                                                                            # MUST keep name same when doing step 2 and 3
 
 # Uncomment only 1 at a time depending which model and coupling you're running on
@@ -138,7 +139,7 @@ outName = "JDMPh100_Zprime0p2"
 #can change later
 LimitSettingPhaseconfig = "./configurations/Step3_LimitSettingPhase_gjj_MMM_PhPPP_%s.config"%Coupling # Path/file of LimitSettingPhase config
 #changed
-signalFileName = "/lustre/SCRATCH/atlas/ywng/r21/r21Rebuild/input/Chopped_Ph{0}_MMM%d_{1}.root".format(Ph,Coupling)
+signalFileName = "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/Chopped_Ph{0}_MMM%d_{1}.root".format(Ph,Coupling)
                                                                                                          #
 #signalFileName = "inputs/KMCSignal/Chopped_MMM%d{0}.root".format(Coupling)
 
@@ -300,6 +301,7 @@ if dosetLimitsOneMassPoint:
 	         
           # Perform setLimitsOneMassPoint locally
           if not useBatch:  
+            print("command: ", command)
             subprocess.call(command, shell=True)
 
           # Use batch i.e. perform setLimitsOneMassPoint on the batch   
@@ -446,4 +448,3 @@ if doLimitSettingPhase or doPlotting:
         # do plotting locally
         subprocess.call("python plotting/LimitSettingPhase/plotLimitSetting_gjj_%s_%sfb.py -b"%(outName,Lumi), shell=True)
         os.remove("./plotting/LimitSettingPhase/plotLimitSetting_gjj_%s_%sfb.py"%(outName,Lumi)) # Remove modified plotLimitSetting_gjj after plotting
-

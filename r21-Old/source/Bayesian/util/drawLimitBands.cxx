@@ -68,7 +68,8 @@ int main(){
     cout<<"Configuration"<<endl;
     //---------------------Configurations---------------------------//
     //------r21-Old config---///
-    string inputDir = "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21-Old/source/Bayesian/results/Step2_setLimitsOneMassPoint/test";
+//string inputDir = "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21-Old/source/Bayesian/results/Step2_setLimitsOneMassPoint/test";
+    string inputDir= "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21-Old/source/Bayesian/results/Step2_setLimitsOneMassPoint/test_dijet_g150_2j25/";
     string fileNameTemplate =inputDir+"/"+"Step2_setLimitsOneMassPoint_JDMPhPPP_ZprimeCCCMMM_35p45fb_0.root";
     string outputFileNamePrefix="testLimitPlot";
     string outputFileName;
@@ -79,7 +80,7 @@ int main(){
     ////string fileNameTemplate =inputDir+"/"+"Step2_setLimitsOneMassPoint_JDMPhPPP_ZprimeCCCMMM_35p45fb_0.root";
     //string outputFileName="testLimitr21SwiftPlot.root";
 
-    double luminosity=35100;
+    double luminosity=15500;
     //gSMp02_ph100
     vector<string> ptCutList={"50","100"};
     vector<string> couplingList={"0p1","0p2", "0p3", "0p4"};

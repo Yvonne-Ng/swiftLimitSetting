@@ -206,11 +206,19 @@ int main (int argc,char **argv)
 		basicInputHisto = (TH1D*) infile->GetDirectory(inputHistDir)->Get(dataMjjHistoName);
 	}
 
+//yEdit
+    basicInputHisto->Rebin(2);
+    cout<<"btagged2: "<<endl;
+    for ( int i=0; i<basicInputHisto->GetNbinsX(); i++){
+        cout<<"bin "<<i<<"  "<<basicInputHisto->GetBinCenter(i)<<endl;
+    }
+
 	// If this is a scaled histogram, the errors need to be correct
 	if( f_useScaled == true ){
                 std::cout<<"Using Scaled MC"<<std::endl;
 		for( int iBin=1; iBin < basicInputHisto->GetNbinsX()+1; ++iBin){
 			basicInputHisto->SetBinError(iBin, sqrt(basicInputHisto->GetBinContent(iBin)) );
+            cout<<"iBin: "<<"error: "<<sqrt(basicInputHisto->GetBinContent(iBin))<<endl;
 		}
 	}
 
@@ -574,6 +582,11 @@ int main (int argc,char **argv)
 	// Now outside the loop, add 1 extra bin to low edge of exclusion window and re-fit 
 	// Only add one to lower end of window if previously excluded a window AND if lower end of window isn't too close to starting point
 	//  -- this background estimation is as good as it's going to get.
+    //  
+//cout<<"Yvonne"<<endl;
+//    cout<<"error: "<<endl;
+//    for (int i=1; basicInputHisto->GetNbinsX()+1; i++)
+//        cout<<"bin "<< i<<"error: "<<basicInputHisto->GetBinContent(i)<<endl;
 	if ((excludeWindow == true) and (firstBinInWindow - firstBin >= 2)){ // - 1 off if >= 2  equivalent to break if < 2 seen in code above
 		std::cout<<" Adding 1 extra bin to exclusion window at low mass end"<<std::endl;
 

@@ -1,3 +1,4 @@
+# Copyright (C) 2002-2017 CERN for the benefit of the ATLAS collaboration
 #
 # This is a template for a CMakeLists.txt file that can be used in a client
 # project (work area) to set up building ATLAS packages against the configured
@@ -33,8 +34,8 @@ find_package( AnalysisBase )
 atlas_ctest_setup()
 
 # Set up a work directory project:
-atlas_project( WorkDir 21.2.0
-   USE AnalysisBase 21.2.0
+atlas_project( WorkDir 21.2.3
+   USE AnalysisBase 21.2.3
     )
 
 # Set up the runtime environment setup script(s):

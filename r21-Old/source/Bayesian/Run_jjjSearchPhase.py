@@ -31,20 +31,27 @@ UserfileHistDict = {}
 #---------------------------
 # Files and directories
 
-doSearch = True # Set to True to run SearchPhase.cxx
+doSearch = False# Set to True to run SearchPhase.cxx
 
-doPlotting = True # Set to True to run plotSearchPhase.py 
+doPlotting = True# Set to True to run plotSearchPhase.py 
 
-folderextension = "trijet_data_hist_20160727_15p45fb_3Par_303_611"
+#folderextension = "trijet_data_hist_20160727_15p45fb_3Par_303_611"
+#
+#inputFileDir = "./inputs/hist_20160727/OUT_dijetjet_data/"
+#
+#UserfileHistDict[inputFileDir+"datalike.root"] = ["Zprime_mjj_var_DataLike_15p45fb"]  
+#
+#HistDir = "trijet_j430_2j25_nomjj"
 
-inputFileDir = "./inputs/hist_20160727/OUT_dijetjet_data/"
+folderextension = "trijetMC"
 
-UserfileHistDict[inputFileDir+"datalike.root"] = ["Zprime_mjj_var_DataLike_15p45fb"]  
+inputFileDir = "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/btagged/"
 
-HistDir = "trijet_j430_2j25_nomjj"
+UserfileHistDict[inputFileDir+"trijet_HLT_j380_inclusive.root"] = ["background_mjj_var"]  
 
+HistDir = ""
 # Turn to true if doing Spurious Signal test!
-useScaled = False # Set to true if using scaled histograms instead of Datalike histograms FIXME do in limits too!? 
+useScaled = True # Set to true if using scaled histograms instead of Datalike histograms FIXME do in limits too!? 
 
 #---------------------------
 # Analysis quantities 
@@ -192,7 +199,7 @@ for File, HistList in fileHistDict.iteritems():
     
     if doPlotting:
       # Use regex to find lumi of hist
-      lumi = 0
+      lumi = 35.5
       if (re.search('_[0-9]+fb',Hist) is not None):
         lumi = re.search('_[0-9]+fb',Hist).group()
         lumi = lumi.strip("_")
