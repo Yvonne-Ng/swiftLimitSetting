@@ -1,0 +1,16 @@
+test
+inputFileName: /lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/SensitivityStudies/source/scripts/../results2/signalplusbackground/signalplusbackground.Gauss_width3.0p1.ifb.mjj_Gauss_sig_{0}_smooth.3.par.0.seed.default.root
+inputHistDir: 
+Doing pvalue with systematics? 0!
+nPseudoExpBH is 1000
+nPseudoExpFit is 100
+ Hist Name: mjj_Gauss_sig_{0}_smoothinjectedToBkg_500
+Setting the 4 parameters to    (0) :0.00021675   (1) :3.18705   (2) :7.11991   (3) :0.294323
+minX, maxX: 300 1500
+Actual fit range is 303 - 1493
+corresponding to including the bins 11, 55.
+Creating standard dijet function.
+paramDefaultsLength = 4
+doSwift is 1
+*theMjjfitFunction:0x21b7c30
+theHistogram: 0x7fff0e5b6d60

@@ -1,0 +1,7 @@
+test
+inputFileName: /lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/SensitivityStudies/source/scripts/../results2/signalplusbackground/signalplusbackground.Gauss_width15.0p0.ifb.mjj_Gauss_sig__smooth.4.par.0.seed.default.root
+inputHistDir: 
+Doing pvalue with systematics? 0!
+nPseudoExpBH is 1000
+nPseudoExpFit is 100
+ Hist Name: mjj_Gauss_sig_800_smoothinjectedToBkg

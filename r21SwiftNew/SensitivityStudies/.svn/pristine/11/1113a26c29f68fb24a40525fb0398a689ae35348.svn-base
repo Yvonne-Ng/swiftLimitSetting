@@ -1,0 +1,268 @@
+#!/bin/python
+
+#******************************************
+#perform search on given input file and signal mass value
+#EXAMPLE python -u step03.searchPhase.py --config <config file> --file <file> --mass <mass> --lumi <luminosity [fb^-1]> --fit --tag <tag> --plot --batch --debug
+
+#******************************************
+#import stuff
+import sys, os, math, argparse, ROOT
+import searchPhaseTools
+
+#******************************************
+def runSearchPhase(args):
+
+    print '\n******************************************'
+    print 'run search phase'
+
+    #******************************************
+    #set ATLAS style
+    if os.path.isfile(os.path.expanduser('~/RootUtils/AtlasStyle.C')):
+        ROOT.gROOT.LoadMacro('~/RootUtils/AtlasStyle.C')
+        ROOT.SetAtlasStyle()
+        ROOT.set_color_env()
+    else:
+        print '\n***WARNING*** couldn\'t find ATLAS Style'
+        #import AtlasStyle
+        #AtlasStyle.SetAtlasStyle()
+
+    #------------------------------------------
+    #set error sum and overflow
+    ROOT.TH1.SetDefaultSumw2()
+    ROOT.TH1.StatOverflows()
+    ROOT.TH2.SetDefaultSumw2()
+    ROOT.TH2.StatOverflows()
+    
+    #------------------------------------------
+    #input parameters
+    print '\ninput parameters:'
+    argsdict = vars(args)
+    for ii in xrange(len(argsdict)):
+        print '  %s = %s'%(argsdict.keys()[ii], argsdict.values()[ii],)
+
+    slumi = ('%.1f'% float( str(args.lumi).replace('p','.'))).replace('.','p')
+        
+    #------------------------------------------
+    #get directory of this script
+    localdir = os.path.dirname(os.path.realpath(__file__))
+    
+    #------------------------------------------
+    #get settings
+    print '\nconfig settings:'
+    settings = ROOT.TEnv()
+    if settings.ReadFile(args.configFileName,ROOT.EEnvLevel(0)) != 0:
+        raise IOError('could not find sensitivity scan config file: %s'%args.configFileName)
+
+    model = settings.GetValue('signalModel','')
+    print '  signal model = %s'%model
+
+    modelLabel = settings.GetValue('signalModelLabel','').replace('"','')
+    print '  signal model label = %s'%modelLabel
+
+    histBaseName = settings.GetValue('histBaseName','mjj')
+    print '  hist base name = %s'%histBaseName
+
+    bTaggingWP = settings.GetValue('bTaggingWP','') #fix_8585
+    print '  b-tagging WP = %s'%bTaggingWP
+
+    axisLabel = settings.GetValue('axisLabel','m [GeV]')
+    print '  hist x-axis label = %s'%axisLabel
+
+    nPar = int(settings.GetValue('nFitParameters','3'))
+    print '  n fit parameters = %s'%nPar
+
+    thresholdMass = float(settings.GetValue('thresholdMass','1100.'))
+    print '  threshold mass = %s'%thresholdMass
+
+    seed = float(settings.GetValue('randomSeed','0'))
+    print '  random seed = %s'%seed
+
+    configNotes = settings.GetValue('notes','').split(',')
+    print '  notes = %s'%configNotes
+
+	#------------------------------------------
+    #set variables
+    slumi = ('%.1f'% float( str(args.lumi).replace('p','.'))).replace('.','p')        
+
+    histName = histBaseName
+    if bTaggingWP != '':
+        histName+='_'+bTaggingWP
+    if args.debug:
+        print '\nhist name = %s'%histName
+
+    textSize=20
+        
+	#------------------------------------------
+    #get directory of this script
+    localdir = os.path.dirname(os.path.realpath(__file__))
+
+    #------------------------------------------
+    #check data-like QCD file
+    if not os.path.isfile(args.inputFileName):
+        raise SystemExit('\n***ERROR*** couldn\'t find input file: %s'%args.inputFileName)
+
+    #------------------------------------------
+    #check luminosity
+    if not slumi+'.ifb.' in args.inputFileName:
+        raise SystemExit('\n***ERROR*** is the lumi value right?')
+
+    #------------------------------------------
+    #check model
+    if not model in args.inputFileName:
+        raise SystemExit('\n***ERROR*** is the model name right?')
+
+    #------------------------------------------
+    #check output file
+    outFileName = localdir+'/../results/searchphase/searchphase.'+model+'.%s'%int(args.mass)+'.GeV.'+slumi+'.ifb.'+histName+'.%i'%nPar+'.par.%i'%seed+'.seed.'+args.tag+'.root'
+    if os.path.isfile(outFileName):
+        raise SystemExit('\n***WARNING*** output file exists already: %s'%outFileName)
+
+    #------------------------------------------
+    #get fit initial parameters
+    #print 'get fit initial parameters'
+
+    pars = []
+    
+    if args.fit:
+        #do a quick fit to get initial fit parameters
+        pars = searchPhaseTools.simpleFit(localdir+'/'+args.inputFileName, '', histName+'_%s'%int(args.mass), thresholdMass, 13e3, nPar, False)
+        print '\ninitial parameters from quick fit: %s'%pars
+        #------------------------------------------
+        #TEST
+        #raise SystemExit('\n***TEST*** exit')
+        #------------------------------------------
+
+    else:
+        #predefined fit parameters
+        #NOTE the available values are limited *FOR NOW* to those obtained from the fits of 1 fb^-1 mjj spectrum
+
+        #5 parameters fit
+        if nPar == 5:
+            if args.lumi <= 1.: #fb^-1
+                print '\n1 fb^-1 mjj fit 5 parameters'
+                pars = [0.242016, 10.627, 1.40793, -1.46081, -0.197971]
+            else:
+                print '\n1 fb^-1 mjj fit 5 parameters'
+                pars = [0.242016, 10.627, 1.40793, -1.46081, -0.197971]
+
+        #4 parameters fit
+        if nPar == 4:
+            if args.lumi <= 1.: #fb^-1
+                print '\n1 fb^-1 mjj fit 4 parameters'
+                pars = [0.00280214, 7.2046, 5.63296, 0.0571367]
+            else:
+                print '\n1 fb^-1 mjj fit 4 parameters'
+                pars = [0.00280214, 7.2046, 5.63296, 0.0571367]
+
+        #3 parameters fit
+        else:
+            if args.lumi <= 1.: #fb^-1
+                print '\n1 fb^-1 mjj fit 3 parameters'
+                pars = [0.00458656, 7.75728, -5.31253]
+            else:
+                print '\n1 fb^-1 mjj fit 3 parameters'
+                pars = [0.00458656, 7.75728, -5.31253]                
+
+        print 'initial parameters: %s'%pars
+        
+    #------------------------------------------
+    #TEST
+    #raise SystemExit('\n***TEST*** exit')
+    #------------------------------------------
+    
+    #------------------------------------------
+    #create config file
+    configFileName    = localdir+'/../data/searchPhase.config'
+    newConfigFileName = localdir+'/../configs/searchphase.'+model+'.%s'%int(args.mass)+'.GeV.'+slumi+'.ifb.'+histName+'.%i'%nPar+'.par.%i'%seed+'.seed.'+args.tag+'.config'
+    print 'config file = %s'%newConfigFileName
+    
+    with open(configFileName,'r') as configFile:
+        with open(newConfigFileName,'w') as newConfigFile:
+            for line in configFile:
+                newLine=line
+                newLine = newLine.replace('dummyInputFileName', args.inputFileName)
+                if len(args.inputHistDir)>0:
+                    newLine = newLine.replace('#inputHistDir', 'inputHistDir\t\t'+args.inputHistDir)
+                newLine = newLine.replace('dummyHistName', histName+'_'+str(int(args.mass)))
+                newLine = newLine.replace('dummyOutputFileName', outFileName)
+                newLine = newLine.replace('dummyMinX', str(thresholdMass))
+
+                #3 parameters
+                if nPar == 3:
+                    newLine = newLine.replace('dummyFuncCode', str(9))
+                    newLine = newLine.replace('dummyNPar', str(3))
+                    newLine = newLine.replace('dummyP1', str(pars[0]))
+                    newLine = newLine.replace('dummyP2', str(pars[1]))
+                    newLine = newLine.replace('dummyP3', str(pars[2]))
+
+                #4 parameters
+                elif nPar == 4:
+                    newLine = newLine.replace('dummyFuncCode', str(4))
+                    newLine = newLine.replace('dummyNPar', str(4))
+                    newLine = newLine.replace('dummyP1', str(pars[0]))
+                    newLine = newLine.replace('dummyP2', str(pars[1]))
+                    newLine = newLine.replace('dummyP3', str(pars[2]))
+                    newLine = newLine.replace('#parameter4', 'parameter4\t\t'+str(pars[3]))
+
+                #5 parameters
+                elif nPar == 5:
+                    newLine = newLine.replace('dummyFuncCode', str(7))
+                    newLine = newLine.replace('dummyNPar', str(5))
+                    newLine = newLine.replace('dummyP1', str(pars[0]))
+                    newLine = newLine.replace('dummyP2', str(pars[1]))
+                    newLine = newLine.replace('dummyP3', str(pars[2]))
+                    newLine = newLine.replace('#parameter4', 'parameter4\t\t'+str(pars[3]))
+                    newLine = newLine.replace('#parameter5', 'parameter5\t\t'+str(pars[4]))
+
+                newConfigFile.write(newLine)
+
+    #------------------------------------------
+    #TEST
+    #raise SystemExit('\n***TEST*** exit')
+    #------------------------------------------
+                
+    #------------------------------------------
+    #run Bump Hunter
+    #------------------------------------------
+    print '\n******************************************'
+    print 'runnning SearchPhase\n'
+    os.system('SearchPhase --config %s --noDE'%newConfigFileName)
+
+    #------------------------------------------
+    #TEST
+    #raise SystemExit('\n***TEST*** exit')
+    #------------------------------------------
+
+    #plot search phase results
+    snotes = '" "'.join(configNotes)
+    plotCommand = 'python plotSearchPhase.py --bump --file %s --lumi %s --notes "m_{%s} = %s GeV" "%s" --xlabel "%s"'%(outFileName, args.lumi, modelLabel.replace('\\',''), int(args.mass), snotes, axisLabel)
+    if args.wait:
+        plotCommand+=' --wait'
+    #print plotCommand #DEBUG
+    os.system(plotCommand)
+
+
+#******************************************
+if __name__ == '__main__':
+
+    #------------------------------------------
+    #parse input arguments
+    parser = argparse.ArgumentParser(description='%prog [options]')
+    parser.add_argument('--config', dest='configFileName', default='', required=True, help='sensitivity scan config file')
+    parser.add_argument('--file', dest='inputFileName', default='', required=True, help='input file')
+    parser.add_argument('--dir', dest='inputHistDir', default='', help='input hist directory')
+    parser.add_argument('--mass', dest='mass', default=0, required=True, help='signal mass value')
+    parser.add_argument('--lumi', dest='lumi', default=0., required=True, help='luminosity [fb^-1]')
+    parser.add_argument('--fit', dest='fit', action='store_true', default=False, help='run a quick fit to get initial parameters?')
+    parser.add_argument('--tag', dest='tag', default='default', help='tag for output files')
+    parser.add_argument('--wait', dest='wait', action='store_true', default=False, help='wait?')
+    parser.add_argument('-p', '--plot', dest='plot', action='store_true', default=False, help='plot histograms')
+    parser.add_argument('-b', '--batch', dest='batch', action='store_true', default=False, help='batch mode')
+    parser.add_argument('-d', '--debug', dest='debug', action='store_true', default=False, help='debug mode')
+    args = parser.parse_args()
+
+    #------------------------------------------
+    #run search phase
+    runSearchPhase(args)
+    print '\nran search phase'
+    print '******************************************'

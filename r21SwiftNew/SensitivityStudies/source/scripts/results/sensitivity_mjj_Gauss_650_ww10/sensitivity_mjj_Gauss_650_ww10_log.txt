@@ -1,0 +1,119 @@
+
+[1mRooFit v3.60 -- Developed by Wouter Verkerke and David Kirkby[0m 
+                Copyright (C) 2000-2013 NIKHEF, University of California & Stanford University
+                All rights reserved, please read http://roofit.sourceforge.net/license.txt
+
+test
+inputFileName: /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.73p6.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root
+inputHistDir: 
+Doing pvalue with systematics? 0!
+nPseudoExpBH is 200
+nPseudoExpFit is 100
+ Hist Name: mjj_Gauss_650
+Setting the 4 parameters to    (0) :0.00021675   (1) :3.18705   (2) :7.11991   (3) :0.294323
+minX, maxX: 530 2081
+Actual fit range is 531 - 2079
+corresponding to including the bins 20, 52.
+Creating standard dijet function.
+paramDefaultsLength = 4
+doSwift is 1
+Collected info on SWIFT bins
+Collected info on SWIFT residuals for initial fit
+After fit, parameters are     (0):462.731   (1):20.614   (2):0.00514225   (3):-0.863654
+on PE 50
+on PE 100
+initialpval is 0.02
+Not excluding any window
+permitWindow is 1
+Collected info on SWIFT residuals for fit after window exclusion
+After fit, parameters are    (0):462.731   (1):20.614   (2):0.00514225   (3):-0.863654
+BumpHunter results: stat = 8.55026
+Low edge, high edge of bump: 606 690
+DeficitHunter results: stat = 8.55026
+Low edge, high edge of bump: 606 690
+Created +/- 1 sigma histograms
+on PE 50
+on PE 100
+on PE 150
+on PE 200
+Absolute values of logl, chi2, BH tests are: 277.543 29.8959 8.55026
+NDF is 28
+chi2/ndf is 1.06771
+Log likelihood for our fit was 277.543
+Pval of logL, chi2, and bumpHunter are: 0.005 0.005 0.02
+Pval of largest deficit was: 0.035
+debug residuals 0
+ FCN=2.11171 FROM MIGRAD    STATUS=CONVERGED      69 CALLS          70 TOTAL
+                     EDM=3.46234e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     4.14366e+00   9.41695e-01   6.52840e-04  -1.30150e-05
+   2  Mean        -7.41061e-02   5.16891e-01   4.24191e-04  -1.31642e-04
+   3  Sigma        1.91846e+00   5.06503e-01   7.13332e-05  -2.27544e-03
+TH1.Print Name  = residual_histOfVals, Entries= 32, Total sum= 32
+ fSumw[0]=0, x=-10.25, error=0
+ fSumw[1]=0, x=-9.75, error=0
+ fSumw[2]=0, x=-9.25, error=0
+ fSumw[3]=0, x=-8.75, error=0
+ fSumw[4]=0, x=-8.25, error=0
+ fSumw[5]=0, x=-7.75, error=0
+ fSumw[6]=0, x=-7.25, error=0
+ fSumw[7]=0, x=-6.75, error=0
+ fSumw[8]=0, x=-6.25, error=0
+ fSumw[9]=0, x=-5.75, error=0
+ fSumw[10]=0, x=-5.25, error=0
+ fSumw[11]=0, x=-4.75, error=0
+ fSumw[12]=0, x=-4.25, error=0
+ fSumw[13]=0, x=-3.75, error=0
+ fSumw[14]=0, x=-3.25, error=0
+ fSumw[15]=1, x=-2.75, error=1
+ fSumw[16]=3, x=-2.25, error=1.73205
+ fSumw[17]=0, x=-1.75, error=0
+ fSumw[18]=4, x=-1.25, error=2
+ fSumw[19]=5, x=-0.75, error=2.23607
+ fSumw[20]=5, x=-0.25, error=2.23607
+ fSumw[21]=3, x=0.25, error=1.73205
+ fSumw[22]=3, x=0.75, error=1.73205
+ fSumw[23]=3, x=1.25, error=1.73205
+ fSumw[24]=4, x=1.75, error=2
+ fSumw[25]=0, x=2.25, error=0
+ fSumw[26]=0, x=2.75, error=0
+ fSumw[27]=1, x=3.25, error=1
+ fSumw[28]=0, x=3.75, error=0
+ fSumw[29]=0, x=4.25, error=0
+ fSumw[30]=0, x=4.75, error=0
+ fSumw[31]=0, x=5.25, error=0
+ fSumw[32]=0, x=5.75, error=0
+ fSumw[33]=0, x=6.25, error=0
+ fSumw[34]=0, x=6.75, error=0
+ fSumw[35]=0, x=7.25, error=0
+ fSumw[36]=0, x=7.75, error=0
+ fSumw[37]=0, x=8.25, error=0
+ fSumw[38]=0, x=8.75, error=0
+ fSumw[39]=0, x=9.25, error=0
+ fSumw[40]=0, x=9.75, error=0
+ fSumw[41]=0, x=10.25, error=0
+From fit, mean and width are -0.0741061 1.91846
+Calculating quantities from function itself, mean and RMS are -0.0767522 1.36421
+
+******************************************
+*** initial values 
+*** BH p-value = 0.02 +/- 0.014
+*** BH value = 8.55026
+*** BH range = 606 - 690
+******************************************
+*** refined values (after window removal)
+*** BH p-value = -1 +/- -1
+*** BH value = -1
+*** BH range = -1 - -1
+******************************************
+*** final values 
+*** BH p-value = 0.02 +/- 0.00989949
+*** BH value = 8.55026
+*** BH range = 606 - 690
+******************************************
+
+Writing output file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.650.GeV.73p6.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan_ww10.root
+doing fittedhists
+done
+Process ran in 10.62 seconds. 

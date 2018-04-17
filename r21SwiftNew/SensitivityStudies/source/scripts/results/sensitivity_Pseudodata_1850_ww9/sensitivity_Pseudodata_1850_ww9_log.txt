@@ -1,0 +1,17 @@
+
+[1mRooFit v3.60 -- Developed by Wouter Verkerke and David Kirkby[0m 
+                Copyright (C) 2000-2013 NIKHEF, University of California & Stanford University
+                All rights reserved, please read http://roofit.sourceforge.net/license.txt
+
+test
+inputFileName: /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.5p0.ifb.Pseudodata.4.par.401.seed.default.root
+inputHistDir: 
+Doing pvalue with systematics? 0!
+nPseudoExpBH is 2000
+nPseudoExpFit is 100
+ Hist Name: Pseudodata_1850
+[/usr/lib/system/libsystem_platform.dylib] _sigtramp (no debug info)
+[<unknown binary>] (no debug info)
+[/Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/StatisticalAnalysis/RootCoreBin/lib/generic/libBayesian.so] MjjHistogram::MjjHistogram(TH1D*, bool) /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/StatisticalAnalysis/Bayesian/Root/MjjHistogram.cxx:8
+[/Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/StatisticalAnalysis/RootCoreBin/bin/generic/SearchPhase] main /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/StatisticalAnalysis/Bayesian/util/SearchPhase.cxx:217
+[/usr/lib/system/libdyld.dylib] start (no debug info)

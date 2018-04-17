@@ -1,0 +1,325 @@
+test
+inputFileName: /lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/SensitivityStudies/source/scripts/../results2/signalplusbackground/signalplusbackground.Gauss_width3.4p0.ifb.mjj_Gauss_sig__smooth.4.par.0.seed.default.root
+inputHistDir: 
+Doing pvalue with systematics? 0!
+nPseudoExpBH is 1
+nPseudoExpFit is 100
+ Hist Name: mjj_Gauss_sig_600_smoothinjectedToBkg
+Setting the 4 parameters to    (0) :2.11409e+06   (1) :-0.102491   (2) :110.968   (3) :-41.9063
+minX, maxX: 300 1500
+Actual fit range is 303 - 1493
+corresponding to including the bins 11, 55.
+Creating UA2 fit function.
+paramDefaultsLength = 4
+doSwift is 1
+*theMjjfitFunction:0x3680210
+theHistogram: 0x7ffc1c7402a0
+Collected info on SWIFT bins
+Collected info on SWIFT residuals for initial fit
+After fit, parameters are     (0):1.192e-06   (1):7.41178   (2):-18.4222   (3):144.469
+on PE 50
+on PE 100
+initialpval is 0
+Wish to use an Exclusion Window
+permitWindow is 0
+Yvonne
+error: 
+bin 1error: 0
+bin 2error: 0
+bin 3error: 0
+bin 4error: 0
+bin 5error: 0
+bin 6error: 0
+bin 7error: 0
+bin 8error: 0
+bin 9error: 0
+bin 10error: 0
+bin 11error: 1295.29
+bin 12error: 1210.09
+bin 13error: 1163.93
+bin 14error: 1085.06
+bin 15error: 1040.44
+bin 16error: 967.032
+bin 17error: 922.209
+bin 18error: 854.382
+bin 19error: 792.551
+bin 20error: 751.165
+bin 21error: 694.364
+bin 22error: 657.292
+bin 23error: 603.897
+bin 24error: 566.527
+bin 25error: 519.075
+bin 26error: 488.924
+bin 27error: 441.679
+bin 28error: 403.22
+bin 29error: 373.604
+bin 30error: 338.647
+bin 31error: 311.058
+bin 32error: 281.341
+bin 33error: 258.141
+bin 34error: 232.047
+bin 35error: 211.53
+bin 36error: 187.87
+bin 37error: 171.318
+bin 38error: 153.176
+bin 39error: 139.108
+bin 40error: 125.98
+bin 41error: 111.597
+bin 42error: 101.054
+bin 43error: 89.1459
+bin 44error: 81.0864
+bin 45error: 72.5741
+bin 46error: 64.56
+bin 47error: 58.4123
+bin 48error: 52.4309
+bin 49error: 46.6476
+bin 50error: 42.5206
+bin 51error: 37.2827
+bin 52error: 34.0147
+bin 53error: 30.9031
+bin 54error: 27.1477
+bin 55error: 24.5357
+bin 56error: 22.2261
+bin 57error: 19.3649
+bin 58error: 17.8326
+bin 59error: 15.8745
+bin 60error: 13.3417
+bin 61error: 12.083
+bin 62error: 11.225
+bin 63error: 9.21954
+bin 64error: 8.544
+bin 65error: 7.54983
+bin 66error: 7.28011
+bin 67error: 5.47723
+bin 68error: 5.74456
+bin 69error: 5
+bin 70error: 4
+bin 71error: 3.74166
+bin 72error: 2.82843
+bin 73error: 2.64575
+bin 74error: 2.64575
+bin 75error: 2.44949
+bin 76error: 1.73205
+bin 77error: 2.44949
+bin 78error: 1.73205
+bin 79error: 1
+bin 80error: 1.41421
+bin 81error: 2.23607
+bin 82error: 1
+bin 83error: 1
+bin 84error: 0
+bin 85error: 1
+bin 86error: 1
+bin 87error: 0
+bin 88error: 0
+bin 89error: 1
+bin 90error: 0
+bin 91error: 0
+bin 92error: 0
+bin 93error: 0
+bin 94error: 0
+bin 95error: 0
+bin 96error: 0
+bin 97error: 1
+bin 98error: 0
+bin 99error: 0
+bin 100error: 0
+bin 101error: 0
+bin 102error: 0
+bin 103error: 0
+bin 104error: 0
+bin 105error: 0
+bin 106error: 0
+bin 107error: 0
+bin 108error: 0
+bin 109error: 1
+bin 110error: 1
+bin 111error: 0
+bin 112error: 0
+bin 113error: 0
+bin 114error: 1
+bin 115error: 0
+bin 116error: 0
+bin 117error: 1
+bin 118error: 0
+bin 119error: 1.41421
+bin 120error: 0
+bin 121error: 0
+bin 122error: 0
+bin 123error: 0
+bin 124error: 0
+bin 125error: 0
+bin 126error: 0
+bin 127error: 0
+bin 128error: 0
+bin 129error: 0
+bin 130error: 0
+bin 131error: 0
+bin 132error: 0
+bin 133error: 0
+bin 134error: 0
+bin 135error: 0
+bin 136error: 0
+bin 137error: 0
+bin 138error: 0
+bin 139error: 0
+bin 140error: 0
+bin 141error: 0
+bin 142error: 0
+bin 143error: 0
+bin 144error: 0
+bin 145error: 0
+bin 146error: 0
+bin 147error: 0
+bin 148error: 0
+bin 149error: 0
+bin 150error: 0
+bin 151error: 0
+bin 152error: 0
+bin 153error: 0
+bin 154error: 0
+bin 155error: 0
+bin 156error: 0
+bin 157error: 0
+bin 158error: 0
+bin 159error: 0
+bin 160error: 0
+Collected info on SWIFT residuals for fit after window exclusion
+After fit, parameters are    (0):1.192e-06   (1):7.41178   (2):-18.4222   (3):144.469
+BumpHunter results: stat = 13.1408
+Low edge, high edge of bump: 588 634
+DeficitHunter results: stat = 13.1408
+Low edge, high edge of bump: 588 634
+Created +/- 1 sigma histograms
+YEdit: residualHist: 0x7ffc1c738f20
+Absolute values of logl, chi2, BH tests are: 328.519 43.9345 13.1408
+NDF is 40
+chi2/ndf is 1.09836
+Log likelihood for our fit was 328.519
+Pval of logL, chi2, and bumpHunter are: 0 0 0
+Pval of largest deficit was: 0
+YEdit: 0x7ffc1c738f20
+debug residuals 0
+YEdit: 0x7ffc1c749bc0
+YEdit: bins:55
+YEdit: residualResults: bin11 content:0.0699985
+YEdit: residualResults: bin12 content:-0.143427
+YEdit: residualResults: bin13 content:-0.635297
+YEdit: residualResults: bin14 content:-0.429622
+YEdit: residualResults: bin15 content:1.45271
+YEdit: residualResults: bin16 content:0.820405
+YEdit: residualResults: bin17 content:0.461695
+YEdit: residualResults: bin18 content:-0.336136
+YEdit: residualResults: bin19 content:0.505858
+YEdit: residualResults: bin20 content:-2.37487
+YEdit: residualResults: bin21 content:-1.23218
+YEdit: residualResults: bin22 content:1.45854
+YEdit: residualResults: bin23 content:-0.0784584
+YEdit: residualResults: bin24 content:-1.59038
+YEdit: residualResults: bin25 content:-0.793703
+YEdit: residualResults: bin26 content:7.20926
+YEdit: residualResults: bin27 content:-1.07089
+YEdit: residualResults: bin28 content:1.11476
+YEdit: residualResults: bin29 content:0.132638
+YEdit: residualResults: bin30 content:0.695283
+YEdit: residualResults: bin31 content:-1.70586
+YEdit: residualResults: bin32 content:0.497844
+YEdit: residualResults: bin33 content:0.607768
+YEdit: residualResults: bin34 content:1.52168
+YEdit: residualResults: bin35 content:0.876109
+YEdit: residualResults: bin36 content:-1.87251
+YEdit: residualResults: bin37 content:-1.08368
+YEdit: residualResults: bin38 content:0.0227982
+YEdit: residualResults: bin39 content:0.242976
+YEdit: residualResults: bin40 content:0.694534
+YEdit: residualResults: bin41 content:-0.105573
+YEdit: residualResults: bin42 content:0.518253
+YEdit: residualResults: bin43 content:-0.862129
+YEdit: residualResults: bin44 content:0.289419
+YEdit: residualResults: bin45 content:-0.821203
+YEdit: residualResults: bin46 content:-0.451419
+YEdit: residualResults: bin47 content:0.0179806
+YEdit: residualResults: bin48 content:1.01912
+YEdit: residualResults: bin49 content:-0.479804
+YEdit: residualResults: bin50 content:0.312167
+YEdit: residualResults: bin51 content:-0.871062
+YEdit: residualResults: bin52 content:-0.00854052
+YEdit: residualResults: bin53 content:0.322339
+YEdit: residualResults: bin54 content:-0.272939
+ FCN=3.10771 FROM MIGRAD    STATUS=CONVERGED      73 CALLS          74 TOTAL
+                     EDM=3.15959e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     8.99026e+00   2.00359e+00   1.39074e-03   3.69805e-05
+   2  Mean         5.23715e-03   1.66146e-01   1.51507e-04   5.24675e-04
+   3  Sigma        9.23346e-01   1.62427e-01   3.11345e-05  -3.12619e-03
+TH1.Print Name  = residual_histOfVals, Entries= 44, Total sum= 44
+ fSumw[0]=0, x=-10.25, error=0
+ fSumw[1]=0, x=-9.75, error=0
+ fSumw[2]=0, x=-9.25, error=0
+ fSumw[3]=0, x=-8.75, error=0
+ fSumw[4]=0, x=-8.25, error=0
+ fSumw[5]=0, x=-7.75, error=0
+ fSumw[6]=0, x=-7.25, error=0
+ fSumw[7]=0, x=-6.75, error=0
+ fSumw[8]=0, x=-6.25, error=0
+ fSumw[9]=0, x=-5.75, error=0
+ fSumw[10]=0, x=-5.25, error=0
+ fSumw[11]=0, x=-4.75, error=0
+ fSumw[12]=0, x=-4.25, error=0
+ fSumw[13]=0, x=-3.75, error=0
+ fSumw[14]=0, x=-3.25, error=0
+ fSumw[15]=0, x=-2.75, error=0
+ fSumw[16]=1, x=-2.25, error=1
+ fSumw[17]=3, x=-1.75, error=1.73205
+ fSumw[18]=3, x=-1.25, error=1.73205
+ fSumw[19]=5, x=-0.75, error=2.23607
+ fSumw[20]=9, x=-0.25, error=3
+ fSumw[21]=10, x=0.25, error=3.16228
+ fSumw[22]=7, x=0.75, error=2.64575
+ fSumw[23]=4, x=1.25, error=2
+ fSumw[24]=1, x=1.75, error=1
+ fSumw[25]=0, x=2.25, error=0
+ fSumw[26]=0, x=2.75, error=0
+ fSumw[27]=0, x=3.25, error=0
+ fSumw[28]=0, x=3.75, error=0
+ fSumw[29]=0, x=4.25, error=0
+ fSumw[30]=0, x=4.75, error=0
+ fSumw[31]=0, x=5.25, error=0
+ fSumw[32]=0, x=5.75, error=0
+ fSumw[33]=0, x=6.25, error=0
+ fSumw[34]=0, x=6.75, error=0
+ fSumw[35]=1, x=7.25, error=1
+ fSumw[36]=0, x=7.75, error=0
+ fSumw[37]=0, x=8.25, error=0
+ fSumw[38]=0, x=8.75, error=0
+ fSumw[39]=0, x=9.25, error=0
+ fSumw[40]=0, x=9.75, error=0
+ fSumw[41]=0, x=10.25, error=0
+YEdit: fittedGauss0x7ffc1c745a20
+fittedHists: 0x7ffc1c7347d0
+From fit, mean and width are 0.00523715 0.923346
+Calculating quantities from function itself, mean and RMS are 0.0828285 1.40707
+
+******************************************
+*** initial values 
+*** BH p-value = 0 +/- 0
+*** BH value = 13.1408
+*** BH range = 588 - 634
+******************************************
+*** refined values (after window removal)
+*** BH p-value = -1 +/- -1
+*** BH value = -1
+*** BH range = -1 - -1
+******************************************
+*** final values 
+*** BH p-value = 0 +/- 0
+*** BH value = 13.1408
+*** BH range = 588 - 634
+******************************************
+
+Writing output file /lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/SensitivityStudies/source/scripts/../results2/searchphase/searchphase.Gauss_width3.600.gev.4p0.ifb.mjj.4.par.0.seed.default_ww11.root
+yEdit: 0x7ffc1c73a2d0
+doing fittedhists
+done
+Process ran in 8.25 seconds. 

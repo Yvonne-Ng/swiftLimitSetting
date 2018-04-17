@@ -1,0 +1,16 @@
+test
+inputFileName: /lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/SensitivityStudies/source/scripts/../results2/signalplusbackground/signalplusbackground.Gauss_width3.0p1.ifb.mjj_Gauss_sig__smooth.4.par.0.seed.default.root
+inputHistDir: 
+Doing pvalue with systematics? 0!
+nPseudoExpBH is 1000
+nPseudoExpFit is 100
+ Hist Name: mjj_Gauss_sig_500_smoothinjectedToBkg
+Setting the 4 parameters to    (0) :2.11409e+06   (1) :-0.102491   (2) :110.968   (3) :-41.9063
+minX, maxX: 300 1500
+Actual fit range is 303 - 1493
+corresponding to including the bins 11, 55.
+Creating UA2 fit function.
+paramDefaultsLength = 4
+doSwift is 1
+*theMjjfitFunction:0x2f1db70
+theHistogram: 0x7ffeae6ad6e0

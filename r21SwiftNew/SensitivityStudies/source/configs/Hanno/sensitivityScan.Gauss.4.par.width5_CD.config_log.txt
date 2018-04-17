@@ -1,0 +1,262 @@
+
+******************************************
+******************************************
+Setting input parameters:
+ config settings:
+  signal model = Gauss_width5
+  signal model label = 'Gauss_width5'
+  signal masses [GeV] = [1050.0, 1750.0]
+  minimum luminosity = 1.0
+  maximum luminosity = 1.0
+  QCD input file = ../inputs/QCD/NLO_yStar_06_29p7ifb_forSig.root
+  hist base name = mjj_Gauss
+  b-tagging WP = 
+  hist x-axis label = m_{jj} [GeV]
+  n fit parameters = 4
+  number of pseudo-experiments = 2000
+  threshold mass = 531.0
+  random seed = 401.0
+  notes = ['NLO2016plusSig']
+
+Done setting initial parameters and checking inputs
+******************************************
+******************************************
+******* Testing Window Width 9 ******
+******* Using list of mass values [GeV]: [1750.0, 1050.0]
+******* Testing Mass, Lumi 1750.0 GeV, 2/fb ******
+******************************************
+******************************************
+Injecting signal
+
+Done injecting signal
+******************************************
+******************************************
+******************************************
+******************************************
+Running SearchPhase
+
+Gauss_width5 mass = 1750.0 GeV
+lumi = 2 fb^-1
+WindowWidth for SWiFt = 9
+******************************************
+******************************************
+
+******************************************SearchPhase results summary
+
+Gauss_width5 mass = 1750.0 GeV
+lumi = 2 fb^-1
+bump range: 1704.0 GeV - 1845.0 GeV
+BumpHunter stat = 3.74338710941
+BumpHunter p-value = 0.6055 +/- 0.0109286264004
+excluded window (1=yes, 0=no): 0.0
+window low edge = 1704.0
+window high edge = 1845.0
+BumpHunter sigmas = -0.267609393045
+Not too close. try next time with lumi: 4.422
+
+******************************************
+sensitivity scan results for all points so far, discovery happened at:
+******************************************
+mass = [ 1750.  1050.]lumi = [ 0.  0.]******* Testing Mass, Lumi 1750.0 GeV, 4.422/fb ******
+******************************************
+******************************************
+Injecting signal
+
+Done injecting signal
+******************************************
+******************************************
+******************************************
+******************************************
+Running SearchPhase
+
+Gauss_width5 mass = 1750.0 GeV
+lumi = 4.422 fb^-1
+WindowWidth for SWiFt = 9
+******************************************
+******************************************
+
+******************************************SearchPhase results summary
+
+Gauss_width5 mass = 1750.0 GeV
+lumi = 4.422 fb^-1
+bump range: 1704.0 GeV - 1845.0 GeV
+BumpHunter stat = 8.65092857996
+BumpHunter p-value = 0.014 +/- 0.00262716577322
+excluded window (1=yes, 0=no): 0.0
+window low edge = 1704.0
+window high edge = 1845.0
+BumpHunter sigmas = 2.19728637664
+Close enough. try next time with lumi: 5.422
+
+******************************************
+sensitivity scan results for all points so far, discovery happened at:
+******************************************
+mass = [ 1750.  1050.]lumi = [ 0.  0.]******* Testing Mass, Lumi 1750.0 GeV, 5.422/fb ******
+******************************************
+******************************************
+Injecting signal
+
+Done injecting signal
+******************************************
+******************************************
+******************************************
+******************************************
+Running SearchPhase
+
+Gauss_width5 mass = 1750.0 GeV
+lumi = 5.422 fb^-1
+WindowWidth for SWiFt = 9
+******************************************
+******************************************
+
+******************************************SearchPhase results summary
+
+Gauss_width5 mass = 1750.0 GeV
+lumi = 5.422 fb^-1
+bump range: 1637.0 GeV - 1920.0 GeV
+BumpHunter stat = 50.4990416692
+BumpHunter p-value = 0.0 +/- 0.0
+excluded window (1=yes, 0=no): 1.0
+window low edge = 1637.0
+window high edge = 1845.0
+BumpHunter sigmas = inf
+******************************************
+Discovery, with window removal
+******* Testing Mass, Lumi 1050.0 GeV, 12/fb ******
+******************************************
+******************************************
+Injecting signal
+
+Done injecting signal
+******************************************
+******************************************
+******************************************
+******************************************
+Running SearchPhase
+
+Gauss_width5 mass = 1050.0 GeV
+lumi = 12 fb^-1
+WindowWidth for SWiFt = 9
+******************************************
+******************************************
+
+******************************************SearchPhase results summary
+
+Gauss_width5 mass = 1050.0 GeV
+lumi = 12 fb^-1
+bump range: 1049.0 GeV - 1139.0 GeV
+BumpHunter stat = 6.52597332857
+BumpHunter p-value = 0.0835 +/- 0.00618578006399
+excluded window (1=yes, 0=no): 0.0
+window low edge = 1049.0
+window high edge = 1139.0
+BumpHunter sigmas = 1.38190784127
+Not too close. try next time with lumi: 14.004
+
+******************************************
+sensitivity scan results for all points so far, discovery happened at:
+******************************************
+mass = [ 1750.  1050.]lumi = [ 5.422  0.   ]******* Testing Mass, Lumi 1050.0 GeV, 14.004/fb ******
+******************************************
+******************************************
+Injecting signal
+
+Done injecting signal
+******************************************
+******************************************
+******************************************
+******************************************
+Running SearchPhase
+
+Gauss_width5 mass = 1050.0 GeV
+lumi = 14.004 fb^-1
+WindowWidth for SWiFt = 9
+******************************************
+******************************************
+
+******************************************SearchPhase results summary
+
+Gauss_width5 mass = 1050.0 GeV
+lumi = 14.004 fb^-1
+bump range: 1049.0 GeV - 1139.0 GeV
+BumpHunter stat = 7.70716811101
+BumpHunter p-value = 0.033 +/- 0.00399443362694
+excluded window (1=yes, 0=no): 0.0
+window low edge = 1049.0
+window high edge = 1139.0
+BumpHunter sigmas = 1.83842366925
+Close enough. try next time with lumi: 15.004
+
+******************************************
+sensitivity scan results for all points so far, discovery happened at:
+******************************************
+mass = [ 1750.  1050.]lumi = [ 5.422  0.   ]******* Testing Mass, Lumi 1050.0 GeV, 15.004/fb ******
+******************************************
+******************************************
+Injecting signal
+
+Done injecting signal
+******************************************
+******************************************
+******************************************
+******************************************
+Running SearchPhase
+
+Gauss_width5 mass = 1050.0 GeV
+lumi = 15.004 fb^-1
+WindowWidth for SWiFt = 9
+******************************************
+******************************************
+
+https://lunduniversityo365-my.sharepoint.com/personal/zh6542li-s_lu_se/_layouts/OneNote.aspx?id=%2Fpersonal%2Fzh6542li-s_lu_se%2FDocuments%2FZhiying%20%40%20OneDrive%20-%20Lund%20University
+
+onenote:https://lunduniversityo365-my.sharepoint.com/personal/zh6542li-s_lu_se/Documents/Zhiying%20@%20OneDrive%20-%20Lund%20University/
+
+
+******************************************SearchPhase results summary
+
+Gauss_width5 mass = 1050.0 GeV
+lumi = 15.004 fb^-1
+bump range: 1007.0 GeV - 1139.0 GeV
+BumpHunter stat = 8.45971497691
+BumpHunter p-value = 0.015 +/- 0.00271799558499
+excluded window (1=yes, 0=no): 0.0
+window low edge = 1007.0
+window high edge = 1139.0
+BumpHunter sigmas = 2.17009037758
+Close enough. try next time with lumi: 16.004
+
+******************************************
+sensitivity scan results for all points so far, discovery happened at:
+******************************************
+mass = [ 1750.  1050.]lumi = [ 5.422  0.   ]******* Testing Mass, Lumi 1050.0 GeV, 16.004/fb ******
+******************************************
+******************************************
+Injecting signal
+
+Done injecting signal
+******************************************
+******************************************
+******************************************
+******************************************
+Running SearchPhase
+
+Gauss_width5 mass = 1050.0 GeV
+lumi = 16.004 fb^-1
+WindowWidth for SWiFt = 9
+******************************************
+******************************************
+
+******************************************SearchPhase results summary
+
+Gauss_width5 mass = 1050.0 GeV
+lumi = 16.004 fb^-1
+bump range: 1007.0 GeV - 1139.0 GeV
+BumpHunter stat = 29.3416054366
+BumpHunter p-value = 0.0 +/- 0.0
+excluded window (1=yes, 0=no): 1.0
+window low edge = 966.0
+window high edge = 1139.0
+BumpHunter sigmas = inf
+******************************************
+Discovery, with window removal

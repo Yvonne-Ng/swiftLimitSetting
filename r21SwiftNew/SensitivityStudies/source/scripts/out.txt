@@ -1,0 +1,1947 @@
+
+******************************************
+sensitivity scan
+
+input parameters:
+  debug = False
+  tag = NLO2015_29p7_sensitivityScan
+  batch = True
+  configFileName = ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config
+
+config settings:
+  signal model = Gauss_width5
+  signal model label = 'Gauss_width5'
+  signal masses [GeV] = [650.0, 750.0]
+  minimum luminosity = 1.0
+  maximum luminosity = 1.0
+  QCD input file = ../inputs/QCD/NLO_yStar_06_29p7ifb_forSig.root
+  hist base name = mjj_Gauss
+  b-tagging WP = 
+  hist x-axis label = m_{jj} [GeV]
+  n fit parameters = 4
+  number of pseudo-experiments = 200
+  threshold mass = 531.0
+  random seed = 401.0
+  notes = ['NLO2016plusSig']
+***************** Window Width 11 ********************
+Gauss_mass1050_width5.root
+Gauss_width5 in name
+Gauss_mass1150_width5.root
+Gauss_width5 in name
+Gauss_mass1250_width5.root
+Gauss_width5 in name
+Gauss_mass1350_width5.root
+Gauss_width5 in name
+Gauss_mass1450_width5.root
+Gauss_width5 in name
+Gauss_mass1550_width5.root
+Gauss_width5 in name
+Gauss_mass1650_width5.root
+Gauss_width5 in name
+Gauss_mass1750_width5.root
+Gauss_width5 in name
+Gauss_mass1850_width5.root
+Gauss_width5 in name
+Gauss_mass450_width5.root
+Gauss_width5 in name
+Gauss_mass550_width5.root
+Gauss_width5 in name
+Gauss_mass620_width5.root
+Gauss_width5 in name
+Gauss_mass650_width5.root
+Gauss_width5 in name
+Gauss_mass750_width5.root
+Gauss_width5 in name
+Gauss_mass850_width5.root
+Gauss_width5 in name
+Gauss_mass950_width5.root
+Gauss_width5 in name
+
+available mass values [GeV]: [450.0, 550.0, 620.0, 650.0, 750.0, 850.0, 950.0, 1050.0, 1150.0, 1250.0, 1350.0, 1450.0, 1550.0, 1650.0, 1750.0, 1850.0]
+using mass values [GeV]: [750.0, 650.0]
+
+
+******************************************
+******************************************
+testing:
+luminosity = 26 ^fb-1
+mass values [GeV]: [750.0, 650.0]
+******************************************
+******************************************
+
+
+******************************************
+inject data-like signal
+
+Applying ATLAS style settings...
+
+
+input parameters:
+  plot = True
+  dataLikeQCDFileName = /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/datalikeQCD/NLO_yStar_06_29p7ifb_forSig.root
+  configFileName = ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config
+  batch = True
+  tag = NLO2015_29p7_sensitivityScan
+  lumi = 26.0
+  debug = False
+  wait = False
+
+config settings:
+  signal model = Gauss_width5
+  signal model label = 'Gauss_width5'
+  signal masses [GeV] = [650.0, 750.0]
+  hist base name = mjj_Gauss
+  b-tagging WP = 
+  hist x-axis label = m_{jj} [GeV]
+  n fit parameters = 4
+  threshold mass = 531.0
+  random seed = 401.0
+  notes = ['NLO2016plusSig']
+Gauss_mass1050_width5.root
+Gauss_width5 in name
+Gauss_mass1150_width5.root
+Gauss_width5 in name
+Gauss_mass1250_width5.root
+Gauss_width5 in name
+Gauss_mass1350_width5.root
+Gauss_width5 in name
+Gauss_mass1450_width5.root
+Gauss_width5 in name
+Gauss_mass1550_width5.root
+Gauss_width5 in name
+Gauss_mass1650_width5.root
+Gauss_width5 in name
+Gauss_mass1750_width5.root
+Gauss_width5 in name
+Gauss_mass1850_width5.root
+Gauss_width5 in name
+Gauss_mass450_width5.root
+Gauss_width5 in name
+Gauss_mass550_width5.root
+Gauss_width5 in name
+Gauss_mass620_width5.root
+Gauss_width5 in name
+Gauss_mass650_width5.root
+Gauss_width5 in name
+Gauss_mass750_width5.root
+Gauss_width5 in name
+Gauss_mass850_width5.root
+Gauss_width5 in name
+Gauss_mass950_width5.root
+Gauss_width5 in name
+python -u step02.injectDataLikeSignal.py --config ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config --QCDFile /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/datalikeQCD/NLO_yStar_06_29p7ifb_forSig.root --lumi 26.0 --tag NLO2015_29p7_sensitivityScan --plot --batch -b --debug
+
+******************************************
+Running SearchPhase
+
+Gauss_width5 mass = 750.0 GeV
+lumi = 26 fb^-1
+WindowWidth for SWiFt = 11
+******************************************
+
+******************************************
+run search phase
+
+Applying ATLAS style settings...
+
+
+input parameters:
+  plot = False
+  fit = False
+  configFileName = ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config
+  batch = True
+  inputFileName = /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.26p0.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root
+  nPseudoExps = 200
+  window = 11
+  tag = NLO2015_29p7_sensitivityScan
+  mass = 750
+  lumi = 26
+  debug = True
+  inputHistDir = 
+  functionParam = 4
+  wait = False
+
+config settings:
+  signal model = Gauss_width5
+  signal model label = 'Gauss_width5'
+  hist base name = mjj_Gauss
+  b-tagging WP = 
+  hist x-axis label = m_{jj} [GeV]
+  n fit parameters = 4
+  threshold mass = 531.0
+  random seed = 401.0
+  notes = ['NLO2016plusSig']
+
+hist name = mjj_Gauss
+/Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.750.GeV.26p0.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root
+
+1 fb^-1 mjj fit 4 parameters
+initial parameters: [0.00280214, 7.2046, 5.63296, 0.0571367]
+
+******************************************
+setting up to run SearchPhase
+
+SearchPhase --config submitConfigs/sensitivity_mjj_Gauss_750_ww11/Step1_SearchPhase_case4Param_window11.config --file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.26p0.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root --histName mjj_Gauss_750 --noDE --outputfile /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.750.GeV.26p0.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan_ww11.root| tee results/sensitivity_mjj_Gauss_750_ww11//sensitivity_mjj_Gauss_750_ww11_log.txt 
+
+
+[1mRooFit v3.60 -- Developed by Wouter Verkerke and David Kirkby[0m 
+                Copyright (C) 2000-2013 NIKHEF, University of California & Stanford University
+                All rights reserved, please read http://roofit.sourceforge.net/license.txt
+
+test
+inputFileName: /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.26p0.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root
+inputHistDir: 
+Doing pvalue with systematics? 0!
+nPseudoExpBH is 200
+nPseudoExpFit is 100
+ Hist Name: mjj_Gauss_750
+Setting the 4 parameters to    (0) :0.00021675   (1) :3.18705   (2) :7.11991   (3) :0.294323
+minX, maxX: 530 2081
+Actual fit range is 531 - 2079
+corresponding to including the bins 20, 52.
+Creating standard dijet function.
+paramDefaultsLength = 4
+doSwift is 1
+Collected info on SWIFT bins
+Collected info on SWIFT residuals for initial fit
+After fit, parameters are     (0):44082.9   (1):26.7436   (2):-2.70778   (3):-1.30396
+on PE 50
+on PE 100
+initialpval is 0.01
+Not excluding any window
+permitWindow is 1
+Collected info on SWIFT residuals for fit after window exclusion
+After fit, parameters are    (0):44082.9   (1):26.7436   (2):-2.70778   (3):-1.30396
+BumpHunter results: stat = 7.81162
+Low edge, high edge of bump: 720 784
+DeficitHunter results: stat = 7.81162
+Low edge, high edge of bump: 720 784
+Created +/- 1 sigma histograms
+on PE 50
+on PE 100
+on PE 150
+on PE 200
+Absolute values of logl, chi2, BH tests are: 268.67 21.0289 7.81162
+NDF is 28
+chi2/ndf is 0.751031
+Log likelihood for our fit was 268.67
+Pval of logL, chi2, and bumpHunter are: 0.115 0.135 0.04
+Pval of largest deficit was: 0.065
+debug residuals 0
+ FCN=2.4355 FROM MIGRAD    STATUS=CONVERGED      68 CALLS          69 TOTAL
+                     EDM=1.28665e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     4.58031e+00   1.05502e+00   7.62272e-04  -4.42732e-04
+   2  Mean        -3.24145e-01   4.69584e-01   3.95515e-04   1.61666e-04
+   3  Sigma        1.70653e+00   4.77190e-01   8.04702e-05   4.94914e-04
+TH1.Print Name  = residual_histOfVals, Entries= 32, Total sum= 32
+ fSumw[0]=0, x=-10.25, error=0
+ fSumw[1]=0, x=-9.75, error=0
+ fSumw[2]=0, x=-9.25, error=0
+ fSumw[3]=0, x=-8.75, error=0
+ fSumw[4]=0, x=-8.25, error=0
+ fSumw[5]=0, x=-7.75, error=0
+ fSumw[6]=0, x=-7.25, error=0
+ fSumw[7]=0, x=-6.75, error=0
+ fSumw[8]=0, x=-6.25, error=0
+ fSumw[9]=0, x=-5.75, error=0
+ fSumw[10]=0, x=-5.25, error=0
+ fSumw[11]=0, x=-4.75, error=0
+ fSumw[12]=0, x=-4.25, error=0
+ fSumw[13]=0, x=-3.75, error=0
+ fSumw[14]=0, x=-3.25, error=0
+ fSumw[15]=0, x=-2.75, error=0
+ fSumw[16]=2, x=-2.25, error=1.41421
+ fSumw[17]=0, x=-1.75, error=0
+ fSumw[18]=5, x=-1.25, error=2.23607
+ fSumw[19]=7, x=-0.75, error=2.64575
+ fSumw[20]=3, x=-0.25, error=1.73205
+ fSumw[21]=4, x=0.25, error=2
+ fSumw[22]=5, x=0.75, error=2.23607
+ fSumw[23]=3, x=1.25, error=1.73205
+ fSumw[24]=2, x=1.75, error=1.41421
+ fSumw[25]=0, x=2.25, error=0
+ fSumw[26]=1, x=2.75, error=1
+ fSumw[27]=0, x=3.25, error=0
+ fSumw[28]=0, x=3.75, error=0
+ fSumw[29]=0, x=4.25, error=0
+ fSumw[30]=0, x=4.75, error=0
+ fSumw[31]=0, x=5.25, error=0
+ fSumw[32]=0, x=5.75, error=0
+ fSumw[33]=0, x=6.25, error=0
+ fSumw[34]=0, x=6.75, error=0
+ fSumw[35]=0, x=7.25, error=0
+ fSumw[36]=0, x=7.75, error=0
+ fSumw[37]=0, x=8.25, error=0
+ fSumw[38]=0, x=8.75, error=0
+ fSumw[39]=0, x=9.25, error=0
+ fSumw[40]=0, x=9.75, error=0
+ fSumw[41]=0, x=10.25, error=0
+From fit, mean and width are -0.324145 1.70653
+Calculating quantities from function itself, mean and RMS are -0.000796751 1.14579
+
+******************************************
+*** initial values 
+*** BH p-value = 0.01 +/- 0.00994987
+*** BH value = 7.81162
+*** BH range = 720 - 784
+******************************************
+*** refined values (after window removal)
+*** BH p-value = -1 +/- -1
+*** BH value = -1
+*** BH range = -1 - -1
+******************************************
+*** final values 
+*** BH p-value = 0.04 +/- 0.0138564
+*** BH value = 7.81162
+*** BH range = 720 - 784
+******************************************
+
+Writing output file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.750.GeV.26p0.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan_ww11.root
+doing fittedhists
+done
+Process ran in 9.17 seconds. 
+To plot:
+python plotSearchPhase.py --bump --file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.750.GeV.26p0.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan_ww11.root --lumi 26 --notes "m_{'Gauss_width5'} = 750 GeV" "NLO2016plusSig" --xlabel "m_{jj} [GeV]"
+
+ran search phase
+******************************************
+python -u step03.searchPhase.py --config ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config --file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.26p0.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root --mass 750 --lumi 26 --window 11 --functionParam 4 --nPseudoExps 200 --tag NLO2015_29p7_sensitivityScan --batch -b --debug
+
+******************************************
+SearchPhase results summary
+
+Gauss_width5 mass = 750.0 GeV
+lumi = 26 fb^-1
+bump range: 720.0 GeV - 784.0 GeV
+BumpHunter stat = 7.81161898159
+BumpHunter p-value = 0.04 +/- 0.0138564064606
+excluded window (1=yes, 0=no):  0.0
+window low edge = 720.0
+window high edge = 784.0
+BumpHunter sigmas = 1.75068607125
+Not too close. try next time with lumi:  26.52
+
+******************************************
+sensitivity scan results
+******************************************
+
+mass = [ 750.  650.]
+lumi = [ 0.  0.]
+
+
+******************************************
+******************************************
+testing:
+luminosity = 26.52 ^fb-1
+mass values [GeV]: [750.0, 650.0]
+******************************************
+******************************************
+
+
+******************************************
+inject data-like signal
+
+Applying ATLAS style settings...
+
+
+input parameters:
+  plot = True
+  dataLikeQCDFileName = /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/datalikeQCD/NLO_yStar_06_29p7ifb_forSig.root
+  configFileName = ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config
+  batch = True
+  tag = NLO2015_29p7_sensitivityScan
+  lumi = 26.5
+  debug = False
+  wait = False
+
+config settings:
+  signal model = Gauss_width5
+  signal model label = 'Gauss_width5'
+  signal masses [GeV] = [650.0, 750.0]
+  hist base name = mjj_Gauss
+  b-tagging WP = 
+  hist x-axis label = m_{jj} [GeV]
+  n fit parameters = 4
+  threshold mass = 531.0
+  random seed = 401.0
+  notes = ['NLO2016plusSig']
+Gauss_mass1050_width5.root
+Gauss_width5 in name
+Gauss_mass1150_width5.root
+Gauss_width5 in name
+Gauss_mass1250_width5.root
+Gauss_width5 in name
+Gauss_mass1350_width5.root
+Gauss_width5 in name
+Gauss_mass1450_width5.root
+Gauss_width5 in name
+Gauss_mass1550_width5.root
+Gauss_width5 in name
+Gauss_mass1650_width5.root
+Gauss_width5 in name
+Gauss_mass1750_width5.root
+Gauss_width5 in name
+Gauss_mass1850_width5.root
+Gauss_width5 in name
+Gauss_mass450_width5.root
+Gauss_width5 in name
+Gauss_mass550_width5.root
+Gauss_width5 in name
+Gauss_mass620_width5.root
+Gauss_width5 in name
+Gauss_mass650_width5.root
+Gauss_width5 in name
+Gauss_mass750_width5.root
+Gauss_width5 in name
+Gauss_mass850_width5.root
+Gauss_width5 in name
+Gauss_mass950_width5.root
+Gauss_width5 in name
+python -u step02.injectDataLikeSignal.py --config ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config --QCDFile /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/datalikeQCD/NLO_yStar_06_29p7ifb_forSig.root --lumi 26.5 --tag NLO2015_29p7_sensitivityScan --plot --batch -b --debug
+
+******************************************
+Running SearchPhase
+
+Gauss_width5 mass = 750.0 GeV
+lumi = 26.52 fb^-1
+WindowWidth for SWiFt = 11
+******************************************
+
+******************************************
+run search phase
+
+Applying ATLAS style settings...
+
+
+input parameters:
+  plot = False
+  fit = False
+  configFileName = ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config
+  batch = True
+  inputFileName = /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.26p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root
+  nPseudoExps = 200
+  window = 11
+  tag = NLO2015_29p7_sensitivityScan
+  mass = 750
+  lumi = 26.52
+  debug = True
+  inputHistDir = 
+  functionParam = 4
+  wait = False
+
+config settings:
+  signal model = Gauss_width5
+  signal model label = 'Gauss_width5'
+  hist base name = mjj_Gauss
+  b-tagging WP = 
+  hist x-axis label = m_{jj} [GeV]
+  n fit parameters = 4
+  threshold mass = 531.0
+  random seed = 401.0
+  notes = ['NLO2016plusSig']
+
+hist name = mjj_Gauss
+/Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.750.GeV.26p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root
+
+1 fb^-1 mjj fit 4 parameters
+initial parameters: [0.00280214, 7.2046, 5.63296, 0.0571367]
+
+******************************************
+setting up to run SearchPhase
+
+SearchPhase --config submitConfigs/sensitivity_mjj_Gauss_750_ww11/Step1_SearchPhase_case4Param_window11.config --file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.26p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root --histName mjj_Gauss_750 --noDE --outputfile /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.750.GeV.26p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan_ww11.root| tee results/sensitivity_mjj_Gauss_750_ww11//sensitivity_mjj_Gauss_750_ww11_log.txt 
+
+
+[1mRooFit v3.60 -- Developed by Wouter Verkerke and David Kirkby[0m 
+                Copyright (C) 2000-2013 NIKHEF, University of California & Stanford University
+                All rights reserved, please read http://roofit.sourceforge.net/license.txt
+
+test
+inputFileName: /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.26p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root
+inputHistDir: 
+Doing pvalue with systematics? 0!
+nPseudoExpBH is 200
+nPseudoExpFit is 100
+ Hist Name: mjj_Gauss_750
+Setting the 4 parameters to    (0) :0.00021675   (1) :3.18705   (2) :7.11991   (3) :0.294323
+minX, maxX: 530 2081
+Actual fit range is 531 - 2079
+corresponding to including the bins 20, 52.
+Creating standard dijet function.
+paramDefaultsLength = 4
+doSwift is 1
+Collected info on SWIFT bins
+Collected info on SWIFT residuals for initial fit
+After fit, parameters are     (0):28.2771   (1):17.2191   (2):1.77077   (3):-0.556201
+on PE 50
+on PE 100
+initialpval is 0.02
+Not excluding any window
+permitWindow is 1
+Collected info on SWIFT residuals for fit after window exclusion
+After fit, parameters are    (0):28.2771   (1):17.2191   (2):1.77077   (3):-0.556201
+BumpHunter results: stat = 8.04508
+Low edge, high edge of bump: 720 784
+DeficitHunter results: stat = 8.04508
+Low edge, high edge of bump: 720 784
+Created +/- 1 sigma histograms
+on PE 50
+on PE 100
+on PE 150
+on PE 200
+Absolute values of logl, chi2, BH tests are: 269.089 21.4451 8.04508
+NDF is 28
+chi2/ndf is 0.765896
+Log likelihood for our fit was 269.089
+Pval of logL, chi2, and bumpHunter are: 0.125 0.145 0.03
+Pval of largest deficit was: 0.055
+debug residuals 0
+ FCN=3.56458 FROM MIGRAD    STATUS=CONVERGED      69 CALLS          70 TOTAL
+                     EDM=3.71852e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     4.34217e+00   1.02569e+00   8.51008e-04   8.33310e-04
+   2  Mean        -3.93546e-01   5.14853e-01   4.93365e-04   8.27083e-05
+   3  Sigma        1.78178e+00   5.34019e-01   1.00789e-04  -1.20136e-04
+TH1.Print Name  = residual_histOfVals, Entries= 32, Total sum= 32
+ fSumw[0]=0, x=-10.25, error=0
+ fSumw[1]=0, x=-9.75, error=0
+ fSumw[2]=0, x=-9.25, error=0
+ fSumw[3]=0, x=-8.75, error=0
+ fSumw[4]=0, x=-8.25, error=0
+ fSumw[5]=0, x=-7.75, error=0
+ fSumw[6]=0, x=-7.25, error=0
+ fSumw[7]=0, x=-6.75, error=0
+ fSumw[8]=0, x=-6.25, error=0
+ fSumw[9]=0, x=-5.75, error=0
+ fSumw[10]=0, x=-5.25, error=0
+ fSumw[11]=0, x=-4.75, error=0
+ fSumw[12]=0, x=-4.25, error=0
+ fSumw[13]=0, x=-3.75, error=0
+ fSumw[14]=0, x=-3.25, error=0
+ fSumw[15]=0, x=-2.75, error=0
+ fSumw[16]=2, x=-2.25, error=1.41421
+ fSumw[17]=0, x=-1.75, error=0
+ fSumw[18]=5, x=-1.25, error=2.23607
+ fSumw[19]=8, x=-0.75, error=2.82843
+ fSumw[20]=3, x=-0.25, error=1.73205
+ fSumw[21]=3, x=0.25, error=1.73205
+ fSumw[22]=5, x=0.75, error=2.23607
+ fSumw[23]=3, x=1.25, error=1.73205
+ fSumw[24]=2, x=1.75, error=1.41421
+ fSumw[25]=0, x=2.25, error=0
+ fSumw[26]=1, x=2.75, error=1
+ fSumw[27]=0, x=3.25, error=0
+ fSumw[28]=0, x=3.75, error=0
+ fSumw[29]=0, x=4.25, error=0
+ fSumw[30]=0, x=4.75, error=0
+ fSumw[31]=0, x=5.25, error=0
+ fSumw[32]=0, x=5.75, error=0
+ fSumw[33]=0, x=6.25, error=0
+ fSumw[34]=0, x=6.75, error=0
+ fSumw[35]=0, x=7.25, error=0
+ fSumw[36]=0, x=7.75, error=0
+ fSumw[37]=0, x=8.25, error=0
+ fSumw[38]=0, x=8.75, error=0
+ fSumw[39]=0, x=9.25, error=0
+ fSumw[40]=0, x=9.75, error=0
+ fSumw[41]=0, x=10.25, error=0
+From fit, mean and width are -0.393546 1.78178
+Calculating quantities from function itself, mean and RMS are -0.0116723 1.157
+
+******************************************
+*** initial values 
+*** BH p-value = 0.02 +/- 0.014
+*** BH value = 8.04508
+*** BH range = 720 - 784
+******************************************
+*** refined values (after window removal)
+*** BH p-value = -1 +/- -1
+*** BH value = -1
+*** BH range = -1 - -1
+******************************************
+*** final values 
+*** BH p-value = 0.03 +/- 0.0120623
+*** BH value = 8.04508
+*** BH range = 720 - 784
+******************************************
+
+Writing output file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.750.GeV.26p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan_ww11.root
+doing fittedhists
+done
+Process ran in 9.76 seconds. 
+To plot:
+python plotSearchPhase.py --bump --file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.750.GeV.26p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan_ww11.root --lumi 26.52 --notes "m_{'Gauss_width5'} = 750 GeV" "NLO2016plusSig" --xlabel "m_{jj} [GeV]"
+
+ran search phase
+******************************************
+python -u step03.searchPhase.py --config ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config --file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.26p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root --mass 750 --lumi 26.52 --window 11 --functionParam 4 --nPseudoExps 200 --tag NLO2015_29p7_sensitivityScan --batch -b --debug
+
+******************************************
+SearchPhase results summary
+
+Gauss_width5 mass = 750.0 GeV
+lumi = 26.52 fb^-1
+bump range: 720.0 GeV - 784.0 GeV
+BumpHunter stat = 8.04507878793
+BumpHunter p-value = 0.03 +/- 0.0120623380818
+excluded window (1=yes, 0=no):  0.0
+window low edge = 720.0
+window high edge = 784.0
+BumpHunter sigmas = 1.88079360815
+Close enough. try next time with lumi:  27.52
+
+******************************************
+sensitivity scan results
+******************************************
+
+mass = [ 750.  650.]
+lumi = [ 0.  0.]
+
+
+******************************************
+******************************************
+testing:
+luminosity = 27.52 ^fb-1
+mass values [GeV]: [750.0, 650.0]
+******************************************
+******************************************
+
+
+******************************************
+inject data-like signal
+
+Applying ATLAS style settings...
+
+
+input parameters:
+  plot = True
+  dataLikeQCDFileName = /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/datalikeQCD/NLO_yStar_06_29p7ifb_forSig.root
+  configFileName = ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config
+  batch = True
+  tag = NLO2015_29p7_sensitivityScan
+  lumi = 27.5
+  debug = False
+  wait = False
+
+config settings:
+  signal model = Gauss_width5
+  signal model label = 'Gauss_width5'
+  signal masses [GeV] = [650.0, 750.0]
+  hist base name = mjj_Gauss
+  b-tagging WP = 
+  hist x-axis label = m_{jj} [GeV]
+  n fit parameters = 4
+  threshold mass = 531.0
+  random seed = 401.0
+  notes = ['NLO2016plusSig']
+Gauss_mass1050_width5.root
+Gauss_width5 in name
+Gauss_mass1150_width5.root
+Gauss_width5 in name
+Gauss_mass1250_width5.root
+Gauss_width5 in name
+Gauss_mass1350_width5.root
+Gauss_width5 in name
+Gauss_mass1450_width5.root
+Gauss_width5 in name
+Gauss_mass1550_width5.root
+Gauss_width5 in name
+Gauss_mass1650_width5.root
+Gauss_width5 in name
+Gauss_mass1750_width5.root
+Gauss_width5 in name
+Gauss_mass1850_width5.root
+Gauss_width5 in name
+Gauss_mass450_width5.root
+Gauss_width5 in name
+Gauss_mass550_width5.root
+Gauss_width5 in name
+Gauss_mass620_width5.root
+Gauss_width5 in name
+Gauss_mass650_width5.root
+Gauss_width5 in name
+Gauss_mass750_width5.root
+Gauss_width5 in name
+Gauss_mass850_width5.root
+Gauss_width5 in name
+Gauss_mass950_width5.root
+Gauss_width5 in name
+python -u step02.injectDataLikeSignal.py --config ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config --QCDFile /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/datalikeQCD/NLO_yStar_06_29p7ifb_forSig.root --lumi 27.5 --tag NLO2015_29p7_sensitivityScan --plot --batch -b --debug
+
+******************************************
+Running SearchPhase
+
+Gauss_width5 mass = 750.0 GeV
+lumi = 27.52 fb^-1
+WindowWidth for SWiFt = 11
+******************************************
+
+******************************************
+run search phase
+
+Applying ATLAS style settings...
+
+
+input parameters:
+  plot = False
+  fit = False
+  configFileName = ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config
+  batch = True
+  inputFileName = /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.27p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root
+  nPseudoExps = 200
+  window = 11
+  tag = NLO2015_29p7_sensitivityScan
+  mass = 750
+  lumi = 27.52
+  debug = True
+  inputHistDir = 
+  functionParam = 4
+  wait = False
+
+config settings:
+  signal model = Gauss_width5
+  signal model label = 'Gauss_width5'
+  hist base name = mjj_Gauss
+  b-tagging WP = 
+  hist x-axis label = m_{jj} [GeV]
+  n fit parameters = 4
+  threshold mass = 531.0
+  random seed = 401.0
+  notes = ['NLO2016plusSig']
+
+hist name = mjj_Gauss
+/Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.750.GeV.27p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root
+
+1 fb^-1 mjj fit 4 parameters
+initial parameters: [0.00280214, 7.2046, 5.63296, 0.0571367]
+
+******************************************
+setting up to run SearchPhase
+
+SearchPhase --config submitConfigs/sensitivity_mjj_Gauss_750_ww11/Step1_SearchPhase_case4Param_window11.config --file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.27p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root --histName mjj_Gauss_750 --noDE --outputfile /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.750.GeV.27p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan_ww11.root| tee results/sensitivity_mjj_Gauss_750_ww11//sensitivity_mjj_Gauss_750_ww11_log.txt 
+
+
+[1mRooFit v3.60 -- Developed by Wouter Verkerke and David Kirkby[0m 
+                Copyright (C) 2000-2013 NIKHEF, University of California & Stanford University
+                All rights reserved, please read http://roofit.sourceforge.net/license.txt
+
+test
+inputFileName: /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.27p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root
+inputHistDir: 
+Doing pvalue with systematics? 0!
+nPseudoExpBH is 200
+nPseudoExpFit is 100
+ Hist Name: mjj_Gauss_750
+Setting the 4 parameters to    (0) :0.00021675   (1) :3.18705   (2) :7.11991   (3) :0.294323
+minX, maxX: 530 2081
+Actual fit range is 531 - 2079
+corresponding to including the bins 20, 52.
+Creating standard dijet function.
+paramDefaultsLength = 4
+doSwift is 1
+Collected info on SWIFT bins
+Collected info on SWIFT residuals for initial fit
+After fit, parameters are     (0):28.5852   (1):17.2331   (2):1.76418   (3):-0.557302
+on PE 50
+on PE 100
+initialpval is 0.02
+Not excluding any window
+permitWindow is 1
+Collected info on SWIFT residuals for fit after window exclusion
+After fit, parameters are    (0):28.5852   (1):17.2331   (2):1.76418   (3):-0.557302
+BumpHunter results: stat = 8.51951
+Low edge, high edge of bump: 720 784
+DeficitHunter results: stat = 8.51951
+Low edge, high edge of bump: 720 784
+Created +/- 1 sigma histograms
+on PE 50
+on PE 100
+on PE 150
+on PE 200
+Absolute values of logl, chi2, BH tests are: 269.66 22.0167 8.51951
+NDF is 28
+chi2/ndf is 0.78631
+Log likelihood for our fit was 269.66
+Pval of logL, chi2, and bumpHunter are: 0.085 0.095 0.01
+Pval of largest deficit was: 0.035
+debug residuals 0
+ FCN=3.18402 FROM MIGRAD    STATUS=CONVERGED      79 CALLS          80 TOTAL
+                     EDM=2.72271e-12    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     4.68314e+00   1.11322e+00   8.71277e-04  -7.04061e-07
+   2  Mean        -4.79043e-01   4.07979e-01   3.44552e-04  -2.53642e-06
+   3  Sigma        1.52440e+00   3.71056e-01   6.52794e-05  -3.25628e-05
+TH1.Print Name  = residual_histOfVals, Entries= 32, Total sum= 32
+ fSumw[0]=0, x=-10.25, error=0
+ fSumw[1]=0, x=-9.75, error=0
+ fSumw[2]=0, x=-9.25, error=0
+ fSumw[3]=0, x=-8.75, error=0
+ fSumw[4]=0, x=-8.25, error=0
+ fSumw[5]=0, x=-7.75, error=0
+ fSumw[6]=0, x=-7.25, error=0
+ fSumw[7]=0, x=-6.75, error=0
+ fSumw[8]=0, x=-6.25, error=0
+ fSumw[9]=0, x=-5.75, error=0
+ fSumw[10]=0, x=-5.25, error=0
+ fSumw[11]=0, x=-4.75, error=0
+ fSumw[12]=0, x=-4.25, error=0
+ fSumw[13]=0, x=-3.75, error=0
+ fSumw[14]=0, x=-3.25, error=0
+ fSumw[15]=0, x=-2.75, error=0
+ fSumw[16]=2, x=-2.25, error=1.41421
+ fSumw[17]=0, x=-1.75, error=0
+ fSumw[18]=5, x=-1.25, error=2.23607
+ fSumw[19]=7, x=-0.75, error=2.64575
+ fSumw[20]=3, x=-0.25, error=1.73205
+ fSumw[21]=4, x=0.25, error=2
+ fSumw[22]=5, x=0.75, error=2.23607
+ fSumw[23]=3, x=1.25, error=1.73205
+ fSumw[24]=1, x=1.75, error=1
+ fSumw[25]=1, x=2.25, error=1
+ fSumw[26]=1, x=2.75, error=1
+ fSumw[27]=0, x=3.25, error=0
+ fSumw[28]=0, x=3.75, error=0
+ fSumw[29]=0, x=4.25, error=0
+ fSumw[30]=0, x=4.75, error=0
+ fSumw[31]=0, x=5.25, error=0
+ fSumw[32]=0, x=5.75, error=0
+ fSumw[33]=0, x=6.25, error=0
+ fSumw[34]=0, x=6.75, error=0
+ fSumw[35]=0, x=7.25, error=0
+ fSumw[36]=0, x=7.75, error=0
+ fSumw[37]=0, x=8.25, error=0
+ fSumw[38]=0, x=8.75, error=0
+ fSumw[39]=0, x=9.25, error=0
+ fSumw[40]=0, x=9.75, error=0
+ fSumw[41]=0, x=10.25, error=0
+From fit, mean and width are -0.479043 1.5244
+Calculating quantities from function itself, mean and RMS are -0.00756862 1.17236
+
+******************************************
+*** initial values 
+*** BH p-value = 0.02 +/- 0.014
+*** BH value = 8.51951
+*** BH range = 720 - 784
+******************************************
+*** refined values (after window removal)
+*** BH p-value = -1 +/- -1
+*** BH value = -1
+*** BH range = -1 - -1
+******************************************
+*** final values 
+*** BH p-value = 0.01 +/- 0.00703562
+*** BH value = 8.51951
+*** BH range = 720 - 784
+******************************************
+
+Writing output file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.750.GeV.27p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan_ww11.root
+doing fittedhists
+done
+Process ran in 8.99 seconds. 
+To plot:
+python plotSearchPhase.py --bump --file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.750.GeV.27p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan_ww11.root --lumi 27.52 --notes "m_{'Gauss_width5'} = 750 GeV" "NLO2016plusSig" --xlabel "m_{jj} [GeV]"
+
+ran search phase
+******************************************
+python -u step03.searchPhase.py --config ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config --file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.27p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root --mass 750 --lumi 27.52 --window 11 --functionParam 4 --nPseudoExps 200 --tag NLO2015_29p7_sensitivityScan --batch -b --debug
+
+******************************************
+SearchPhase results summary
+
+Gauss_width5 mass = 750.0 GeV
+lumi = 27.52 fb^-1
+bump range: 720.0 GeV - 784.0 GeV
+BumpHunter stat = 8.51950576482
+BumpHunter p-value = 0.01 +/- 0.00703562363974
+excluded window (1=yes, 0=no):  0.0
+window low edge = 720.0
+window high edge = 784.0
+BumpHunter sigmas = 2.32634787404
+Close enough. try next time with lumi:  28.52
+
+******************************************
+sensitivity scan results
+******************************************
+
+mass = [ 750.  650.]
+lumi = [ 0.  0.]
+
+
+******************************************
+******************************************
+testing:
+luminosity = 28.52 ^fb-1
+mass values [GeV]: [750.0, 650.0]
+******************************************
+******************************************
+
+
+******************************************
+inject data-like signal
+
+Applying ATLAS style settings...
+
+
+input parameters:
+  plot = True
+  dataLikeQCDFileName = /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/datalikeQCD/NLO_yStar_06_29p7ifb_forSig.root
+  configFileName = ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config
+  batch = True
+  tag = NLO2015_29p7_sensitivityScan
+  lumi = 28.5
+  debug = False
+  wait = False
+
+config settings:
+  signal model = Gauss_width5
+  signal model label = 'Gauss_width5'
+  signal masses [GeV] = [650.0, 750.0]
+  hist base name = mjj_Gauss
+  b-tagging WP = 
+  hist x-axis label = m_{jj} [GeV]
+  n fit parameters = 4
+  threshold mass = 531.0
+  random seed = 401.0
+  notes = ['NLO2016plusSig']
+Gauss_mass1050_width5.root
+Gauss_width5 in name
+Gauss_mass1150_width5.root
+Gauss_width5 in name
+Gauss_mass1250_width5.root
+Gauss_width5 in name
+Gauss_mass1350_width5.root
+Gauss_width5 in name
+Gauss_mass1450_width5.root
+Gauss_width5 in name
+Gauss_mass1550_width5.root
+Gauss_width5 in name
+Gauss_mass1650_width5.root
+Gauss_width5 in name
+Gauss_mass1750_width5.root
+Gauss_width5 in name
+Gauss_mass1850_width5.root
+Gauss_width5 in name
+Gauss_mass450_width5.root
+Gauss_width5 in name
+Gauss_mass550_width5.root
+Gauss_width5 in name
+Gauss_mass620_width5.root
+Gauss_width5 in name
+Gauss_mass650_width5.root
+Gauss_width5 in name
+Gauss_mass750_width5.root
+Gauss_width5 in name
+Gauss_mass850_width5.root
+Gauss_width5 in name
+Gauss_mass950_width5.root
+Gauss_width5 in name
+python -u step02.injectDataLikeSignal.py --config ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config --QCDFile /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/datalikeQCD/NLO_yStar_06_29p7ifb_forSig.root --lumi 28.5 --tag NLO2015_29p7_sensitivityScan --plot --batch -b --debug
+
+******************************************
+Running SearchPhase
+
+Gauss_width5 mass = 750.0 GeV
+lumi = 28.52 fb^-1
+WindowWidth for SWiFt = 11
+******************************************
+
+******************************************
+run search phase
+
+Applying ATLAS style settings...
+
+
+input parameters:
+  plot = False
+  fit = False
+  configFileName = ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config
+  batch = True
+  inputFileName = /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.28p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root
+  nPseudoExps = 200
+  window = 11
+  tag = NLO2015_29p7_sensitivityScan
+  mass = 750
+  lumi = 28.52
+  debug = True
+  inputHistDir = 
+  functionParam = 4
+  wait = False
+
+config settings:
+  signal model = Gauss_width5
+  signal model label = 'Gauss_width5'
+  hist base name = mjj_Gauss
+  b-tagging WP = 
+  hist x-axis label = m_{jj} [GeV]
+  n fit parameters = 4
+  threshold mass = 531.0
+  random seed = 401.0
+  notes = ['NLO2016plusSig']
+
+hist name = mjj_Gauss
+/Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.750.GeV.28p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root
+
+1 fb^-1 mjj fit 4 parameters
+initial parameters: [0.00280214, 7.2046, 5.63296, 0.0571367]
+
+******************************************
+setting up to run SearchPhase
+
+SearchPhase --config submitConfigs/sensitivity_mjj_Gauss_750_ww11/Step1_SearchPhase_case4Param_window11.config --file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.28p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root --histName mjj_Gauss_750 --noDE --outputfile /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.750.GeV.28p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan_ww11.root| tee results/sensitivity_mjj_Gauss_750_ww11//sensitivity_mjj_Gauss_750_ww11_log.txt 
+
+
+[1mRooFit v3.60 -- Developed by Wouter Verkerke and David Kirkby[0m 
+                Copyright (C) 2000-2013 NIKHEF, University of California & Stanford University
+                All rights reserved, please read http://roofit.sourceforge.net/license.txt
+
+test
+inputFileName: /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.28p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root
+inputHistDir: 
+Doing pvalue with systematics? 0!
+nPseudoExpBH is 200
+nPseudoExpFit is 100
+ Hist Name: mjj_Gauss_750
+Setting the 4 parameters to    (0) :0.00021675   (1) :3.18705   (2) :7.11991   (3) :0.294323
+minX, maxX: 530 2081
+Actual fit range is 531 - 2079
+corresponding to including the bins 20, 52.
+Creating standard dijet function.
+paramDefaultsLength = 4
+doSwift is 1
+Collected info on SWIFT bins
+Collected info on SWIFT residuals for initial fit
+After fit, parameters are     (0):27.5778   (1):17.1868   (2):1.78608   (3):-0.553635
+on PE 50
+on PE 100
+initialpval is 0.03
+Not excluding any window
+permitWindow is 1
+Collected info on SWIFT residuals for fit after window exclusion
+After fit, parameters are    (0):27.5778   (1):17.1868   (2):1.78608   (3):-0.553635
+BumpHunter results: stat = 9.01153
+Low edge, high edge of bump: 720 784
+DeficitHunter results: stat = 9.01153
+Low edge, high edge of bump: 720 784
+Created +/- 1 sigma histograms
+on PE 50
+on PE 100
+on PE 150
+on PE 200
+Absolute values of logl, chi2, BH tests are: 270.388 22.7444 9.01153
+NDF is 28
+chi2/ndf is 0.8123
+Log likelihood for our fit was 270.388
+Pval of logL, chi2, and bumpHunter are: 0.075 0.115 0.01
+Pval of largest deficit was: 0.02
+debug residuals 0
+ FCN=3.18402 FROM MIGRAD    STATUS=CONVERGED      79 CALLS          80 TOTAL
+                     EDM=2.72271e-12    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     4.68314e+00   1.11322e+00   8.71277e-04  -7.04061e-07
+   2  Mean        -4.79043e-01   4.07979e-01   3.44552e-04  -2.53642e-06
+   3  Sigma        1.52440e+00   3.71056e-01   6.52794e-05  -3.25628e-05
+TH1.Print Name  = residual_histOfVals, Entries= 32, Total sum= 32
+ fSumw[0]=0, x=-10.25, error=0
+ fSumw[1]=0, x=-9.75, error=0
+ fSumw[2]=0, x=-9.25, error=0
+ fSumw[3]=0, x=-8.75, error=0
+ fSumw[4]=0, x=-8.25, error=0
+ fSumw[5]=0, x=-7.75, error=0
+ fSumw[6]=0, x=-7.25, error=0
+ fSumw[7]=0, x=-6.75, error=0
+ fSumw[8]=0, x=-6.25, error=0
+ fSumw[9]=0, x=-5.75, error=0
+ fSumw[10]=0, x=-5.25, error=0
+ fSumw[11]=0, x=-4.75, error=0
+ fSumw[12]=0, x=-4.25, error=0
+ fSumw[13]=0, x=-3.75, error=0
+ fSumw[14]=0, x=-3.25, error=0
+ fSumw[15]=0, x=-2.75, error=0
+ fSumw[16]=2, x=-2.25, error=1.41421
+ fSumw[17]=0, x=-1.75, error=0
+ fSumw[18]=5, x=-1.25, error=2.23607
+ fSumw[19]=7, x=-0.75, error=2.64575
+ fSumw[20]=3, x=-0.25, error=1.73205
+ fSumw[21]=4, x=0.25, error=2
+ fSumw[22]=5, x=0.75, error=2.23607
+ fSumw[23]=3, x=1.25, error=1.73205
+ fSumw[24]=1, x=1.75, error=1
+ fSumw[25]=1, x=2.25, error=1
+ fSumw[26]=1, x=2.75, error=1
+ fSumw[27]=0, x=3.25, error=0
+ fSumw[28]=0, x=3.75, error=0
+ fSumw[29]=0, x=4.25, error=0
+ fSumw[30]=0, x=4.75, error=0
+ fSumw[31]=0, x=5.25, error=0
+ fSumw[32]=0, x=5.75, error=0
+ fSumw[33]=0, x=6.25, error=0
+ fSumw[34]=0, x=6.75, error=0
+ fSumw[35]=0, x=7.25, error=0
+ fSumw[36]=0, x=7.75, error=0
+ fSumw[37]=0, x=8.25, error=0
+ fSumw[38]=0, x=8.75, error=0
+ fSumw[39]=0, x=9.25, error=0
+ fSumw[40]=0, x=9.75, error=0
+ fSumw[41]=0, x=10.25, error=0
+From fit, mean and width are -0.479043 1.5244
+Calculating quantities from function itself, mean and RMS are -0.00638082 1.1916
+
+******************************************
+*** initial values 
+*** BH p-value = 0.03 +/- 0.0170587
+*** BH value = 9.01153
+*** BH range = 720 - 784
+******************************************
+*** refined values (after window removal)
+*** BH p-value = -1 +/- -1
+*** BH value = -1
+*** BH range = -1 - -1
+******************************************
+*** final values 
+*** BH p-value = 0.01 +/- 0.00703562
+*** BH value = 9.01153
+*** BH range = 720 - 784
+******************************************
+
+Writing output file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.750.GeV.28p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan_ww11.root
+doing fittedhists
+done
+Process ran in 8.97 seconds. 
+To plot:
+python plotSearchPhase.py --bump --file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.750.GeV.28p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan_ww11.root --lumi 28.52 --notes "m_{'Gauss_width5'} = 750 GeV" "NLO2016plusSig" --xlabel "m_{jj} [GeV]"
+
+ran search phase
+******************************************
+python -u step03.searchPhase.py --config ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config --file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.28p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root --mass 750 --lumi 28.52 --window 11 --functionParam 4 --nPseudoExps 200 --tag NLO2015_29p7_sensitivityScan --batch -b --debug
+
+******************************************
+SearchPhase results summary
+
+Gauss_width5 mass = 750.0 GeV
+lumi = 28.52 fb^-1
+bump range: 720.0 GeV - 784.0 GeV
+BumpHunter stat = 9.01153212192
+BumpHunter p-value = 0.01 +/- 0.00703562363974
+excluded window (1=yes, 0=no):  0.0
+window low edge = 720.0
+window high edge = 784.0
+BumpHunter sigmas = 2.32634787404
+Close enough. try next time with lumi:  29.52
+
+******************************************
+sensitivity scan results
+******************************************
+
+mass = [ 750.  650.]
+lumi = [ 0.  0.]
+
+
+******************************************
+******************************************
+testing:
+luminosity = 29.52 ^fb-1
+mass values [GeV]: [750.0, 650.0]
+******************************************
+******************************************
+
+
+******************************************
+inject data-like signal
+
+Applying ATLAS style settings...
+
+
+input parameters:
+  plot = True
+  dataLikeQCDFileName = /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/datalikeQCD/NLO_yStar_06_29p7ifb_forSig.root
+  configFileName = ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config
+  batch = True
+  tag = NLO2015_29p7_sensitivityScan
+  lumi = 29.5
+  debug = False
+  wait = False
+
+config settings:
+  signal model = Gauss_width5
+  signal model label = 'Gauss_width5'
+  signal masses [GeV] = [650.0, 750.0]
+  hist base name = mjj_Gauss
+  b-tagging WP = 
+  hist x-axis label = m_{jj} [GeV]
+  n fit parameters = 4
+  threshold mass = 531.0
+  random seed = 401.0
+  notes = ['NLO2016plusSig']
+Gauss_mass1050_width5.root
+Gauss_width5 in name
+Gauss_mass1150_width5.root
+Gauss_width5 in name
+Gauss_mass1250_width5.root
+Gauss_width5 in name
+Gauss_mass1350_width5.root
+Gauss_width5 in name
+Gauss_mass1450_width5.root
+Gauss_width5 in name
+Gauss_mass1550_width5.root
+Gauss_width5 in name
+Gauss_mass1650_width5.root
+Gauss_width5 in name
+Gauss_mass1750_width5.root
+Gauss_width5 in name
+Gauss_mass1850_width5.root
+Gauss_width5 in name
+Gauss_mass450_width5.root
+Gauss_width5 in name
+Gauss_mass550_width5.root
+Gauss_width5 in name
+Gauss_mass620_width5.root
+Gauss_width5 in name
+Gauss_mass650_width5.root
+Gauss_width5 in name
+Gauss_mass750_width5.root
+Gauss_width5 in name
+Gauss_mass850_width5.root
+Gauss_width5 in name
+Gauss_mass950_width5.root
+Gauss_width5 in name
+python -u step02.injectDataLikeSignal.py --config ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config --QCDFile /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/datalikeQCD/NLO_yStar_06_29p7ifb_forSig.root --lumi 29.5 --tag NLO2015_29p7_sensitivityScan --plot --batch -b --debug
+
+******************************************
+Running SearchPhase
+
+Gauss_width5 mass = 750.0 GeV
+lumi = 29.52 fb^-1
+WindowWidth for SWiFt = 11
+******************************************
+
+******************************************
+run search phase
+
+Applying ATLAS style settings...
+
+
+input parameters:
+  plot = False
+  fit = False
+  configFileName = ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config
+  batch = True
+  inputFileName = /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.29p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root
+  nPseudoExps = 200
+  window = 11
+  tag = NLO2015_29p7_sensitivityScan
+  mass = 750
+  lumi = 29.52
+  debug = True
+  inputHistDir = 
+  functionParam = 4
+  wait = False
+
+config settings:
+  signal model = Gauss_width5
+  signal model label = 'Gauss_width5'
+  hist base name = mjj_Gauss
+  b-tagging WP = 
+  hist x-axis label = m_{jj} [GeV]
+  n fit parameters = 4
+  threshold mass = 531.0
+  random seed = 401.0
+  notes = ['NLO2016plusSig']
+
+hist name = mjj_Gauss
+/Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.750.GeV.29p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root
+
+1 fb^-1 mjj fit 4 parameters
+initial parameters: [0.00280214, 7.2046, 5.63296, 0.0571367]
+
+******************************************
+setting up to run SearchPhase
+
+SearchPhase --config submitConfigs/sensitivity_mjj_Gauss_750_ww11/Step1_SearchPhase_case4Param_window11.config --file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.29p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root --histName mjj_Gauss_750 --noDE --outputfile /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.750.GeV.29p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan_ww11.root| tee results/sensitivity_mjj_Gauss_750_ww11//sensitivity_mjj_Gauss_750_ww11_log.txt 
+
+
+[1mRooFit v3.60 -- Developed by Wouter Verkerke and David Kirkby[0m 
+                Copyright (C) 2000-2013 NIKHEF, University of California & Stanford University
+                All rights reserved, please read http://roofit.sourceforge.net/license.txt
+
+test
+inputFileName: /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.29p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root
+inputHistDir: 
+Doing pvalue with systematics? 0!
+nPseudoExpBH is 200
+nPseudoExpFit is 100
+ Hist Name: mjj_Gauss_750
+Setting the 4 parameters to    (0) :0.00021675   (1) :3.18705   (2) :7.11991   (3) :0.294323
+minX, maxX: 530 2081
+Actual fit range is 531 - 2079
+corresponding to including the bins 20, 52.
+Creating standard dijet function.
+paramDefaultsLength = 4
+doSwift is 1
+Collected info on SWIFT bins
+Collected info on SWIFT residuals for initial fit
+After fit, parameters are     (0):28.0812   (1):17.21   (2):1.77499   (3):-0.5555
+on PE 50
+on PE 100
+initialpval is 0.01
+Not excluding any window
+permitWindow is 1
+Collected info on SWIFT residuals for fit after window exclusion
+After fit, parameters are    (0):28.0812   (1):17.21   (2):1.77499   (3):-0.5555
+BumpHunter results: stat = 9.51911
+Low edge, high edge of bump: 720 784
+DeficitHunter results: stat = 9.51911
+Low edge, high edge of bump: 720 784
+Created +/- 1 sigma histograms
+on PE 50
+on PE 100
+on PE 150
+on PE 200
+Absolute values of logl, chi2, BH tests are: 271.178 23.535 9.51911
+NDF is 28
+chi2/ndf is 0.840534
+Log likelihood for our fit was 271.178
+Pval of logL, chi2, and bumpHunter are: 0.035 0.06 0.005
+Pval of largest deficit was: 0.015
+debug residuals 0
+ FCN=3.51549 FROM MIGRAD    STATUS=CONVERGED      69 CALLS          70 TOTAL
+                     EDM=2.01762e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     4.67121e+00   1.14218e+00   9.08248e-04   1.30749e-05
+   2  Mean        -4.87027e-01   4.09829e-01   3.67071e-04  -9.17031e-04
+   3  Sigma        1.52772e+00   4.02326e-01   7.17608e-05   3.87653e-03
+TH1.Print Name  = residual_histOfVals, Entries= 32, Total sum= 32
+ fSumw[0]=0, x=-10.25, error=0
+ fSumw[1]=0, x=-9.75, error=0
+ fSumw[2]=0, x=-9.25, error=0
+ fSumw[3]=0, x=-8.75, error=0
+ fSumw[4]=0, x=-8.25, error=0
+ fSumw[5]=0, x=-7.75, error=0
+ fSumw[6]=0, x=-7.25, error=0
+ fSumw[7]=0, x=-6.75, error=0
+ fSumw[8]=0, x=-6.25, error=0
+ fSumw[9]=0, x=-5.75, error=0
+ fSumw[10]=0, x=-5.25, error=0
+ fSumw[11]=0, x=-4.75, error=0
+ fSumw[12]=0, x=-4.25, error=0
+ fSumw[13]=0, x=-3.75, error=0
+ fSumw[14]=0, x=-3.25, error=0
+ fSumw[15]=0, x=-2.75, error=0
+ fSumw[16]=2, x=-2.25, error=1.41421
+ fSumw[17]=0, x=-1.75, error=0
+ fSumw[18]=5, x=-1.25, error=2.23607
+ fSumw[19]=7, x=-0.75, error=2.64575
+ fSumw[20]=3, x=-0.25, error=1.73205
+ fSumw[21]=4, x=0.25, error=2
+ fSumw[22]=5, x=0.75, error=2.23607
+ fSumw[23]=3, x=1.25, error=1.73205
+ fSumw[24]=1, x=1.75, error=1
+ fSumw[25]=1, x=2.25, error=1
+ fSumw[26]=0, x=2.75, error=0
+ fSumw[27]=1, x=3.25, error=1
+ fSumw[28]=0, x=3.75, error=0
+ fSumw[29]=0, x=4.25, error=0
+ fSumw[30]=0, x=4.75, error=0
+ fSumw[31]=0, x=5.25, error=0
+ fSumw[32]=0, x=5.75, error=0
+ fSumw[33]=0, x=6.25, error=0
+ fSumw[34]=0, x=6.75, error=0
+ fSumw[35]=0, x=7.25, error=0
+ fSumw[36]=0, x=7.75, error=0
+ fSumw[37]=0, x=8.25, error=0
+ fSumw[38]=0, x=8.75, error=0
+ fSumw[39]=0, x=9.25, error=0
+ fSumw[40]=0, x=9.75, error=0
+ fSumw[41]=0, x=10.25, error=0
+From fit, mean and width are -0.487027 1.52772
+Calculating quantities from function itself, mean and RMS are -0.00386677 1.21214
+
+******************************************
+*** initial values 
+*** BH p-value = 0.01 +/- 0.00994987
+*** BH value = 9.51911
+*** BH range = 720 - 784
+******************************************
+*** refined values (after window removal)
+*** BH p-value = -1 +/- -1
+*** BH value = -1
+*** BH range = -1 - -1
+******************************************
+*** final values 
+*** BH p-value = 0.005 +/- 0.00498748
+*** BH value = 9.51911
+*** BH range = 720 - 784
+******************************************
+
+Writing output file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.750.GeV.29p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan_ww11.root
+doing fittedhists
+done
+Process ran in 8.19 seconds. 
+To plot:
+python plotSearchPhase.py --bump --file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.750.GeV.29p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan_ww11.root --lumi 29.52 --notes "m_{'Gauss_width5'} = 750 GeV" "NLO2016plusSig" --xlabel "m_{jj} [GeV]"
+
+ran search phase
+******************************************
+python -u step03.searchPhase.py --config ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config --file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.29p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root --mass 750 --lumi 29.52 --window 11 --functionParam 4 --nPseudoExps 200 --tag NLO2015_29p7_sensitivityScan --batch -b --debug
+
+******************************************
+SearchPhase results summary
+
+Gauss_width5 mass = 750.0 GeV
+lumi = 29.52 fb^-1
+bump range: 720.0 GeV - 784.0 GeV
+BumpHunter stat = 9.51911116746
+BumpHunter p-value = 0.005 +/- 0.00498748433582
+excluded window (1=yes, 0=no):  0.0
+window low edge = 720.0
+window high edge = 784.0
+BumpHunter sigmas = 2.57582930355
+******************************************
+Discovery, without window removal - increment lumi
+
+******************************************
+sensitivity scan results
+******************************************
+
+mass = [ 750.  650.]
+lumi = [ 0.  0.]
+
+
+******************************************
+******************************************
+testing:
+luminosity = 30.52 ^fb-1
+mass values [GeV]: [750.0, 650.0]
+******************************************
+******************************************
+
+
+******************************************
+inject data-like signal
+
+Applying ATLAS style settings...
+
+
+input parameters:
+  plot = True
+  dataLikeQCDFileName = /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/datalikeQCD/NLO_yStar_06_29p7ifb_forSig.root
+  configFileName = ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config
+  batch = True
+  tag = NLO2015_29p7_sensitivityScan
+  lumi = 30.5
+  debug = False
+  wait = False
+
+config settings:
+  signal model = Gauss_width5
+  signal model label = 'Gauss_width5'
+  signal masses [GeV] = [650.0, 750.0]
+  hist base name = mjj_Gauss
+  b-tagging WP = 
+  hist x-axis label = m_{jj} [GeV]
+  n fit parameters = 4
+  threshold mass = 531.0
+  random seed = 401.0
+  notes = ['NLO2016plusSig']
+Gauss_mass1050_width5.root
+Gauss_width5 in name
+Gauss_mass1150_width5.root
+Gauss_width5 in name
+Gauss_mass1250_width5.root
+Gauss_width5 in name
+Gauss_mass1350_width5.root
+Gauss_width5 in name
+Gauss_mass1450_width5.root
+Gauss_width5 in name
+Gauss_mass1550_width5.root
+Gauss_width5 in name
+Gauss_mass1650_width5.root
+Gauss_width5 in name
+Gauss_mass1750_width5.root
+Gauss_width5 in name
+Gauss_mass1850_width5.root
+Gauss_width5 in name
+Gauss_mass450_width5.root
+Gauss_width5 in name
+Gauss_mass550_width5.root
+Gauss_width5 in name
+Gauss_mass620_width5.root
+Gauss_width5 in name
+Gauss_mass650_width5.root
+Gauss_width5 in name
+Gauss_mass750_width5.root
+Gauss_width5 in name
+Gauss_mass850_width5.root
+Gauss_width5 in name
+Gauss_mass950_width5.root
+Gauss_width5 in name
+python -u step02.injectDataLikeSignal.py --config ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config --QCDFile /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/datalikeQCD/NLO_yStar_06_29p7ifb_forSig.root --lumi 30.5 --tag NLO2015_29p7_sensitivityScan --plot --batch -b --debug
+
+******************************************
+Running SearchPhase
+
+Gauss_width5 mass = 750.0 GeV
+lumi = 30.52 fb^-1
+WindowWidth for SWiFt = 11
+******************************************
+
+******************************************
+run search phase
+
+Applying ATLAS style settings...
+
+
+input parameters:
+  plot = False
+  fit = False
+  configFileName = ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config
+  batch = True
+  inputFileName = /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.30p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root
+  nPseudoExps = 200
+  window = 11
+  tag = NLO2015_29p7_sensitivityScan
+  mass = 750
+  lumi = 30.52
+  debug = True
+  inputHistDir = 
+  functionParam = 4
+  wait = False
+
+config settings:
+  signal model = Gauss_width5
+  signal model label = 'Gauss_width5'
+  hist base name = mjj_Gauss
+  b-tagging WP = 
+  hist x-axis label = m_{jj} [GeV]
+  n fit parameters = 4
+  threshold mass = 531.0
+  random seed = 401.0
+  notes = ['NLO2016plusSig']
+
+hist name = mjj_Gauss
+/Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.750.GeV.30p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root
+
+1 fb^-1 mjj fit 4 parameters
+initial parameters: [0.00280214, 7.2046, 5.63296, 0.0571367]
+
+******************************************
+setting up to run SearchPhase
+
+SearchPhase --config submitConfigs/sensitivity_mjj_Gauss_750_ww11/Step1_SearchPhase_case4Param_window11.config --file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.30p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root --histName mjj_Gauss_750 --noDE --outputfile /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.750.GeV.30p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan_ww11.root| tee results/sensitivity_mjj_Gauss_750_ww11//sensitivity_mjj_Gauss_750_ww11_log.txt 
+
+
+[1mRooFit v3.60 -- Developed by Wouter Verkerke and David Kirkby[0m 
+                Copyright (C) 2000-2013 NIKHEF, University of California & Stanford University
+                All rights reserved, please read http://roofit.sourceforge.net/license.txt
+
+test
+inputFileName: /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.30p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root
+inputHistDir: 
+Doing pvalue with systematics? 0!
+nPseudoExpBH is 200
+nPseudoExpFit is 100
+ Hist Name: mjj_Gauss_750
+Setting the 4 parameters to    (0) :0.00021675   (1) :3.18705   (2) :7.11991   (3) :0.294323
+minX, maxX: 530 2081
+Actual fit range is 531 - 2079
+corresponding to including the bins 20, 52.
+Creating standard dijet function.
+paramDefaultsLength = 4
+doSwift is 1
+Collected info on SWIFT bins
+Collected info on SWIFT residuals for initial fit
+After fit, parameters are     (0):224300   (1):28.8501   (2):-3.69919   (3):-1.46955
+on PE 50
+on PE 100
+initialpval is 0
+Wish to use an Exclusion Window
+permitWindow is 1
+Window width is at 0.0612777
+First bin and last bin to exclude are 27 28, corresponding to 720, 784
+Window width / max allowed width (half-spectrum) is 2 / 16 
+Trying to refit.
+on PE 50
+on PE 100
+on PE 150
+on PE 200
+pval of remaining spectrum is 0.975
+ Adding 1 extra bin to exclusion window at low mass end
+First bin and last bin to exclude are 26 28, corresponding to 690, 784
+Window width / max allowed width (half-spectrum) is 3 / 16 
+Trying to refit.
+on PE 50
+on PE 100
+on PE 150
+on PE 200
+pval of remaining spectrum is 0.96
+Collected info on SWIFT residuals for fit after window exclusion
+After fit, parameters are    (0):46524.2   (1):26.8134   (2):-2.74062   (3):-1.30944
+BumpHunter results: stat = 16.0493
+Low edge, high edge of bump: 720 784
+DeficitHunter results: stat = 16.0493
+Low edge, high edge of bump: 720 784
+Created +/- 1 sigma histograms
+on PE 50
+on PE 100
+on PE 150
+on PE 200
+Absolute values of logl, chi2, BH tests are: 234.663 12.8582 16.0493
+NDF is 28
+chi2/ndf is 0.459222
+Log likelihood for our fit was 234.663
+Pval of logL, chi2, and bumpHunter are: 0.68 0.69 0
+Pval of largest deficit was: 0
+debug residuals 0
+ FCN=4.28119 FROM MIGRAD    STATUS=CONVERGED      66 CALLS          67 TOTAL
+                     EDM=1.61372e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     5.27826e+00   1.30453e+00   1.12485e-03  -1.26920e-05
+   2  Mean        -1.41509e-01   2.78163e-01   3.10180e-04  -5.91318e-04
+   3  Sigma        1.19459e+00   2.76376e-01   6.37160e-05   9.45247e-04
+TH1.Print Name  = residual_histOfVals, Entries= 32, Total sum= 32
+ fSumw[0]=0, x=-10.25, error=0
+ fSumw[1]=0, x=-9.75, error=0
+ fSumw[2]=0, x=-9.25, error=0
+ fSumw[3]=0, x=-8.75, error=0
+ fSumw[4]=0, x=-8.25, error=0
+ fSumw[5]=0, x=-7.75, error=0
+ fSumw[6]=0, x=-7.25, error=0
+ fSumw[7]=0, x=-6.75, error=0
+ fSumw[8]=0, x=-6.25, error=0
+ fSumw[9]=0, x=-5.75, error=0
+ fSumw[10]=0, x=-5.25, error=0
+ fSumw[11]=0, x=-4.75, error=0
+ fSumw[12]=0, x=-4.25, error=0
+ fSumw[13]=0, x=-3.75, error=0
+ fSumw[14]=0, x=-3.25, error=0
+ fSumw[15]=0, x=-2.75, error=0
+ fSumw[16]=1, x=-2.25, error=1
+ fSumw[17]=0, x=-1.75, error=0
+ fSumw[18]=3, x=-1.25, error=1.73205
+ fSumw[19]=7, x=-0.75, error=2.64575
+ fSumw[20]=5, x=-0.25, error=2.23607
+ fSumw[21]=4, x=0.25, error=2
+ fSumw[22]=4, x=0.75, error=2
+ fSumw[23]=5, x=1.25, error=2.23607
+ fSumw[24]=1, x=1.75, error=1
+ fSumw[25]=0, x=2.25, error=0
+ fSumw[26]=0, x=2.75, error=0
+ fSumw[27]=1, x=3.25, error=1
+ fSumw[28]=0, x=3.75, error=0
+ fSumw[29]=1, x=4.25, error=1
+ fSumw[30]=0, x=4.75, error=0
+ fSumw[31]=0, x=5.25, error=0
+ fSumw[32]=0, x=5.75, error=0
+ fSumw[33]=0, x=6.25, error=0
+ fSumw[34]=0, x=6.75, error=0
+ fSumw[35]=0, x=7.25, error=0
+ fSumw[36]=0, x=7.75, error=0
+ fSumw[37]=0, x=8.25, error=0
+ fSumw[38]=0, x=8.75, error=0
+ fSumw[39]=0, x=9.25, error=0
+ fSumw[40]=0, x=9.75, error=0
+ fSumw[41]=0, x=10.25, error=0
+From fit, mean and width are -0.141509 1.19459
+Calculating quantities from function itself, mean and RMS are 0.226489 1.28759
+
+******************************************
+*** initial values 
+*** BH p-value = 0 +/- 0
+*** BH value = 10.0406
+*** BH range = 720 - 784
+******************************************
+*** refined values (after window removal)
+*** BH p-value = 0.975 +/- 0.0110397
+*** BH value = 2.0038
+*** BH range = 1704 - 1920
+******************************************
+*** final values 
+*** BH p-value = 0 +/- 0
+*** BH value = 16.0493
+*** BH range = 720 - 784
+******************************************
+
+Writing output file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.750.GeV.30p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan_ww11.root
+doing fittedhists
+done
+Process ran in 14.27 seconds. 
+To plot:
+python plotSearchPhase.py --bump --file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.750.GeV.30p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan_ww11.root --lumi 30.52 --notes "m_{'Gauss_width5'} = 750 GeV" "NLO2016plusSig" --xlabel "m_{jj} [GeV]"
+
+ran search phase
+******************************************
+python -u step03.searchPhase.py --config ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config --file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.30p5.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root --mass 750 --lumi 30.52 --window 11 --functionParam 4 --nPseudoExps 200 --tag NLO2015_29p7_sensitivityScan --batch -b --debug
+
+******************************************
+SearchPhase results summary
+
+Gauss_width5 mass = 750.0 GeV
+lumi = 30.52 fb^-1
+bump range: 720.0 GeV - 784.0 GeV
+BumpHunter stat = 16.0492910798
+BumpHunter p-value = 0.0 +/- 0.0
+excluded window (1=yes, 0=no):  1.0
+window low edge = 690.0
+window high edge = 784.0
+BumpHunter sigmas = inf
+******************************************
+Discovery, with window removal
+
+
+******************************************
+******************************************
+testing:
+luminosity = 70 ^fb-1
+mass values [GeV]: [750.0, 650.0]
+******************************************
+******************************************
+
+
+******************************************
+inject data-like signal
+
+Applying ATLAS style settings...
+
+
+input parameters:
+  plot = True
+  dataLikeQCDFileName = /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/datalikeQCD/NLO_yStar_06_29p7ifb_forSig.root
+  configFileName = ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config
+  batch = True
+  tag = NLO2015_29p7_sensitivityScan
+  lumi = 70.0
+  debug = False
+  wait = False
+
+config settings:
+  signal model = Gauss_width5
+  signal model label = 'Gauss_width5'
+  signal masses [GeV] = [650.0, 750.0]
+  hist base name = mjj_Gauss
+  b-tagging WP = 
+  hist x-axis label = m_{jj} [GeV]
+  n fit parameters = 4
+  threshold mass = 531.0
+  random seed = 401.0
+  notes = ['NLO2016plusSig']
+python -u step02.injectDataLikeSignal.py --config ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config --QCDFile /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/datalikeQCD/NLO_yStar_06_29p7ifb_forSig.root --lumi 70.0 --tag NLO2015_29p7_sensitivityScan --plot --batch -b --debug
+
+******************************************
+Running SearchPhase
+
+Gauss_width5 mass = 650.0 GeV
+lumi = 70 fb^-1
+WindowWidth for SWiFt = 11
+******************************************
+
+******************************************
+run search phase
+
+Applying ATLAS style settings...
+
+
+input parameters:
+  plot = False
+  fit = False
+  configFileName = ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config
+  batch = True
+  inputFileName = /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.70p0.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root
+  nPseudoExps = 200
+  window = 11
+  tag = NLO2015_29p7_sensitivityScan
+  mass = 650
+  lumi = 70
+  debug = True
+  inputHistDir = 
+  functionParam = 4
+  wait = False
+
+config settings:
+  signal model = Gauss_width5
+  signal model label = 'Gauss_width5'
+  hist base name = mjj_Gauss
+  b-tagging WP = 
+  hist x-axis label = m_{jj} [GeV]
+  n fit parameters = 4
+  threshold mass = 531.0
+  random seed = 401.0
+  notes = ['NLO2016plusSig']
+
+hist name = mjj_Gauss
+/Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.650.GeV.70p0.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root
+
+1 fb^-1 mjj fit 4 parameters
+initial parameters: [0.00280214, 7.2046, 5.63296, 0.0571367]
+
+******************************************
+setting up to run SearchPhase
+
+SearchPhase --config submitConfigs/sensitivity_mjj_Gauss_650_ww11/Step1_SearchPhase_case4Param_window11.config --file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.70p0.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root --histName mjj_Gauss_650 --noDE --outputfile /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.650.GeV.70p0.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan_ww11.root| tee results/sensitivity_mjj_Gauss_650_ww11//sensitivity_mjj_Gauss_650_ww11_log.txt 
+
+
+[1mRooFit v3.60 -- Developed by Wouter Verkerke and David Kirkby[0m 
+                Copyright (C) 2000-2013 NIKHEF, University of California & Stanford University
+                All rights reserved, please read http://roofit.sourceforge.net/license.txt
+
+test
+inputFileName: /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.70p0.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root
+inputHistDir: 
+Doing pvalue with systematics? 0!
+nPseudoExpBH is 200
+nPseudoExpFit is 100
+ Hist Name: mjj_Gauss_650
+Setting the 4 parameters to    (0) :0.00021675   (1) :3.18705   (2) :7.11991   (3) :0.294323
+minX, maxX: 530 2081
+Actual fit range is 531 - 2079
+corresponding to including the bins 20, 52.
+Creating standard dijet function.
+paramDefaultsLength = 4
+doSwift is 1
+Collected info on SWIFT bins
+Collected info on SWIFT residuals for initial fit
+After fit, parameters are     (0):386.927   (1):20.6121   (2):0.177994   (3):-0.821955
+on PE 50
+on PE 100
+initialpval is 0
+Wish to use an Exclusion Window
+permitWindow is 1
+Window width is at 0.0832073
+First bin and last bin to exclude are 23 25, corresponding to 606, 690
+Window width / max allowed width (half-spectrum) is 3 / 16 
+Trying to refit.
+on PE 50
+on PE 100
+on PE 150
+on PE 200
+pval of remaining spectrum is 0.155
+ Adding 1 extra bin to exclusion window at low mass end
+First bin and last bin to exclude are 22 25, corresponding to 580, 690
+Window width / max allowed width (half-spectrum) is 4 / 16 
+Trying to refit.
+on PE 50
+on PE 100
+on PE 150
+on PE 200
+pval of remaining spectrum is 0.01
+Collected info on SWIFT residuals for fit after window exclusion
+After fit, parameters are    (0):45.4223   (1):17.8326   (2):1.48193   (3):-0.604453
+BumpHunter results: stat = 81.0982
+Low edge, high edge of bump: 606 720
+DeficitHunter results: stat = 81.0982
+Low edge, high edge of bump: 606 720
+Created +/- 1 sigma histograms
+on PE 50
+on PE 100
+on PE 150
+on PE 200
+Absolute values of logl, chi2, BH tests are: 231.551 19.7796 81.0982
+NDF is 28
+chi2/ndf is 0.706416
+Log likelihood for our fit was 231.551
+Pval of logL, chi2, and bumpHunter are: 0.055 0.065 0
+Pval of largest deficit was: 0
+debug residuals 0
+ FCN=6.30847 FROM MIGRAD    STATUS=CONVERGED      87 CALLS          88 TOTAL
+                     EDM=4.52311e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     4.06570e+00   1.09703e+00   1.05913e-03   8.82157e-05
+   2  Mean        -6.03748e-02   3.71178e-01   4.79855e-04   5.66380e-04
+   3  Sigma        1.48194e+00   4.05096e-01   7.14118e-05   3.55148e-03
+TH1.Print Name  = residual_histOfVals, Entries= 32, Total sum= 32
+ fSumw[0]=0, x=-10.25, error=0
+ fSumw[1]=0, x=-9.75, error=0
+ fSumw[2]=0, x=-9.25, error=0
+ fSumw[3]=0, x=-8.75, error=0
+ fSumw[4]=0, x=-8.25, error=0
+ fSumw[5]=0, x=-7.75, error=0
+ fSumw[6]=0, x=-7.25, error=0
+ fSumw[7]=0, x=-6.75, error=0
+ fSumw[8]=0, x=-6.25, error=0
+ fSumw[9]=0, x=-5.75, error=0
+ fSumw[10]=0, x=-5.25, error=0
+ fSumw[11]=0, x=-4.75, error=0
+ fSumw[12]=0, x=-4.25, error=0
+ fSumw[13]=0, x=-3.75, error=0
+ fSumw[14]=0, x=-3.25, error=0
+ fSumw[15]=0, x=-2.75, error=0
+ fSumw[16]=1, x=-2.25, error=1
+ fSumw[17]=0, x=-1.75, error=0
+ fSumw[18]=3, x=-1.25, error=1.73205
+ fSumw[19]=5, x=-0.75, error=2.23607
+ fSumw[20]=5, x=-0.25, error=2.23607
+ fSumw[21]=4, x=0.25, error=2
+ fSumw[22]=2, x=0.75, error=1.41421
+ fSumw[23]=5, x=1.25, error=2.23607
+ fSumw[24]=2, x=1.75, error=1.41421
+ fSumw[25]=1, x=2.25, error=1
+ fSumw[26]=0, x=2.75, error=0
+ fSumw[27]=1, x=3.25, error=1
+ fSumw[28]=0, x=3.75, error=0
+ fSumw[29]=0, x=4.25, error=0
+ fSumw[30]=0, x=4.75, error=0
+ fSumw[31]=0, x=5.25, error=0
+ fSumw[32]=1, x=5.75, error=1
+ fSumw[33]=0, x=6.25, error=0
+ fSumw[34]=1, x=6.75, error=1
+ fSumw[35]=0, x=7.25, error=0
+ fSumw[36]=1, x=7.75, error=1
+ fSumw[37]=0, x=8.25, error=0
+ fSumw[38]=0, x=8.75, error=0
+ fSumw[39]=0, x=9.25, error=0
+ fSumw[40]=0, x=9.75, error=0
+ fSumw[41]=0, x=10.25, error=0
+From fit, mean and width are -0.0603748 1.48194
+Calculating quantities from function itself, mean and RMS are 0.855997 2.25751
+
+******************************************
+*** initial values 
+*** BH p-value = 0 +/- 0
+*** BH value = 9.97396
+*** BH range = 606 - 690
+******************************************
+*** refined values (after window removal)
+*** BH p-value = 0.155 +/- 0.0255905
+*** BH value = 8.06318
+*** BH range = 690 - 751
+******************************************
+*** final values 
+*** BH p-value = 0 +/- 0
+*** BH value = 81.0982
+*** BH range = 606 - 720
+******************************************
+
+Writing output file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.650.GeV.70p0.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan_ww11.root
+doing fittedhists
+done
+Process ran in 16.39 seconds. 
+To plot:
+python plotSearchPhase.py --bump --file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.650.GeV.70p0.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan_ww11.root --lumi 70 --notes "m_{'Gauss_width5'} = 650 GeV" "NLO2016plusSig" --xlabel "m_{jj} [GeV]"
+
+ran search phase
+******************************************
+python -u step03.searchPhase.py --config ../configs/Hanno/sensitivityScan.Gauss.4.par.width5_CD.config --file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.70p0.ifb.mjj_Gauss.4.par.401.seed.NLO2015_29p7_sensitivityScan.root --mass 650 --lumi 70 --window 11 --functionParam 4 --nPseudoExps 200 --tag NLO2015_29p7_sensitivityScan --batch -b --debug
+
+******************************************
+SearchPhase results summary
+
+Gauss_width5 mass = 650.0 GeV
+lumi = 70 fb^-1
+bump range: 606.0 GeV - 720.0 GeV
+BumpHunter stat = 81.0981634992
+BumpHunter p-value = 0.0 +/- 0.0
+excluded window (1=yes, 0=no):  1.0
+window low edge = 580.0
+window high edge = 690.0
+BumpHunter sigmas = inf
+******************************************
+Discovery, with window removal
+
+******************************************
+sensitivity scan done

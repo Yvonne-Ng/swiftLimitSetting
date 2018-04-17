@@ -1,0 +1,40 @@
+#!/bin/python
+
+#******************************************
+#NOTE some of these functions are taken from CommonFunctions.py
+
+#******************************************
+#import
+import re, sys, os, math, ROOT
+
+#******************************************
+#function taken from CommonFunctions.py
+#previously named getSample(name)
+def getSignalMass(name):
+    if "ExcitedQ" in name:
+        regEx = re.compile("ExcitedQ(.*)Lambda")
+    elif "QStar" in name:
+        regEx = re.compile("QStar\.(.*)\.GeV")
+    elif "BStar" in name:
+        regEx = re.compile("BStar\.(.*)\.GeV")
+    elif "BlackMax" in name:
+        regEx = re.compile("MthMD(.*)\.e2303")
+    elif "Zprimebb" in name:
+        #regEx = re.compile("Zprimebb(.*)\.All")
+        regEx = re.compile("Zprimebb\.(.*)\.GeV")
+    else:
+        regEx = re.compile("_14TeV(.*)_AU2")
+
+    match = regEx.search(name)
+    sample = match.group(1)
+    return sample
+
+#******************************************
+#get Z'->bb cross section times efficiency
+def getZprimebbCrossSection(mass):
+    localdir = os.path.dirname(os.path.realpath(__file__))
+    crossSectionsFileName = localdir+'/../data/Zprimebb.cross.sections.list'
+    crossSections = ROOT.TEnv()
+    if crossSections.ReadFile(crossSectionsFileName,ROOT.EEnvLevel(0)) != 0:
+        raise IOError('could not find Z\'->bb cross sections file: %s'%crossSectionsFileName)
+    return float(crossSections.GetValue( str( int(mass)), 0.))

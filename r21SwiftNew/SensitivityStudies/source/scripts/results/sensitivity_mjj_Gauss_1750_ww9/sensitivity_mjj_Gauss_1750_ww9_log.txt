@@ -1,0 +1,241 @@
+
+[1mRooFit v3.60 -- Developed by Wouter Verkerke and David Kirkby[0m 
+                Copyright (C) 2000-2013 NIKHEF, University of California & Stanford University
+                All rights reserved, please read http://roofit.sourceforge.net/license.txt
+
+test
+inputFileName: /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width15.48p1.ifb.mjj_Gauss.4.par.401.seed.default.root
+inputHistDir: 
+Doing pvalue with systematics? 0!
+nPseudoExpBH is 2000
+nPseudoExpFit is 100
+ Hist Name: mjj_Gauss_1750
+Setting the 4 parameters to    (0) :0.00021675   (1) :3.18705   (2) :7.11991   (3) :0.294323
+minX, maxX: 530 2081
+Actual fit range is 531 - 2079
+corresponding to including the bins 9, 41.
+Creating standard dijet function.
+paramDefaultsLength = 4
+doSwift is 1
+Collected info on SWIFT bins
+Collected info on SWIFT residuals for initial fit
+After fit, parameters are     (0):919.663   (1):20.2375   (2):0.281051   (3):-0.729814
+on PE 50
+on PE 100
+on PE 150
+on PE 200
+on PE 250
+on PE 300
+on PE 350
+on PE 400
+on PE 450
+on PE 500
+on PE 550
+on PE 600
+on PE 650
+on PE 700
+on PE 750
+on PE 800
+on PE 850
+on PE 900
+on PE 950
+on PE 1000
+on PE 1050
+on PE 1100
+on PE 1150
+on PE 1200
+on PE 1250
+on PE 1300
+on PE 1350
+on PE 1400
+on PE 1450
+on PE 1500
+on PE 1550
+on PE 1600
+on PE 1650
+on PE 1700
+on PE 1750
+on PE 1800
+on PE 1850
+on PE 1900
+on PE 1950
+on PE 2000
+initialpval is 0.0095
+Wish to use an Exclusion Window
+permitWindow is 1
+Window width is at 0.0956389
+First bin and last bin to exclude are 38 41, corresponding to 1773, 2079
+Window width / max allowed width (half-spectrum) is 4 / 16 
+ Adding 1 extra bin to exclusion window at low mass end
+First bin and last bin to exclude are 37 41, corresponding to 1704, 2079
+Window width / max allowed width (half-spectrum) is 5 / 16 
+Trying to refit.
+on PE 50
+on PE 100
+on PE 150
+on PE 200
+on PE 250
+on PE 300
+on PE 350
+on PE 400
+on PE 450
+on PE 500
+on PE 550
+on PE 600
+on PE 650
+on PE 700
+on PE 750
+on PE 800
+on PE 850
+on PE 900
+on PE 950
+on PE 1000
+on PE 1050
+on PE 1100
+on PE 1150
+on PE 1200
+on PE 1250
+on PE 1300
+on PE 1350
+on PE 1400
+on PE 1450
+on PE 1500
+on PE 1550
+on PE 1600
+on PE 1650
+on PE 1700
+on PE 1750
+on PE 1800
+on PE 1850
+on PE 1900
+on PE 1950
+on PE 2000
+pval of remaining spectrum is 0.0515
+Collected info on SWIFT residuals for fit after window exclusion
+After fit, parameters are    (0):0.00870733   (1):5.97051   (2):7.4373   (3):0.478797
+BumpHunter results: stat = 101.826
+Low edge, high edge of bump: 1704 2079
+DeficitHunter results: stat = 101.826
+Low edge, high edge of bump: 1704 2079
+Created +/- 1 sigma histograms
+on PE 50
+on PE 100
+on PE 150
+on PE 200
+on PE 250
+on PE 300
+on PE 350
+on PE 400
+on PE 450
+on PE 500
+on PE 550
+on PE 600
+on PE 650
+on PE 700
+on PE 750
+on PE 800
+on PE 850
+on PE 900
+on PE 950
+on PE 1000
+on PE 1050
+on PE 1100
+on PE 1150
+on PE 1200
+on PE 1250
+on PE 1300
+on PE 1350
+on PE 1400
+on PE 1450
+on PE 1500
+on PE 1550
+on PE 1600
+on PE 1650
+on PE 1700
+on PE 1750
+on PE 1800
+on PE 1850
+on PE 1900
+on PE 1950
+on PE 2000
+Absolute values of logl, chi2, BH tests are: 248.913 17.7403 101.826
+NDF is 28
+chi2/ndf is 0.633582
+Log likelihood for our fit was 248.913
+Pval of logL, chi2, and bumpHunter are: 0.1635 0.163 0
+Pval of largest deficit was: 0
+debug residuals 0
+ FCN=8.49635 FROM MIGRAD    STATUS=CONVERGED      82 CALLS          83 TOTAL
+                     EDM=5.32331e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     4.01903e+00   1.26020e+00   1.27462e-03  -6.85179e-05
+   2  Mean         1.22764e-01   3.09912e-01   4.65165e-04   3.34140e-04
+   3  Sigma        1.21951e+00   4.07520e-01   8.89637e-05   2.62732e-03
+TH1.Print Name  = residual_histOfVals, Entries= 32, Total sum= 31
+ fSumw[0]=0, x=-10.25, error=0
+ fSumw[1]=0, x=-9.75, error=0
+ fSumw[2]=0, x=-9.25, error=0
+ fSumw[3]=0, x=-8.75, error=0
+ fSumw[4]=0, x=-8.25, error=0
+ fSumw[5]=0, x=-7.75, error=0
+ fSumw[6]=0, x=-7.25, error=0
+ fSumw[7]=0, x=-6.75, error=0
+ fSumw[8]=0, x=-6.25, error=0
+ fSumw[9]=0, x=-5.75, error=0
+ fSumw[10]=0, x=-5.25, error=0
+ fSumw[11]=0, x=-4.75, error=0
+ fSumw[12]=0, x=-4.25, error=0
+ fSumw[13]=0, x=-3.75, error=0
+ fSumw[14]=0, x=-3.25, error=0
+ fSumw[15]=0, x=-2.75, error=0
+ fSumw[16]=0, x=-2.25, error=0
+ fSumw[17]=1, x=-1.75, error=1
+ fSumw[18]=4, x=-1.25, error=2
+ fSumw[19]=2, x=-0.75, error=1.41421
+ fSumw[20]=7, x=-0.25, error=2.64575
+ fSumw[21]=3, x=0.25, error=1.73205
+ fSumw[22]=5, x=0.75, error=2.23607
+ fSumw[23]=3, x=1.25, error=1.73205
+ fSumw[24]=1, x=1.75, error=1
+ fSumw[25]=0, x=2.25, error=0
+ fSumw[26]=2, x=2.75, error=1.41421
+ fSumw[27]=0, x=3.25, error=0
+ fSumw[28]=0, x=3.75, error=0
+ fSumw[29]=0, x=4.25, error=0
+ fSumw[30]=1, x=4.75, error=1
+ fSumw[31]=0, x=5.25, error=0
+ fSumw[32]=2, x=5.75, error=1.41421
+ fSumw[33]=0, x=6.25, error=0
+ fSumw[34]=0, x=6.75, error=0
+ fSumw[35]=0, x=7.25, error=0
+ fSumw[36]=0, x=7.75, error=0
+ fSumw[37]=0, x=8.25, error=0
+ fSumw[38]=0, x=8.75, error=0
+ fSumw[39]=0, x=9.25, error=0
+ fSumw[40]=0, x=9.75, error=0
+ fSumw[41]=1, x=10.25, error=1
+From fit, mean and width are 0.122764 1.21951
+Calculating quantities from function itself, mean and RMS are 0.711495 1.88786
+
+******************************************
+*** initial values 
+*** BH p-value = 0.0095 +/- 0.00216907
+*** BH value = 9.14956
+*** BH range = 1773 - 2079
+******************************************
+*** refined values (after window removal)
+*** BH p-value = 0.0095 +/- 0.00216907
+*** BH value = 6.9132
+*** BH range = 1573 - 1704
+******************************************
+*** final values 
+*** BH p-value = 0 +/- 0
+*** BH value = 101.826
+*** BH range = 1704 - 2079
+******************************************
+
+Writing output file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width15.1750.GeV.48p1.ifb.mjj_Gauss.4.par.401.seed.default_ww9.root
+doing fittedhists
+done
+Process ran in 172.96 seconds. 

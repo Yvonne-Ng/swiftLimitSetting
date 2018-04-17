@@ -1,0 +1,345 @@
+test
+inputFileName: /lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/SensitivityStudies/source/scripts/../results2/signalplusbackground/signalplusbackground.Gauss_width3.5p0.ifb.mjj_Gauss_sig__smooth.4.par.0.seed.default.root
+inputHistDir: 
+Doing pvalue with systematics? 0!
+nPseudoExpBH is 1
+nPseudoExpFit is 100
+ Hist Name: mjj_Gauss_sig_400_smoothinjectedToBkg
+Setting the 4 parameters to    (0) :2.11409e+06   (1) :-0.102491   (2) :110.968   (3) :-41.9063
+altparam 0.00021675
+Setting alternative function param 1 to 0.00021675
+altparam 3.18705
+Setting alternative function param 2 to 3.18705
+altparam 7.11991
+Setting alternative function param 3 to 7.11991
+altparam 0.294323
+Setting alternative function param 4 to 0.294323
+minX, maxX: 300 1500
+Actual fit range is 303 - 1493
+corresponding to including the bins 11, 55.
+Creating UA2 fit function.
+Creating standard dijet function.
+paramDefaultsLength = 4
+doSwift is 1
+*theMjjfitFunction:0x29edf60
+theHistogram: 0x7ffeb605ccb0
+Collected info on SWIFT bins
+Collected info on SWIFT residuals for initial fit
+After fit, parameters are     (0):4.0243e-15   (1):12.6357   (2):-115.523   (3):367.719
+on PE 50
+on PE 100
+initialpval is 0.12
+Not excluding any window
+permitWindow is 0
+Yvonne
+error: 
+bin 1error: 0
+bin 2error: 0
+bin 3error: 0
+bin 4error: 0
+bin 5error: 0
+bin 6error: 0
+bin 7error: 0
+bin 8error: 0
+bin 9error: 0
+bin 10error: 0
+bin 11error: 1295.29
+bin 12error: 1210.09
+bin 13error: 1163.93
+bin 14error: 1085.06
+bin 15error: 1040.44
+bin 16error: 969.49
+bin 17error: 922.339
+bin 18error: 854.382
+bin 19error: 792.551
+bin 20error: 751.165
+bin 21error: 694.364
+bin 22error: 657.292
+bin 23error: 603.897
+bin 24error: 566.527
+bin 25error: 519.075
+bin 26error: 484.817
+bin 27error: 441.679
+bin 28error: 403.22
+bin 29error: 373.604
+bin 30error: 338.647
+bin 31error: 311.058
+bin 32error: 281.341
+bin 33error: 258.141
+bin 34error: 232.047
+bin 35error: 211.53
+bin 36error: 187.87
+bin 37error: 171.318
+bin 38error: 153.176
+bin 39error: 139.108
+bin 40error: 125.98
+bin 41error: 111.597
+bin 42error: 101.054
+bin 43error: 89.1459
+bin 44error: 81.0864
+bin 45error: 72.5741
+bin 46error: 64.56
+bin 47error: 58.4123
+bin 48error: 52.4309
+bin 49error: 46.6476
+bin 50error: 42.5206
+bin 51error: 37.2827
+bin 52error: 34.0147
+bin 53error: 30.9031
+bin 54error: 27.1477
+bin 55error: 24.5357
+bin 56error: 22.2261
+bin 57error: 19.3649
+bin 58error: 17.8326
+bin 59error: 15.8745
+bin 60error: 13.3417
+bin 61error: 12.083
+bin 62error: 11.225
+bin 63error: 9.21954
+bin 64error: 8.544
+bin 65error: 7.54983
+bin 66error: 7.28011
+bin 67error: 5.47723
+bin 68error: 5.74456
+bin 69error: 5
+bin 70error: 4
+bin 71error: 3.74166
+bin 72error: 2.82843
+bin 73error: 2.64575
+bin 74error: 2.64575
+bin 75error: 2.44949
+bin 76error: 1.73205
+bin 77error: 2.44949
+bin 78error: 1.73205
+bin 79error: 1
+bin 80error: 1.41421
+bin 81error: 2.23607
+bin 82error: 1
+bin 83error: 1
+bin 84error: 0
+bin 85error: 1
+bin 86error: 1
+bin 87error: 0
+bin 88error: 0
+bin 89error: 1
+bin 90error: 0
+bin 91error: 0
+bin 92error: 0
+bin 93error: 0
+bin 94error: 0
+bin 95error: 0
+bin 96error: 0
+bin 97error: 1
+bin 98error: 0
+bin 99error: 0
+bin 100error: 0
+bin 101error: 0
+bin 102error: 0
+bin 103error: 0
+bin 104error: 0
+bin 105error: 0
+bin 106error: 0
+bin 107error: 0
+bin 108error: 0
+bin 109error: 1
+bin 110error: 1
+bin 111error: 0
+bin 112error: 0
+bin 113error: 0
+bin 114error: 1
+bin 115error: 0
+bin 116error: 0
+bin 117error: 1
+bin 118error: 0
+bin 119error: 1.41421
+bin 120error: 0
+bin 121error: 0
+bin 122error: 0
+bin 123error: 0
+bin 124error: 0
+bin 125error: 0
+bin 126error: 0
+bin 127error: 0
+bin 128error: 0
+bin 129error: 0
+bin 130error: 0
+bin 131error: 0
+bin 132error: 0
+bin 133error: 0
+bin 134error: 0
+bin 135error: 0
+bin 136error: 0
+bin 137error: 0
+bin 138error: 0
+bin 139error: 0
+bin 140error: 0
+bin 141error: 0
+bin 142error: 0
+bin 143error: 0
+bin 144error: 0
+bin 145error: 0
+bin 146error: 0
+bin 147error: 0
+bin 148error: 0
+bin 149error: 0
+bin 150error: 0
+bin 151error: 0
+bin 152error: 0
+bin 153error: 0
+bin 154error: 0
+bin 155error: 0
+bin 156error: 0
+bin 157error: 0
+bin 158error: 0
+bin 159error: 0
+bin 160error: 0
+Collected info on SWIFT residuals for fit after window exclusion
+After fit, parameters are    (0):4.0243e-15   (1):12.6357   (2):-115.523   (3):367.719
+BumpHunter results: stat = 6.36493
+Low edge, high edge of bump: 387 424
+DeficitHunter results: stat = 6.36493
+Low edge, high edge of bump: 387 424
+Created +/- 1 sigma histograms
+********************
+* Doing Alternate Fit
+********************
+Retry number 1
+Retry number 2
+Retry number 3
+Retry number 4
+Retry number 5
+Fit failed to converge after five retries.
+After alternate fit, parameters are     (0):2.99584e+23   (1):114.433   (2):-28.8673   (3):-5.33629
+Using doPEOnData=0
+YEdit: residualHist: 0x7ffeb6055930
+Absolute values of logl, chi2, BH tests are: 315.932 31.2485 6.36493
+NDF is 40
+chi2/ndf is 0.781213
+Log likelihood for our fit was 315.932
+Pval of logL, chi2, and bumpHunter are: 0 0 0
+Pval of largest deficit was: 0
+YEdit: 0x7ffeb6055930
+debug residuals 0
+YEdit: 0x7ffeb60665d0
+YEdit: bins:55
+YEdit: residualResults: bin11 content:1.33074
+YEdit: residualResults: bin12 content:-0.312507
+YEdit: residualResults: bin13 content:-1.67662
+YEdit: residualResults: bin14 content:-1.87813
+YEdit: residualResults: bin15 content:-0.101831
+YEdit: residualResults: bin16 content:4.36514
+YEdit: residualResults: bin17 content:-0.339739
+YEdit: residualResults: bin18 content:-0.960199
+YEdit: residualResults: bin19 content:0.334628
+YEdit: residualResults: bin20 content:-2.10541
+YEdit: residualResults: bin21 content:-0.571093
+YEdit: residualResults: bin22 content:2.45551
+YEdit: residualResults: bin23 content:0.971875
+YEdit: residualResults: bin24 content:-0.395513
+YEdit: residualResults: bin25 content:0.356519
+YEdit: residualResults: bin26 content:0.399546
+YEdit: residualResults: bin27 content:0.231315
+YEdit: residualResults: bin28 content:2.15191
+YEdit: residualResults: bin29 content:1.09084
+YEdit: residualResults: bin30 content:1.36975
+YEdit: residualResults: bin31 content:-1.31413
+YEdit: residualResults: bin32 content:0.659729
+YEdit: residualResults: bin33 content:0.684278
+YEdit: residualResults: bin34 content:1.16533
+YEdit: residualResults: bin35 content:0.471985
+YEdit: residualResults: bin36 content:-2.07678
+YEdit: residualResults: bin37 content:-0.884019
+YEdit: residualResults: bin38 content:-0.0701878
+YEdit: residualResults: bin39 content:0.303168
+YEdit: residualResults: bin40 content:0.563562
+YEdit: residualResults: bin41 content:-0.135843
+YEdit: residualResults: bin42 content:0.443864
+YEdit: residualResults: bin43 content:-0.803102
+YEdit: residualResults: bin44 content:0.322358
+YEdit: residualResults: bin45 content:-0.766258
+YEdit: residualResults: bin46 content:-0.549407
+YEdit: residualResults: bin47 content:-0.0874785
+YEdit: residualResults: bin48 content:1.03865
+YEdit: residualResults: bin49 content:-0.538117
+YEdit: residualResults: bin50 content:0.338703
+YEdit: residualResults: bin51 content:-0.769986
+YEdit: residualResults: bin52 content:-0.053365
+YEdit: residualResults: bin53 content:0.462544
+YEdit: residualResults: bin54 content:-0.198671
+ FCN=9.90921 FROM MIGRAD    STATUS=CONVERGED      77 CALLS          78 TOTAL
+                     EDM=9.9344e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     7.38145e+00   2.62047e+00   2.03836e-03   1.87987e-05
+   2  Mean         2.46023e-01   3.66009e-01   3.06516e-04  -3.23371e-04
+   3  Sigma        9.99583e-01   4.29319e-01   7.55371e-05   1.36325e-04
+TH1.Print Name  = residual_histOfVals, Entries= 44, Total sum= 44
+ fSumw[0]=0, x=-10.25, error=0
+ fSumw[1]=0, x=-9.75, error=0
+ fSumw[2]=0, x=-9.25, error=0
+ fSumw[3]=0, x=-8.75, error=0
+ fSumw[4]=0, x=-8.25, error=0
+ fSumw[5]=0, x=-7.75, error=0
+ fSumw[6]=0, x=-7.25, error=0
+ fSumw[7]=0, x=-6.75, error=0
+ fSumw[8]=0, x=-6.25, error=0
+ fSumw[9]=0, x=-5.75, error=0
+ fSumw[10]=0, x=-5.25, error=0
+ fSumw[11]=0, x=-4.75, error=0
+ fSumw[12]=0, x=-4.25, error=0
+ fSumw[13]=0, x=-3.75, error=0
+ fSumw[14]=0, x=-3.25, error=0
+ fSumw[15]=0, x=-2.75, error=0
+ fSumw[16]=2, x=-2.25, error=1.41421
+ fSumw[17]=2, x=-1.75, error=1.41421
+ fSumw[18]=1, x=-1.25, error=1
+ fSumw[19]=8, x=-0.75, error=2.82843
+ fSumw[20]=9, x=-0.25, error=3
+ fSumw[21]=10, x=0.25, error=3.16228
+ fSumw[22]=4, x=0.75, error=2
+ fSumw[23]=5, x=1.25, error=2.23607
+ fSumw[24]=0, x=1.75, error=0
+ fSumw[25]=2, x=2.25, error=1.41421
+ fSumw[26]=0, x=2.75, error=0
+ fSumw[27]=0, x=3.25, error=0
+ fSumw[28]=0, x=3.75, error=0
+ fSumw[29]=1, x=4.25, error=1
+ fSumw[30]=0, x=4.75, error=0
+ fSumw[31]=0, x=5.25, error=0
+ fSumw[32]=0, x=5.75, error=0
+ fSumw[33]=0, x=6.25, error=0
+ fSumw[34]=0, x=6.75, error=0
+ fSumw[35]=0, x=7.25, error=0
+ fSumw[36]=0, x=7.75, error=0
+ fSumw[37]=0, x=8.25, error=0
+ fSumw[38]=0, x=8.75, error=0
+ fSumw[39]=0, x=9.25, error=0
+ fSumw[40]=0, x=9.75, error=0
+ fSumw[41]=0, x=10.25, error=0
+YEdit: fittedGauss0x7ffeb6062430
+fittedHists: 0x7ffeb60511e0
+From fit, mean and width are 0.246023 0.999583
+Calculating quantities from function itself, mean and RMS are 0.111899 1.18427
+
+******************************************
+*** initial values 
+*** BH p-value = 0.12 +/- 0.0324962
+*** BH value = 6.36493
+*** BH range = 387 - 424
+******************************************
+*** refined values (after window removal)
+*** BH p-value = -1 +/- -1
+*** BH value = -1
+*** BH range = -1 - -1
+******************************************
+*** final values 
+*** BH p-value = 0 +/- 0
+*** BH value = 6.36493
+*** BH range = 387 - 424
+******************************************
+
+Writing output file /lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/SensitivityStudies/source/scripts/../results2/searchphase/searchphase.Gauss_width3.400.gev.5p0.ifb.mjj.4.par.0.seed.default_ww12.root
+yEdit: 0x7ffeb6056ce0
+doing fittedhists
+done
+Process ran in 2264.45 seconds. 

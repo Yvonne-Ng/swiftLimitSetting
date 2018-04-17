@@ -1,0 +1,140 @@
+Warning in <TEnvRec::ChangeValue>: duplicate entry <Unix.*.Root.MacroPath=.:..:$(ROOTSYS)/macros> for level 1; ignored
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfold found in libUnfold.so  is already in libHist.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfoldBinning found in libUnfold.so  is already in libHist.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfoldDensity found in libUnfold.so  is already in libHist.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfoldSys found in libUnfold.so  is already in libHist.so 
+Warning in <TEnvRec::ChangeValue>: duplicate entry <Unix.*.Root.MacroPath=.:..:$(ROOTSYS)/macros> for level 1; ignored
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfold found in libUnfold.so  is already in libHist.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfoldBinning found in libUnfold.so  is already in libHist.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfoldDensity found in libUnfold.so  is already in libHist.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfoldSys found in libUnfold.so  is already in libHist.so 
+
+******************************************
+inject data-like signal
+
+input parameters:
+  plot = True
+  dataLikeQCDFileName = /lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/SensitivityStudies/source/scripts/Fluctuated_SwiftFittrijet_HLT_j380_inclusive.root
+  configFileName = ../configs/sensitivityScan.Test.config
+  batch = True
+  tag = default
+  lumi = 0.1
+  debug = False
+  wait = False
+
+config settings:
+  signal model = Gauss_width3
+  signal model label = Gauss_width3
+  signal masses [GeV] = [300.0, 500.0]
+  hist base name = basicBkgFrom4ParamFit_fluctuated
+  hist base name = mjj_Gauss_sig_{0}_smooth
+  b-tagging WP = 
+  hist x-axis label = m_{jj} [GeV]
+  n fit parameters = 4
+  threshold mass = 200.0
+  random seed = 0.0
+  notes = ['Pythia']
+('Step2 histNameBkg: ', 'basicBkgFrom4ParamFit_fluctuated')
+('histNameBkg: ', 'basicBkgFrom4ParamFit_fluctuated')
+('sigFiles: ', ['Gauss_mass500_width3.root', 'Gauss_mass300_width3.root'])
+
+Gauss_width3: 300 GeV
+('path: ', '/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/SensitivityStudies/source/scripts/../inputs/Gauss_width3/Gauss_mass300_width3.root')
+('histNameSig: ', 'mjj_Gauss_sig_{0}_smooth')
+('histNameSigUpdated: ', 'mjj_Gauss_sig_300_smooth')
+('sigHistIntegral: ', 0.9999999823702617)
+(<ROOT.TH1F object ("mjj_Gauss_sig_300_smooth") at 0x458deb0>, <ROOT.TH1F object ("mjj_Gauss_sig_300_smooth") at 0x458deb0>)
+('histNameSig: ', 'mjj_Gauss_sig_300_smooth')
+('N: ', 160)
+('array: ', <read-write buffer ptr 0x45baf20, size 2147483647 at 0x2b1904ec1c30>)
+TFile::Append:0: RuntimeWarning: Replacing existing TH1: mjj_Gauss_sig_300_smooth_sig (Potential memory leak).
+  data-like signal histogram starts at 287.0 GeV
+  injecting data-like signal
+Info in <TCanvas::Print>: pdf file ../figures/signalplusbackground.Gauss_width3.300.GeV.0p1.ifb.mjj_Gauss_sig_{0}_smooth.4.par.0.seed.default.pdf has been created
+
+Gauss_width3: 500 GeV
+('path: ', '/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/SensitivityStudies/source/scripts/../inputs/Gauss_width3/Gauss_mass500_width3.root')
+('histNameSig: ', 'mjj_Gauss_sig_{0}_smooth')
+('histNameSigUpdated: ', 'mjj_Gauss_sig_500_smooth')
+('sigHistIntegral: ', 1.0000000009865966)
+(<ROOT.TH1F object ("mjj_Gauss_sig_500_smooth") at 0x4599a50>, <ROOT.TH1F object ("mjj_Gauss_sig_500_smooth") at 0x4599a50>)
+('histNameSig: ', 'mjj_Gauss_sig_500_smooth')
+('N: ', 160)
+('array: ', <read-write buffer ptr 0x2f317d0, size 2147483647 at 0x2b1904ed3df0>)
+TFile::Append:0: RuntimeWarning: Replacing existing TH1: mjj_Gauss_sig_500_smooth_sig (Potential memory leak).
+  data-like signal histogram starts at 482.0 GeV
+  not enough effective entries: injecting smoooth signal
+Info in <TCanvas::Print>: pdf file ../figures/signalplusbackground.Gauss_width3.500.GeV.0p1.ifb.mjj_Gauss_sig_{0}_smooth.4.par.0.seed.default.pdf has been created
+done with step2
+
+data-like signal injected
+******************************************
+Warning in <TEnvRec::ChangeValue>: duplicate entry <Unix.*.Root.MacroPath=.:..:$(ROOTSYS)/macros> for level 1; ignored
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfold found in libUnfold.so  is already in libHist.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfoldBinning found in libUnfold.so  is already in libHist.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfoldDensity found in libUnfold.so  is already in libHist.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfoldSys found in libUnfold.so  is already in libHist.so 
+
+******************************************
+run search phase
+
+***WARNING*** couldn't find ATLAS Style
+
+input parameters:
+  plot = False
+  fit = False
+  configFileName = ../configs/sensitivityScan.Test.config
+  batch = True
+  inputFileName = /lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/SensitivityStudies/source/scripts/../results2/signalplusbackground/signalplusbackground.Gauss_width3.0p1.ifb.mjj_Gauss_sig__smooth.4.par.0.seed.default.root
+  nPseudoExps = 1000
+  window = 12
+  tag = default
+  mass = 500
+  lumi = 0.1
+  debug = True
+  inputHistDir = 
+  functionParam = 4
+  wait = False
+
+config settings:
+  signal model = Gauss_width3
+  signal model label = Gauss_width3
+  hist base name = mjj
+  b-tagging WP = 
+  hist x-axis label = m_{jj} [GeV]
+  n fit parameters = 4
+  threshold mass = 200.0
+  random seed = 0.0
+  notes = ['Pythia']
+
+hist name = mjj
+/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/SensitivityStudies/source/scripts/../results2/searchphase/searchphase.Gauss_width3.500.gev.0p1.ifb.mjj.4.par.0.seed.default_ww12.root
+('YvonneFitFileName: ', '/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/SensitivityStudies/source/scripts/../results2/signalplusbackground/signalplusbackground.Gauss_width3.0p1.ifb.mjj_Gauss_sig__smooth.4.par.0.seed.default.root')
+('YvonneConfigOutName: ', 'submitConfigs/sensitivity_mjj_Gauss_sig_500_smoothinjectedToBkg_500_ww12/Step1_SearchPhase_case4Param_window12.config')
+
+******************************************
+setting up to run SearchPhase
+
+Search Phase Run command SearchPhase --config submitConfigs/sensitivity_mjj_Gauss_sig_500_smoothinjectedToBkg_500_ww12/Step1_SearchPhase_case4Param_window12.config --file /lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/SensitivityStudies/source/scripts/../results2/signalplusbackground/signalplusbackground.Gauss_width3.0p1.ifb.mjj_Gauss_sig__smooth.4.par.0.seed.default.root --histName mjj_Gauss_sig_500_smoothinjectedToBkg --noDE --outputfile /lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/SensitivityStudies/source/scripts/../results2/searchphase/searchphase.Gauss_width3.500.gev.0p1.ifb.mjj.4.par.0.seed.default_ww12.root| tee results/sensitivity_mjj_Gauss_sig_500_smoothinjectedToBkg_500_ww12//sensitivity_mjj_Gauss_sig_500_smoothinjectedToBkg_500_ww12_log.txt 
+
+Warning in <TEnvRec::ChangeValue>: duplicate entry <Unix.*.Root.MacroPath=.:..:$(ROOTSYS)/macros> for level 1; ignored
+test
+inputFileName: /lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/SensitivityStudies/source/scripts/../results2/signalplusbackground/signalplusbackground.Gauss_width3.0p1.ifb.mjj_Gauss_sig__smooth.4.par.0.seed.default.root
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfold found in libUnfold.so  is already in libHist.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfoldBinning found in libUnfold.so  is already in libHist.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfoldDensity found in libUnfold.so  is already in libHist.so 
+Warning in <TInterpreter::ReadRootmapFile>: class  TUnfoldSys found in libUnfold.so  is already in libHist.so 
+inputHistDir: 
+Doing pvalue with systematics? 0!
+nPseudoExpBH is 1000
+nPseudoExpFit is 100
+ Hist Name: mjj_Gauss_sig_500_smoothinjectedToBkg
+Setting the 4 parameters to    (0) :2.11409e+06   (1) :-0.102491   (2) :110.968   (3) :-41.9063
+minX, maxX: 300 1500
+Actual fit range is 303 - 1493
+corresponding to including the bins 11, 55.
+Creating UA2 fit function.
+paramDefaultsLength = 4
+doSwift is 1
+*theMjjfitFunction:0x20bdb20
+theHistogram: 0x7ffc8ed0e660

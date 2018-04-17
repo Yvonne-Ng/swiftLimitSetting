@@ -1,0 +1,536 @@
+
+[1mRooFit v3.60 -- Developed by Wouter Verkerke and David Kirkby[0m 
+                Copyright (C) 2000-2013 NIKHEF, University of California & Stanford University
+                All rights reserved, please read http://roofit.sourceforge.net/license.txt
+
+test
+inputFileName: /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/signalplusbackground/signalplusbackground.Gauss_width5.15p0.ifb.mjj_Gauss.5.par.401.seed.NLO2015_29p7_sensitivityScan.root
+inputHistDir: 
+Doing pvalue with systematics? 0!
+nPseudoExpBH is 200
+nPseudoExpFit is 100
+ Hist Name: mjj_Gauss_1050
+Setting the 5 parameters to    (0) :0.00021675   (1) :3.18705   (2) :7.11991   (3) :0.294323   (4) :0
+minX, maxX: 530 2081
+Actual fit range is 531 - 2079
+corresponding to including the bins 20, 52.
+Creating 5-parameter function, log(x)^2 term.
+paramDefaultsLength = 5
+doSwift is 1
+Collected info on SWIFT bins
+Collected info on SWIFT residuals for initial fit
+After fit, parameters are     (0):0.00951941   (1):22.3161   (2):16.6483   (3):7.3662   (4):1.33429
+on PE 50
+on PE 100
+initialpval is 0
+Wish to use an Exclusion Window
+permitWindow is 1
+Window width is at 0.0791038
+First bin and last bin to exclude are 35 37, corresponding to 1007, 1139
+Window width / max allowed width (half-spectrum) is 3 / 16 
+Trying to refit.
+Function Parameters = { p0=416.102 p1=1.69109 p2=8.979 p3=-4.82936 p4=20.3359 }
+Function Parameters = { p0=416.102 p1=1.69109 p2=8.979 p3=-4.82936 p4=20.3359 }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=-1.05153e+06 p1=2.15611 p2=-144.993 p3=-7167.79 p4=43566.9 }
+Function Parameters = { p0=-1.05153e+06 p1=2.15611 p2=-144.993 p3=-7167.79 p4=43566.9 }
+Function Parameters = { p0=-1.05153e+06 p1=2.15611 p2=-144.993 p3=-7167.79 p4=43566.9 }
+Function Parameters = { p0=-1.05153e+06 p1=2.15611 p2=-144.993 p3=-7167.79 p4=43566.9 }
+Function Parameters = { p0=-1.05153e+06 p1=2.15611 p2=-144.993 p3=-7167.79 p4=43566.9 }
+Function Parameters = { p0=-1.05153e+06 p1=2.15611 p2=-144.993 p3=-7167.79 p4=43566.9 }
+Function Parameters = { p0=-1.05153e+06 p1=2.15611 p2=-144.993 p3=-7167.79 p4=43566.9 }
+Function Parameters = { p0=-1.05153e+06 p1=2.15611 p2=-144.993 p3=-7167.79 p4=43566.9 }
+Function Parameters = { p0=-1.05153e+06 p1=2.15611 p2=-144.993 p3=-7167.79 p4=43566.9 }
+Function Parameters = { p0=-1.05153e+06 p1=2.15611 p2=-144.993 p3=-7167.79 p4=43566.9 }
+Function Parameters = { p0=-1.05153e+06 p1=2.15611 p2=-144.993 p3=-7167.79 p4=43566.9 }
+Function Parameters = { p0=-1.05153e+06 p1=2.15611 p2=-144.993 p3=-7167.79 p4=43566.9 }
+Function Parameters = { p0=-1.05153e+06 p1=2.15611 p2=-144.993 p3=-7167.79 p4=43566.9 }
+Function Parameters = { p0=-1.05153e+06 p1=2.15611 p2=-144.993 p3=-7167.79 p4=43566.9 }
+Function Parameters = { p0=-1.05153e+06 p1=2.15611 p2=-144.993 p3=-7167.79 p4=43566.9 }
+Function Parameters = { p0=-1.05153e+06 p1=2.15611 p2=-144.993 p3=-7167.79 p4=43566.9 }
+Function Parameters = { p0=-1.05153e+06 p1=2.15611 p2=-144.993 p3=-7167.79 p4=43566.9 }
+Function Parameters = { p0=-52576.6 p1=2.15542 p2=0.134128 p3=-358.011 p4=2178.35 }
+Function Parameters = { p0=-52576.6 p1=2.15542 p2=0.134128 p3=-358.011 p4=2178.35 }
+Function Parameters = { p0=-52576.6 p1=2.15542 p2=0.134128 p3=-358.011 p4=2178.35 }
+Function Parameters = { p0=-52576.6 p1=2.15542 p2=0.134128 p3=-358.011 p4=2178.35 }
+Function Parameters = { p0=-52576.6 p1=2.15542 p2=0.134128 p3=-358.011 p4=2178.35 }
+Function Parameters = { p0=-52576.6 p1=2.15542 p2=0.134128 p3=-358.011 p4=2178.35 }
+Function Parameters = { p0=-52576.6 p1=2.15542 p2=0.134128 p3=-358.011 p4=2178.35 }
+Function Parameters = { p0=-52576.6 p1=2.15542 p2=0.134128 p3=-358.011 p4=2178.35 }
+Function Parameters = { p0=-52576.6 p1=2.15542 p2=0.134128 p3=-358.011 p4=2178.35 }
+Function Parameters = { p0=-52576.6 p1=2.15542 p2=0.134128 p3=-358.011 p4=2178.35 }
+Function Parameters = { p0=-52576.6 p1=2.15542 p2=0.134128 p3=-358.011 p4=2178.35 }
+Function Parameters = { p0=-52576.6 p1=2.15542 p2=0.134128 p3=-358.011 p4=2178.35 }
+Function Parameters = { p0=-52576.6 p1=2.15542 p2=0.134128 p3=-358.011 p4=2178.35 }
+Function Parameters = { p0=-52576.6 p1=2.15542 p2=0.134128 p3=-358.011 p4=2178.35 }
+Function Parameters = { p0=-52576.6 p1=2.15542 p2=0.134128 p3=-358.011 p4=2178.35 }
+Function Parameters = { p0=-52576.6 p1=2.15542 p2=0.134128 p3=-358.011 p4=2178.35 }
+Function Parameters = { p0=-52576.6 p1=2.15542 p2=0.134128 p3=-358.011 p4=2178.35 }
+Function Parameters = { p0=-2628.83 p1=2.15539 p2=7.39048 p3=-17.5219 p4=108.92 }
+Function Parameters = { p0=-2628.83 p1=2.15539 p2=7.39048 p3=-17.5219 p4=108.92 }
+Function Parameters = { p0=-2628.83 p1=2.15539 p2=7.39048 p3=-17.5219 p4=108.92 }
+Function Parameters = { p0=-2628.83 p1=2.15539 p2=7.39048 p3=-17.5219 p4=108.92 }
+Function Parameters = { p0=-2628.83 p1=2.15539 p2=7.39048 p3=-17.5219 p4=108.92 }
+Function Parameters = { p0=-2628.83 p1=2.15539 p2=7.39048 p3=-17.5219 p4=108.92 }
+Function Parameters = { p0=-2628.83 p1=2.15539 p2=7.39048 p3=-17.5219 p4=108.92 }
+Function Parameters = { p0=-2628.83 p1=2.15539 p2=7.39048 p3=-17.5219 p4=108.92 }
+Function Parameters = { p0=-2628.83 p1=2.15539 p2=7.39048 p3=-17.5219 p4=108.92 }
+Function Parameters = { p0=-2628.83 p1=2.15539 p2=7.39048 p3=-17.5219 p4=108.92 }
+Function Parameters = { p0=-2628.83 p1=2.15539 p2=7.39048 p3=-17.5219 p4=108.92 }
+Function Parameters = { p0=-2628.83 p1=2.15539 p2=7.39048 p3=-17.5219 p4=108.92 }
+Function Parameters = { p0=-2628.83 p1=2.15539 p2=7.39048 p3=-17.5219 p4=108.92 }
+Function Parameters = { p0=-2628.83 p1=2.15539 p2=7.39048 p3=-17.5219 p4=108.92 }
+Function Parameters = { p0=-2628.83 p1=2.15539 p2=7.39048 p3=-17.5219 p4=108.92 }
+Function Parameters = { p0=-2628.83 p1=2.15539 p2=7.39048 p3=-17.5219 p4=108.92 }
+Function Parameters = { p0=-2628.83 p1=2.15539 p2=7.39048 p3=-17.5219 p4=108.92 }
+on PE 50
+on PE 100
+on PE 150
+on PE 200
+pval of remaining spectrum is 0.965
+ Adding 1 extra bin to exclusion window at low mass end
+First bin and last bin to exclude are 34 37, corresponding to 966, 1139
+Window width / max allowed width (half-spectrum) is 4 / 16 
+Trying to refit.
+Function Parameters = { p0=5477.85 p1=3.61384 p2=31.6653 p3=-61.9541 p4=165.26 }
+Function Parameters = { p0=5477.85 p1=3.61384 p2=31.6653 p3=-61.9541 p4=165.26 }
+Function Parameters = { p0=5477.85 p1=3.61384 p2=31.6653 p3=-61.9541 p4=165.26 }
+Function Parameters = { p0=5477.85 p1=3.61384 p2=31.6653 p3=-61.9541 p4=165.26 }
+Function Parameters = { p0=5477.85 p1=3.61384 p2=31.6653 p3=-61.9541 p4=165.26 }
+Function Parameters = { p0=5477.85 p1=3.61384 p2=31.6653 p3=-61.9541 p4=165.26 }
+Function Parameters = { p0=5477.85 p1=3.61384 p2=31.6653 p3=-61.9541 p4=165.26 }
+Function Parameters = { p0=5477.85 p1=3.61384 p2=31.6653 p3=-61.9541 p4=165.26 }
+Function Parameters = { p0=5477.85 p1=3.61384 p2=31.6653 p3=-61.9541 p4=165.26 }
+Function Parameters = { p0=5477.85 p1=3.61384 p2=31.6653 p3=-61.9541 p4=165.26 }
+Function Parameters = { p0=5477.85 p1=3.61384 p2=31.6653 p3=-61.9541 p4=165.26 }
+Function Parameters = { p0=5477.85 p1=3.61384 p2=31.6653 p3=-61.9541 p4=165.26 }
+Function Parameters = { p0=5477.85 p1=3.61384 p2=31.6653 p3=-61.9541 p4=165.26 }
+Function Parameters = { p0=5477.85 p1=3.61384 p2=31.6653 p3=-61.9541 p4=165.26 }
+Function Parameters = { p0=5477.85 p1=3.61384 p2=31.6653 p3=-61.9541 p4=165.26 }
+Function Parameters = { p0=5477.85 p1=3.61384 p2=31.6653 p3=-61.9541 p4=165.26 }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+Function Parameters = { p0=nan p1=nan p2=nan p3=nan p4=nan }
+on PE 50
+on PE 100
+on PE 150
+on PE 200
+pval of remaining spectrum is 0.98
+Collected info on SWIFT residuals for fit after window exclusion
+After fit, parameters are    (0):0.00274565   (1):21.1859   (2):17.7085   (3):7.70561   (4):1.37383
+BumpHunter results: stat = 28.3975
+Low edge, high edge of bump: 1007 1139
+DeficitHunter results: stat = 28.3975
+Low edge, high edge of bump: 1007 1139
+Created +/- 1 sigma histograms
+on PE 50
+on PE 100
+on PE 150
+on PE 200
+Absolute values of logl, chi2, BH tests are: 229.487 12.7962 28.3975
+NDF is 27
+chi2/ndf is 0.473932
+Log likelihood for our fit was 229.487
+Pval of logL, chi2, and bumpHunter are: 0.64 0.66 0
+Pval of largest deficit was: 0
+debug residuals 0
+ FCN=7.61694 FROM MIGRAD    STATUS=CONVERGED     101 CALLS         102 TOTAL
+                     EDM=1.40653e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     3.16637e+00   8.06178e-01   9.19060e-04  -1.18941e-04
+   2  Mean         1.00932e+00   8.37985e-01   1.16828e-03  -3.98843e-05
+   3  Sigma        2.61083e+00   9.19346e-01   1.83679e-04  -1.22001e-03
+TH1.Print Name  = residual_histOfVals, Entries= 32, Total sum= 32
+ fSumw[0]=0, x=-10.25, error=0
+ fSumw[1]=0, x=-9.75, error=0
+ fSumw[2]=0, x=-9.25, error=0
+ fSumw[3]=0, x=-8.75, error=0
+ fSumw[4]=0, x=-8.25, error=0
+ fSumw[5]=0, x=-7.75, error=0
+ fSumw[6]=0, x=-7.25, error=0
+ fSumw[7]=0, x=-6.75, error=0
+ fSumw[8]=0, x=-6.25, error=0
+ fSumw[9]=0, x=-5.75, error=0
+ fSumw[10]=0, x=-5.25, error=0
+ fSumw[11]=0, x=-4.75, error=0
+ fSumw[12]=0, x=-4.25, error=0
+ fSumw[13]=0, x=-3.75, error=0
+ fSumw[14]=0, x=-3.25, error=0
+ fSumw[15]=0, x=-2.75, error=0
+ fSumw[16]=0, x=-2.25, error=0
+ fSumw[17]=1, x=-1.75, error=1
+ fSumw[18]=4, x=-1.25, error=2
+ fSumw[19]=3, x=-0.75, error=1.73205
+ fSumw[20]=9, x=-0.25, error=3
+ fSumw[21]=2, x=0.25, error=1.41421
+ fSumw[22]=3, x=0.75, error=1.73205
+ fSumw[23]=5, x=1.25, error=2.23607
+ fSumw[24]=2, x=1.75, error=1.41421
+ fSumw[25]=0, x=2.25, error=0
+ fSumw[26]=0, x=2.75, error=0
+ fSumw[27]=0, x=3.25, error=0
+ fSumw[28]=2, x=3.75, error=1.41421
+ fSumw[29]=0, x=4.25, error=0
+ fSumw[30]=0, x=4.75, error=0
+ fSumw[31]=1, x=5.25, error=1
+ fSumw[32]=0, x=5.75, error=0
+ fSumw[33]=0, x=6.25, error=0
+ fSumw[34]=0, x=6.75, error=0
+ fSumw[35]=0, x=7.25, error=0
+ fSumw[36]=0, x=7.75, error=0
+ fSumw[37]=0, x=8.25, error=0
+ fSumw[38]=0, x=8.75, error=0
+ fSumw[39]=0, x=9.25, error=0
+ fSumw[40]=0, x=9.75, error=0
+ fSumw[41]=0, x=10.25, error=0
+From fit, mean and width are 1.00932 2.61083
+Calculating quantities from function itself, mean and RMS are 0.403104 1.53523
+
+******************************************
+*** initial values 
+*** BH p-value = 0 +/- 0
+*** BH value = 10.0227
+*** BH range = 1007 - 1139
+******************************************
+*** refined values (after window removal)
+*** BH p-value = 0.965 +/- 0.0129952
+*** BH value = 1.71373
+*** BH range = 818 - 889
+******************************************
+*** final values 
+*** BH p-value = 0 +/- 0
+*** BH value = 28.3975
+*** BH range = 1007 - 1139
+******************************************
+
+Writing output file /Users/urania277/ATLAS/sw/projects/20171122_SensitivityScan/SensitivityStudies/scripts/../results/searchphase/searchphase.Gauss_width5.1050.GeV.15p0.ifb.mjj_Gauss.5.par.401.seed.NLO2015_29p7_sensitivityScan_ww10.root
+doing fittedhists
+done
+Process ran in 14.56 seconds. 

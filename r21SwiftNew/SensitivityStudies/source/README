@@ -1,0 +1,43 @@
+******************************************
+SensitivityStudies
+******************************************
+
+In order to run the code, a working setup of StatisticalAnalysis Bayesian code is needed:
+https://svnweb.cern.ch/trac/atlasphys-exo/browser/Physics/Exotic/JDM/DiJet/StatisticalAnalysis/Bayesian
+Instructions can be found here:
+https://svnweb.cern.ch/trac/atlasphys-exo/browser/Physics/Exotic/JDM/DiJet/StatisticalAnalysis/Bayesian/trunk/doc/BayesianNote.pdf
+
+The toolbox package is also needed:
+https://github.com/guescio/toolbox
+and it should be added to the PYTHONPATH:
+export PYTHONPATH=/path/to/toolbox/:$PYTHONPATH
+
+NOTE: All the python scripts in SensitivityStudies will print instructions if run without providing any input parameters.
+
+------------------------------------------
+Sensitivity Scan
+
+A sensitivity scan can be performed by running the script doSensitivtyScan.py as:
+python -u doSensitivityScan.py --config <config file> --tag <tag> --batch --debug
+This will loop over luminosity values and over the signal mass points available for the given signal model. A data-like QCD spectrum is created at first and then signal is injected. Once a signal mass value is discovered (i.e. BumpHunter p-value corresponds to a 5 sigmas deviation or more), that mass point is removed from the list of mass points to be searched for. The sensitivty scan is divided into three steps performed by three scripts that can also be run separately. See below.
+
+------------------------------------------
+Step 01 - Get data-like QCD
+
+Run the scripts as:
+python -u step01.getDataLikeQCD.py --config <config file> --lumi <luminosity [fb^-1]> --tag <tag> --patch --wait --plot --batch --debug
+This will produce a data-like QCD spectrum where possible and patch it with a pseudo-data-like spectrum obtained froma a fit where there are not enough effective entries.
+
+------------------------------------------
+Step 02 - Inject signal
+
+Run the scripts as:
+python -u step02.injectDataLikeSignal.py --config <config file> --QCDFile <QCD file> --lumi <luminosity [fb^-1]> --tag <tag> --fixCS --wait --plot --batch --debug
+Inject data-like signal into the data-like QCD background obtained at the previous step.
+
+------------------------------------------
+Step 03 - Perform search
+
+Run the script as:
+python -u step03.searchPhase.py --config <config file> --file <file> --mass <mass> --lumi <luminosity [fb^-1]> --fit --tag <tag> --plot --batch --debug
+This will perform a search on the dijet mass spectrum in the input file provided.
