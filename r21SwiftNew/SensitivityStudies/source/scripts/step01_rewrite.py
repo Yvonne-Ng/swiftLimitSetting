@@ -4,13 +4,13 @@ import ROOT
 import argparse
 from random import *
 
-
 def scaleHist(histName, initialfb, desiredfb):
     pass
     #return scaledHistogram
 
 def fluctuateHist(initHist, histName):
     # fluctuate histogram
+    ROOT.gROOT.SetBatch(True)
     histFluctuated=ROOT.TH1F(histName+"_fluctuated", histName+"_fluctuated", initHist.GetXaxis().GetNbins(), initHist.GetXaxis().GetXbins().GetArray())
     seed = randint(1, 100)    # Pick a random number between 1 and 100.
     print(seed)
@@ -20,7 +20,8 @@ def fluctuateHist(initHist, histName):
    # for i in range(initHist.GetXaxis().GetNbins()+1):
     for i in range(initHist.GetNbinsX()+2):
         bincontent= initHist.GetBinContent(i)
-        bincontent = int( round( rand3.PoissonD(bincontent)))
+        #bincontent = int( round( rand3.PoissonD(bincontent)))
+
         histFluctuated.SetBinContent(i,bincontent)
     c1=TCanvas()
     c1.SetLogy()
@@ -36,14 +37,17 @@ if __name__=="__main__":
     parser = argparse.ArgumentParser(description='%prog [options]')
     parser.add_argument('--initLumi',  default='0.',  help='desired luminosity [fb^-1]')
     parser.add_argument('--desiredLumi',  default='0.', help='init luminosity [fb^-1]')
-    parser.add_argument('--initRoot', default='/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/r21StatisticalAnalysis/source/results/data2017/DijetISRMC-Trijet2btaggedPreLimFit/SearchResultData_caseD_window12_doSwift.root',  help='init root')
-    parser.add_argument('--outputRoot', default='Fluctuated_SwiftFittrijet_HLT_j380_inclusive.root',  help='init root')
-    parser.add_argument('--histName', default='basicBkgFrom4ParamFit',  help='init histogram')
+    parser.add_argument('--initRoot', default='/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21Rebuild/input/2018-4B-taggedNewWorkingPoint/trijet_mjj_nbtag2.root',  help='init root')
+    parser.add_argument('--outputRoot', default='../input_dijetISR2018/bkg/Fluctuated_SwiftFittrijet_HLT_j380_2btaggedApr.root',  help='init root')
+    parser.add_argument('--histName', default='background_mjj_var',  help='init histogram')
 
 
     args =parser.parse_args()
     fIn=TFile.Open(args.initRoot)
+    ROOT.gROOT.SetBatch(True)
+
     initHist=fIn.Get(args.histName)
+    print("initHist", initHist)
     #scaledHist=scaledHist(histName, 0.001, 80)
     fluctuatedHist=fluctuateHist(initHist, args.histName)
     #for i in range(fluctuatedHist.GetNbinsX()+1):
@@ -53,10 +57,3 @@ if __name__=="__main__":
     fluctuatedHist.Write()
     fOut.Write()
     fOut.Close()
-
-
-
-
-
-
-
