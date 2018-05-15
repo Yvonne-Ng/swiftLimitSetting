@@ -6,6 +6,12 @@ def searchPhaseResultName(model,mass, sigScale,window, seriesName):
     searchPhaseFile=template.format(seriesName,model, str(mass), sigScale, window)
     return searchPhaseFile
 
+def searchPhaseResultNameNoSignal(model,window, seriesName):
+    #searchphase.TrijetAprSelectionbackground2.Gauss_width15.NOSIGNAL.gev.SigEvent0.mjj._ww10.root
+    template="searchphase.{0}.{1}.{2}.gev.SigEvent{3}.mjj._ww{4}.root"
+    searchPhaseFile=template.format(seriesName, model, "NOSIGNAL", str(0), window)
+    return searchPhaseFile
+
 def labelTest(label):
     if label not in ["JUSTABOVE", "JUSTBELOW", "NOSIGNAL"]:
         print("wrong label: ", label)

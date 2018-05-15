@@ -94,18 +94,15 @@ def runSearchPhase(args):
     #making a specific output config for this run
     outputConfig=makeSearchPhaseConfig(config["SeriesName"],config["searchPhaseConfigTemplate"], args.window,args.mass,  pseudoExps)
 
-    searchPhaseResultFile=config["spResultDir"]+"/"+searchPhaseResultName(config["signalModel"], args.mass, sigNum, args.window, config["SeriesName"])
+    searchPhaseResultFile=config["spResultDir"]+"/"+searchPhaseResultName(args.model, args.mass, sigNum, args.window, config["SeriesName"])
 
     print("sigNum: ", sigNum)
     print(searchPhaseResultFile)
     if sigNum==0:
         searchPhaseResultFile[:-5]+"NOSIGNAL"+".root"
-
     command=makeCommand(args.inputFileName, histName, searchPhaseResultFile , outputConfig)
     if args.debug:
         print ("command: ", command)
-
-
     os.system(command+"| tee "+config["outputLogDir"]+"/"+config["SeriesName"]+"ww"+args.window+"_mass"+args.mass+"_log.txt \n")
 
 
@@ -120,5 +117,6 @@ if __name__ == '__main__':
     #should grab ths from the config file in doSensitivity scan
     parser.add_argument('--window', dest='window', required=True, help='SWiFt window')
     parser.add_argument('-d', '--debug', dest='debug', action='store_true', default=False, help='debug mode')
+    parser.add_argument('--model', '--model', dest='model', required=True, default=False, help='model')
     args = parser.parse_args()
     runSearchPhase(args)

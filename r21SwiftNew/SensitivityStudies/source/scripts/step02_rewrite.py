@@ -1,6 +1,7 @@
 import sys, os, math, argparse, ROOT
 import plotTools, sensitivityTools
 import ROOT as r
+from ROOT import TH1D
 import io
 import json
 
@@ -13,8 +14,8 @@ import json
 def printConfig(config):
     try:
         print("Starting signal injection for: ", config["SeriesName"])
-        print("signalModel: ", config["signalModel"])
-        print("signal Masses of: ", config["signalMasses"])
+        #print("signalModel: ", config["signalModel"])
+        #print("signal Masses of: ", config["signalMasses"])
         print("signal hist name config: ", config["histBasedNameSig"])
         print("QCDFile: ", config["QCDFile"])
         print ("bkg histogram name: ", config["histBaseNameBkg"])
@@ -34,22 +35,22 @@ def doesRootFileExist(rootFile):
 def makeOutputFileName(config, args):
     localdir = os.path.dirname(os.path.realpath(__file__))
     histNameFromInput=config["histBasedNameSig"].format("")
-    outFileName = localdir+config["signalInjectedFileDir"]+"signalplusbackground."+config["SeriesName"]+"."+config["signalModel"]+".SigNum"+str(args.sigScale)+"."+histNameFromInput+".root"
+    outFileName = localdir+config["signalInjectedFileDir"]+"signalplusbackground."+config["SeriesName"]+"."+args.model+".mass"+args.mass+".SigNum"+str(args.sigScale)+"."+histNameFromInput+".root"
     return outFileName
 
 def makeSignalFileName(inputDir,model, signalMass):
     fileName=inputDir+"/"+model+"/"+"Gauss_mass"+str(signalMass)+"_"+model[6:]+".root"
     return fileName
 
-def makeSignalFileList(config):
+def makeSignalFileList(config,signalModel,mass):
     """find the list of signal files to be injected"""
     fileList=[]
-    for signalMass in config["signalMasses"]:
-        sigFile=makeSignalFileName(config["signalFileDir"], config["signalModel"], signalMass)
-        if not os.path.isfile(sigFile):
-            print("error this file does not exist:", sigFile)
-            raise ValueError
-        fileList.append(sigFile)
+    #for signalMass in config["signalMasses"]:
+    sigFile=makeSignalFileName(config["signalFileDir"], signalModel, mass)
+    if not os.path.isfile(sigFile):
+        print("error this file does not exist:", sigFile)
+        raise ValueError
+    fileList.append(sigFile)
     return fileList
 
 def injectDataLikeSignal(args):
@@ -78,7 +79,7 @@ def injectDataLikeSignal(args):
     #bkg
     doesRootFileExist(localdir+"/"+config["QCDFileDir"]+config["QCDFile"])
     #signal
-    signalFileList=makeSignalFileList(config)
+    signalFileList=makeSignalFileList(config, args.model, args.mass)
     print("beginning of step2")
     print("signalFileList: ", signalFileList)
     if args.debug:
@@ -99,16 +100,18 @@ def injectDataLikeSignal(args):
     #bkgFile = ROOT.TFile("/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftNew/SensitivityStudies/source/scripts//../input_dijetISR2018/bkg//Fluctuated_SwiftFittrijet_HLT_j380_inclusiveAprRewdo.root", 'READ')
     #bkgHist= bkgFile.Get("basicBkgFrom4ParamFit_fluctuated").Clone()
     ####bkgFile = ROOT.TFile(config["bkgFileDir"]+"/"+config["QCDFile"], 'READ')
-    bkgFile = ROOT.TFile("/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftClean/swiftLimitSetting/r21SwiftNew/SensitivityStudies/source/input_dijetISR2018/bkg//Fluctuated_SwiftFittrijet_HLT_j380_inclusiveAprRewdo2.root", 'READ')
+    #bkgFile = ROOT.TFile("/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftClean/swiftLimitSetting/r21SwiftNew/SensitivityStudies/source/input_dijetISR2018/bkg//Fluctuated_SwiftFittrijet_HLT_j380_inclusiveAprRewdo2.root", 'READ')
+    bkgFile = ROOT.TFile(config["QCDFileDir"]+"/"+config["QCDFile"], 'READ')
 
     if not bkgFile.GetListOfKeys().Contains(config["histBaseNameBkg"]):
         print ("the histogram", config["histBaseNameBkg"]," does not exist in the root file ", bkgFile)
-        raise RunTimeError
+        raise RuntimeError
     else:
         print ("the histogram", config["histBaseNameBkg"]," exists in the root file ", bkgFile)
     #bkgHistOri= bkgFile.Get(config["histBaseNameBkg"])
 
-    bkgHistOri= bkgFile.Get("background_mjj_var_fluctuated")
+    bkgHistOri= bkgFile.Get("basicBkgFrom4ParamFit")
+
     print(bkgHistOri)
     bkgHistOri.Print("all")
     bkgHist=bkgHistOri.Clone()
@@ -191,6 +194,8 @@ if __name__=="__main__":
     parser.add_argument('--sigScale', dest='sigScale', type=int, required=True, help="signal scale")
     parser.add_argument('-d', '--debug', dest='debug', action='store_true', default=False, help='debug mode')
     parser.add_argument('-p', '--plot', dest='plot', action='store_true', default=False, help='plot mode')
+    parser.add_argument('--model', '--model', dest='model', required=True, default=False, help='model')
+    parser.add_argument('--mass', dest='mass', default=0, required=True, help='signal mass value')
     args = parser.parse_args()
     print("ran step02")
     injectDataLikeSignal(args)
