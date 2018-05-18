@@ -2,14 +2,16 @@ import os
 
 def searchPhaseResultName(model,mass, sigScale,window, seriesName):
 #searchphase.Gauss_width3.400.gev.0p2.ifb.mjj.4.par.0.seed.default_ww11.root
-    template="searchphase.{0}.{1}.{2}.gev.SigEvent{3}.mjj._ww{4}.root"
-    searchPhaseFile=template.format(seriesName,model, str(mass), sigScale, window)
+    template="searchphase.{0}.{1}.{2}.gev.SigEvent{3}.mjj._ww{4}.{5}.root"
+    searchPhaseFile=template.format(seriesName,model, str(mass), sigScale, window, str(mass))
     return searchPhaseFile
 
-def searchPhaseResultNameNoSignal(model,window, seriesName):
+def searchPhaseResultNameNoSignal2(model,window, seriesName, mass):
     #searchphase.TrijetAprSelectionbackground2.Gauss_width15.NOSIGNAL.gev.SigEvent0.mjj._ww10.root
-    template="searchphase.{0}.{1}.{2}.gev.SigEvent{3}.mjj._ww{4}.root"
-    searchPhaseFile=template.format(seriesName, model, "NOSIGNAL", str(0), window)
+    print("mass: ", mass)
+    template="searchphase.{0}.{1}.{2}.gev.SigEvent{3}.mjj._ww{4}.{5}.root"
+    searchPhaseFile=template.format(seriesName, model, "NOSIGNAL", str(0), window, mass)
+    print("searchphaseReulstNameNosignal: ", searchPhaseFile)
     return searchPhaseFile
 
 def labelTest(label):
@@ -38,8 +40,6 @@ def getDiscoveryEventNum(fileName):
     eventNum=int(fileName[pos0:pos1])
     return eventNum
 
-
-
 def justAboveFileName(fileName):
     jafile=fileName[:-5]+"JUSTABOVE"+".root"
     return jafile
@@ -67,9 +67,6 @@ def FluctuatedBkgFile(localdir,config):
 def modelNameFromGaussianWidth(width):
   return "Gauss_width"+str(width)
 
-
-
-
 #need a different one for signal
 def findLabelledFileName(directory,label, model, mass, window, seriesName):
     labelTest(label)
@@ -77,7 +74,10 @@ def findLabelledFileName(directory,label, model, mass, window, seriesName):
     massString="."+str(mass)+"."
     modelString=model
     windowString="ww"+str(window)
+    seriesName=str(seriesName)
     if label=="NOSIGNAL":
+        print("type of modelString", type(modelString), "typeof windowString: ", type(windowString), "type of model string: ", type(windowString), "type of seriesNAme: , ",type(seriesName), "type of label", type(label))
+        print("modeString: ", modelString)
         targetFiles=[f for f in os.listdir(directory) if modelString in f and windowString in f and label in f and seriesName in f]
     else:
         targetFiles=[f for f in os.listdir(directory) if massString in f and modelString in f and windowString in f and label in f and seriesName in f]

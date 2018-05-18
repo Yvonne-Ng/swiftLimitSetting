@@ -17,7 +17,9 @@ import json
 
 def getSigNumFromStep2FileName(fileName, mass):
     #signalplusbackground.TrijetAprSelection.Gauss_width7.SigNum100.mjj_Gauss_sig__smooth.root
-    if mass=="NOSIGNAL":
+    #if mass=="NOSIGNAL":
+    #    return 0
+    if "Fluctuated" in fileName:
         return 0
     else:
         print("step2 file name : ", fileName)
@@ -58,6 +60,7 @@ def makeSearchPhaseConfig(seriesName,configTemplate, window,mass,  nPseudoExps):
 def makeCommand(fitFile, fitHistogram, outFileName , configOut):
     """make searchphase command"""
     #remake this outFileName
+    print("histName", fitHistogram)
     commandTemplate = "SearchPhase --config {0} --file {1} --histName {2} --noDE --outputfile {3}".format(configOut,fitFile,fitHistogram,outFileName)
     return commandTemplate
 
@@ -71,6 +74,7 @@ def runSearchPhase(args):
 #Setting the local directory
     localdir = os.path.dirname(os.path.realpath(__file__))
 #pulling the corrrect json file
+    print("check search phase 01")
     try:
         json_data = open(args.config)
         config = json.load(json_data)
@@ -79,34 +83,53 @@ def runSearchPhase(args):
         print "---Aborting---"
         raise RuntimeError
     #checking if input file exist
+    print("check search phase 02")
     print("step03 inputFileName :", args.inputFileName)
     if not os.path.isfile(args.inputFileName):
         print("Search phase input file not found :", args.inputFileName)
         raise keyboardInterupt
     #Get Hist Name
+    print("check search phase 02")
     sigNum=getSigNumFromStep2FileName(args.inputFileName, args.mass)
     if sigNum==0:
         histName=config["histBaseNameBkg"]
         pseudoExps=100
     else:
+        histName=config["histBaseNameBkg"]
+        print("sigNum: ", sigNum)
+        print("ran thos got here!")
         histName="mjj_Gauss_sig_{0}_smoothinjectedToBkg".format(str(args.mass))
         pseudoExps=1
+
+    print("check search phase 03")
     #making a specific output config for this run
     outputConfig=makeSearchPhaseConfig(config["SeriesName"],config["searchPhaseConfigTemplate"], args.window,args.mass,  pseudoExps)
 
-    searchPhaseResultFile=config["spResultDir"]+"/"+searchPhaseResultName(args.model, args.mass, sigNum, args.window, config["SeriesName"])
+    print("check search phase 04")
+    #searchPhaseResultFile=config["spResultDir"]+"/"+searchPhaseResultName(args.model, args.mass, sigNum, args.window, config["SeriesName"])
 
     print("sigNum: ", sigNum)
-    print(searchPhaseResultFile)
+    print("check search phase 05")
     if sigNum==0:
-        searchPhaseResultFile[:-5]+"NOSIGNAL"+".root"
-    command=makeCommand(args.inputFileName, histName, searchPhaseResultFile , outputConfig)
+        #searchPhaseResultFile[:-5]+"NOSIGNAL"+".root"
+        print("args.mass", args.mass)
+        searchPhaseResultFile=searchPhaseResultNameNoSignal2(args.model, args.window, config["SeriesName"], args.mass)
+
+
+        print("1. Search phase result after searchphaseResultNameNoSignal:", searchPhaseResultFile)
+    else:
+        searchPhaseResultFile=searchPhaseResultName(args.model, args.mass, sigNum, args.window, config["SeriesName"])
+    print("2. searchPhaseResult name , before command step3 made: ", searchPhaseResultFile)
+    print("histName: ", histName)
+    command=makeCommand(args.inputFileName, histName, config["spResultDir"]+"/"+searchPhaseResultFile , outputConfig)
+    print("check search phase 06")
     if args.debug:
         print ("command: ", command)
-    os.system(command+"| tee "+config["outputLogDir"]+"/"+config["SeriesName"]+"ww"+args.window+"_mass"+args.mass+"_log.txt \n")
-
-
-
+    print("check search phase 07")
+    print("command: ", command)
+    #os.system(command+"| tee "+config["outputLogDir"]+"/"+config["SeriesName"]+"ww"+args.window+"_mass"+args.mass+"_log.txt \n")
+    os.system(command)
+    print("check search phase 08")
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--config', dest='config', default='', required=True, help='sensitivity scan config file')

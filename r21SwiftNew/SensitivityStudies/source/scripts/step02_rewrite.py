@@ -110,7 +110,7 @@ def injectDataLikeSignal(args):
         print ("the histogram", config["histBaseNameBkg"]," exists in the root file ", bkgFile)
     #bkgHistOri= bkgFile.Get(config["histBaseNameBkg"])
 
-    bkgHistOri= bkgFile.Get("basicBkgFrom4ParamFit")
+    bkgHistOri= bkgFile.Get("basicBkgFrom4ParamFit_fluctuated")
 
     print(bkgHistOri)
     bkgHistOri.Print("all")
@@ -149,6 +149,7 @@ def injectDataLikeSignal(args):
         sigHist["scaled"].Scale(args.sigScale/sigHist["scaled"].Integral())
         sigHist["eff"]=plotTools.getEffectiveEntriesHistogram(sigHist["ori"], config["histBasedNameSig"].format("")+'_eff')
         #fluctuating the scaled histogram
+        # do this after the signal are scaled back up
         sigHist["dataLike"] = plotTools.getDataLikeHistYvonneVersion(sigHist["eff"], sigHist["scaled"],histNameSigUpdated+"_sig", 1, config["thresholdMass"])
         # I am skippig the smoothing part
         totHist= bkgHist.Clone()
