@@ -16,19 +16,25 @@ parser = argparse.ArgumentParser(description='%prog [options]')
 #parser.add_argument('--belowFile', dest='inputBelowFileName', default='', required=True, help='input nominal file name')
 #parser.add_argument('-d', '--debug', dest='debug', action='store_true', default=False, help='debug mode')
 parser.add_argument('--dir', dest='dir', default='default', help='directory for input files')
+parser.add_argument('--seriesName', dest='seriesName', required=True, help='seires name of the file')
 parser.add_argument('--notes', dest='notes', default='29.7', help='notes for plotting')
 args = parser.parse_args()
 
-gaussianWidthList = [3]#,7]#,5, 10 done]
+gaussianWidthList = [7]#,7]#,5, 10 done]
 #gaussianMeanList = [650,750,850,950,1050,1250,1450,1650,1850]
-gaussianMeanList = [900]#, 1050, 1750, 1850]#,750,850,950,1050]
-windowWidthList = [12]
+gaussianMeanList = [450, 550,650,  750, 850, 950,1000, 1100, 1200]#, 1050, 1750, 1850]#,750,850,950,1050]
+#gaussianMeanList = [1200]#, 1050, 1750, 1850]#,750,850,950,1050]
+windowWidthList = [13]
 
 bkgOnlyFileName = ""
 aboveFileName = ""
 belowFileName = ""
 
 c = ROOT.TCanvas('c', 'c', 100, 50, 800, 600)
+
+def gaussianModel(gaussWidth):
+    model="Gauss_width"+str(gaussWidth)
+    return model
 
 
 #c.Print(args.dir+"/SignalRemovalRatios.GaussianWidth5."+args.dir+".WindowWidth.pdf[")
@@ -40,29 +46,33 @@ for gaussianWidth in gaussianWidthList:
   for windowWidth in windowWidthList:
     print "GAUSSIAN WIDTH 2", gaussianWidth
 
-    c.Print(args.dir+"/SignalRemovalRatios_GaussianWidth_"+str(gaussianWidth)+"_"+args.dir+"_WindowWidth_"+str(windowWidth)+".pdf[")
+    c.Print(args.dir+"/SignalRemovalRatios_GaussianWidth_"+str(gaussianWidth)+"_WindowWidth_"+str(windowWidth)+".pdf[")
 
     for gaussianMean in gaussianMeanList:
 
       #being lazy and inflexible
       #this remains the same everywhere as it's bkg only
       #bkgOnlyFileName = "BkgOnly/searchphase.Gauss_width5.650.GeV.0p0.ifb.mjj_Gauss.4.par.401.seed.BHpvalDep.window9.root"
+        gaussModel=gaussianModel(gaussianWidth)
         try:
-          bkgOnlyFileName=findLabelledFileName(args.dir, "NOSIGNAL", gaussianMean,windowWidth)
-        except ValueError:
+          bkgOnlyFileName=findLabelledFileName(args.dir, "NOSIGNAL", gaussModel,gaussianMean, windowWidth,args.seriesName)
+        except :
             print ("oops, there is no bkgnd only file for mass point", gaussianMean, " and windowWidth: ", windowWidth)
-            raise ValueError
+            #raise ValueError
+            continue
         try:
-          aboveFileName=findLabelledFileName(args.dir, "JUSTABOVE", gaussianMean, windowWidth)
-        except ValueError:
+          aboveFileName=findLabelledFileName(args.dir, "JUSTABOVE", gaussModel,gaussianMean, windowWidth, args.seriesName)
+        except:
             print ("oops, there is no JUSTabove file for mass point", gaussianMean, " and windowWidth: ", windowWidth)
-            raise ValueError
+            #raise ValueError
+            continue
 
         try:
-          belowFileName=findLabelledFileName(args.dir, "JUSTBELOW", gaussianMean, windowWidth)
-        except ValueError:
+          belowFileName=findLabelledFileName(args.dir, "JUSTBELOW", gaussModel,gaussianMean, windowWidth, args.seriesName)
+        except:
             print ("oops, there is no JUSTBELOW file for mass point", gaussianMean, " and windowWidth: ", windowWidth)
-            raise ValueError
+            #raise ValueError
+            continue
 
       #bkgOnlyFileName = "BkgOnly/searchphase.Gauss_width5.650.GeV.0p0.ifb.mjj_Gauss.4.par.401.seed.BHpvalDep.window9_pseudodata.root"
       #list all the files that are available
@@ -144,8 +154,10 @@ for gaussianWidth in gaussianWidthList:
         #print discoveryXsecBelow
 
         # hardcoding right now
-        discoveryXsecAbove=0.4
-        discoveryXsecBelow=0.3
+        #discoveryXsecAbove=0.4
+        #discoveryXsecBelow=0.3
+        discoverySigNumAbove=getDiscoveryEventNum(aboveFileName)
+        discoverySigNumBelow=getDiscoveryEventNum(belowFileName)
 
         bkgOnlyFile = ROOT.TFile.Open(bkgOnlyFileName,"READ")
         aboveFile = ROOT.TFile.Open(aboveFileName,"READ")
@@ -191,7 +203,7 @@ for gaussianWidth in gaussianWidthList:
 
         RatioBelowBkgOnly.Divide(bkgOnlyHist)
         RatioBelowBkgOnly.SetLineColor(ROOT.kBlue)
-        RatioBelowBkgOnly.GetXaxis().SetRangeUser(450,2750)
+        RatioBelowBkgOnly.GetXaxis().SetRangeUser(250,2750)
         #RatioBelowBkgOnly.GetYaxis().SetRangeUser(0.995,RatioBelowBkgOnly.GetMaximum()+0.001)
         #RatioBelowBkgOnly.GetYaxis().SetRangeUser(0.9975,2-0.9975)
         RatioBelowBkgOnly.GetYaxis().SetRangeUser(1.7,1.3)
@@ -208,7 +220,8 @@ for gaussianWidth in gaussianWidthList:
         elif (float(gaussianMean) > 1000) :
             print "CHANGING 1000"
             RatioBelowBkgOnly.GetYaxis().SetRangeUser(0.9975,1.005)
-        RatioBelowBkgOnly.GetYaxis().SetRangeUser(1.8,1.2)
+        #RatioBelowBkgOnly.GetYaxis().SetRangeUser(0.95,1.05)
+        RatioBelowBkgOnly.GetYaxis().SetRangeUser(0.95,1.10)
         RatioBelowBkgOnly.GetYaxis().SetNdivisions(505)
         RatioBelowBkgOnly.SetMarkerStyle(1)
 
@@ -220,7 +233,7 @@ for gaussianWidth in gaussianWidthList:
         RatioAboveBkgOnly = aboveHist.Clone("AboveRatio")
         RatioAboveBkgOnly.Divide(bkgOnlyHist)
         RatioAboveBkgOnly.SetLineColor(ROOT.kGreen)
-        RatioAboveBkgOnly.GetXaxis().SetRangeUser(450,2750)
+        RatioAboveBkgOnly.GetXaxis().SetRangeUser(250,2750)
         for bin in range(RatioAboveBkgOnly.GetNbinsX()):
           if RatioAboveBkgOnly.GetBinContent(bin) == 0:
             RatioAboveBkgOnly.SetBinContent(bin,0.0)
@@ -286,7 +299,7 @@ for gaussianWidth in gaussianWidthList:
         residualAboveHist.GetXaxis().SetTitleOffset(3.0)
         residualAboveHist.GetXaxis().SetLabelFont(43)
         residualAboveHist.GetXaxis().SetLabelSize(textSize)
-        residualAboveHist.GetXaxis().SetRangeUser(450,2750)
+        residualAboveHist.GetXaxis().SetRangeUser(250,2750)
 
         residualAboveHist.GetYaxis().SetTitle("Significance")
         residualAboveHist.GetYaxis().SetTitleFont(43)
@@ -314,7 +327,7 @@ for gaussianWidth in gaussianWidthList:
         residualBkgOnlyHist.GetXaxis().SetTitleOffset(3.0)
         residualBkgOnlyHist.GetXaxis().SetLabelFont(43)
         residualBkgOnlyHist.GetXaxis().SetLabelSize(textSize)
-        residualBkgOnlyHist.GetXaxis().SetRangeUser(450,2750)
+        residualBkgOnlyHist.GetXaxis().SetRangeUser(250,2750)
 
         residualBkgOnlyHist.GetYaxis().SetTitle("Significance")
         residualBkgOnlyHist.GetYaxis().SetTitleFont(43)
@@ -345,7 +358,8 @@ for gaussianWidth in gaussianWidthList:
         bumpLowEdgeAbove         = bumpHunterPLowHighAbove[1]
         bumpHighEdgeAbove        = bumpHunterPLowHighAbove[2]
 
-        bumpHunterStatOfFitToDataAbove = aboveFile.Get("bumpHunterStatOfFitToData")
+        #bumpHunterStatOfFitToDataAbove = aboveFile.Get("bumpHunterStatOfFitToData")
+        bumpHunterStatOfFitToDataAbove = aboveFile.Get("bumpHunterStatOfFitToDataInitial")
         bumpHunterPValueAbove    = bumpHunterStatOfFitToDataAbove[1]
 
         bumpFoundVectorAbove = aboveFile.Get("bumpFound")
@@ -402,7 +416,7 @@ for gaussianWidth in gaussianWidthList:
         residualBelowHist.GetXaxis().SetTitleOffset(3.0)
         residualBelowHist.GetXaxis().SetLabelFont(43)
         residualBelowHist.GetXaxis().SetLabelSize(textSize)
-        residualBelowHist.GetXaxis().SetRangeUser(450,2750)
+        residualBelowHist.GetXaxis().SetRangeUser(250,2750)
 
         residualBelowHist.GetYaxis().SetTitle("Significance")
         residualBelowHist.GetYaxis().SetTitleFont(43)
@@ -438,7 +452,8 @@ for gaussianWidth in gaussianWidthList:
         excludedWindowLowAbove = excludeWindowVectorAbove[1]
         excludedWindowHighAbove = excludeWindowVectorAbove[2]
 
-        bumpHunterStatOfFitToDataBelow = belowFile.Get("bumpHunterStatOfFitToData")
+        #bumpHunterStatOfFitToDataBelow = belowFile.Get("bumpHunterStatOfFitToData")
+        bumpHunterStatOfFitToDataBelow = belowFile.Get("bumpHunterStatOfFitToDataInitial")
         bumpHunterPValueBelow    = bumpHunterStatOfFitToDataBelow[1]
 
         bumpFoundVectorBelow = belowFile.Get("bumpFound")
@@ -481,7 +496,6 @@ for gaussianWidth in gaussianWidthList:
         #ROOT.myText(0.8,0.9,1,"Internal")
         helperPad1.cd()
         #ROOT.myText(0.5,0.75,1,args.notes+" fb^{-1}")
-        ROOT.myText(0.81,0.9,0.07,32,1,"NLOJET++  L_{int} = 29.7 fb^{-1}")
         ROOT.myText(0.81,0.81,0.07,32,1,"m_{sig} = "+gaussianMean+" GeV")
         ROOT.myText(0.81,0.74,0.07,32,1,"Signal Width = "+gaussianWidth+"%")
 
@@ -501,7 +515,7 @@ for gaussianWidth in gaussianWidthList:
         leg.Draw()
 
         helperPad2.cd()
-        ROOT.myText(0.81,0.75,0.07,32,1,"Signal #sigma = "+str(discoveryXsecAbove)+" pb")
+        ROOT.myText(0.81,0.75,0.07,32,1,"Signal #event = "+str(discoverySigNumAbove)+" pb")
         ROOT.myText(0.81,0.66,0.07,32,1,"Bump range: %.0f - %.0f"%(bumpLowEdgeAbove,bumpHighEdgeAbove))
         #ROOT.myText(0.45,0.55,1,"bump range: "+str(bumpLowEdgeAbove)+" - "+str(bumpHighEdgeAbove))
         ROOT.myText(0.81,0.43,0.07,32,1,"BH #it{p}-value = "+str(bumpHunterPValueAbove))
@@ -513,7 +527,7 @@ for gaussianWidth in gaussianWidthList:
 
         helperPad3.cd()
 
-        ROOT.myText(0.81,0.70,0.07,32,1,"Signal #sigma = "+str(discoveryXsecBelow)+" pb")
+        ROOT.myText(0.81,0.70,0.07,32,1,"Signal #sigma = "+str(discoverySigNumBelow)+" pb")
         ROOT.myText(0.81,0.61,0.07,32,1,"Bump range: %.0f - %.0f"%(bumpLowEdgeAbove,bumpHighEdgeBelow))
         #ROOT.myText(0.45,0.55,1,"bump range: "+str(bumpLowEdgeAbove)+" - "+str(bumpHighEdgeAbove))
         ROOT.myText(0.81,0.38,0.07,32,1,"BH #it{p}-value = "+str(bumpHunterPValueBelow))
