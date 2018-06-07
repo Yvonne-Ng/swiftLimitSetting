@@ -19,11 +19,11 @@ def fluctuateHist(initHist, histName, seed):
     #binSeed =  int( round(initHist.GetBinCenter(i)+seed*1e5))
     rand3 = ROOT.TRandom3(binSeed)
    # for i in range(initHist.GetXaxis().GetNbins()+1):
+    print "end bin: ", initHist.GetBinCenter(initHist.GetNbinsX())
     for i in range(initHist.GetNbinsX()+2):
         bincontent= initHist.GetBinContent(i)
         bincontent = int( round( rand3.PoissonD(bincontent)))
         histFluctuated.SetBinError(i, np.sqrt(bincontent))
-
         histFluctuated.SetBinContent(i,bincontent)
     c1=TCanvas()
     c1.SetLogy()

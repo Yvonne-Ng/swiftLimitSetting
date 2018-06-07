@@ -77,7 +77,7 @@ def injectDataLikeSignal(args):
         printConfig(config)
 #--Test if RootFiles exist
     #bkg
-    doesRootFileExist(localdir+"/"+config["QCDFileDir"]+config["QCDFile"])
+    doesRootFileExist(config["bkgFileDir"]+"/"+config["QCDFile"])
     #signal
     signalFileList=makeSignalFileList(config, args.model, args.mass)
     print("beginning of step2")
@@ -101,7 +101,8 @@ def injectDataLikeSignal(args):
     #bkgHist= bkgFile.Get("basicBkgFrom4ParamFit_fluctuated").Clone()
     ####bkgFile = ROOT.TFile(config["bkgFileDir"]+"/"+config["QCDFile"], 'READ')
     #bkgFile = ROOT.TFile("/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftClean/swiftLimitSetting/r21SwiftNew/SensitivityStudies/source/input_dijetISR2018/bkg//Fluctuated_SwiftFittrijet_HLT_j380_inclusiveAprRewdo2.root", 'READ')
-    bkgFile = ROOT.TFile(config["QCDFileDir"]+"/"+config["QCDFile"], 'READ')
+    #bkgFile = ROOT.TFile(config["QCDFileDir"]+"/"+config["QCDFile"], 'READ')
+    bkgFile = ROOT.TFile(config["bkgFileDir"]+"/"+config["QCDFile"], 'READ')
 
     if not bkgFile.GetListOfKeys().Contains(config["histBaseNameBkg"]):
         print ("the histogram", config["histBaseNameBkg"]," does not exist in the root file ", bkgFile)

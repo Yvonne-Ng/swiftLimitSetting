@@ -22,6 +22,11 @@ def labelTest(label):
     else:
         return
 
+def makeConciseLogName(localdir, seriesName, model, window):
+    conciseLogName=localdir+"/log/%s/%s/window%s.log"%(seriesName, model, str(window))
+    return conciseLogName
+
+
 #def justAboveFileName(model, mass, sigScale, window):
 #    template="searchphase.{0}.{1}.gev.SigEvent{2}.mjj._ww{3}JUSTABOVE.root"
 #    searchPhaseFile=template.format(model, str(mass), sigScale, window)
@@ -54,15 +59,18 @@ def removeOldLabelledFile(fileDir, label, mass, windowWidth, model, seriesName):
         print("listing fileDir failed: " , fileDir)
 
     massStr=str(mass)
-    windowStr=str(windowWidth)
-
+    windowStr="ww"+str(windowWidth)
+    removeList=[]
     for fileName in os.listdir(fileDir):
         if all( x in fileName for x in [massStr, label, windowStr, model, seriesName]) :
             print("old labelled file removed:",  fileDir+"/"+fileName)
+            removeList.append(fileName)
             os.remove(fileDir+"/"+fileName)
+    return removeList
 
 def FluctuatedBkgFile(localdir,config):
-    return localdir+"/"+config["QCDFileDir"]+"/"+config["QCDFile"]
+    name=config["bkgFileDir"]+"/"+config["QCDFile"]
+    return  name
 
 def modelNameFromGaussianWidth(width):
   return "Gauss_width"+str(width)
@@ -76,9 +84,14 @@ def findLabelledFileName(directory,label, model, mass, window, seriesName):
     windowString="ww"+str(window)
     seriesName=str(seriesName)
     if label=="NOSIGNAL":
-        print("type of modelString", type(modelString), "typeof windowString: ", type(windowString), "type of model string: ", type(windowString), "type of seriesNAme: , ",type(seriesName), "type of label", type(label))
+        #print("type of modelString", type(modelString), "typeof windowString: ", type(windowString), "type of model string: ", type(windowString), "type of seriesNAme: , ",type(seriesName), "type of label", type(label))
+    #../SensitivityStudies//source/results3/searchphase/searchphase.TrijetAprInclusiveSearchPhaseFluctuation-2.Gauss_width7.NOSIGNAL.gev.SigEvent0.mjj._ww12.750.root
         print("modeString: ", modelString)
-        targetFiles=[f for f in os.listdir(directory) if modelString in f and windowString in f and label in f and seriesName in f]
+        print("seriesName: ", seriesName)
+        print("windowString: ", windowString)
+        print("label: ", label)
+        print("mass string: ", massString)
+        targetFiles=[f for f in os.listdir(directory) if modelString in f and windowString in f and label in f and seriesName in f and massString in f]
     else:
         targetFiles=[f for f in os.listdir(directory) if massString in f and modelString in f and windowString in f and label in f and seriesName in f]
     if len(targetFiles)>1:
