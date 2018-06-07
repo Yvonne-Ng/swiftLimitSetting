@@ -1,17 +1,17 @@
 # README FOR CATERINA and KATE
 ## For Fluctuation
 
-loopSearchPhase.py -> Runs SearchPhase in batch, current set to run one single file
-loopStep1.py -> run step1 (fluctuating the background) in batch. current set to run on one sigle file
-loopDrawSignalInjectionMassPoints.py->Draws all the searchPhase output you set. 
+1. loopSearchPhase.py -> Runs SearchPhase in batch, current set to run one single file
+2. loopStep1.py -> run step1 (fluctuating the background) in batch. current set to run on one sigle file
+3. loopDrawSignalInjectionMassPoints.py->Draws all the searchPhase output you set. 
 
 ## signal injection
-batchDoSensitivity.py ->Runs everything in the UCI batch system   -> configure everything that you want to run on 
-calls batchDoSensitivity.sh -> set up individual slurm jobs
-calls doSensitivityScan2_rewrite.py
-which calls :
-    -> step02_rewrite.py -> performs signal injection
-    ->step03_rewrite.py -> performs searchphase on the things from step02
+1. batchDoSensitivity.py ->Runs everything in the UCI batch system   -> configure everything that you want to run on 
+2. calls batchDoSensitivity.sh -> set up individual slurm jobs
+3. calls doSensitivityScan2_rewrite.py
+4. which calls :
+a.     -> step02_rewrite.py -> performs signal injection
+b.     ->step03_rewrite.py -> performs searchphase on the things from step02
 
 ## configuration guide
 configuration is split into 3 levels:
