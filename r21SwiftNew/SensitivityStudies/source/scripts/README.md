@@ -3,7 +3,7 @@
 
 1. loopSearchPhase.py -> Runs SearchPhase in batch, current set to run one single file
 2. loopStep1.py -> run step1 (fluctuating the background) in batch. current set to run on one sigle file
-3. loopDrawSignalInjectionMassPoints.py->Draws all the searchPhase output you set. 
+3. loopDrawSignalInjectionMassPoints.py->Draws all the signal injection ratio plots that I keep sending to mattermost. it uses the same config as loopStep1.py (you can copy it over)+ an output directory for the pdfs to be stored
 
 ## signal injection
 1. batchDoSensitivity.py ->Runs everything in the UCI batch system   -> configure everything that you want to run on 
