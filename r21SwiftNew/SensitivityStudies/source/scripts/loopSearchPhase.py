@@ -1,6 +1,4 @@
 #!/bin/python
-
-
 import sys, os, math, argparse, ROOT
 import sensitivityTools
 import numpy as np
@@ -16,21 +14,34 @@ def searchPhaseOutput(fileName):
 
 def loopSearchPhase(config):
     for i in range(len(config["inFileList"])):
+        print("i: ", i)
+        print(config["inFileList"])
         inFileList=config["inFileList"][i]
         outputRootList=[]
         printFile=open("loopSearchPhase"+inFileList[0][:-7]+".log", "w+")
         for inFile in inFileList:
+            print("inFileList", inFileList)
             outputName=searchPhaseOutput(inFile)
-            commandTemplate = "SearchPhase --config {0} --file {1} --histName {2} --noDE --outputfile {3}".format(config["configName"][0],  config["inFileDir"]+"/"+inFile,config["histName"],config["outputRootDir"]+outputName)
+            commandTemplate = "SearchPhase --config {0} --file {1} --histName {2} --noDE --outputfile {3}".format(config["configName"][i],  config["inFileDir"]+"/"+inFile,config["histName"],config["outputRootDir"]+outputName)
+            print("commandTemplate: ", commandTemplate)
             os.system(commandTemplate)
             outputRootList.append(outputName)
             f1=TFile.Open(config["outputRootDir"]+"/"+outputName)
             try:
-                (excludeWindow, windowLow, windowHigh)=f1.Get("excludeWindowNums")
-                printFile.write("for %s window exclusion is %s"%(inFile, excludeWindow))
+                nominalRootName=self.searchPhaseRootListOfSteps[self.step][0]
+                print("nominalRoot: ", nominalRootName)
+                f1=TFile.Open(nominalRootName.encode("ascii"))
+                print(f1)
+                #if not self.permitWindow:
+                v1=f1.Get("bumpHunterStatOfFitToDataInitial")
+                #else:
+                #    v1=f1.Get("bumpHunterStatOfFitToDataRefined")
+                bhPValue=v1[1]
+                printFile.write("BH p value all for %s is  %d\n"%(inFile, bhPValue))
+
             except:
                 printFile.write("the fit failed, fitFile: %s"%inFile)
-        return outputRootList
+    return outputRootList
 
 def drawOutputRootResidual(inDir, spList):
     for inFile in spList:
@@ -186,20 +197,44 @@ if __name__=="__main__":
 
 # check for caterina  6/6/2018
 
-    config={"inFileDir": "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftClean/swiftLimitSetting/r21SwiftNew/SensitivityStudies/source/input_dijetISR2018/bkg/preFluctuation/may2018",
-            "inFileList": [["dijetgamma_single_trigger_ystar0p75_inclusive.root"]],
+    #config={"inFileDir": "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftClean/swiftLimitSetting/r21SwiftNew/SensitivityStudies/source/input_dijetISR2018/bkg/preFluctuation/may2018",
+    #        "inFileList": [["dijetgamma_compound_trigger_ystar0p75_inclusive.root"],["dijetgamma_compound_trigger_ystar0p75_nbtag2.root"],["dijetgamma_single_trigger_ystar0p75_inclusive.root"],["dijetgamma_single_trigger_ystar0p75_nbtag2.root"],["trijet_ystar0p75_inclusive.root"],["trijet_ystar0p75_nbtag2.root"]],
 
-            "histName": "background_mjj_var",
-            "configName": ["/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftClean/swiftLimitSetting/r21SwiftNew/SensitivityStudies/source/scripts/configurations/may2018/kateConfig/Step1_SearchPhase_dijetgamma_single_trigger_inclusive.config"],
-            #"configName": "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftClean/swiftLimitSetting/r21SwiftNew/r21StatisticalAnalysis/source/configurations/Step1_SearchPhase_Swift_dijetISR-2.config",
-            "outputRootDir": "resultRootCatDogCheck/"}
+    #        "histName": "background_mjj_var",
+    #        "configName": ["configurations/may2018/fiveParamFitForFluctuation/Step1_SearchPhase_dijetgamma_compound_trigger_inclusive.config",
+    #            "configurations/may2018/fiveParamFitForFluctuation/Step1_SearchPhase_dijetgamma_compound_trigger_nbtag2.config",
+    #            "configurations/may2018/fiveParamFitForFluctuation/Step1_SearchPhase_dijetgamma_single_trigger_inclusive.config",
+    #            "configurations/may2018/fiveParamFitForFluctuation/Step1_SearchPhase_dijetgamma_single_trigger_nbtag2.config",
+    #            "configurations/may2018/fiveParamFitForFluctuation/Step1_SearchPhase_trijet_inclusive.config",
+    #            "configurations/may2018/fiveParamFitForFluctuation/Step1_SearchPhase_trijet_nbtag2.config"],
+    #        #"configName": "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftClean/swiftLimitSetting/r21SwiftNew/r21StatisticalAnalysis/source/configurations/Step1_SearchPhase_Swift_dijetISR-2.config",
+    #        "outputRootDir": "resultRootCatDogCheck/"}
 
-   # config={"inFileDir": "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftClean/swiftLimitSetting/r21SwiftNew/SensitivityStudies/source/input_dijetISR2018/bkg/preFluctuation/",
-   #         "inFileList": ["trijet_mjj_inclusive.root"],
-   #         "histName": "background_mjj_var",
-   #         "configName": "configurations/Step1_SearchPhase_Swift_trijet_j380_inclusive.config",
-   #         #"configName": "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftClean/swiftLimitSetting/r21SwiftNew/r21StatisticalAnalysis/source/configurations/Step1_SearchPhase_Swift_dijetISR-2.config",
-   #         "outputRootDir": "resultRoot/"}
+
+    config={"inFileDir": "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftClean/swiftLimitSetting/r21SwiftNew/SensitivityStudies/source/input_dijetISR2018/bkg/may20185Params",
+           "inFileList":
+           [["CatDogCrossCheckFluctuatedSearchPhase_dijetgamma_compound_trigger_inclusive_0.root"
+           ,"CatDogCrossCheckFluctuatedSearchPhase_dijetgamma_compound_trigger_inclusive_1.root"
+           ,"CatDogCrossCheckFluctuatedSearchPhase_dijetgamma_compound_trigger_inclusive_2.root"]
+           ,["CatDogCrossCheckFluctuatedSearchPhase_dijetgamma_single_trigger_inclusive_0.root"
+           ,"CatDogCrossCheckFluctuatedSearchPhase_dijetgamma_single_trigger_inclusive_1.root"
+           ,"CatDogCrossCheckFluctuatedSearchPhase_dijetgamma_single_trigger_inclusive_2.root"]
+           ,["CatDogCrossCheckFluctuatedSearchPhase_trijet_inclusive.root_0.root"
+           ,"CatDogCrossCheckFluctuatedSearchPhase_trijet_inclusive.root_1.root"
+           ,"CatDogCrossCheckFluctuatedSearchPhase_trijet_inclusive.root_2.root"]],
+           #"histName": "background_mjj_var",
+           "histName": "basicBkgFrom4ParamFit_fluctuated",
+           "configName": ["configurations/may2018/fiveParamFitForFluctuation/Step1_SearchPhase_dijetgamma_compound_trigger_inclusive.config",
+               "configurations/may2018/fiveParamFitForFluctuation/Step1_SearchPhase_dijetgamma_single_trigger_inclusive.config",
+               "configurations/may2018/fiveParamFitForFluctuation/Step1_SearchPhase_trijet_inclusive.config"],
+           #"configName": "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftClean/swiftLimitSetting/r21SwiftNew/r21StatisticalAnalysis/source/configurations/Step1_SearchPhase_Swift_dijetISR-2.config",
+           "outputRootDir": "resultRootCatDogCheck/"}
+   #config={"inFileDir": "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftClean/swiftLimitSetting/r21SwiftNew/SensitivityStudies/source/input_dijetISR2018/bkg/preFluctuation/",
+   #        "inFileList": ["trijet_mjj_inclusive.root"],
+   #        "histName": "background_mjj_var",
+   #        "configName": "configurations/Step1_SearchPhase_Swift_trijet_j380_inclusive.config",
+   #        #"configName": "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftClean/swiftLimitSetting/r21SwiftNew/r21StatisticalAnalysis/source/configurations/Step1_SearchPhase_Swift_dijetISR-2.config",
+   #        "outputRootDir": "resultRoot/"}
 
     # new correct fittable fluctuated search phase for trijet window 10 done with kate
    # config={"inFileDir": "/lustre/SCRATCH/atlas/ywng/WorkSpace/r21/r21SwiftClean/swiftLimitSetting/r21SwiftNew/SensitivityStudies/source/input_dijetISR2018/bkg/",
@@ -219,4 +254,4 @@ if __name__=="__main__":
    #         "outputRootDir": "resultRoot/"}
     #----trijet 2b-tagged
     spList=loopSearchPhase(config)
-    #drawOutputRootResidual(config["outputRootDir"], spList)
+    drawOutputRootResidual(config["outputRootDir"], config["spList"])

@@ -91,12 +91,53 @@ if __name__=="__main__":
             #"json":"configDoSen/may2018/photon_single_inclusive.json"
             #}
 
-            {"modelRange":["Gauss_width15"],
-            "signalMasses": [1000],
-            "windows":[16],
-            "outputpdfDir": "perMassPdf/",
+            #{"modelRange":["Gauss_width7","Gauss_width10", "Gauss_width15"],
+            #"signalMasses": [450, 550, 650, 750,850, 950,1000, 1100, 1200],
+            #"windows":[23, 21, 19, 17, 15, 13,  10, 8],
+            #"outputpdfDir": "perMassPdf/",
+            #"json":"configDoSen/may2018/photon_single_inclusiveCatDogCheck.json"
+            #}
+#cat dog fri test
+            #{"modelRange":["Gauss_width1"],
+            #"signalMasses": [450],
+            #"windows":[23],
+            #"outputpdfDir": "perMassPdf/",
+            #"json":"configDoSen/may2018/fiveParams/photon_single_inclusive.json"
+            #},
 
-            "json":"configDoSen/may2018/photon_single_inclusiveCatDogCheck.json"
+            #{"modelRange":["Gauss_width7"],
+            #"signalMasses": [450],
+            #"windows":[23],
+            #"outputpdfDir": "perMassPdf/",
+            #"json":"configDoSen/may2018/fiveParams/photon_compound_inclusive.json"
+            #},
+
+            #{"modelRange":["Gauss_width7"],
+            #"signalMasses": [450],
+            #"windows":[23],
+            #"outputpdfDir": "perMassPdf/",
+            #"json":"configDoSen/may2018/fiveParams/trijetInclusive.json"
+            #}
+
+            {"modelRange":["Gauss_width10"],
+            "signalMasses": [450],
+            "windows":[23],
+            "outputpdfDir": "perMassPdf/",
+            "json":"configDoSen/may2018/fiveParams/photon_single_inclusive.json"
+            },
+
+            {"modelRange":["Gauss_width10"],
+            "signalMasses": [450],
+            "windows":[23],
+            "outputpdfDir": "perMassPdf/",
+            "json":"configDoSen/may2018/fiveParams/photon_compound_inclusive.json"
+            },
+
+            {"modelRange":["Gauss_width10"],
+            "signalMasses": [450],
+            "windows":[15],
+            "outputpdfDir": "perMassPdf/",
+            "json":"configDoSen/may2018/fiveParams/trijetInclusive.json"
             }
 
             ]

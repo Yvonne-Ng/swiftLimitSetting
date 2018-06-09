@@ -99,8 +99,9 @@ def step2step3Run(localdir, signalScale, config, configArgs, mass, window, model
     print("check2")
     step2File=injectionFile(localdir, signalScale, config, model, mass)
 
-    command3="python step03_rewrite.py --config %s --mass %s --window %s --file %s --debug --model %s"%(configArgs, mass, window,step2File, model)
+    command3="python step03_rewrite.py --config %s --mass %s --window %s --file %s --debug --model %s --doDE %s"%(configArgs, mass, window,step2File, model, False)
     #command3="sbatch -c 16 -p atlas_slow -t 1440 step03_rewrite.py --config {0} --mass {1} --window {2} --file {3} --debug ".format(args.config, mass, window,step2File)
+
     os.system(command3)
 
     print("check3")
@@ -179,13 +180,12 @@ def doSensitivityScan(args):
         conciseLog.write("removed: %s\n" % remove)
     #conciseLog.write("/n")
     noSignalFile=FluctuatedBkgFile(localdir, config)
-    command3NoSig="python step03_rewrite.py --config %s --file %s --mass %s --window %s --model %s"%(args.config, noSignalFile, args.mass, args.window, args.model)
+    command3NoSig="python step03_rewrite.py --config %s --file %s --mass %s --window %s --model %s --doDE %s"%(args.config, noSignalFile, args.mass, args.window, args.model, True)
     print("check-2")
     #setting mass to 0 for no signal files
     os.system(command3NoSig)
     print("nosig search phase done")
     conciseLog.write("searchPhase done sucessfully for no signal case \n")
-
 
 # find the bin content to determine the starting signal scale
     f1=TFile(noSignalFile)
@@ -195,7 +195,7 @@ def doSensitivityScan(args):
     theBin=hist.FindBin(float(args.mass))
     binContent=hist.GetBinContent(theBin)
     # start at 1.7 sigma away from the center, assume that it's spread out in 6 bins (at least)
-    startingSignalScale=np.sqrt(binContent)*3
+    startingSignalScale=np.sqrt(binContent)*2
     conciseLog.write("starting signal scale %s \n"% str(startingSignalScale))
 
     previousSignalScale=0

@@ -57,11 +57,14 @@ def makeSearchPhaseConfig(seriesName,configTemplate, window,mass,  nPseudoExps):
     os.system(modcommand)
     return configOutName
 
-def makeCommand(fitFile, fitHistogram, outFileName , configOut):
+def makeCommand(fitFile, fitHistogram, outFileName , configOut, doDE):
     """make searchphase command"""
     #remake this outFileName
     print("histName", fitHistogram)
-    commandTemplate = "SearchPhase --config {0} --file {1} --histName {2} --noDE --outputfile {3}".format(configOut,fitFile,fitHistogram,outFileName)
+    if doDE:
+        commandTemplate = "SearchPhase --config {0} --file {1} --histName {2} --noDE --outputfile {3}".format(configOut,fitFile,fitHistogram,outFileName)
+    else:
+        commandTemplate = "SearchPhase --config {0} --file {1} --histName {2} --outputfile {3}".format(configOut,fitFile,fitHistogram,outFileName)
     return commandTemplate
 
 
@@ -121,7 +124,7 @@ def runSearchPhase(args):
         searchPhaseResultFile=searchPhaseResultName(args.model, args.mass, sigNum, args.window, config["SeriesName"])
     print("2. searchPhaseResult name , before command step3 made: ", searchPhaseResultFile)
     print("histName: ", histName)
-    command=makeCommand(args.inputFileName, histName, config["spResultDir"]+"/"+searchPhaseResultFile , outputConfig)
+    command=makeCommand(args.inputFileName, histName, config["spResultDir"]+"/"+searchPhaseResultFile , outputConfig, args.doDE)
     print("check search phase 06")
     if args.debug:
         print ("command: ", command)
@@ -141,5 +144,6 @@ if __name__ == '__main__':
     parser.add_argument('--window', dest='window', required=True, help='SWiFt window')
     parser.add_argument('-d', '--debug', dest='debug', action='store_true', default=False, help='debug mode')
     parser.add_argument('--model', '--model', dest='model', required=True, default=False, help='model')
+    parser.add_arguemnt('--doDE', '--doDE', dest='doDE', required=True, default=False, help='doDE')
     args = parser.parse_args()
     runSearchPhase(args)
