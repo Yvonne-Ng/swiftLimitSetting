@@ -37,11 +37,11 @@ def batchRun(config):
             conciseLog.write("window %s\n"%(window))
             conciseLog.close()
 
-            configJson["conciseLog"]=conciseLogName
+            #configJson["conciseLog"]=conciseLogName
 
-            json_data2 = open(localdir+"/"+config["json"], "w")
-            print "configJson: ", configJson
-            json.dump(configJson, json_data2)
+            #json_data2 = open(localdir+"/"+config["json"], "w")
+            #print "configJson: ", configJson
+            #json.dump(configJson, json_data2)
 
             for signalMass in config["signalMasses"]:
                 folder="%s_Mass%s_ww%s"%(model, signalMass, window)
@@ -145,7 +145,8 @@ if __name__=="__main__":
             {"modelRange":["Gauss_width10"],
             #"signalMasses": [400],
             #"windows":[22, 21, 20, 19],
-            "windows":[23, 21, 19, 17, 15, 13,  10, 8],
+            "windows":[23, 21, 19, 17],
+            #"windows": [ 15, 13,  10, 8],
             "signalMasses": [450, 550, 650, 750,850, 950,1000, 1100],
             "outputpdfDir": "perMassPdf/",
             "json":"configDoSen/may2018/fiveParams/photon_single_inclusive.json"
@@ -155,7 +156,9 @@ if __name__=="__main__":
             #"signalMasses": [400],#
             "signalMasses": [450, 550, 650, 750,850, 950,1000, 1100],
             #"windows":[23],
-            "windows":[23, 21, 19, 17, 15, 13,  10, 8],
+            "windows":[23],
+            #"windows": [ 15, 13,  10, 8],
+            #"windows":[23, 21, 19, 17, 15, 13,  10, 8],
             "outputpdfDir": "perMassPdf/",
             "json":"configDoSen/may2018/fiveParams/photon_compound_inclusive.json"
             },
@@ -164,6 +167,8 @@ if __name__=="__main__":
             #"signalMasses": [400],
             "signalMasses": [450, 550, 650, 750,850, 950,1000, 1100],
             #"windows":[15],
+            "windows":[23, 21, 19, 17],
+            #"windows": [ 15, 13,  10, 8],
             "windows":[23, 21, 19, 17, 15, 13,  10, 8],
             "outputpdfDir": "perMassPdf/",
             "json":"configDoSen/may2018/fiveParams/trijetInclusive.json"
