@@ -42,8 +42,6 @@ def batchRun(config):
             json_data2 = open(localdir+"/"+config["json"], "w")
             print "configJson: ", configJson
             json.dump(configJson, json_data2)
-            #configJson2=json.load(json_data2)
-            #print(configJson2)
 
             for signalMass in config["signalMasses"]:
                 folder="%s_Mass%s_ww%s"%(model, signalMass, window)
